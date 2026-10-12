@@ -24,11 +24,17 @@ export interface Submission {
   findings: Finding[];
   rejected?: Array<{ file: string; line: number; note?: string }>;
 }
-export interface Target {
-  schema: "weakcrypto.target/v1";
-  repo: string; url: string; commit?: string; justification?: string;
-  stars?: number | null; addedBy: string; addedAt: string; via?: "pull-request" | "site" | "corpus";
+/** An entry in the queue: one repository to scan (schema/entry.schema.json). The same shape whether a person
+ *  added it (repos/<owner>/<repo>/repo.json) or it came from the 100+ star list (a line in seed/<x>.jsonl). */
+export interface Entry {
+  repo: string; url: string; stars: number | null; addedBy: string; addedAt: string; via: "site" | "pull-request" | "corpus";
+  /** The commit to scan, when pinned. */
+  commit?: string;
+  justification?: string;
+  /** Deprecated: the first entries carry it. */
+  schema?: "weakcrypto.target/v1";
 }
+export type Target = Entry;
 export type Verdict = "confirmed" | "rejected" | "pending";
 export interface LabelledSite {
   file: string; line: number; verdict: Verdict; by: string;
@@ -48,24 +54,31 @@ const SHA = /^[0-9a-f]{40}$/;
 const LOGIN = /^[A-Za-z0-9-]{1,39}$/;
 const isIso = (s: unknown) => typeof s === "string" && !Number.isNaN(Date.parse(s));
 
-export function checkTarget(x: unknown): string[] {
+const KEYS_OF_ENTRY = new Set(["repo", "url", "stars", "addedBy", "addedAt", "via", "commit", "justification", "schema"]);
+/** What is wrong with an entry, if anything (schema/entry.schema.json, in code). */
+export function checkEntry(x: unknown): string[] {
   const e: string[] = [];
-  const t = x as Partial<Target>;
-  if (!t || typeof t !== "object") return ["not an object"];
-  if (t.schema !== "weakcrypto.target/v1") e.push("schema must be weakcrypto.target/v1");
-  if (typeof t.repo !== "string" || !REPO.test(t.repo)) e.push("repo must be owner/repo, lowercased");
-  if (typeof t.url !== "string" || !/^https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/.test(t.url)) e.push("url must be https://github.com/owner/repo");
+  const t = x as Partial<Entry>;
+  if (!t || typeof t !== "object" || Array.isArray(t)) return ["not an object"];
+  for (const k of Object.keys(t)) if (!KEYS_OF_ENTRY.has(k)) e.push(`${k}: not part of an entry`);
+  if (typeof t.repo !== "string" || !REPO.test(t.repo)) e.push("repo must be owner/name, lowercased");
+  if (typeof t.url !== "string" || !/^https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/.test(t.url)) e.push("url must be https://github.com/owner/name");
   else if (t.repo && t.url.slice("https://github.com/".length).toLowerCase() !== t.repo) e.push("url and repo name different repositories");
-  if (t.commit != null && !SHA.test(t.commit)) e.push("commit must be a full 40-character SHA");
-  if (t.justification != null && (typeof t.justification !== "string" || t.justification.length > 500)) e.push("justification: at most 500 characters");
+  if (!("stars" in t) || !(t.stars === null || (Number.isInteger(t.stars) && t.stars! >= 0))) e.push("stars must be a whole number, or null if not looked up");
   if (typeof t.addedBy !== "string" || !LOGIN.test(t.addedBy)) e.push("addedBy must be a GitHub login");
   if (!isIso(t.addedAt)) e.push("addedAt must be an ISO date");
-  if (t.via != null && !["pull-request", "site", "corpus"].includes(t.via)) e.push("via must be pull-request, site or corpus");
+  if (!["site", "pull-request", "corpus"].includes(t.via as string)) e.push("via must be site, pull-request or corpus");
+  if (t.commit != null && !SHA.test(t.commit)) e.push("commit must be a full 40-character SHA");
+  if (t.justification != null && (typeof t.justification !== "string" || t.justification.length > 500)) e.push("justification: at most 500 characters");
+  if (t.schema != null && t.schema !== "weakcrypto.target/v1") e.push("schema: leave it out");
   return e;
 }
+export const checkTarget = checkEntry;
 
 /** Where everything lives. */
-export const REPOS = "repos", KEYS = "benchmark/keys", RUNS = "benchmark/runs";
+export const REPOS = "repos", SEED = "seed", KEYS = "benchmark/keys", RUNS = "benchmark/runs";
+/** seed/<x>.jsonl: the 100+ star list, one entry per line, filed by the first character of the owner. */
+export const seedPath = (repo: string) => `${SEED}/${/^[a-z0-9]/.test(repo) ? repo[0] : "_"}.jsonl`;
 /** repos/<owner>/<repo>/: the queue is these folders. */
 export const repoDir = (repo: string) => `${REPOS}/${repo}`;
 export const targetPath = (repo: string) => `${repoDir(repo)}/repo.json`;

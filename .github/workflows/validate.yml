@@ -26,15 +26,16 @@ jobs:
         id: changed
         run: |
           base=${{ github.event.pull_request.base.sha }}
-          git diff --name-only --diff-filter=AM "$base" HEAD -- repos benchmark/keys | grep '\.json$' > changed.txt || true
+          git diff --name-only --diff-filter=AM "$base" HEAD -- repos seed benchmark/keys | grep -E '\.jsonl?$' > changed.txt || true
           echo "count=$(wc -l < changed.txt)" >> "$GITHUB_OUTPUT"
           # The queue and the CBOMs are added to, never rewritten.
           if git diff --name-only --diff-filter=DMR "$base" HEAD -- repos | grep -q .; then
             echo "::error::repos/ is append-only: add a new file instead of changing or removing one"; exit 1
           fi
 
-      # A repo.json names its repository; a CBOM is valid CycloneDX 1.6 in the
-      # profile, filed under its own unused id, and every line it cites exists.
+      # Every entry (a repo.json, or a line of seed/) follows schema/entry.schema.json;
+      # a CBOM is valid CycloneDX 1.6 in the profile, filed under its own unused id,
+      # and every line it cites exists.
       - name: Valid files
         if: steps.changed.outputs.count != '0'
         run: xargs -a changed.txt bun check.ts
@@ -57,6 +58,10 @@ jobs:
             [ -n "$author" ] || { echo "::error file=$f::the commit that adds it has no GitHub account as its author"; exit 1; }
             [ "$(echo "$named" | tr A-Z a-z)" = "$(echo "$author" | tr A-Z a-z)" ] || { echo "::error file=$f::it names $named, but $author committed it"; exit 1; }
           done
+          # The same for the list: every entry a pull request adds to seed/ names the account that opened it.
+          opener=$(echo "${{ github.event.pull_request.user.login }}" | tr A-Z a-z)
+          others=$(git diff -U0 "$base" HEAD -- seed | grep '^+{' | cut -c2- | jq -r .addedBy | tr A-Z a-z | sort -u | grep -vx "$opener" || true)
+          [ -z "$others" ] || { echo "::error::seed/ entries added here name $(echo $others), but $opener opened this pull request"; exit 1; }
 
       - name: Queued repositories are public and not too big
         if: steps.changed.outputs.count != '0'
