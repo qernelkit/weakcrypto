@@ -1,0 +1,122 @@
+{
+  "schema": "weakcrypto.labels/v1",
+  "repo": "kofrasa/mingo",
+  "commit": "ad0db2a856f83a7d281de3c738ac09abd442d4b0",
+  "updatedAt": "2026-10-10T19:31:42.802Z",
+  "sites": [
+    {
+      "file": "benchmarks/number-sorting.ts",
+      "line": 4,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-97wovyupf"
+      ],
+      "rejectedBy": [
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "drbg",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-97wovyupf",
+      "foundBy": "weakcrypto-bot",
+      "note": "Math.random() fills a benchmark array with random numbers; non-cryptographic PRNG, no security use."
+    },
+    {
+      "file": "benchmarks/perf.ts",
+      "line": 78,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-97wovyupf"
+      ],
+      "rejectedBy": [
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "drbg",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-97wovyupf",
+      "foundBy": "weakcrypto-bot",
+      "note": "Math.random() generates a synthetic score field for benchmark documents; no security use."
+    },
+    {
+      "file": "src/operators/expression/misc/rand.ts",
+      "line": 7,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-97wovyupf",
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "drbg",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-97wovyupf",
+      "foundBy": "weakcrypto-bot",
+      "note": "$rand operator returns Math.random() float per MongoDB semantics; non-cryptographic, not security-relevant."
+    },
+    {
+      "file": "src/operators/expression/misc/sampleRate.ts",
+      "line": 13,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-97wovyupf",
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "drbg",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-97wovyupf",
+      "foundBy": "weakcrypto-bot",
+      "note": "$sampleRate uses Math.random() for statistical document sampling; no security use."
+    },
+    {
+      "file": "src/operators/expression/toHashedIndexKey.ts",
+      "line": 15,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "hash",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-8veycj4od",
+      "foundBy": "weakcrypto-bot",
+      "note": "$toHashedIndexKey calls internal hashCode() (FNV-style 32-bit) to emulate MongoDB hashed index keys; non-security hashing."
+    },
+    {
+      "file": "src/operators/pipeline/sample.ts",
+      "line": 19,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-97wovyupf",
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "drbg",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-97wovyupf",
+      "foundBy": "weakcrypto-bot",
+      "note": "$sample stage picks random indices with Math.random(); statistical sampling, not security."
+    },
+    {
+      "file": "src/util/_hash.ts",
+      "line": 4,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-8veycj4od"
+      ],
+      "primitive": "hash",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-8veycj4od",
+      "foundBy": "weakcrypto-bot",
+      "note": "Comment line above FNV-1a prime constant in a homegrown 32-bit hashCode used for equality/dedup/map bucketing; comment and non-security hash."
+    }
+  ]
+}

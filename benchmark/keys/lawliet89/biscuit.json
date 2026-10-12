@@ -1,0 +1,5953 @@
+{
+  "schema": "weakcrypto.labels/v1",
+  "repo": "lawliet89/biscuit",
+  "commit": "a6443895a894d89641710a68d82e870e190b57f4",
+  "updatedAt": "2026-10-10T19:34:13.868Z",
+  "sites": [
+    {
+      "file": "Cargo.lock",
+      "line": 1,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "Cargo.lock header comment line; no crypto (and no Ed25519 anywhere in lockfile)"
+    },
+    {
+      "file": "Cargo.lock",
+      "line": 35,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "biscuit locked dependency on ring"
+    },
+    {
+      "file": "Cargo.lock",
+      "line": 100,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "getrandom",
+      "claimedBy": [],
+      "note": "getrandom package (OS CSPRNG backend for ring)"
+    },
+    {
+      "file": "Cargo.lock",
+      "line": 231,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "ring 0.17.13 locked package entry"
+    },
+    {
+      "file": "Cargo.toml",
+      "line": 33,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "ring crypto library dependency"
+    },
+    {
+      "file": "fuzz/corpus/fuzz_decryption/valid_token",
+      "line": 1,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "fuzzer seed input: an HS256-signed JWT token string, not key/cert material or crypto code"
+    },
+    {
+      "file": "fuzz/corpus/fuzz_signature_validation/valid_token",
+      "line": 1,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "fuzzer seed input: an HS256-signed JWT token string, not key/cert material or crypto code"
+    },
+    {
+      "file": "fuzz/fuzz_targets/fuzz_decryption.rs",
+      "line": 12,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "constructs fixed 256-bit octet key for fuzzing"
+    },
+    {
+      "file": "fuzz/fuzz_targets/fuzz_decryption.rs",
+      "line": 22,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "into_decrypted with A256GCMKW/A256GCM"
+    },
+    {
+      "file": "fuzz/fuzz_targets/fuzz_signature_validation.rs",
+      "line": 12,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "HMAC shared secret for fuzzing"
+    },
+    {
+      "file": "fuzz/fuzz_targets/fuzz_signature_validation.rs",
+      "line": 21,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "into_decoded verifies with HS256"
+    },
+    {
+      "file": "src/digest.rs",
+      "line": 8,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "wraps ring::digest::Algorithm"
+    },
+    {
+      "file": "src/digest.rs",
+      "line": 16,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "static wrapping ring::digest::SHA256"
+    },
+    {
+      "file": "src/digest.rs",
+      "line": 19,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "hash",
+      "algorithm": "SHA-384",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "static wrapping ring::digest::SHA384"
+    },
+    {
+      "file": "src/digest.rs",
+      "line": 22,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "hash",
+      "algorithm": "SHA-512",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "static wrapping ring::digest::SHA512"
+    },
+    {
+      "file": "src/digest.rs",
+      "line": 25,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "hash",
+      "algorithm": "SHA-512/256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "static wrapping ring::digest::SHA512_256"
+    },
+    {
+      "file": "src/errors.rs",
+      "line": 26,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "Error::KeyRejected wraps ring::error::KeyRejected"
+    },
+    {
+      "file": "src/errors.rs",
+      "line": 117,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "From<ring::error::KeyRejected> conversion"
+    },
+    {
+      "file": "src/errors.rs",
+      "line": 119,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "From<ring::error::Unspecified> crypto error conversion"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 10,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "imports ring constant-time comparison used for HMAC verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 11,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "imports ring SystemRandom CSPRNG"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 12,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "imports ring signature KeyPair trait"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 13,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "imports ring aead, hmac and signature modules"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 22,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "drbg",
+      "algorithm": "ring SecureRandom",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "re-exports ring::rand::SecureRandom CSPRNG trait"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 25,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM tag size parameter"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 27,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM 96-bit nonce length parameter"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 30,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "static zeroed AES-GCM nonce options"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 46,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "EncryptionOptions::AES_GCM variant carrying the GCM nonce"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 82,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::None (JWS alg none) variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 85,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::HS256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 87,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA384",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::HS384 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 89,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA512",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::HS512 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 91,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::RS256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 93,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA384",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::RS384 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 95,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA512",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::RS512 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 97,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::ES256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 99,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P384-SHA384",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::ES384 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 102,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P521-SHA512",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::ES512 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 105,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::PS256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 108,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA384",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::PS384 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 111,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA512",
+      "claimedBy": [],
+      "note": "SignatureAlgorithm::PS512 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 120,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSAES-PKCS1-v1_5",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::RSA1_5 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 123,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::RSA_OAEP variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 126,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP-256",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::RSA_OAEP_256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 128,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A128KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 131,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-192-KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A192KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 133,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A256KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 137,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "dir",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::DirectSymmetricKey (JWE dir) variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 140,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "key-agree",
+      "algorithm": "ECDH-ES",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::ECDH_ES variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 143,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "key-agree",
+      "algorithm": "ECDH-ES+A128KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::ECDH_ES_A128KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 146,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "key-agree",
+      "algorithm": "ECDH-ES+A192KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::ECDH_ES_A192KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 149,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "key-agree",
+      "algorithm": "ECDH-ES+A256KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::ECDH_ES_A256KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 151,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A128GCMKW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 154,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-192-GCM",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A192GCMKW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 156,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::A256GCMKW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 159,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "kdf",
+      "algorithm": "PBES2-HS256+A128KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::PBES2_HS256_A128KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 162,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "kdf",
+      "algorithm": "PBES2-HS384+A192KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::PBES2_HS384_A192KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 165,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "kdf",
+      "algorithm": "PBES2-HS512+A256KW",
+      "claimedBy": [],
+      "note": "KeyManagementAlgorithm::PBES2_HS512_A256KW variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 192,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-CBC-HMAC-SHA256",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A128CBC_HS256 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 195,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-192-CBC-HMAC-SHA384",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A192CBC_HS384 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 198,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-CBC-HMAC-SHA512",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A256CBC_HS512 variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 201,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A128GCM variant (default)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 204,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-192-GCM",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A192GCM variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 206,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "ContentEncryptionAlgorithm::A256GCM variant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 245,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "sign dispatch for alg none"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 246,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "sign dispatch HS256/384/512 to HMAC"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 247,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "sign dispatch RS*/PS* to RSA signing"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 248,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "sign dispatch ES* to ECDSA signing"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 262,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "none",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "verify dispatch for JWS alg none (unsecured, empty-signature check); not TLS"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 263,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "verify dispatch HS* to HMAC verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 265,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSA/ECDSA",
+      "claimedBy": [],
+      "note": "verify dispatch RS*/PS*/ES* to public-key verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 290,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "selects ring hmac::HMAC_SHA256"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 291,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA384",
+      "claimedBy": [],
+      "note": "selects ring hmac::HMAC_SHA384"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 292,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA512",
+      "claimedBy": [],
+      "note": "selects ring hmac::HMAC_SHA512"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 295,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "constructs ring hmac::Key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 296,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "hmac::sign computes the MAC tag"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 309,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "SystemRandom::new for RSA signing"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 312,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PKCS1_SHA256"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 313,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA384",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PKCS1_SHA384"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 314,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA512",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PKCS1_SHA512"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 315,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PSS_SHA256"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 316,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA384",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PSS_SHA384"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 317,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA512",
+      "claimedBy": [],
+      "note": "selects signature::RSA_PSS_SHA512"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 321,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RsaKeyPair::sign"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 338,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "SystemRandom::new for ECDSA signing"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 339,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "EcdsaKeyPair::sign"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 364,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "constant-time comparison of HMAC tags (verify_slices_are_equal)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 378,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 379,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 380,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 381,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 382,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 383,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 384,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "selects signature::ECDSA_P256_SHA256_FIXED"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 385,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "ECDSA-P384-SHA384",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "selects ring ECDSA_P384_SHA384_FIXED for ES384 verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 390,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "signature::UnparsedPublicKey::new constructs public verification key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 394,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "UnparsedPublicKey::verify signature verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 400,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 401,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 402,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 403,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 404,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 405,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 410,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "signature::UnparsedPublicKey::new constructs public verification key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 411,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "UnparsedPublicKey::verify signature verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 416,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 417,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 418,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 419,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 420,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA384",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 421,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA512",
+      "claimedBy": [],
+      "note": "selects ring RSA verification algorithm constant"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 427,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "constructs RsaPublicKeyComponents from modulus/exponent"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 431,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RsaPublicKeyComponents::verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 437,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "selects signature::ECDSA_P256_SHA256_FIXED"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 438,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "ECDSA-P384-SHA384",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "selects ring ECDSA_P384_SHA384_FIXED for ES384 verification with keypair"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 444,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "signature::UnparsedPublicKey::new constructs public verification key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 445,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "UnparsedPublicKey::verify signature verification"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 489,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "dispatches AES-GCM key wrap algorithms (A*GCMKW)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 508,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "generates random content encryption key for AES-GCM key wrap"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 533,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "dispatches AES-GCM key wrap algorithms (A*GCMKW)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 555,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "dispatches AES-GCM key wrap algorithms (A*GCMKW)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 570,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A128GCMKW key wrap uses aead::AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 571,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A256GCMKW key wrap uses aead::AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 584,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM key wrap encryption call"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 596,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A128GCMKW key unwrap uses aead::AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 597,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A256GCMKW key unwrap uses aead::AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 601,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM key unwrap decryption call"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 623,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "128-bit key length for A128GCM key generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 624,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "256-bit key length for A256GCM key generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 629,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "fills CEK with secure random bytes"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 644,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "dispatches content encryption/decryption to AES-GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 658,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "dispatches content encryption/decryption to AES-GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 668,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "generates random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 684,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A128GCM content encryption uses aead::AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 685,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A256GCM content encryption uses aead::AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 698,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM content encryption call"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 709,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A128GCM content decryption uses aead::AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 710,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "A256GCM content decryption uses aead::AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 713,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "AES-GCM content decryption call"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 721,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "static SystemRandom CSPRNG instance"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 740,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "aead::UnboundKey::new constructs AEAD key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 741,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "aead::LessSafeKey::new"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 744,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "seal_in_place_separate_tag AEAD encryption"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 770,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "aead::UnboundKey::new constructs AEAD key"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 771,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "aead::LessSafeKey::new"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 776,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "open_in_place AEAD decryption"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 786,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "fills AES-GCM nonce with secure random bytes"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 792,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "test: imports ring constant_time::verify_slices_are_equal"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 801,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: sign/verify with SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 805,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: sign/verify with SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 817,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: HS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 823,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: HS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 840,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA keypair from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 854,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: RS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 857,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 858,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: RS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 869,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: constructs RSA public key from modulus/exponent"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 895,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: RS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 906,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA keypair from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 911,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 913,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 914,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 924,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA keypair from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 928,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 930,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 958,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 959,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 969,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: loads ECDSA PKCS#8 keypair fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 978,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 981,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: loads ECDSA public key DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 982,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 992,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: loads ECDSA PKCS#8 keypair fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1000,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1002,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1015,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: hardcoded P-256 public key test vector"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1017,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "test: wraps public key bytes as Secret::PublicKey"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1021,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1034,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P384",
+      "claimedBy": [],
+      "note": "test: hardcoded P-384 public key test vector"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1037,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "test: wraps public key bytes as Secret::PublicKey"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1042,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P384-SHA384",
+      "claimedBy": [],
+      "note": "test: ES384 verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1055,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P521-SHA512",
+      "claimedBy": [],
+      "note": "test: ES512 verify (unsupported)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1065,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: sign/verify with SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1079,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: HS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1091,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1094,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: RS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1106,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1109,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PSS-SHA256",
+      "claimedBy": [],
+      "note": "test: PS256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1121,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key from DER fixture"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1124,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: ES256 sign/verify"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1137,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1155,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_encrypt called with aead::AES_128_GCM (algorithm argument line)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1161,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_decrypt with AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1171,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1183,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_encrypt called with aead::AES_128_GCM (algorithm argument line)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1189,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_decrypt with AES_128_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1199,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1211,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_encrypt called with aead::AES_256_GCM (algorithm argument line)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1217,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_decrypt with AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1238,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_encrypt called with aead::AES_256_GCM (algorithm argument line)"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1244,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: aes_gcm_decrypt with AES_256_GCM"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1254,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1265,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "dir",
+      "claimedBy": [],
+      "note": "test: selects KeyManagementAlgorithm::DirectSymmetricKey"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1266,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: cek() for A256GCM with dir"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1277,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1288,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: selects KeyManagementAlgorithm::A128GCMKW"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1289,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1295,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: A256GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1306,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1317,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: selects KeyManagementAlgorithm::A256GCMKW"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1318,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1324,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: A256GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1334,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1346,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce for EncryptionOptions"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1349,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: selects KeyManagementAlgorithm::A128GCMKW"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1350,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1351,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: generates CEK"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1353,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: wrap_key AES-GCM key wrap"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1354,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: unwrap_key AES-GCM key unwrap"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1366,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1378,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce for EncryptionOptions"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1381,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: selects KeyManagementAlgorithm::A256GCMKW"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1382,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1383,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: generates CEK"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1385,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: wrap_key AES-GCM key wrap"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1386,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: unwrap_key AES-GCM key unwrap"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1398,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1399,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: generates CEK"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1406,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: A256GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1407,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: generates CEK"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1414,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1426,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce for EncryptionOptions"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1431,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: A128GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1433,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: AES-GCM content encryption"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1435,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: AES-GCM content decryption"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1442,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills key/random buffer from SystemRandom"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1454,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce for EncryptionOptions"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1459,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: A256GCM content alg / CEK generation"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1461,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: AES-GCM content encryption"
+    },
+    {
+      "file": "src/jwa.rs",
+      "line": 1463,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: AES-GCM content decryption"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 77,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "JWE header alg field selects key management algorithm"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 82,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "JWE header enc field selects content encryption algorithm"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 388,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "generates random content-encryption options (nonce)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 398,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "generates/derives content encryption key via KeyManagementAlgorithm::cek"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 399,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "wraps CEK with key management algorithm"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 421,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "encrypts JWE payload with content encryption algorithm (AAD = protected header)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 492,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "unwraps CEK with key management algorithm"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 511,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "decrypts JWE payload with content encryption algorithm"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 621,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SecureRandom",
+      "claimedBy": [],
+      "note": "test: imports ring::rand::SecureRandom"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 633,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "drbg",
+      "algorithm": "ring SystemRandom",
+      "claimedBy": [],
+      "note": "test: fills random octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 724,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key (interop vector)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 726,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 729,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts interop JWE (dir + A256GCM)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 743,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm RSA_OAEP"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 744,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 747,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: JWE header JSON declaring alg RSA-OAEP / enc A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 751,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSAES-PKCS1-v1_5",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm RSA1_5"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 752,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-CBC-HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A128CBC_HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 755,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSAES-PKCS1-v1_5",
+      "claimedBy": [],
+      "note": "test: JWE header JSON alg RSA1_5 / enc A128CBC-HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 759,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A128KW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 760,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-CBC-HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A128CBC_HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 763,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "test: JWE header JSON alg A128KW / enc A128CBC-HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 776,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm RSA_OAEP"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 777,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 785,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: JWE header JSON declaring alg RSA-OAEP / enc A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 794,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 800,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 801,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 807,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 811,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 831,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 860,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: JWS header algorithm HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 866,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: signs nested JWS with HMAC secret"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 869,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 874,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 875,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 883,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 887,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 907,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 935,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: JWS header algorithm HS256"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 941,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: signs nested JWS with HMAC secret"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 944,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 949,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "dir",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm DirectSymmetricKey"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 950,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 958,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 962,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 982,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 997,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1003,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1004,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1010,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1014,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1017,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1029,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1035,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1036,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1043,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1046,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1049,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1060,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1063,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1075,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1081,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1082,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1089,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1092,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1102,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1114,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1120,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1121,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1128,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1131,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1141,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1153,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1159,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1160,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1167,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1170,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1178,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1191,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1197,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1198,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1204,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1208,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1218,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1231,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1237,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1238,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1245,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1248,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1256,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1269,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1275,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1276,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1282,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1286,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1296,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1309,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-256",
+      "claimedBy": [],
+      "note": "test: generates random 256-bit octet key"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1315,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header cek_algorithm A256GCMKW"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1316,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-256-GCM",
+      "claimedBy": [],
+      "note": "test: header enc_algorithm A256GCM"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1322,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: random AES-GCM nonce"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1326,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: encrypts JWE"
+    },
+    {
+      "file": "src/jwe.rs",
+      "line": 1336,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-GCM",
+      "claimedBy": [],
+      "note": "test: decrypts JWE (into_decrypted)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 22,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC",
+      "claimedBy": [],
+      "note": "KeyType::EllipticCurve (JWK kty EC)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 24,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "KeyType::RSA (JWK kty RSA)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 27,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "KeyType::Octet (JWK kty oct symmetric key)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 30,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "OKP",
+      "claimedBy": [],
+      "note": "KeyType::OctetKeyPair (JWK kty OKP)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 204,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "JWK alg parameter selecting the key's algorithm"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 339,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "ring::digest::digest computes JWK thumbprint (RFC 7638)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 345,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC",
+      "claimedBy": [],
+      "note": "EllipticCurveKeyParameters key structure (x, y, private d)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 379,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC",
+      "claimedBy": [],
+      "note": "builds uncompressed EC public key for JWS verification"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 385,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RSAKeyParameters key structure (n, e, private d/p/q/dp/dq/qi)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 471,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "builds RSAModulusExponent verification key from JWK"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 490,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "OtherPrimesInfo multi-prime RSA private key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 512,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "OctetKeyParameters symmetric key structure"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 523,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "OKP",
+      "claimedBy": [],
+      "note": "OctetKeyPairParameters key structure"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 588,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "EllipticCurve::P256 curve variant"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 591,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "other",
+      "algorithm": "P-384",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "EllipticCurve::P384 (crv P-384) JWK curve variant"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 594,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "other",
+      "algorithm": "P-521",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "EllipticCurve::P521 (crv P-521) JWK curve variant"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 597,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "claimedBy": [],
+      "note": "EllipticCurve::Curve25519 (crv Ed25519) variant"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 600,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "Ed448",
+      "claimedBy": [],
+      "note": "EllipticCurve::Curve448 (crv Ed448) variant"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 623,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "JWK::new_octet_key constructs symmetric key"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1007,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC-P256",
+      "claimedBy": [],
+      "note": "test: constructs EC P-256 JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1009,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "test: EllipticCurve::P256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1025,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "test: JWK JSON crv P-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1026,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON key coordinate x"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1038,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "Ed25519",
+      "claimedBy": [],
+      "note": "test: constructs OKP JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1040,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "claimedBy": [],
+      "note": "test: EllipticCurve::Curve25519"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1056,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: expected OKP JWK JSON with crv Ed25519 (private key)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1057,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON key coordinate x"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1069,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "Ed25519",
+      "claimedBy": [],
+      "note": "test: constructs OKP JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1071,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "claimedBy": [],
+      "note": "test: EllipticCurve::Curve25519"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1083,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: expected OKP JWK JSON with crv Ed25519 (public key)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1084,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON key coordinate x"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1097,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "test: JWK alg KeyManagementAlgorithm::A128KW"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1101,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "test: constructs octet key (A128KW)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1115,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: constructs octet HMAC key (JWS A.1)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1133,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-128-KW",
+      "claimedBy": [],
+      "note": "test: JWK JSON alg A128KW"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1134,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON symmetric key k"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1137,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON symmetric key k"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1158,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC-P256",
+      "claimedBy": [],
+      "note": "test: constructs EC P-256 JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1160,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "test: EllipticCurve::P256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1176,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: JWK alg SignatureAlgorithm::RS256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1180,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: constructs RSA JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1203,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: includes JWK public key fixture"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1218,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC-P256",
+      "claimedBy": [],
+      "note": "test: constructs EC P-256 JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1220,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "test: EllipticCurve::P256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1240,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: JWK alg SignatureAlgorithm::RS256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1244,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: constructs RSA JWK key parameters"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1319,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: includes JWK private key fixture"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1382,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK from JSON"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1384,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: EC JWK JSON declaring alg ES256 (thumbprint test)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1385,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "test: JWK JSON crv P-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1388,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON public key x"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1394,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "claimedBy": [],
+      "note": "test: computes JWK thumbprint with SHA-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1402,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK from JSON"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1405,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: JWK JSON RSA modulus n"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1407,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: RSA JWK JSON declaring alg RS256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1413,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "claimedBy": [],
+      "note": "test: computes JWK thumbprint with SHA-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1422,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK from JSON"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1425,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: JWK JSON RSA modulus n"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1427,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: RSA JWK JSON declaring alg RS256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1433,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "claimedBy": [],
+      "note": "test: computes JWK thumbprint with SHA-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1440,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK from JSON"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1445,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-GCM",
+      "claimedBy": [],
+      "note": "test: JWK JSON alg A128GCM"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1446,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON symmetric key k"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1451,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "claimedBy": [],
+      "note": "test: computes JWK thumbprint with SHA-256"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1458,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK from JSON"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1461,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "Ed25519",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: OKP JWK JSON with crv Ed25519 (thumbprint test)"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1462,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: JWK JSON public key x"
+    },
+    {
+      "file": "src/jwk.rs",
+      "line": 1467,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "hash",
+      "algorithm": "SHA-256",
+      "claimedBy": [],
+      "note": "test: computes JWK thumbprint with SHA-256"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 17,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "ring",
+      "claimedBy": [],
+      "note": "imports ring::signature"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 34,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "Secret::Bytes variant holding HMAC shared secret"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 61,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "Secret::RsaKeyPair holding ring RsaKeyPair"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 77,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "Secret::EcdsaKeyPair holding ring EcdsaKeyPair"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 154,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "Secret::PublicKey variant holding DER public key"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 159,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "Secret::RSAModulusExponent RSA public key components"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 182,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "constructs HMAC secret from string"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 189,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RsaKeyPair::from_der parses RSA private key"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 200,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "selects ECDSA_P256_SHA256_FIXED_SIGNING"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 201,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "ECDSA-P384-SHA384",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "selects ECDSA_P384_SHA384_FIXED_SIGNING when loading ES384 PKCS#8 key"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 204,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "EcdsaKeyPair::from_pkcs8 parses ECDSA private key (with SystemRandom)"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 216,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "loads DER public key as Secret::PublicKey"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 222,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "builds JWS verification secret from RSA JWK parameters"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 267,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "JWS header alg field selects signature algorithm"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 338,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "default header algorithm SignatureAlgorithm::default() (HS256)"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 359,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: expected JWS header JSON with alg HS256 (default algorithm)"
+    },
+    {
+      "file": "src/jws.rs",
+      "line": 375,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: expected JWS header JSON with alg HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 80,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "signs JWS signing input with header algorithm"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 119,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "verifies JWS signature"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 199,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "derives verification key from EC JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 200,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "derives verification key from RSA JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 201,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "HMAC secret from oct JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 206,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "verifies JWS signature"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 260,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "derives verification key from EC JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 262,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "derives verification key from RSA JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 264,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "HMAC secret from oct JWK"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 279,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "verifies JWS signature"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 473,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 484,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "none",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: JWS header JSON declaring alg none"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 516,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 521,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: encodes JWS with alg none"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 524,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: decodes JWS with alg none"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 549,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 555,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: signs JWS with HMAC secret"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 558,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 592,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA private key DER fixture"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 596,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm RS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 601,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: signs JWS with RSA key"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 604,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key DER fixture"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 605,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: verifies JWS with RS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 618,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: hardcoded P-256 public key"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 624,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "test: Secret::PublicKey from decoded key bytes"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 627,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "claimedBy": [],
+      "note": "test: verifies JWS with ES256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 632,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 637,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: JWK crv P-256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 638,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: EC JWK public key coordinate"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 651,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 686,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: signs JWS with HMAC secret"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 687,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 699,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 714,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 729,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key DER fixture"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 730,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: verifies JWS with RS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 742,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 763,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 770,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: signs JWS with HMAC secret"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 773,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: decodes/verifies JWS with HS256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 788,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 795,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 796,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 803,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 815,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 822,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 823,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 831,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 845,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 852,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 853,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 861,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 874,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 881,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 889,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 903,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 910,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 918,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 932,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 939,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 946,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 961,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 966,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: RSA JWK public exponent/modulus"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 969,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: RSA JWK in JWKS declaring alg RS256 for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 977,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 988,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 995,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 996,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1003,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1015,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1022,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1023,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1030,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1042,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1049,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1050,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1057,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1069,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1076,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1077,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: oct JWK in JWKS declaring alg HS256 used for verification"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1084,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1096,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1103,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "HMAC",
+      "claimedBy": [],
+      "note": "test: oct JWK symmetric key value"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1104,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "ae",
+      "algorithm": "AES-128-CBC-HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: JWK alg A128CBC-HS256 (unsupported for signing)"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1111,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1123,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: parses JWK set containing verification keys"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1128,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: EC JWK private key d"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1130,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: JWK crv P-256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1134,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "signature",
+      "algorithm": "ECDSA-P256-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "test: EC JWK in JWKS declaring alg ES256"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1141,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: decode_with_jwks verifies JWS signature using JWKS"
+    },
+    {
+      "file": "src/jws/compact.rs",
+      "line": 1149,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::HS256"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 94,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "Signable::sign delegates to SignedData::sign"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 185,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "signs flattened JWS signing input with header algorithm"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 241,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "verifies flattened JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 365,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::sign creates flattened JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 368,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "none",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::None"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 378,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 406,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::sign creates flattened JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 409,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "mac",
+      "algorithm": "HMAC-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::HS256"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 422,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 466,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA private key DER fixture"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 468,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::sign creates flattened JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 471,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "claimedBy": [],
+      "note": "test: header algorithm SignatureAlgorithm::RS256"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 481,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key DER fixture"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 482,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 502,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "test: hardcoded P-256 public key"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 508,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA",
+      "claimedBy": [],
+      "note": "test: Secret::PublicKey from decoded key bytes"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 510,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 554,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::sign creates flattened JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 562,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 578,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 592,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "test: loads RSA public key DER fixture"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 593,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 607,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 621,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "src/jws/flattened.rs",
+      "line": 632,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": null,
+      "claimedBy": [],
+      "note": "test: SignedData::verify_flattened verifies JWS signature"
+    },
+    {
+      "file": "test/fixtures/ecdsa_private_key.p8",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "fixture: PKCS#8 ECDSA private key (binary)"
+    },
+    {
+      "file": "test/fixtures/ecdsa_public_key.der",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "ECDSA-P256",
+      "claimedBy": [],
+      "note": "fixture: DER ECDSA public key (binary)"
+    },
+    {
+      "file": "test/fixtures/jwk_private_key.json",
+      "line": 5,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "fixture: crv P-256"
+    },
+    {
+      "file": "test/fixtures/jwk_private_key.json",
+      "line": 6,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC-P256",
+      "claimedBy": [],
+      "note": "fixture: EC private JWK key material"
+    },
+    {
+      "file": "test/fixtures/jwk_private_key.json",
+      "line": 14,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "fixture: RSA private JWK key material"
+    },
+    {
+      "file": "test/fixtures/jwk_private_key.json",
+      "line": 22,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "rejectedBy": [
+        "scan-gemma4-31b-mmugat965"
+      ],
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "fixture: RSA private JWK alg RS256"
+    },
+    {
+      "file": "test/fixtures/jwk_public_key.json",
+      "line": 5,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "other",
+      "algorithm": "P-256",
+      "claimedBy": [],
+      "note": "fixture: crv P-256"
+    },
+    {
+      "file": "test/fixtures/jwk_public_key.json",
+      "line": 6,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "EC-P256",
+      "claimedBy": [],
+      "note": "fixture: EC public JWK key material"
+    },
+    {
+      "file": "test/fixtures/jwk_public_key.json",
+      "line": 13,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "fixture: RSA public JWK key material"
+    },
+    {
+      "file": "test/fixtures/jwk_public_key.json",
+      "line": 15,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "rejectedBy": [
+        "scan-gemma4-31b-mmugat965"
+      ],
+      "primitive": "signature",
+      "algorithm": "RSASSA-PKCS1-v1_5-SHA256",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "fixture: RSA public JWK alg RS256"
+    },
+    {
+      "file": "test/fixtures/rsa_private_key.der",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "fixture: DER RSA 2048-bit private key"
+    },
+    {
+      "file": "test/fixtures/rsa_private_key.pem",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-mmugat965",
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-mmugat965",
+      "foundBy": "weakcrypto-bot",
+      "note": "fixture: PEM RSA private key begins"
+    },
+    {
+      "file": "test/fixtures/rsa_public_key.der",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "fixture: DER RSA public key"
+    },
+    {
+      "file": "test/fixtures/rsa_public_key.pem",
+      "line": 1,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-ovk474jn9",
+        "scan-glm-5.3-fmpfaqpwq"
+      ],
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-ovk474jn9",
+      "foundBy": "weakcrypto-bot",
+      "note": "fixture: PEM RSA public key begins"
+    }
+  ]
+}

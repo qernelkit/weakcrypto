@@ -1,0 +1,753 @@
+{
+  "schema": "weakcrypto.labels/v1",
+  "repo": "lanmessenger/lanmessenger",
+  "commit": "abb21431689b2114755373055fd730e66ebeae55",
+  "updatedAt": "2026-10-10T19:31:42.998Z",
+  "sites": [
+    {
+      "file": ".github/actions/setup-e2e/action.yml",
+      "line": 19,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "E2E setup installs libssl-dev build dependency"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "line": 67,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "CI installs libssl-dev build dependency (Linux)"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "line": 147,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "CI installs openssl via vcpkg (Windows)"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "line": 164,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "Passes -DOPENSSL_ROOT_DIR to CMake (Windows job)"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "line": 251,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL 3",
+      "claimedBy": [],
+      "note": "CI installs openssl@3 via Homebrew (macOS)"
+    },
+    {
+      "file": ".github/workflows/ci.yml",
+      "line": 261,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "Passes -DOPENSSL_ROOT_DIR to CMake (macOS job)"
+    },
+    {
+      "file": "lmc/CMakeLists.txt",
+      "line": 5,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "find_package(OpenSSL REQUIRED) declares OpenSSL build dependency"
+    },
+    {
+      "file": "lmc/CMakeLists.txt",
+      "line": 137,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL libcrypto",
+      "claimedBy": [],
+      "note": "Links OpenSSL::Crypto into lmc_core"
+    },
+    {
+      "file": "lmc/CMakeLists.txt",
+      "line": 403,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL libcrypto",
+      "claimedBy": [],
+      "note": "Bundles libcrypto*.dll into the Windows install"
+    },
+    {
+      "file": "lmc/CMakeLists.txt",
+      "line": 404,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL libssl",
+      "claimedBy": [],
+      "note": "Bundles libssl*.dll into the Windows install"
+    },
+    {
+      "file": "lmc/setup/win32/zip.ps1",
+      "line": 20,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL libcrypto",
+      "claimedBy": [],
+      "note": "Packages libcrypto*.dll into the Windows zip"
+    },
+    {
+      "file": "lmc/setup/win32/zip.ps1",
+      "line": 21,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL libssl",
+      "claimedBy": [],
+      "note": "Packages libssl*.dll into the Windows zip"
+    },
+    {
+      "file": "lmc/setup/x11/package/DEBIAN/control",
+      "line": 15,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "Debian package Depends on libssl3t64 | libssl3"
+    },
+    {
+      "file": "lmc/src/app/main.cpp",
+      "line": 115,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL (Qt TLS backend)",
+      "claimedBy": [],
+      "note": "QSslSocket::supportsSsl() runtime check that the OpenSSL/TLS backend is available"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 32,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-1024",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "bits = 1024 sets the RSA modulus size used by RSA_generate_key_ex (weak key size choice)"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 33,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-1024 (e=65537)",
+      "claimedBy": [],
+      "note": "exponent = 65537 chooses the RSA public exponent passed to RSA_generate_key_ex"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 43,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "drbg",
+      "algorithm": "OpenSSL RAND_seed",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "RAND_seed adds a (uninitialized malloc) buffer as entropy to the OpenSSL PRNG before RSA key generation"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 44,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RSA_new allocates the RSA key structure for the generated key pair"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 46,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "BN_set_word sets the RSA public exponent (65537) BIGNUM used for key generation"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 47,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-1024",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "RSA_generate_key_ex generates the 1024-bit RSA key pair (e=65537); used for OAEP encryption of session keys, not signatures"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 51,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "PEM_write_bio_RSAPublicKey serializes the RSA public key (PKCS#1 PEM) for transmission to peers"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 66,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "RSA_new allocates RSA structure for the peer's public key"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 68,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "related-crypto-material",
+      "algorithm": "RSA",
+      "claimedBy": [],
+      "note": "PEM_read_bio_RSAPublicKey parses the peer's received PKCS#1 PEM RSA public key"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 72,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "drbg",
+      "algorithm": "OpenSSL RAND_bytes",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "RAND_bytes produces 32 bytes of secret key material for the AES session key"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 74,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_CIPHER_iv_length(EVP_aes_256_cbc()) selects AES-256-CBC to size the IV"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 77,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "kdf",
+      "algorithm": "EVP_BytesToKey (SHA-1)",
+      "claimedBy": [],
+      "note": "rounds = 5 sets the iteration count for EVP_BytesToKey key derivation"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 78,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "kdf",
+      "algorithm": "EVP_BytesToKey (SHA-1, 5 rounds) for AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_BytesToKey with EVP_sha1, no salt, 5 iterations derives AES-256-CBC key and IV; SHA-1 used as the KDF hash"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 81,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_EncryptInit_ex initializes AES-256-CBC encryption context with derived key/IV"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 83,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_init initializes the decryption cipher context"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 84,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_DecryptInit_ex initializes AES-256-CBC decryption context with derived key/IV"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 88,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "RSA_public_encrypt with RSA_PKCS1_OAEP_PADDING wraps the AES key+IV under peer's public key"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 103,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "quantumVulnerable": true,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "RSA_private_decrypt with RSA_PKCS1_OAEP_PADDING unwraps the received AES key+IV"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 107,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_EncryptInit_ex AES-256-CBC with key/IV recovered via RSA"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 109,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-2uw3d247h",
+        "scan-gpt-oss-120b-yv5ig5pwi",
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-2uw3d247h",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_DecryptInit_ex AES-256-CBC with key/IV recovered via RSA"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 124,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "Copy-constructs an EVP_CIPHER_CTX (wrapper calls EVP_CIPHER_CTX_new + EVP_CIPHER_CTX_copy on OpenSSL>=1.1) holding the peer's AES-256-CBC encrypt state"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 125,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-a1mo5qvhw",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_EncryptInit_ex re-initializes the per-peer AES-256-CBC encryption context for a message"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 126,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_EncryptUpdate encrypts message plaintext with AES-256-CBC"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 127,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_EncryptFinal_ex finalizes AES-256-CBC encryption (PKCS#7 padding)"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 144,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "Line is 'return QByteArray();' error-path return in decrypt(); no crypto"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 146,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "Line is 'int foutLen = 0;' plain integer initialization; no crypto"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 147,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-yv5ig5pwi"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-yv5ig5pwi",
+      "foundBy": "weakcrypto-bot",
+      "note": "Blank line in decrypt(); no crypto"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 148,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "Copy-constructs EVP_CIPHER_CTX (EVP_CIPHER_CTX_new + copy) holding the peer's AES-256-CBC decrypt state; mirrors claimed line 124"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 149,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-a1mo5qvhw",
+      "foundBy": "weakcrypto-bot",
+      "note": "EVP_DecryptInit_ex re-initializes the per-peer AES-256-CBC decryption context for a message"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 150,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_DecryptUpdate decrypts received ciphertext with AES-256-CBC"
+    },
+    {
+      "file": "lmc/src/core/crypto.cpp",
+      "line": 151,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_DecryptFinal_ex finalizes AES-256-CBC decryption and checks padding"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 27,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "#include <openssl/rand.h>"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 28,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "#include <openssl/rsa.h>"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 29,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "#include <openssl/pem.h>"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 30,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "library",
+      "algorithm": "OpenSSL",
+      "claimedBy": [],
+      "note": "#include <openssl/aes.h>"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 40,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_init in wrapper constructor (OpenSSL < 1.1 branch)"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 51,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_new allocates cipher context in wrapper constructor (OpenSSL >= 1.1)"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 52,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_init initializes cipher context in wrapper constructor"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 57,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_copy duplicates cipher context (copy constructor)"
+    },
+    {
+      "file": "lmc/src/core/crypto.h",
+      "line": 62,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "EVP_CIPHER_CTX_copy duplicates cipher context (assignment operator)"
+    },
+    {
+      "file": "lmc/src/network/network.cpp",
+      "line": 71,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-1024",
+      "claimedBy": [],
+      "note": "Calls lmcCrypto::generateRSA at network start to create the node's RSA key pair"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 120,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "Calls lmcCrypto::encrypt to AES-256-CBC encrypt outgoing chat message"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 281,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-a1mo5qvhw",
+      "foundBy": "weakcrypto-bot",
+      "note": "Protocol dispatch calling sendSessionKey(); no cryptographic operation on this line (the crypto happens in lmcCrypto::generateAES, reached via line 345)"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 285,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "claimedBy": [],
+      "note": "Calls lmcCrypto::retreiveAES to RSA-OAEP-decrypt the received session key and set up AES contexts"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 290,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "block-cipher",
+      "algorithm": "AES-256-CBC",
+      "claimedBy": [],
+      "note": "Calls lmcCrypto::decrypt to AES-256-CBC decrypt incoming chat message"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 326,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-a1mo5qvhw",
+      "foundBy": "weakcrypto-bot",
+      "note": "Copies the already-serialized PEM public key into a byte array for sending; no crypto API call, key construction or parsing on this line"
+    },
+    {
+      "file": "lmc/src/network/tcpnetwork.cpp",
+      "line": 345,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-glm-5.3-a1mo5qvhw"
+      ],
+      "primitive": "pke",
+      "algorithm": "RSA-OAEP",
+      "quantumVulnerable": null,
+      "firstClaim": "scan-glm-5.3-a1mo5qvhw",
+      "foundBy": "weakcrypto-bot",
+      "note": "Calls lmcCrypto::generateAES, which creates the AES-256-CBC session key and wraps it with the peer's RSA public key (OAEP) for key transport"
+    }
+  ]
+}

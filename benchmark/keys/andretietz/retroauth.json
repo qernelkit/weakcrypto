@@ -1,0 +1,104 @@
+{
+  "schema": "weakcrypto.labels/v1",
+  "repo": "andretietz/retroauth",
+  "commit": "43a88b18e65f56fefa015613d75a50e704804924",
+  "updatedAt": "2026-10-10T19:31:42.897Z",
+  "sites": [
+    {
+      "file": ".github/workflows/release.yml",
+      "line": 43,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "OpenPGP",
+      "claimedBy": [],
+      "note": "Configures GPG/PGP signing key (ORG_GRADLE_PROJECT_signingKey from secret) for signing published retroauth Maven artifacts via the maven-publish/signing plugin."
+    },
+    {
+      "file": ".github/workflows/release.yml",
+      "line": 54,
+      "verdict": "confirmed",
+      "by": "judge:claude-opus-5-5",
+      "primitive": "signature",
+      "algorithm": "OpenPGP",
+      "claimedBy": [],
+      "note": "Same GPG artifact-signing key configuration for the android-accountmanager release step."
+    },
+    {
+      "file": "android-accountmanager/src/main/java/com/andretietz/retroauth/AndroidAccountManagerCredentialStorage.kt",
+      "line": 61,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-zmyenx7u0"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-zmyenx7u0",
+      "foundBy": "weakcrypto-bot",
+      "note": "Null check after AccountManager.peekAuthToken; just reads a stored bearer token, no MAC or comparison of secrets."
+    },
+    {
+      "file": "android-accountmanager/src/main/java/com/andretietz/retroauth/AndroidAccountManagerCredentialStorage.kt",
+      "line": 62,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-zmyenx7u0"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-zmyenx7u0",
+      "foundBy": "weakcrypto-bot",
+      "note": "`if (token == null)` null check; no cryptography or secret comparison."
+    },
+    {
+      "file": "demo-android/src/main/java/com/andretietz/retroauth/demo/auth/GithubAuthenticator.kt",
+      "line": 21,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gemma4-31b-8z6rif9oi",
+        "scan-gpt-oss-120b-zmyenx7u0"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gemma4-31b-8z6rif9oi",
+      "foundBy": "weakcrypto-bot",
+      "note": "Hardcoded GitHub OAuth client_secret constant passed to scribejava apiSecret; a credential, not a MAC key or any crypto operation (secret-hygiene issue, not a crypto site)."
+    },
+    {
+      "file": "retroauth/src/main/java/com/andretietz/retroauth/CredentialInterceptor.kt",
+      "line": 79,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-zmyenx7u0"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-zmyenx7u0",
+      "foundBy": "weakcrypto-bot",
+      "note": "Calls authenticator.refreshCredentials for an expired token; OAuth token refresh flow, no MAC or comparison."
+    },
+    {
+      "file": "retroauth/src/test/java/com/andretietz/retroauth/CredentialInterceptorTest.kt",
+      "line": 294,
+      "verdict": "rejected",
+      "by": "judge:claude-opus-5-5",
+      "claimedBy": [
+        "scan-gpt-oss-120b-zmyenx7u0"
+      ],
+      "primitive": "other",
+      "algorithm": null,
+      "quantumVulnerable": null,
+      "firstClaim": "scan-gpt-oss-120b-zmyenx7u0",
+      "foundBy": "weakcrypto-bot",
+      "note": "Mockito stub comparing a test token string to \"credential\"; test logic, no cryptography."
+    }
+  ]
+}
