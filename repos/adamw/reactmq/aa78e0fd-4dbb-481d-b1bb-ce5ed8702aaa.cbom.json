@@ -1,0 +1,188 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:50f2042e-3845-4f6f-bd86-17a38377d455",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-13T06:57:32.519Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "adamw/reactmq",
+      "version": "1843f188b69e568dc9d6d3222350ebb56685f0f5",
+      "bom-ref": "repo:adamw/reactmq@1843f188b69e568dc9d6d3222350ebb56685f0f5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/adamw/reactmq"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "aa78e0fd-4dbb-481d-b1bb-ce5ed8702aaa"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 1 worker, max iterations 400"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "190201"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "plaintext TCP (no TLS) — akka-stream StreamTcp transport",
+      "bom-ref": "pqs:finding:src/main/scala/com/reactmq/Broker.scala:20:plaintext TCP (no TLS) — akka-stream StreamTcp transport",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/scala/com/reactmq/Broker.scala",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/scala/com/reactmq/Broker.scala:20=073344eaa2755319"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "plaintext akka.tcp (no akka.ssl.tcp) — Akka remote/cluster Netty transport",
+      "bom-ref": "pqs:finding:src/main/resources/cluster-broker-template.conf:9,10,11:plaintext akka.tcp (no akka.ssl.tcp) — Akka remote/cluster Netty transport",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/cluster-broker-template.conf",
+            "line": 9
+          },
+          {
+            "location": "src/main/resources/cluster-broker-template.conf",
+            "line": 10
+          },
+          {
+            "location": "src/main/resources/cluster-broker-template.conf",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/cluster-broker-template.conf:9=06782a02af168654"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/cluster-broker-template.conf:10=ad96cc181798ac8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/cluster-broker-template.conf:11=ce03ff1ef52ca349"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ThreadLocalRandom (non-cryptographic PRNG)",
+      "bom-ref": "pqs:finding:src/main/scala/com/reactmq/Sender.scala:20:ThreadLocalRandom (non-cryptographic PRNG)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/scala/com/reactmq/Sender.scala",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/scala/com/reactmq/Sender.scala:20=38655ab0b54ed1cf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "UUID.randomUUID (SecureRandom-backed CSPRNG)",
+      "bom-ref": "pqs:finding:src/main/scala/com/reactmq/queue/QueueActorStorage.scala:32:UUID.randomUUID (SecureRandom-backed CSPRNG)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/scala/com/reactmq/queue/QueueActorStorage.scala",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/scala/com/reactmq/queue/QueueActorStorage.scala:32=d89ee40920a0ac62"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/main/scala/com/reactmq/Broker.scala:20:plaintext TCP (no TLS) — akka-stream StreamTcp transport"
+    },
+    {
+      "ref": "pqs:finding:src/main/resources/cluster-broker-template.conf:9,10,11:plaintext akka.tcp (no akka.ssl.tcp) — Akka remote/cluster Netty transport"
+    },
+    {
+      "ref": "pqs:finding:src/main/scala/com/reactmq/Sender.scala:20:ThreadLocalRandom (non-cryptographic PRNG)"
+    },
+    {
+      "ref": "pqs:finding:src/main/scala/com/reactmq/queue/QueueActorStorage.scala:32:UUID.randomUUID (SecureRandom-backed CSPRNG)"
+    }
+  ]
+}
