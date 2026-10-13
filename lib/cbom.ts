@@ -47,7 +47,7 @@ export const assets = (b: Cbom) => (b.components ?? []).filter((c) => c.type ===
 
 const SHA = /^[0-9a-f]{40}$/;
 const REPO = /^[a-z0-9-]+\/[a-z0-9._-]+$/;
-const LOGIN = /^[A-Za-z0-9-]{1,39}$/;
+const LOGIN = /^[A-Za-z0-9-]{1,39}(?:\[bot\])?$/;
 // Public-key schemes Shor's algorithm breaks; a hash or cipher is not among them.
 const SHOR = new Set(["signature", "key-agree", "pke", "kem"]);
 

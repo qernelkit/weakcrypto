@@ -51,7 +51,7 @@ export interface Labels {
 
 const REPO = /^[a-z0-9-]+\/[a-z0-9._-]+$/;
 const SHA = /^[0-9a-f]{40}$/;
-const LOGIN = /^[A-Za-z0-9-]{1,39}$/;
+const LOGIN = /^[A-Za-z0-9-]{1,39}(?:\[bot\])?$/;
 const isIso = (s: unknown) => typeof s === "string" && !Number.isNaN(Date.parse(s));
 
 const KEYS_OF_ENTRY = new Set(["repo", "url", "stars", "addedBy", "addedAt", "via", "commit", "justification", "schema"]);
@@ -65,7 +65,7 @@ export function checkEntry(x: unknown): string[] {
   if (typeof t.url !== "string" || !/^https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9._-]+$/.test(t.url)) e.push("url must be https://github.com/owner/name");
   else if (t.repo && t.url.slice("https://github.com/".length).toLowerCase() !== t.repo) e.push("url and repo name different repositories");
   if (!("stars" in t) || !(t.stars === null || (Number.isInteger(t.stars) && t.stars! >= 0))) e.push("stars must be a whole number, or null if not looked up");
-  if (typeof t.addedBy !== "string" || !LOGIN.test(t.addedBy)) e.push("addedBy must be a GitHub login");
+  if (typeof t.addedBy !== "string" || !LOGIN.test(t.addedBy)) e.push("addedBy must be a GitHub login (an app's ends in [bot])");
   if (!isIso(t.addedAt)) e.push("addedAt must be an ISO date");
   if (!["site", "pull-request", "corpus"].includes(t.via as string)) e.push("via must be site, pull-request or corpus");
   if (t.commit != null && !SHA.test(t.commit)) e.push("commit must be a full 40-character SHA");

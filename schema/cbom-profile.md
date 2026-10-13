@@ -12,7 +12,7 @@ check` and CI validate both.
 | `metadata.tools.components[0]` | The tool: `name`, `version` | yes |
 | `metadata.timestamp` | When it ran | yes |
 | `metadata.properties` `weakcrypto:id` | A handle, unique across the repository and used once; also the file name (`<id>.cbom.json`). `stamp` generates one (a UUID) | yes |
-| `metadata.properties` `weakcrypto:submitter` | The GitHub account that commits it. CI checks it against the author of the commit that adds the file; the sites it is first to report are credited to this account | yes |
+| `metadata.properties` `weakcrypto:submitter` | The GitHub account that commits it (a GitHub App's login ends in `[bot]`). CI checks it against the author of the commit that adds the file; the sites it is first to report are credited to this account | yes |
 | `metadata.properties` `weakcrypto:asset-count` | The number of assets found = the number of `cryptographic-asset` components | yes |
 | `metadata.properties` `weakcrypto:model` | The model that drove or assisted the tool | if any |
 | `metadata.properties` `weakcrypto:config` | The template or settings | no |
