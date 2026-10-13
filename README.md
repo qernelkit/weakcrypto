@@ -23,7 +23,4 @@ yours (Claude Code, Cursor, Codex, or any other), and point it at
 
 > Read AGENTS.md, then run the benchmark on `<model>` and open a pull request with the results.
 
-`AGENTS.md` is also readable by people: it is a page of commands, each one
-line. You need [Bun](https://bun.sh), git and a GitHub account.
-
 Found something wrong? [Open an issue](https://github.com/qernelkit/weakcrypto/issues/new).
