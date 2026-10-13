@@ -1,0 +1,169 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:557c73a5-7843-405c-a3e6-752950b11584",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-13T04:08:00.501Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "alpinelinux/docker-alpine",
+      "version": "2c36a79aaaec3582d3b1961c9245b1a8a5a144dc",
+      "bom-ref": "repo:alpinelinux/docker-alpine@2c36a79aaaec3582d3b1961c9245b1a8a5a144dc",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/alpinelinux/docker-alpine"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "eafff803-15a1-4052-b62d-01e050ff5673"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 1 worker, max iterations 400"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "160000"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS via lua-http (OpenSSL backend, library defaults — ECDHE key exchange)",
+      "bom-ref": "pqs:finding:fetch-latest-releases.lua:20,35:TLS via lua-http (OpenSSL backend, library defaults — ECDHE key exchange)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "fetch-latest-releases.lua",
+            "line": 20
+          },
+          {
+            "location": "fetch-latest-releases.lua",
+            "line": 35
+          },
+          {
+            "location": "fetch-latest-releases.lua",
+            "line": 12
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fetch-latest-releases.lua:20=443a411cf3afe1e9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fetch-latest-releases.lua:35=443a411cf3afe1e9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fetch-latest-releases.lua:12=adb008e690e2f302"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-512",
+      "bom-ref": "pqs:finding:prepare-branch.sh:25:SHA-512",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "512"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "prepare-branch.sh",
+            "line": 25
+          },
+          {
+            "location": "fetch-latest-releases.lua",
+            "line": 143
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "prepare-branch.sh:25=5f70077d93228946"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fetch-latest-releases.lua:143=4401177ddff6102b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTP (no TLS) — plaintext apk repository access in the produced image",
+      "bom-ref": "pqs:finding:tests/common.bats:34:HTTP (no TLS) — plaintext apk repository access in the produced image",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/common.bats",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/common.bats:34=b955753b011e8fad"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:fetch-latest-releases.lua:20,35:TLS via lua-http (OpenSSL backend, library defaults — ECDHE key exchange)"
+    },
+    {
+      "ref": "pqs:finding:prepare-branch.sh:25:SHA-512"
+    },
+    {
+      "ref": "pqs:finding:tests/common.bats:34:HTTP (no TLS) — plaintext apk repository access in the produced image"
+    }
+  ]
+}
