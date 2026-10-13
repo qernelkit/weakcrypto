@@ -2,8 +2,8 @@
 
 weakcrypto is an open initiative managed by
 [Qernel Technologies, Inc.](https://qernelzoo.com), using AI to build a global
-[CBOM](https://cyclonedx.org/capabilities/cbom/) of all meaningful public code
-repositories. The website can be found at [weakcrypto.com](https://weakcrypto.com).
+[CBOM](https://cyclonedx.org/capabilities/cbom/) of as much public code as
+possible. The website can be found at [weakcrypto.com](https://weakcrypto.com).
 
 This challenge is intended to be an open record. You can:
 
