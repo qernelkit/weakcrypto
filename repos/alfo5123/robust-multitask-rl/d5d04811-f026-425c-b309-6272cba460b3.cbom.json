@@ -1,0 +1,160 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:488ca1e0-c7a6-42a3-ac0e-8d8584243c29",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-13T08:33:06.251Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "alfo5123/robust-multitask-rl",
+      "version": "7970e20cbdf91703c88edcb84568d7354e2525bc",
+      "bom-ref": "repo:alfo5123/robust-multitask-rl@7970e20cbdf91703c88edcb84568d7354e2525bc",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Alfo5123/Robust-Multitask-RL"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d5d04811-f026-425c-b309-6272cba460b3"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 1 worker, max iterations 400"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "155627"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/dqn/network.py",
+            "line": 63
+          },
+          {
+            "location": "code/dqn0/network.py",
+            "line": 38
+          },
+          {
+            "location": "code/sql/network.py",
+            "line": 64
+          },
+          {
+            "location": "code/sql0/network.py",
+            "line": 38
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic PRNG (Python random module / Mersenne Twister, plus np.random and torch.manual_seed) used exclusively as RL training mechanics in this offline PyTorch research codebase (DQN, SQL-state DQN, Distral, A3C experiments): epsilon-greedy exploration coin-flips (the 4 inventoried random.random() sites), random-action fallbacks (random.randrange), replay-memory minibatch sampling (random.sample in memory_replay.py), environment observation noise (np.random.randn in envs/gridworld_env.p"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/dqn/network.py:63=60be049b8e882b59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/dqn0/network.py:38=60be049b8e882b59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/sql/network.py:64=60be049b8e882b59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/sql0/network.py:38=60be049b8e882b59"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
