@@ -1,0 +1,368 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:392d8c4d-c8e4-42e0-a5f5-9e390f5bbe75",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-13T08:26:26.512Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "alexreardon/raf-stub",
+      "version": "76db03ef0f93ab03c17b5f80088fa33bc21c4c19",
+      "bom-ref": "repo:alexreardon/raf-stub@76db03ef0f93ab03c17b5f80088fa33bc21c4c19",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/alexreardon/raf-stub"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4db9ba75-4da7-410c-ae58-7a29ea07dbba"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 1 worker, max iterations 400"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "250586"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-683d5cd2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-683d5cd2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 here is one algorithm inside the toolchain signing stack pinned in yarn.lock: sshpk@1.16.1 (yarn.lock:4235) parses and signs/verifies SSH keys using RSA, DSA, ECDSA (NIST P-256/384/521 via ecc-jsbn 0.1.2 on jsbn 0.1.1) plus Ed25519/Curve25519 via this tweetnacl; http-signature@1.2.0 (yarn.lock:2163) wraps sshpk to produce rsa-sha256/rsa-sha1 signed HTTP requests. Whole stack reachable only via jsdom@11.12.0 → request@2.88.0 in the jest dev toolchain; raf-stub's src/ and test/ contain no "
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-defedad1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-defedad1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Dependency-inventory entry, changeable here via the dev toolchain. Shor-vulnerable key agreement (harvest-now-decrypt-later risk if any toolchain traffic/key exchange ever used it), migration ML-KEM-768. Toolchain-only — raf-stub has no runtime dependencies and no crypto call sites in its source."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "XSalsa20-Poly1305",
+      "bom-ref": "pqs:collected:ALG-f58a8f00",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f58a8f00"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Dependency-inventory entry for the toolchain's symmetric AEAD. Not urgent: 256-bit keys leave ~128-bit security even under Grover. Toolchain-only; no call site in raf-stub's own source."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "tweetnacl",
+      "bom-ref": "pqs:collected:LIB-0469707e",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-0469707e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Provider at the base of the jest toolchain's crypto: pulled by sshpk@1.16.1 (yarn.lock:4248) and bcrypt-pbkdf@1.0.2 (OpenBSD bcrypt_pbkdf passphrase KDF for encrypted SSH keys, declaring tweetnacl at yarn.lock:1150). The same jsdom@11.12.0 → request@2.88.0 chain also carries request's TLS (Node-default ECDHE key exchange, quantum-vulnerable; package.json has no engines pin and the tree has no TLS config, so no PQ/hybrid groups anywhere) and request's HMAC auth signers: aws-sign2@0.7.0 (HMAC-SHA1"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-683d5cd2"
+    },
+    {
+      "ref": "pqs:collected:ALG-defedad1"
+    },
+    {
+      "ref": "pqs:collected:ALG-f58a8f00"
+    },
+    {
+      "ref": "pqs:collected:LIB-0469707e"
+    }
+  ]
+}
