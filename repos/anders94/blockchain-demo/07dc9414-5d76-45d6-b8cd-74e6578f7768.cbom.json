@@ -1,0 +1,197 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:02502840-a6f6-422c-aa22-ef8f260fc14a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-13T19:31:52.721Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "anders94/blockchain-demo",
+      "version": "5982d75a8d25a5d1ec2fa7a0b9013afd4dc8e192",
+      "bom-ref": "repo:anders94/blockchain-demo@5982d75a8d25a5d1ec2fa7a0b9013afd4dc8e192",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/anders94/blockchain-demo"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "07dc9414-5d76-45d6-b8cd-74e6578f7768"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 1 worker, max iterations 400"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "188777"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:finding:public/javascripts/blockchain.js:40,41,42,43:SHA-256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "public/javascripts/blockchain.js",
+            "line": 40
+          },
+          {
+            "location": "public/javascripts/blockchain.js",
+            "line": 41
+          },
+          {
+            "location": "public/javascripts/blockchain.js",
+            "line": 42
+          },
+          {
+            "location": "public/javascripts/blockchain.js",
+            "line": 43
+          },
+          {
+            "location": "public/javascripts/lib/sha256.js",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/blockchain.js:40=073b041ac63b9e63"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/blockchain.js:41=65c6e0bf671aa271"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/blockchain.js:42=02003bf797fef126"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/blockchain.js:43=d10b36aa74a59bcf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/lib/sha256.js:7=ac93867e608da373"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "public/javascripts/lib/sha256.js",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Algorithm implementation inside the vendored CryptoJS v3.1.2 bundle (public/javascripts/lib/sha256.js), which is the app's only crypto provider — loaded to every browser via layout.pug:25 and reachable from blockchain.js:42. HMAC-SHA-256 is available-but-unused: the application only calls the plain SHA-256 hasher. Changeable here by replacing the vendored bundle; observable as a capability of the shipped library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "public/javascripts/lib/sha256.js:16=e77b185436f428ef"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:public/javascripts/blockchain.js:40,41,42,43:SHA-256"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    }
+  ]
+}
