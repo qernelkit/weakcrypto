@@ -1,0 +1,1175 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1b168e5f-b73d-4211-9c98-89225f7ce782",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T04:10:19.512Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "aboria/aboria",
+      "version": "4ffdeb114b801b5e420595baeba5701625981fb5",
+      "bom-ref": "repo:aboria/aboria@4ffdeb114b801b5e420595baeba5701625981fb5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/aboria/Aboria"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "edd52b60-aed0-44cd-8d9a-e28cc59b1105"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "25"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "830986"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Coveralls repo_token — hardcoded API bearer token committed in CI config (a dotfile skipped by directory-wide scans)",
+      "bom-ref": "pqs:finding:.travis.yml:102:Coveralls repo_token — hardcoded API bearer token committed in CI config (a dotfile skipped by directory-wide scans)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": ".travis.yml",
+            "line": 102
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".travis.yml:102=ade42d73a8c75e72"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "none — plaintext HTTP fetch of a build-time dependency (no transport security; absence-of-crypto posture gap)",
+      "bom-ref": "pqs:finding:.travis.yml:62:none — plaintext HTTP fetch of a build-time dependency (no transport security; absence-of-crypto posture gap)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": ".travis.yml",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".travis.yml:62=89148d2d0aba9f9f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS via git clone over https — client-default key exchange (non-PQ; no group configured in CI)",
+      "bom-ref": "pqs:finding:.travis.yml:68:TLS via git clone over https — client-default key exchange (non-PQ; no group configured in CI)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": ".travis.yml",
+            "line": 68
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".travis.yml:68=249860e44a994cc8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sitmo::prng_engine — Threefry-4x64-20-derived counter-based PRNG (vendored into src/), aliased as Aboria::generator_type; 256-bit key schedule, default seed() zeroes the entire key, uint32 seed lands only in _k[0]; the library-wide randomness source hidden behind the generic generator_type name",
+      "bom-ref": "pqs:finding:src/Random.h:8:sitmo::prng_engine — Threefry-4x64-20-derived counter-based PRNG (vendored into src/), aliased as Aboria::generator_type; 256-bit key schedule, default seed() zeroes the entire key, uint32 seed lands only in _k[0]; the library-wide randomness source hidden behind the generic generator_type name",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Random.h",
+            "line": 8
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 92
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:92=81f27a7d15d0f906"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sitmo::prng_engine per-particle stream via the Aboria::generator_type wrapper — 32-bit seed (seed + particle id) populates only _k[0] of the 256-bit Threefry-style key",
+      "bom-ref": "pqs:finding:src/Particles.h:272:sitmo::prng_engine per-particle stream via the Aboria::generator_type wrapper — 32-bit seed (seed + particle id) populates only _k[0] of the 256-bit Threefry-style key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Particles.h",
+            "line": 272
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Particles.h:272=1e64a0481a3b407f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sitmo::prng_engine per-element stream via the Aboria::generator_type wrapper — 32-bit seed (m_seed + element id) populates only _k[0] of the 256-bit Threefry-style key",
+      "bom-ref": "pqs:finding:src/Elements.h:185:sitmo::prng_engine per-element stream via the Aboria::generator_type wrapper — 32-bit seed (m_seed + element id) populates only _k[0] of the 256-bit Threefry-style key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Elements.h",
+            "line": 185
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Elements.h:185=83cf286d6186dfe7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::rand (libc non-cryptographic PRNG) — Box-Muller Gaussian sampling in vendored RedSVD (randomized SVD); library code shipped in the image",
+      "bom-ref": "pqs:finding:third-party/RedSVD/RedSVD.h:48,49:std::rand (libc non-cryptographic PRNG) — Box-Muller Gaussian sampling in vendored RedSVD (randomized SVD); library code shipped in the image",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "third-party/RedSVD/RedSVD.h",
+            "line": 48
+          },
+          {
+            "location": "third-party/RedSVD/RedSVD.h",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/RedSVD/RedSVD.h:48=d829e3287cc18fc6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/RedSVD/RedSVD.h:49=d3574c12e1386339"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "drand48 (libc non-cryptographic PRNG) — random point generation in vendored Hilbert-curve code; library code shipped in the image",
+      "bom-ref": "pqs:finding:third-party/hilbert/hilbert.c:1257,1433,1434,1677,1684:drand48 (libc non-cryptographic PRNG) — random point generation in vendored Hilbert-curve code; library code shipped in the image",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "third-party/hilbert/hilbert.c",
+            "line": 1257
+          },
+          {
+            "location": "third-party/hilbert/hilbert.c",
+            "line": 1433
+          },
+          {
+            "location": "third-party/hilbert/hilbert.c",
+            "line": 1434
+          },
+          {
+            "location": "third-party/hilbert/hilbert.c",
+            "line": 1677
+          },
+          {
+            "location": "third-party/hilbert/hilbert.c",
+            "line": 1684
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/hilbert/hilbert.c:1257=75d151f798fd712d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/hilbert/hilbert.c:1433=1c7e46293a72d1fb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/hilbert/hilbert.c:1434=d6ffe01afa746ec5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/hilbert/hilbert.c:1677=fcdc5414b3e6b3ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "third-party/hilbert/hilbert.c:1684=73a319f56f8e8d09"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution in the test bodies",
+      "bom-ref": "pqs:finding:tests/md.h:21,22:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution in the test bodies",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/md.h",
+            "line": 21
+          },
+          {
+            "location": "tests/md.h",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/md.h:21=28835575062ec685"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/md.h:22=71209f6808c0df85"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution",
+      "bom-ref": "pqs:finding:tests/geometry.h:52,53:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/geometry.h",
+            "line": 52
+          },
+          {
+            "location": "tests/geometry.h",
+            "line": 53
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/geometry.h:52=28835575062ec685"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/geometry.h:53=71209f6808c0df85"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)",
+      "bom-ref": "pqs:finding:tests/example_container.h:48,49:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/example_container.h",
+            "line": 48
+          },
+          {
+            "location": "tests/example_container.h",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/example_container.h:48=28835575062ec685"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/example_container.h:49=71209f6808c0df85"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uni(generator) draws",
+      "bom-ref": "pqs:finding:tests/iterators.h:47,48:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uni(generator) draws",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/iterators.h",
+            "line": 47
+          },
+          {
+            "location": "tests/iterators.h",
+            "line": 48
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/iterators.h:47=28835575062ec685"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/iterators.h:48=71209f6808c0df85"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)",
+      "bom-ref": "pqs:finding:tests/diffusion_around_spheres.h:48,49:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/diffusion_around_spheres.h",
+            "line": 48
+          },
+          {
+            "location": "tests/diffusion_around_spheres.h",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/diffusion_around_spheres.h:48=28835575062ec685"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/diffusion_around_spheres.h:49=71209f6808c0df85"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "bom-ref": "pqs:finding:tests/chebyshev.h:115,194:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/chebyshev.h",
+            "line": 115
+          },
+          {
+            "location": "tests/chebyshev.h",
+            "line": 194
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/chebyshev.h:115=d8f59016d90e553d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/chebyshev.h:194=d8f59016d90e553d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test helper generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "bom-ref": "pqs:finding:tests/utils.h:188:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test helper generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/utils.h",
+            "line": 188
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/utils.h:188=d8f59016d90e553d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generators seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "bom-ref": "pqs:finding:tests/h2.h:372,654:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generators seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/h2.h",
+            "line": 372
+          },
+          {
+            "location": "tests/h2.h",
+            "line": 654
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/h2.h:372=d8f59016d90e553d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/h2.h:654=d8f59016d90e553d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — benchmark generator seeded from a runtime `seed` variable (32-bit seed landing only in _k[0])",
+      "bom-ref": "pqs:finding:tests/benchmark_hpc.h:182:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — benchmark generator seeded from a runtime `seed` variable (32-bit seed landing only in _k[0])",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/benchmark_hpc.h",
+            "line": 182
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/benchmark_hpc.h:182=305e8d3c27517113"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seed 123 and default seed",
+      "bom-ref": "pqs:finding:tests/bem.h:310,514:std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seed 123 and default seed",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/bem.h",
+            "line": 310
+          },
+          {
+            "location": "tests/bem.h",
+            "line": 514
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/bem.h:310=6b9aa698e9c07e25"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/bem.h:514=f56e2dc5e7d4cf8e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seeds 123 and 0 plus default seed",
+      "bom-ref": "pqs:finding:tests/rbf_interpolation.h:149,295,466,635:std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seeds 123 and 0 plus default seed",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/rbf_interpolation.h",
+            "line": 149
+          },
+          {
+            "location": "tests/rbf_interpolation.h",
+            "line": 295
+          },
+          {
+            "location": "tests/rbf_interpolation.h",
+            "line": 466
+          },
+          {
+            "location": "tests/rbf_interpolation.h",
+            "line": 635
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/rbf_interpolation.h:149=f56e2dc5e7d4cf8e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/rbf_interpolation.h:295=6b9aa698e9c07e25"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/rbf_interpolation.h:466=f56e2dc5e7d4cf8e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/rbf_interpolation.h:635=43d376a90b23a84e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Threefish-256 reduced to 20 rounds, counter mode (sitmo::prng_engine)",
+      "bom-ref": "pqs:finding:src/PrngEngine.h:212,213,324,333,118,160,174,177:Threefish-256 reduced to 20 rounds, counter mode (sitmo::prng_engine)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/PrngEngine.h",
+            "line": 212
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 213
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 324
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 333
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 118
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 160
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 174
+          },
+          {
+            "location": "src/PrngEngine.h",
+            "line": 177
+          },
+          {
+            "location": "src/Random.h",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:212=2f2cb39299ddc8c5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:213=286ce742740286df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:324=e7ac1feef555ee1f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:333=7114154a8e100310"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:118=6c19598bdb5463bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:160=e81ac171e918a0c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:174=37d2cd721ea4d681"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/PrngEngine.h:177=286ce742740286df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Random.h:8=ee78be58b54eeb48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256-CBC (travis encrypt-file envelope) protecting an SSH GitHub deploy key at rest",
+      "bom-ref": "pqs:finding:travis.enc:1:AES-256-CBC (travis encrypt-file envelope) protecting an SSH GitHub deploy key at rest",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher",
+          "mode": "cbc",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "travis.enc",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "travis.enc:1=f4c60f0ad6841aec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS/TLS git clone (runner's TLS stack defaults, unpinned)",
+      "bom-ref": "pqs:finding:update_doc.sh:12,13,21:HTTPS/TLS git clone (runner's TLS stack defaults, unpinned)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "update_doc.sh",
+            "line": 12
+          },
+          {
+            "location": "update_doc.sh",
+            "line": 13
+          },
+          {
+            "location": "update_doc.sh",
+            "line": 21
+          },
+          {
+            "location": "update_doc.sh",
+            "line": 12
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:12=b043c7def15d5bb6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:13=046c544bfa72ec15"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:21=92cc3e4d07068cc2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:12=b043c7def15d5bb6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "update_doc.sh",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:54=2e2d5a65a875a59c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cxxtest/sample/mock/Dice.cpp",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cxxtest/sample/mock/Dice.cpp:11=9af9463b70ea7888"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "update_doc.sh",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "update_doc.sh:54=2e2d5a65a875a59c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:.travis.yml:102:Coveralls repo_token — hardcoded API bearer token committed in CI config (a dotfile skipped by directory-wide scans)"
+    },
+    {
+      "ref": "pqs:finding:.travis.yml:62:none — plaintext HTTP fetch of a build-time dependency (no transport security; absence-of-crypto posture gap)"
+    },
+    {
+      "ref": "pqs:finding:.travis.yml:68:TLS via git clone over https — client-default key exchange (non-PQ; no group configured in CI)"
+    },
+    {
+      "ref": "pqs:finding:src/Random.h:8:sitmo::prng_engine — Threefry-4x64-20-derived counter-based PRNG (vendored into src/), aliased as Aboria::generator_type; 256-bit key schedule, default seed() zeroes the entire key, uint32 seed lands only in _k[0]; the library-wide randomness source hidden behind the generic generator_type name"
+    },
+    {
+      "ref": "pqs:finding:src/Particles.h:272:sitmo::prng_engine per-particle stream via the Aboria::generator_type wrapper — 32-bit seed (seed + particle id) populates only _k[0] of the 256-bit Threefry-style key"
+    },
+    {
+      "ref": "pqs:finding:src/Elements.h:185:sitmo::prng_engine per-element stream via the Aboria::generator_type wrapper — 32-bit seed (m_seed + element id) populates only _k[0] of the 256-bit Threefry-style key"
+    },
+    {
+      "ref": "pqs:finding:third-party/RedSVD/RedSVD.h:48,49:std::rand (libc non-cryptographic PRNG) — Box-Muller Gaussian sampling in vendored RedSVD (randomized SVD); library code shipped in the image"
+    },
+    {
+      "ref": "pqs:finding:third-party/hilbert/hilbert.c:1257,1433,1434,1677,1684:drand48 (libc non-cryptographic PRNG) — random point generation in vendored Hilbert-curve code; library code shipped in the image"
+    },
+    {
+      "ref": "pqs:finding:tests/md.h:21,22:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution in the test bodies"
+    },
+    {
+      "ref": "pqs:finding:tests/geometry.h:52,53:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uniform_real_distribution"
+    },
+    {
+      "ref": "pqs:finding:tests/example_container.h:48,49:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)"
+    },
+    {
+      "ref": "pqs:finding:tests/iterators.h:47,48:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo); consumed via uni(generator) draws"
+    },
+    {
+      "ref": "pqs:finding:tests/diffusion_around_spheres.h:48,49:std::mt19937 Mersenne Twister (non-cryptographic PRNG) — test-suite generator, default fixed seed (5489); local typedef shadows Aboria::generator_type (sitmo)"
+    },
+    {
+      "ref": "pqs:finding:tests/chebyshev.h:115,194:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key"
+    },
+    {
+      "ref": "pqs:finding:tests/utils.h:188:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test helper generator seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key"
+    },
+    {
+      "ref": "pqs:finding:tests/h2.h:372,654:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — test generators seeded with time(NULL), a predictable 32-bit seed landing only in _k[0] of the 256-bit Threefry-style key"
+    },
+    {
+      "ref": "pqs:finding:tests/benchmark_hpc.h:182:Aboria::generator_type (= sitmo::prng_engine via the src/Random.h:8 wrapper) — benchmark generator seeded from a runtime `seed` variable (32-bit seed landing only in _k[0])"
+    },
+    {
+      "ref": "pqs:finding:tests/bem.h:310,514:std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seed 123 and default seed"
+    },
+    {
+      "ref": "pqs:finding:tests/rbf_interpolation.h:149,295,466,635:std::default_random_engine (implementation-defined, typically minstd_rand linear congruential — non-cryptographic PRNG) — test generators with fixed seeds 123 and 0 plus default seed"
+    },
+    {
+      "ref": "pqs:finding:src/PrngEngine.h:212,213,324,333,118,160,174,177:Threefish-256 reduced to 20 rounds, counter mode (sitmo::prng_engine)"
+    },
+    {
+      "ref": "pqs:finding:travis.enc:1:AES-256-CBC (travis encrypt-file envelope) protecting an SSH GitHub deploy key at rest"
+    },
+    {
+      "ref": "pqs:finding:update_doc.sh:12,13,21:HTTPS/TLS git clone (runner's TLS stack defaults, unpinned)"
+    },
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
