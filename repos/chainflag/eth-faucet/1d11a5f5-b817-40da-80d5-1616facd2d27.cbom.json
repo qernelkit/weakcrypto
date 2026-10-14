@@ -1,0 +1,647 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:82e11f25-8350-4ff6-b624-be5c525dac34",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T11:26:55.691Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "chainflag/eth-faucet",
+      "version": "e7572628addc86c634d8acc3a61d5899667f0e33",
+      "bom-ref": "repo:chainflag/eth-faucet@e7572628addc86c634d8acc3a61d5899667f0e33",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/chainflag/eth-faucet"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1d11a5f5-b817-40da-80d5-1616facd2d27"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "10"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "841952"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA-secp256k1",
+      "bom-ref": "pqs:finding:internal/chain/transaction.go:93:ECDSA-secp256k1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 93
+          },
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 55
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:93=b28c352d84b81c04"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:55=c641fdb5804339fa"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt + AES-128-CTR (Web3 Secret Storage v3 keystore decryption)",
+      "bom-ref": "pqs:finding:internal/chain/keystore.go:19:scrypt + AES-128-CTR (Web3 Secret Storage v3 keystore decryption)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "mode": "ctr",
+          "padding": "raw",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/chain/keystore.go",
+            "line": 19
+          },
+          {
+            "location": "internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/keystore.go:19=481a23dd783b6547"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8:1=4527472345fb9cbb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 private key (Web3 keystore v3)",
+      "bom-ref": "pqs:finding:internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8:1:secp256k1 private key (Web3 keystore v3)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8",
+            "line": 1
+          },
+          {
+            "location": "internal/chain/keystore_test.go",
+            "line": 15
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8:1=4527472345fb9cbb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/keystore_test.go:15=c01a6093b03d3d46"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256",
+      "bom-ref": "pqs:finding:internal/chain/transaction.go:56,106:Keccak-256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 56
+          },
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 106
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:56=cfd4620fd4e2c7dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:106=fc264617921f927a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "go-ethereum v1.10.26 crypto stack (secp256k1 ECDSA, keccak256, scrypt keystore)",
+      "bom-ref": "pqs:finding:cmd/server.go:16:go-ethereum v1.10.26 crypto stack (secp256k1 ECDSA, keccak256, scrypt keystore)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/server.go",
+            "line": 16
+          },
+          {
+            "location": "go.mod",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/server.go:16=37d8244dd24c9b23"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:7=42fa30a67da3aae6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/chain/transaction_test.go",
+            "line": 52
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction_test.go:52=3511f7ca4953ac30"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/server.go",
+            "line": 5
+          },
+          {
+            "location": "internal/chain/keystore.go",
+            "line": 4
+          },
+          {
+            "location": "internal/chain/keystore_test.go",
+            "line": 21
+          },
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 27
+          },
+          {
+            "location": "internal/chain/keystore_test.go",
+            "line": 4
+          },
+          {
+            "location": "internal/chain/transaction.go",
+            "line": 5
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/server.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/keystore.go:4=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/keystore_test.go:21=87776e30daaa2309"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:27=c747fbe9b413ba48"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/keystore_test.go:4=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/chain/transaction.go:5=6344890ebcdc4402"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=a04f354ab49e6d39"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/golang-jwt/jwt/v4",
+      "bom-ref": "pqs:collected:LIB-17b49471",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-17b49471"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=73798443370f6d8f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=a04f354ab49e6d39"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:internal/chain/transaction.go:93:ECDSA-secp256k1"
+    },
+    {
+      "ref": "pqs:finding:internal/chain/keystore.go:19:scrypt + AES-128-CTR (Web3 Secret Storage v3 keystore decryption)"
+    },
+    {
+      "ref": "pqs:finding:internal/chain/testdata/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8:1:secp256k1 private key (Web3 keystore v3)"
+    },
+    {
+      "ref": "pqs:finding:internal/chain/transaction.go:56,106:Keccak-256"
+    },
+    {
+      "ref": "pqs:finding:cmd/server.go:16:go-ethereum v1.10.26 crypto stack (secp256k1 ECDSA, keccak256, scrypt keystore)"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:LIB-17b49471"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    }
+  ]
+}
