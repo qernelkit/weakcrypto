@@ -1,0 +1,527 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b9f586ac-ea01-4163-8a92-ea3c69c318f9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T04:23:01.135Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sammy007/open-ethereum-pool",
+      "version": "bcfc0eb0e683993ad0c51bacad8d4b354e769393",
+      "bom-ref": "repo:sammy007/open-ethereum-pool@bcfc0eb0e683993ad0c51bacad8d4b354e769393",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/sammy007/open-ethereum-pool"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ab12a177-cb39-4316-a618-4c27d5000026"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "9"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "583792"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA secp256k1 (Ethereum transaction signing, delegated to node)",
+      "bom-ref": "pqs:finding:payouts/payer.go:175,231:ECDSA secp256k1 (Ethereum transaction signing, delegated to node)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "payouts/payer.go",
+            "line": 175
+          },
+          {
+            "location": "payouts/payer.go",
+            "line": 231
+          },
+          {
+            "location": "rpc/rpc.go",
+            "line": 218
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "payouts/payer.go:175=a7502dc7373bff9a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "payouts/payer.go:231=ff4e2907baa08bf2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "rpc/rpc.go:218=9ad1b9030563bb52"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS client — gorelic agent to New Relic collector (Go default TLS)",
+      "bom-ref": "pqs:finding:main.go:47,49,51:HTTPS client — gorelic agent to New Relic collector (Go default TLS)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 47
+          },
+          {
+            "location": "main.go",
+            "line": 49
+          },
+          {
+            "location": "main.go",
+            "line": 51
+          },
+          {
+            "location": "config.example.json",
+            "line": 113
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:47=37d32eafdc6e7aaa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:49=f4efa9172489e723"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:51=6f9b20a4b7aee0c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.example.json:113=5d3b2e86dea47c65"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "cleartext TCP — Redis backend, no TLS (AUTH password in plaintext)",
+      "bom-ref": "pqs:finding:storage/redis.go:82,84:cleartext TCP — Redis backend, no TLS (AUTH password in plaintext)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "storage/redis.go",
+            "line": 82
+          },
+          {
+            "location": "storage/redis.go",
+            "line": 84
+          },
+          {
+            "location": "config.example.json",
+            "line": 80
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "storage/redis.go:82=63c6bdc46f1fe43e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "storage/redis.go:84=8718a83f57a76375"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.example.json:80=5caf01e9c1828e28"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA secp256k1 (Ethereum transaction signing, delegated via eth_sendTransaction JSON-RPC)",
+      "bom-ref": "pqs:finding:rpc/rpc.go:218:ECDSA secp256k1 (Ethereum transaction signing, delegated via eth_sendTransaction JSON-RPC)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "rpc/rpc.go",
+            "line": 218
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "rpc/rpc.go:218=9ad1b9030563bb52"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ethash (Keccak-256 proof-of-work)",
+      "bom-ref": "pqs:finding:proxy/miner.go:44,48,13:Ethash (Keccak-256 proof-of-work)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "proxy/miner.go",
+            "line": 44
+          },
+          {
+            "location": "proxy/miner.go",
+            "line": 48
+          },
+          {
+            "location": "proxy/miner.go",
+            "line": 13
+          },
+          {
+            "location": "proxy/miner.go",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "proxy/miner.go:44=f3f25552c0dcdace"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "proxy/miner.go:48=9c96f544272d7592"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "proxy/miner.go:13=7667b97e6cfcd0b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "proxy/miner.go:13=7667b97e6cfcd0b5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA secp256k1 (message signing delegated through project wrapper RPCClient.Sign → eth_sign JSON-RPC)",
+      "bom-ref": "pqs:finding:payouts/payer.go:231:ECDSA secp256k1 (message signing delegated through project wrapper RPCClient.Sign → eth_sign JSON-RPC)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "payouts/payer.go",
+            "line": 231
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "payouts/payer.go:231=ff4e2907baa08bf2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:8=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "rpc/rpc.go",
+            "line": 179
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "rpc/rpc.go:179=d94ec3a44c13ed87"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go version unknown)",
+      "bom-ref": "pqs:collected:PROTO-c78dc6f6",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "rpc/rpc.go",
+            "line": 85
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-c78dc6f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "rpc/rpc.go:85=f765dd5361a09327"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:payouts/payer.go:175,231:ECDSA secp256k1 (Ethereum transaction signing, delegated to node)"
+    },
+    {
+      "ref": "pqs:finding:main.go:47,49,51:HTTPS client — gorelic agent to New Relic collector (Go default TLS)"
+    },
+    {
+      "ref": "pqs:finding:storage/redis.go:82,84:cleartext TCP — Redis backend, no TLS (AUTH password in plaintext)"
+    },
+    {
+      "ref": "pqs:finding:rpc/rpc.go:218:ECDSA secp256k1 (Ethereum transaction signing, delegated via eth_sendTransaction JSON-RPC)"
+    },
+    {
+      "ref": "pqs:finding:proxy/miner.go:44,48,13:Ethash (Keccak-256 proof-of-work)"
+    },
+    {
+      "ref": "pqs:finding:payouts/payer.go:231:ECDSA secp256k1 (message signing delegated through project wrapper RPCClient.Sign → eth_sign JSON-RPC)"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:PROTO-c78dc6f6"
+    }
+  ]
+}
