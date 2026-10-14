@@ -1,0 +1,902 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ea0e38d3-2e5e-4220-ae98-f007f51433df",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T01:13:59.274Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mosaicml/llm-foundry",
+      "version": "0cdb2f42962fcf861e58b236e9bd1c9964ba99a4",
+      "bom-ref": "repo:mosaicml/llm-foundry@0cdb2f42962fcf861e58b236e9bd1c9964ba99a4",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mosaicml/llm-foundry"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "32e34eaf-9d67-4229-b95c-51691d89aa3f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "23"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "539616"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (requests, cert-verification bypass via ignore_cert)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:174:TLS (requests, cert-verification bypass via ignore_cert)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 174
+          },
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 224
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:174=6628bb1fcec75499"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:224=56ececa54582e05d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OpenAI API over HTTPS (openai SDK, default TLS settings)",
+      "bom-ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70:OpenAI API over HTTPS (openai SDK, default TLS settings)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py",
+            "line": 70
+          },
+          {
+            "location": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py",
+            "line": 53
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70=dbd062de788bec98"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:53=1f3523217088f0fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Hugging Face Hub HTTPS download (huggingface_hub, bearer token)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:120,126,83:Hugging Face Hub HTTPS download (huggingface_hub, bearer token)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 120
+          },
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 126
+          },
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 83
+          },
+          {
+            "location": "scripts/misc/download_model.py",
+            "line": 46
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:120=0f6510e954957ca7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:126=884a0293e4663da4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:83=db4a56c0bd083dd6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/misc/download_model.py:46=a4ce7cbf43e01ad9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OCI registry HTTPS basic auth (oras pull; username/password read from credentials_dir files, passed on argv)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:327:OCI registry HTTPS basic auth (oras pull; username/password read from credentials_dir files, passed on argv)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 327
+          },
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 287
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:327=3719115eb7f7f083"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:287=b93e6355934b9b7c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (requests, literal https URL; download pinned by SHA-256 checksum)",
+      "bom-ref": "pqs:finding:tests/fixtures/models.py:331:TLS (requests, literal https URL; download pinned by SHA-256 checksum)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/fixtures/models.py",
+            "line": 331
+          },
+          {
+            "location": "tests/fixtures/models.py",
+            "line": 327
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/fixtures/models.py:331=034a173d5cc5cfc4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/fixtures/models.py:327=805669a94262813a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (requests, remote YAML fetch; https branch selected at runtime)",
+      "bom-ref": "pqs:finding:scripts/train/benchmarking/submit_benchmarks.py:276:TLS (requests, remote YAML fetch; https branch selected at runtime)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/train/benchmarking/submit_benchmarks.py",
+            "line": 276
+          },
+          {
+            "location": "scripts/train/benchmarking/submit_benchmarks.py",
+            "line": 269
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/train/benchmarking/submit_benchmarks.py:276=d564626c23326d75"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/train/benchmarking/submit_benchmarks.py:269=d5253ca0bd828745"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (requests, cloud presigned-URL fetch — URLs carry embedded auth and are https by construction)",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275:TLS (requests, cloud presigned-URL fetch — URLs carry embedded auth and are https by construction)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py",
+            "line": 275
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275=fac505c7c2842edc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Databricks SDK WorkspaceClient HTTPS (env-config auth: DATABRICKS_HOST/DATABRICKS_TOKEN; used to verify Unity Catalog paths)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/config_utils.py:826:Databricks SDK WorkspaceClient HTTPS (env-config auth: DATABRICKS_HOST/DATABRICKS_TOKEN; used to verify Unity Catalog paths)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/config_utils.py",
+            "line": 826
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/config_utils.py:826=985cc08acf2dc497"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token and passed to dbsql/databricks-connect sessions)",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:875,581:Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token and passed to dbsql/databricks-connect sessions)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py",
+            "line": 875
+          },
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py",
+            "line": 581
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py:875=985cc08acf2dc497"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py:581=985cc08acf2dc497"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token for contrastive-pair data prep)",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:78:Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token for contrastive-pair data prep)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py",
+            "line": 78
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:78=985cc08acf2dc497"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Cloud object-store HTTPS transport (composer.utils.maybe_create_object_store_from_uri wrapper — s3/gs/azure SDK TLS, cloud credentials from env)",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_text_to_mds.py:126:Cloud object-store HTTPS transport (composer.utils.maybe_create_object_store_from_uri wrapper — s3/gs/azure SDK TLS, cloud credentials from env)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_text_to_mds.py",
+            "line": 126
+          },
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_text_to_mds.py",
+            "line": 17
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_text_to_mds.py:126=7def4ddfef5d93c6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_text_to_mds.py:17=d52939bcb8a05a0c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:113,151:SHA-1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py",
+            "line": 113
+          },
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py",
+            "line": 151
+          },
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py",
+            "line": 113
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:113=54ff898419ec07b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:151=756877b8a78448a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:113=54ff898419ec07b4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS certificate verification bypass (requests verify=False, opt-in)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:174:TLS certificate verification bypass (requests verify=False, opt-in)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 174
+          },
+          {
+            "location": "scripts/misc/download_model.py",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:174=6628bb1fcec75499"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/misc/download_model.py:62=e2078db1d51960fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via huggingface_hub (requests) on default settings",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:120:HTTPS session via huggingface_hub (requests) on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 120
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:120=0f6510e954957ca7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via huggingface_hub (requests) on default settings",
+      "bom-ref": "pqs:finding:llmfoundry/data/finetuning/tasks.py:955:HTTPS session via huggingface_hub (requests) on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/data/finetuning/tasks.py",
+            "line": 955
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/data/finetuning/tasks.py:955=0f6510e954957ca7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via openai SDK (httpx) on default settings",
+      "bom-ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70:HTTPS session via openai SDK (httpx) on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py",
+            "line": 70
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70=dbd062de788bec98"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via requests on default settings",
+      "bom-ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275:HTTPS session via requests on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py",
+            "line": 275
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275=fac505c7c2842edc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via requests on default settings",
+      "bom-ref": "pqs:finding:scripts/train/benchmarking/submit_benchmarks.py:276:HTTPS session via requests on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/train/benchmarking/submit_benchmarks.py",
+            "line": 276
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/train/benchmarking/submit_benchmarks.py:276=d564626c23326d75"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via requests on default settings",
+      "bom-ref": "pqs:finding:tests/fixtures/models.py:331:HTTPS session via requests on default settings",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/fixtures/models.py",
+            "line": 331
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/fixtures/models.py:331=034a173d5cc5cfc4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via requests on default settings (conditional)",
+      "bom-ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/fmapi.py:39:HTTPS session via requests on default settings (conditional)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/models/inference_api_wrapper/fmapi.py",
+            "line": 39
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/models/inference_api_wrapper/fmapi.py:39=51c530596f14f6a0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS session via external oras CLI (Go crypto/tls defaults)",
+      "bom-ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:327:HTTPS session via external oras CLI (Go crypto/tls defaults)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 327
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:327=3719115eb7f7f083"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/fixtures/models.py",
+            "line": 337
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/fixtures/models.py:337=70a4647cc8e507f9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "llmfoundry/utils/model_download_utils.py",
+            "line": 235
+          },
+          {
+            "location": "scripts/inference/endpoint_generate.py",
+            "line": 202
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "llmfoundry/utils/model_download_utils.py:235=1d139aff16690ae1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/inference/endpoint_generate.py:202=7a94ed6cb4339fda"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:174:TLS (requests, cert-verification bypass via ignore_cert)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70:OpenAI API over HTTPS (openai SDK, default TLS settings)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:120,126,83:Hugging Face Hub HTTPS download (huggingface_hub, bearer token)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:327:OCI registry HTTPS basic auth (oras pull; username/password read from credentials_dir files, passed on argv)"
+    },
+    {
+      "ref": "pqs:finding:tests/fixtures/models.py:331:TLS (requests, literal https URL; download pinned by SHA-256 checksum)"
+    },
+    {
+      "ref": "pqs:finding:scripts/train/benchmarking/submit_benchmarks.py:276:TLS (requests, remote YAML fetch; https branch selected at runtime)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275:TLS (requests, cloud presigned-URL fetch — URLs carry embedded auth and are https by construction)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/config_utils.py:826:Databricks SDK WorkspaceClient HTTPS (env-config auth: DATABRICKS_HOST/DATABRICKS_TOKEN; used to verify Unity Catalog paths)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:875,581:Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token and passed to dbsql/databricks-connect sessions)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:78:Databricks SDK WorkspaceClient HTTPS (env-config auth; token extracted via w.config.token for contrastive-pair data prep)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_text_to_mds.py:126:Cloud object-store HTTPS transport (composer.utils.maybe_create_object_store_from_uri wrapper — s3/gs/azure SDK TLS, cloud credentials from env)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_contrastive_mds.py:113,151:SHA-1"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:174:TLS certificate verification bypass (requests verify=False, opt-in)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:120:HTTPS session via huggingface_hub (requests) on default settings"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/data/finetuning/tasks.py:955:HTTPS session via huggingface_hub (requests) on default settings"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/openai_causal_lm.py:70:HTTPS session via openai SDK (httpx) on default settings"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/command_utils/data_prep/convert_delta_to_json.py:275:HTTPS session via requests on default settings"
+    },
+    {
+      "ref": "pqs:finding:scripts/train/benchmarking/submit_benchmarks.py:276:HTTPS session via requests on default settings"
+    },
+    {
+      "ref": "pqs:finding:tests/fixtures/models.py:331:HTTPS session via requests on default settings"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/models/inference_api_wrapper/fmapi.py:39:HTTPS session via requests on default settings (conditional)"
+    },
+    {
+      "ref": "pqs:finding:llmfoundry/utils/model_download_utils.py:327:HTTPS session via external oras CLI (Go crypto/tls defaults)"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    }
+  ]
+}
