@@ -1,0 +1,213 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e1d2a1eb-3b4c-4ef0-90db-df4c8d4342aa",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T04:03:43.653Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "610265158/dsfd-tensorflow",
+      "version": "f4d055a7f09938e2331f21b67452a01bf3f3bfb5",
+      "bom-ref": "repo:610265158/dsfd-tensorflow@f4d055a7f09938e2331f21b67452a01bf3f3bfb5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/610265158/DSFD-tensorflow"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0fef327d-ab70-4b11-992f-82328b9a6a58"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "270866"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Hardcoded password (Baidu-pan file share, \"ty4d\")",
+      "bom-ref": "pqs:finding:README.md:20:Hardcoded password (Baidu-pan file share, \"ty4d\")",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "README.md",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "README.md:20=bcc3d83d39bf2126"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 221
+          },
+          {
+            "location": "lib/dataset/dataietr.py",
+            "line": 137
+          },
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 222
+          },
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 268
+          },
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 269
+          },
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 378
+          },
+          {
+            "location": "lib/dataset/augmentor/augmentation.py",
+            "line": 441
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "One logical asset spanning the whole dataset pipeline: the same non-cryptographic Mersenne-Twister stream (Python random + numpy.random MT19937) drives random.shuffle at dataietr.py:55, np.random.shuffle at dataietr.py:196, random.choice/sample/uniform at augmentation.py:136,155,388,394,532,662-663, and np.random.rand/sample/uniform at visual_augmentation.py:9,32,132 — all beyond the 7 inventoried randint sites. Purpose throughout: which augmented training samples get produced (crop geometry, sh"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:221=a0c6afe0d47b14f1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/dataietr.py:137=73e4a13165a9286e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:222=a52da5b82c0e5ce6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:268=5e6f6b99a4df6fab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:269=5860ccb5f1f90f50"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:378=636fde459212e04e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/dataset/augmentor/augmentation.py:441=7e7cad83eb69ce93"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:README.md:20:Hardcoded password (Baidu-pan file share, \"ty4d\")"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
