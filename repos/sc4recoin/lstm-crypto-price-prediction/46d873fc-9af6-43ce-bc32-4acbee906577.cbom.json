@@ -1,0 +1,133 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e1cd372f-0a15-4664-b58c-ca91caa7573d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T18:37:41.434Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sc4recoin/lstm-crypto-price-prediction",
+      "version": "74394273c732fb9ce06c5c8cdc78f56124395c07",
+      "bom-ref": "repo:sc4recoin/lstm-crypto-price-prediction@74394273c732fb9ce06c5c8cdc78f56124395c07",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/SC4RECOIN/LSTM-Crypto-Price-Prediction"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "46d873fc-9af6-43ce-bc32-4acbee906577"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "816551"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA256 (Binance API request signing via python-binance)",
+      "bom-ref": "pqs:finding:historical_data/get_data.py:9,11:HMAC-SHA256 (Binance API request signing via python-binance)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "historical_data/get_data.py",
+            "line": 9
+          },
+          {
+            "location": "historical_data/get_data.py",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "historical_data/get_data.py:9=ebcbdc6de6d1cd23"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "historical_data/get_data.py:11=1b4b05e39d501735"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (client default) — HTTPS to api.binance.com via python-binance/requests",
+      "bom-ref": "pqs:finding:historical_data/get_data.py:15,1:TLS (client default) — HTTPS to api.binance.com via python-binance/requests",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "historical_data/get_data.py",
+            "line": 15
+          },
+          {
+            "location": "historical_data/get_data.py",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "historical_data/get_data.py:15=457199e23f7c0379"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "historical_data/get_data.py:1=a6b96a91a07983e3"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:historical_data/get_data.py:9,11:HMAC-SHA256 (Binance API request signing via python-binance)"
+    },
+    {
+      "ref": "pqs:finding:historical_data/get_data.py:15,1:TLS (client default) — HTTPS to api.binance.com via python-binance/requests"
+    }
+  ]
+}
