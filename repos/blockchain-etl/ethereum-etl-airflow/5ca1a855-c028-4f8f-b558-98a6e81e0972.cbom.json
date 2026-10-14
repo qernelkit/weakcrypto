@@ -1,0 +1,1009 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0a3e25f4-9d1d-49e0-8ba6-4f9daf0f55b3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T14:40:02.822Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "blockchain-etl/ethereum-etl-airflow",
+      "version": "27d0fb037cbe8b9ba62880f99c155823ab2e4a35",
+      "bom-ref": "repo:blockchain-etl/ethereum-etl-airflow@27d0fb037cbe8b9ba62880f99c155823ab2e4a35",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/blockchain-etl/ethereum-etl-airflow"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5ca1a855-c028-4f8f-b558-98a6e81e0972"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "21"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "1365394"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "web3.py 5.31.0 — ships secp256k1 ECDSA signing (eth-account/coincurve), keccak-256 (eth-hash), AES-128-CTR keyfile encryption (pycryptodome)",
+      "bom-ref": "pqs:finding:requirements_airflow.txt:5:web3.py 5.31.0 — ships secp256k1 ECDSA signing (eth-account/coincurve), keccak-256 (eth-hash), AES-128-CTR keyfile encryption (pycryptodome)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements_airflow.txt",
+            "line": 5
+          },
+          {
+            "location": "requirements_parse.txt",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_airflow.txt:5=bf6f613035b8b087"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_parse.txt:9=bf6f613035b8b087"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 (eth-hash provider)",
+      "bom-ref": "pqs:finding:requirements_airflow.txt:1:Keccak-256 (eth-hash provider)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements_airflow.txt",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_airflow.txt:1=e5388c123f94619a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Apache Airflow 2.5.1 — Fernet (AES-128-CBC + HMAC-SHA256) connection-secret encryption via `cryptography`",
+      "bom-ref": "pqs:finding:requirements_local.txt:1:Apache Airflow 2.5.1 — Fernet (AES-128-CBC + HMAC-SHA256) connection-secret encryption via `cryptography`",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "mode": "cbc",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements_local.txt",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_local.txt:1=17dcde25ebbb9297"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Airflow LocalFilesystemBackend secrets store (plaintext JSON) — deployment key-management configuration",
+      "bom-ref": "pqs:finding:compose.yaml:12,13:Airflow LocalFilesystemBackend secrets store (plaintext JSON) — deployment key-management configuration",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compose.yaml",
+            "line": 12
+          },
+          {
+            "location": "compose.yaml",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compose.yaml:12=58073fc7028d17d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compose.yaml:13=d2f725027b166c6b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS long-lived access key pair inlined into Redshift COPY SQL text",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:93,101:AWS long-lived access key pair inlined into Redshift COPY SQL text",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 93
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 101
+          },
+          {
+            "location": "dags/ethereumetl_airflow/variables.py",
+            "line": 114
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:93=6d53c330003e8dbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:101=6d53c330003e8dbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/variables.py:114=292563fb4700831d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (default ECDHE key exchange) — Ethereum JSON-RPC over HTTPS via web3.py HTTPProvider",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:299,305,319,332:TLS (default ECDHE key exchange) — Ethereum JSON-RPC over HTTPS via web3.py HTTPProvider",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 299
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 305
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 319
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 332
+          },
+          {
+            "location": "docker/variables.json",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:299=6145a4b096c4d179"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:305=e190f072a04c0457"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:319=4e048c3dcf06774c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:332=a8143780c3f14c2f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docker/variables.json:6=afd06745f2de0616"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS/TLS to Google APIs (BigQuery + GCS) via google-cloud clients with ADC OAuth2 bearer tokens",
+      "bom-ref": "pqs:finding:run_parse_dataset_folder.py:42:HTTPS/TLS to Google APIs (BigQuery + GCS) via google-cloud clients with ADC OAuth2 bearer tokens",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "run_parse_dataset_folder.py",
+            "line": 42
+          },
+          {
+            "location": "requirements_local.txt",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "run_parse_dataset_folder.py:42=9623e99a7d58d92d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_local.txt:3=5f623797a70f5ad5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 (eth_utils event_abi_to_log_topic / function_abi_to_4byte_selector)",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:485,486,487,488:Keccak-256 (eth_utils event_abi_to_log_topic / function_abi_to_4byte_selector)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py",
+            "line": 485
+          },
+          {
+            "location": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py",
+            "line": 486
+          },
+          {
+            "location": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py",
+            "line": 487
+          },
+          {
+            "location": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py",
+            "line": 488
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:485=6f002e65a8f63998"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:486=cc47d17966983442"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:487=675c27cf4847cf5f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:488=0cb3a3ded552ca6b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 (EIP-55 mixed-case checksum via Web3.toChecksumAddress)",
+      "bom-ref": "pqs:finding:generate_parse_sql.py:11,36:Keccak-256 (EIP-55 mixed-case checksum via Web3.toChecksumAddress)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "generate_parse_sql.py",
+            "line": 11
+          },
+          {
+            "location": "generate_parse_sql.py",
+            "line": 36
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate_parse_sql.py:11=22c2f0d1a8758e84"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate_parse_sql.py:36=4f5f76fb72bab631"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 — EVM protocol digests stored as data at rest (sha3_uncles, parent_hash, transactions_root, state_root)",
+      "bom-ref": "pqs:finding:dags/resources/stages/raw/schemas_redshift/schema.sql:10:Keccak-256 — EVM protocol digests stored as data at rest (sha3_uncles, parent_hash, transactions_root, state_root)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/resources/stages/raw/schemas_redshift/schema.sql",
+            "line": 10
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/resources/stages/raw/schemas_redshift/schema.sql:10=c1f632b2cfdfed9c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "web3.py 5.31.0 (Keccak-256 via eth-hash, EIP-55 checksums, secp256k1 ECDSA via eth-account, HTTPS JSON-RPC transport)",
+      "bom-ref": "pqs:finding:requirements_parse.txt:9:web3.py 5.31.0 (Keccak-256 via eth-hash, EIP-55 checksums, secp256k1 ECDSA via eth-account, HTTPS JSON-RPC transport)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements_parse.txt",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_parse.txt:9=bf6f613035b8b087"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Apache Airflow 2.5.1 ([gcp,postgres] extras) — Fernet (AES-128-CBC + HMAC-SHA256) at-rest secret encryption, Flask session-cookie signing (itsdangerous HMAC), CSRF",
+      "bom-ref": "pqs:finding:requirements_local.txt:1:Apache Airflow 2.5.1 ([gcp,postgres] extras) — Fernet (AES-128-CBC + HMAC-SHA256) at-rest secret encryption, Flask session-cookie signing (itsdangerous HMAC), CSRF",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements_local.txt",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements_local.txt:1=17dcde25ebbb9297"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS Signature Version 4 (HMAC-SHA256 request signing)",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:81:AWS Signature Version 4 (HMAC-SHA256 request signing)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 81
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:81=95a3b953650b83db"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "S3 server-side encryption (AES-256) — explicitly not requested (encrypt=False)",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:96,97,98,99,100,101,102:S3 server-side encryption (AES-256) — explicitly not requested (encrypt=False)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 96
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 97
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 98
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 99
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 100
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 101
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_export_dag.py",
+            "line": 102
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:96=c70d0239faf7886e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:97=ff65414a74254797"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:98=2d5a74871efc0d6b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:99=03b25775dd71c9f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:100=5cfb52286f677147"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:101=68949cbf6a9707d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_export_dag.py:102=e9094793bbf83604"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS long-term access keys (aws_access_key_id / aws_secret_access_key) interpolated into Redshift COPY WITH CREDENTIALS SQL",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:93,101,130,131,133:AWS long-term access keys (aws_access_key_id / aws_secret_access_key) interpolated into Redshift COPY WITH CREDENTIALS SQL",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 93
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 101
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 130
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 131
+          },
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 133
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:93=6d53c330003e8dbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:101=6d53c330003e8dbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:130=a98d051b7421cd8d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:131=9253450324a8b294"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:133=8e7fd03920ce57b5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PostgreSQL/Redshift wire protocol via PostgresHook (psycopg2/libpq, opportunistic TLS, server-selected SCRAM-SHA-256/MD5 auth)",
+      "bom-ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:68:PostgreSQL/Redshift wire protocol via PostgresHook (psycopg2/libpq, opportunistic TLS, server-selected SCRAM-SHA-256/MD5 auth)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/build_load_dag_redshift.py",
+            "line": 68
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/build_load_dag_redshift.py:68=441fa74adb68676f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Airflow secrets-management infrastructure (LocalFilesystemBackend + gcloud ADC + env-var connections)",
+      "bom-ref": "pqs:finding:compose.yaml:12,13:Airflow secrets-management infrastructure (LocalFilesystemBackend + gcloud ADC + env-var connections)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compose.yaml",
+            "line": 12
+          },
+          {
+            "location": "compose.yaml",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compose.yaml:12=58073fc7028d17d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compose.yaml:13=d2f725027b166c6b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-signed Flask session cookies + CSRF deployed with AUTH_ROLE_PUBLIC=\"Admin\" over plaintext HTTP",
+      "bom-ref": "pqs:finding:docker/webserver_config_local.py:47,53:HMAC-signed Flask session cookies + CSRF deployed with AUTH_ROLE_PUBLIC=\"Admin\" over plaintext HTTP",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "docker/webserver_config_local.py",
+            "line": 47
+          },
+          {
+            "location": "docker/webserver_config_local.py",
+            "line": 53
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docker/webserver_config_local.py:47=aeeefb0acd65dbfc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docker/webserver_config_local.py:53=85c043c156f80f2c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/parse/table_definition_reader.py",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/table_definition_reader.py:54=b0add47ce98bc01b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "generate_parse_sql.py",
+            "line": 21
+          },
+          {
+            "location": "generate_parse_sql.py",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate_parse_sql.py:21=11ef02d62256fadb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate_parse_sql.py:23=3fb23fc2d3b04904"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dags/ethereumetl_airflow/parse/table_definition_reader.py",
+            "line": 116
+          },
+          {
+            "location": "dags/ethereumetl_airflow/parse/table_definition_reader.py",
+            "line": 117
+          },
+          {
+            "location": "dags/ethereumetl_airflow/parse/table_definition_reader.py",
+            "line": 118
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/table_definition_reader.py:116=a41ab23441e8e0d4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/table_definition_reader.py:117=623e252602f13bbe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dags/ethereumetl_airflow/parse/table_definition_reader.py:118=e342b9b1722aaa9e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:requirements_airflow.txt:5:web3.py 5.31.0 — ships secp256k1 ECDSA signing (eth-account/coincurve), keccak-256 (eth-hash), AES-128-CTR keyfile encryption (pycryptodome)"
+    },
+    {
+      "ref": "pqs:finding:requirements_airflow.txt:1:Keccak-256 (eth-hash provider)"
+    },
+    {
+      "ref": "pqs:finding:requirements_local.txt:1:Apache Airflow 2.5.1 — Fernet (AES-128-CBC + HMAC-SHA256) connection-secret encryption via `cryptography`"
+    },
+    {
+      "ref": "pqs:finding:compose.yaml:12,13:Airflow LocalFilesystemBackend secrets store (plaintext JSON) — deployment key-management configuration"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:93,101:AWS long-lived access key pair inlined into Redshift COPY SQL text"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:299,305,319,332:TLS (default ECDHE key exchange) — Ethereum JSON-RPC over HTTPS via web3.py HTTPProvider"
+    },
+    {
+      "ref": "pqs:finding:run_parse_dataset_folder.py:42:HTTPS/TLS to Google APIs (BigQuery + GCS) via google-cloud clients with ADC OAuth2 bearer tokens"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/parse/parse_table_definition_logic.py:485,486,487,488:Keccak-256 (eth_utils event_abi_to_log_topic / function_abi_to_4byte_selector)"
+    },
+    {
+      "ref": "pqs:finding:generate_parse_sql.py:11,36:Keccak-256 (EIP-55 mixed-case checksum via Web3.toChecksumAddress)"
+    },
+    {
+      "ref": "pqs:finding:dags/resources/stages/raw/schemas_redshift/schema.sql:10:Keccak-256 — EVM protocol digests stored as data at rest (sha3_uncles, parent_hash, transactions_root, state_root)"
+    },
+    {
+      "ref": "pqs:finding:requirements_parse.txt:9:web3.py 5.31.0 (Keccak-256 via eth-hash, EIP-55 checksums, secp256k1 ECDSA via eth-account, HTTPS JSON-RPC transport)"
+    },
+    {
+      "ref": "pqs:finding:requirements_local.txt:1:Apache Airflow 2.5.1 ([gcp,postgres] extras) — Fernet (AES-128-CBC + HMAC-SHA256) at-rest secret encryption, Flask session-cookie signing (itsdangerous HMAC), CSRF"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:81:AWS Signature Version 4 (HMAC-SHA256 request signing)"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_export_dag.py:96,97,98,99,100,101,102:S3 server-side encryption (AES-256) — explicitly not requested (encrypt=False)"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:93,101,130,131,133:AWS long-term access keys (aws_access_key_id / aws_secret_access_key) interpolated into Redshift COPY WITH CREDENTIALS SQL"
+    },
+    {
+      "ref": "pqs:finding:dags/ethereumetl_airflow/build_load_dag_redshift.py:68:PostgreSQL/Redshift wire protocol via PostgresHook (psycopg2/libpq, opportunistic TLS, server-selected SCRAM-SHA-256/MD5 auth)"
+    },
+    {
+      "ref": "pqs:finding:compose.yaml:12,13:Airflow secrets-management infrastructure (LocalFilesystemBackend + gcloud ADC + env-var connections)"
+    },
+    {
+      "ref": "pqs:finding:docker/webserver_config_local.py:47,53:HMAC-signed Flask session cookies + CSRF deployed with AUTH_ROLE_PUBLIC=\"Admin\" over plaintext HTTP"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
