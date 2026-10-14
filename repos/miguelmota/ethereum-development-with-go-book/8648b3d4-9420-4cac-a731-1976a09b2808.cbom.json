@@ -1,0 +1,1663 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:641eed0c-1b35-45a1-b59a-3d247a99cbc5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T02:59:05.479Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "miguelmota/ethereum-development-with-go-book",
+      "version": "3b24cad5d54aff1496fe4c3590c27f0fad648ddf",
+      "bom-ref": "repo:miguelmota/ethereum-development-with-go-book@3b24cad5d54aff1496fe4c3590c27f0fad648ddf",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/miguelmota/ethereum-development-with-go-book"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8648b3d4-9420-4cac-a731-1976a09b2808"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "28"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "923882"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 ECDSA private key (hardcoded hex literal)",
+      "bom-ref": "pqs:finding:code/transfer_eth.go:22:secp256k1 ECDSA private key (hardcoded hex literal)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/transfer_eth.go",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_eth.go:22=9a48958cba94136e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt N=2^18 (262144), r=8, p=1 — go-ethereum keystore v3 keyfile KDF",
+      "bom-ref": "pqs:finding:code/keystore.go:13,25:scrypt N=2^18 (262144), r=8, p=1 — go-ethereum keystore v3 keyfile KDF",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/keystore.go",
+            "line": 13
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:13=50e5b3ef1b9dccda"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:25=50e5b3ef1b9dccda"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded keystore encryption password",
+      "bom-ref": "pqs:finding:code/keystore.go:14,31:hardcoded keystore encryption password",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/keystore.go",
+            "line": 14
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 31
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:14=4318e4bcdf84a232"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:31=4318e4bcdf84a232"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BIP-39 mnemonic seed phrase (hardcoded, ganache dev chain)",
+      "bom-ref": "pqs:finding:en/client-setup/README.md:51:BIP-39 mnemonic seed phrase (hardcoded, ganache dev chain)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "en/client-setup/README.md",
+            "line": 51
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "en/client-setup/README.md:51=dda57d75ebbab4f1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS default config via ethclient.Dial (Go 1.15 stack: TLS 1.3, ECDHE X25519/P-256/P-384/P-521; no post-quantum groups)",
+      "bom-ref": "pqs:finding:code/account_balance.go:15:TLS default config via ethclient.Dial (Go 1.15 stack: TLS 1.3, ECDHE X25519/P-256/P-384/P-521; no post-quantum groups)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/account_balance.go",
+            "line": 15
+          },
+          {
+            "location": "code/go.mod",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/account_balance.go:15=3f473c3c2eafd0b8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:3=228b01bcef2e7c1c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BIP-39 (github.com/tyler-smith/go-bip39): PBKDF2-HMAC-SHA512 mnemonic-to-seed KDF",
+      "bom-ref": "pqs:finding:go.sum:250:BIP-39 (github.com/tyler-smith/go-bip39): PBKDF2-HMAC-SHA512 mnemonic-to-seed KDF",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 250
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:250=5a4f443bd3de9c63"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA secp256k1 signing (go-ethereum crypto.Sign)",
+      "bom-ref": "pqs:finding:code/signature_generate.go:21,12:ECDSA secp256k1 signing (go-ethereum crypto.Sign)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/signature_generate.go",
+            "line": 21
+          },
+          {
+            "location": "code/signature_generate.go",
+            "line": 12
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_generate.go:21=ac86a6e8e4e72be0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_generate.go:12=9a48958cba94136e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 ECDSA keypair generation + transaction signing (crypto.GenerateKey, types.SignTx with HomesteadSigner)",
+      "bom-ref": "pqs:finding:code/client_simulated.go:54:secp256k1 ECDSA keypair generation + transaction signing (crypto.GenerateKey, types.SignTx with HomesteadSigner)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/client_simulated.go",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/client_simulated.go:54=9d1b9d2c43ac5b0b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 ECDSA wallet keypair generation (go-ethereum crypto.GenerateKey)",
+      "bom-ref": "pqs:finding:code/wallet_generate.go:14,19,28,31:secp256k1 ECDSA wallet keypair generation (go-ethereum crypto.GenerateKey)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/wallet_generate.go",
+            "line": 14
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 19
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 28
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 31
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:14=0f854754e10099c6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:19=e3b6b70df0195927"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:28=d18f579aa1a798b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:31=23548f65127867e6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA secp256k1 signing, public-key recovery and verification (crypto.Sign, crypto.Ecrecover, crypto.SigToPub, crypto.VerifySignature)",
+      "bom-ref": "pqs:finding:code/signature_verify.go:56,46,38,31,14:ECDSA secp256k1 signing, public-key recovery and verification (crypto.Sign, crypto.Ecrecover, crypto.SigToPub, crypto.VerifySignature)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/signature_verify.go",
+            "line": 56
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 46
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 38
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 31
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:56=7f20d2030f5832d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:46=936832bd41903bf1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:38=69c9ea5681830561"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:31=ac86a6e8e4e72be0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:14=9a48958cba94136e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "go-ethereum crypto provider (secp256k1 ECDSA via libsecp256k1, Keccak-256, Ecrecover, scrypt keystore) — root module pins v1.9.2 indirect; the live direct dependency is v1.8.20 at code/go.mod:9",
+      "bom-ref": "pqs:finding:go.mod:11:go-ethereum crypto provider (secp256k1 ECDSA via libsecp256k1, Keccak-256, Ecrecover, scrypt keystore) — root module pins v1.9.2 indirect; the live direct dependency is v1.8.20 at code/go.mod:9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:11=d9562d98bf22826d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 ECDSA private key (hardcoded)",
+      "bom-ref": "pqs:finding:code/signature_generate.go:12:secp256k1 ECDSA private key (hardcoded)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/signature_generate.go",
+            "line": 12
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_generate.go:12=9a48958cba94136e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt + AES-128-CTR (go-ethereum keystore v3)",
+      "bom-ref": "pqs:finding:code/keystore.go:13,14,15,25,31,32:scrypt + AES-128-CTR (go-ethereum keystore v3)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "mode": "ctr",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/keystore.go",
+            "line": 13
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 14
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 15
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 25
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 31
+          },
+          {
+            "location": "code/keystore.go",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:13=50e5b3ef1b9dccda"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:14=4318e4bcdf84a232"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:15=28786272b40688b2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:25=50e5b3ef1b9dccda"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:31=4318e4bcdf84a232"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/keystore.go:32=dbbd48e9fa87cee3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "bom-ref": "pqs:finding:code/transfer_eth.go:17:TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/transfer_eth.go",
+            "line": 17
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_eth.go:17=e43a557153c4951a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "bom-ref": "pqs:finding:code/account_balance.go:15:TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/account_balance.go",
+            "line": 15
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/account_balance.go:15=3f473c3c2eafd0b8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "bom-ref": "pqs:finding:code/event_read.go:20:TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/event_read.go",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/event_read.go:20=39a0e2ec68a9790b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "bom-ref": "pqs:finding:code/block_subscribe.go:13:TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/block_subscribe.go",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/block_subscribe.go:13=1d2c88adb9e87360"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1 whisper v6 identity keypair (ECIES/ECDSA via shhclient)",
+      "bom-ref": "pqs:finding:code/whisper_keypair.go:18:secp256k1 whisper v6 identity keypair (ECIES/ECDSA via shhclient)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "secp256k1",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/whisper_keypair.go",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/whisper_keypair.go:18=04bbeda47ee666a9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/contract_deploy.go",
+            "line": 29
+          },
+          {
+            "location": "code/contract_write.go",
+            "line": 30
+          },
+          {
+            "location": "code/contract_write_estimate_gas.go",
+            "line": 31
+          },
+          {
+            "location": "code/helper/helper.go",
+            "line": 211
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 20
+          },
+          {
+            "location": "code/transaction_raw_create.go",
+            "line": 29
+          },
+          {
+            "location": "code/transfer_eth.go",
+            "line": 28
+          },
+          {
+            "location": "code/transfer_tokens.go",
+            "line": 31
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 23
+          },
+          {
+            "location": "code/contract_deploy.go",
+            "line": 5
+          },
+          {
+            "location": "code/contract_write.go",
+            "line": 5
+          },
+          {
+            "location": "code/contract_write_estimate_gas.go",
+            "line": 5
+          },
+          {
+            "location": "code/helper/helper.go",
+            "line": 213
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 5
+          },
+          {
+            "location": "code/transaction_raw_create.go",
+            "line": 5
+          },
+          {
+            "location": "code/transfer_eth.go",
+            "line": 5
+          },
+          {
+            "location": "code/transfer_tokens.go",
+            "line": 5
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 4
+          },
+          {
+            "location": "code/helper/helper.go",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Live secp256k1 ECDSA signing in the \"Ethereum Development with Go Book\" sample apps. The 19 sites are the crypto/ecdsa imports and *ecdsa.PublicKey type assertions in the key-handling chains; completing signing operations are crypto.Sign (signature_generate.go:21, signature_verify.go:31) and types.SignTx with EIP-155/Homestead signers (transfer_eth.go:55, transfer_tokens.go:87, transaction_raw_create.go:56, client_simulated.go:54, helper/helper.go:118,177), plus bind.NewKeyedTransactor (contract"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "19"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_deploy.go:29=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_write.go:30=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_write_estimate_gas.go:31=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/helper/helper.go:211=1574772f16a6ee4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:20=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transaction_raw_create.go:29=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_eth.go:28=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_tokens.go:31=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:23=7a469bfd059172b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_deploy.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_write.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/contract_write_estimate_gas.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/helper/helper.go:213=aafd38c9cedea201"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transaction_raw_create.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_eth.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_tokens.go:5=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:4=6344890ebcdc4402"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/helper/helper.go:9=6344890ebcdc4402"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/event_read.go",
+            "line": 70
+          },
+          {
+            "location": "code/event_read_erc20.go",
+            "line": 60
+          },
+          {
+            "location": "code/signature_generate.go",
+            "line": 18
+          },
+          {
+            "location": "code/signature_verify.go",
+            "line": 28
+          },
+          {
+            "location": "code/transfer_tokens.go",
+            "line": 52
+          },
+          {
+            "location": "code/util/util.go",
+            "line": 20
+          },
+          {
+            "location": "code/wallet_generate.go",
+            "line": 34
+          },
+          {
+            "location": "code/event_read_erc20.go",
+            "line": 61
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Keccak-256 — Ethereum's legacy pre-NIST-padding SHA-3 variant — via go-ethereum crypto.Keccak256Hash and x/crypto/sha3 NewLegacyKeccak256. Used for address derivation (wallet_generate.go:34, util/util.go:20: last 20 bytes of Keccak(pubkey)), event-signature topic hashing (event_read.go:70, event_read_erc20.go:60-61), the digest signed by crypto.Sign (signature_generate.go:18, signature_verify.go:28), and ABI/selector packing (transfer_tokens.go:52). Grover gives only square-root speedup, so hash"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/event_read.go:70=a186b2b78d0232fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/event_read_erc20.go:60=0ec6dbe65277ab8e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_generate.go:18=a9031660225808f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/signature_verify.go:28=a9031660225808f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/transfer_tokens.go:52=ddf9d0c4a5999492"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/util/util.go:20=ddf9d0c4a5999492"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/wallet_generate.go:34=ddf9d0c4a5999492"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/event_read_erc20.go:61=4922e204761f3bfb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-c9ef78a4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c9ef78a4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Dependency declaration in code/go.mod: golang.org/x/crypto (sha3 sub-package) pinned via go.sum at v0.0.0-20190701094942-4def268fd1a4; go.mod requires golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad indirect. The package ships SHA3-256; first-party code imports sha3 only for NewLegacyKeccak256, so SHA3-256 is available in the shipped build with no application call site. Presence is the inventory question. This same manifest is also where the module's primary crypto provider is pinned: cod"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHAKE128",
+      "bom-ref": "pqs:collected:ALG-d0f975d5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "xof"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d0f975d5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Dependency declaration: x/crypto/sha3@v0.0.0-20190701094942-4def268fd1a4 also ships SHAKE128. No NewShake128/ShakeSum128 call site in first-party code (grep across all 51 .go files: zero matches). Available in the shipped library; recorded as present, unused by this application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHAKE256",
+      "bom-ref": "pqs:collected:ALG-cfa4b055",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "xof"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-cfa4b055"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Dependency declaration: x/crypto/sha3@v0.0.0-20190701094942-4def268fd1a4 also ships SHAKE256. No NewShake256/ShakeSum256 call site in first-party code (grep: zero matches). Available in the shipped library; recorded as present, unused by this application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Transitive dependency: github.com/dgrijalva/jwt-go v3.2.0+incompatible (pseudo-version v0.0.0-20160705203006-01aeca54ebda, commit 01aeca54ebda, 2016-07-05) declared in code/go.sum via the go-ethereum v1.8.20 dependency graph (also present in root go.sum:43). NOT in code/go.mod's require list, and zero first-party imports: grep for jwt/Jwt/JWT across all 51 .go files found no matches. jwt-go is archived/unmaintained with CVE-2020-26160 (aud-claim bypass); its HS*/RS*/ES* signing would be quantum-"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/dgrijalva/jwt-go",
+      "bom-ref": "pqs:collected:LIB-1d84a23e",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-1d84a23e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The same declared dependency as ALG-240215d0 — github.com/dgrijalva/jwt-go v3.2.0+incompatible (v0.0.0-20160705203006-01aeca54ebda) in code/go.sum, transitive via go-ethereum v1.8.20 — reached here by package name instead of by its algorithm class. No first-party import exists; see ALG-240215d0 for the full context."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto/sha3",
+      "bom-ref": "pqs:collected:LIB-a5330b0f",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "code/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a5330b0f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "code/go.mod:1=a4eaa46297c0d9d7"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:code/transfer_eth.go:22:secp256k1 ECDSA private key (hardcoded hex literal)"
+    },
+    {
+      "ref": "pqs:finding:code/keystore.go:13,25:scrypt N=2^18 (262144), r=8, p=1 — go-ethereum keystore v3 keyfile KDF"
+    },
+    {
+      "ref": "pqs:finding:code/keystore.go:14,31:hardcoded keystore encryption password"
+    },
+    {
+      "ref": "pqs:finding:en/client-setup/README.md:51:BIP-39 mnemonic seed phrase (hardcoded, ganache dev chain)"
+    },
+    {
+      "ref": "pqs:finding:code/account_balance.go:15:TLS default config via ethclient.Dial (Go 1.15 stack: TLS 1.3, ECDHE X25519/P-256/P-384/P-521; no post-quantum groups)"
+    },
+    {
+      "ref": "pqs:finding:go.sum:250:BIP-39 (github.com/tyler-smith/go-bip39): PBKDF2-HMAC-SHA512 mnemonic-to-seed KDF"
+    },
+    {
+      "ref": "pqs:finding:code/signature_generate.go:21,12:ECDSA secp256k1 signing (go-ethereum crypto.Sign)"
+    },
+    {
+      "ref": "pqs:finding:code/client_simulated.go:54:secp256k1 ECDSA keypair generation + transaction signing (crypto.GenerateKey, types.SignTx with HomesteadSigner)"
+    },
+    {
+      "ref": "pqs:finding:code/wallet_generate.go:14,19,28,31:secp256k1 ECDSA wallet keypair generation (go-ethereum crypto.GenerateKey)"
+    },
+    {
+      "ref": "pqs:finding:code/signature_verify.go:56,46,38,31,14:ECDSA secp256k1 signing, public-key recovery and verification (crypto.Sign, crypto.Ecrecover, crypto.SigToPub, crypto.VerifySignature)"
+    },
+    {
+      "ref": "pqs:finding:go.mod:11:go-ethereum crypto provider (secp256k1 ECDSA via libsecp256k1, Keccak-256, Ecrecover, scrypt keystore) — root module pins v1.9.2 indirect; the live direct dependency is v1.8.20 at code/go.mod:9"
+    },
+    {
+      "ref": "pqs:finding:code/signature_generate.go:12:secp256k1 ECDSA private key (hardcoded)"
+    },
+    {
+      "ref": "pqs:finding:code/keystore.go:13,14,15,25,31,32:scrypt + AES-128-CTR (go-ethereum keystore v3)"
+    },
+    {
+      "ref": "pqs:finding:code/transfer_eth.go:17:TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)"
+    },
+    {
+      "ref": "pqs:finding:code/account_balance.go:15:TLS ECDHE (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)"
+    },
+    {
+      "ref": "pqs:finding:code/event_read.go:20:TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)"
+    },
+    {
+      "ref": "pqs:finding:code/block_subscribe.go:13:TLS ECDHE over WebSocket (Go 1.15 crypto/tls defaults: X25519/P-256/P-384, RSA/ECDSA certs)"
+    },
+    {
+      "ref": "pqs:finding:code/whisper_keypair.go:18:secp256k1 whisper v6 identity keypair (ECIES/ECDSA via shhclient)"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-c9ef78a4"
+    },
+    {
+      "ref": "pqs:collected:ALG-d0f975d5"
+    },
+    {
+      "ref": "pqs:collected:ALG-cfa4b055"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:LIB-1d84a23e"
+    },
+    {
+      "ref": "pqs:collected:LIB-a5330b0f"
+    }
+  ]
+}
