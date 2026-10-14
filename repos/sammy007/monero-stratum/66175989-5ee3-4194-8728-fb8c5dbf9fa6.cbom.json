@@ -1,0 +1,693 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3db58462-1e62-4f2c-84d2-be9daf24c400",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-14T13:07:48.748Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sammy007/monero-stratum",
+      "version": "25f94e28a33ea3c135429c251968db88b9126781",
+      "bom-ref": "repo:sammy007/monero-stratum@25f94e28a33ea3c135429c251968db88b9126781",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/sammy007/monero-stratum"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "66175989-5ee3-4194-8728-fb8c5dbf9fa6"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "16"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "650369"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "CryptoNight (Monero cn_slow_hash, variant 0/1/2 selected from block major version)",
+      "bom-ref": "pqs:finding:stratum/miner.go:155:CryptoNight (Monero cn_slow_hash, variant 0/1/2 selected from block major version)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/miner.go",
+            "line": 155
+          },
+          {
+            "location": "hashing/hashing.go",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/miner.go:155=e0af3541b9c0e3ca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hashing/hashing.go:16=3c696ac9de64a9a2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 (Monero cn_fast_hash)",
+      "bom-ref": "pqs:finding:stratum/miner.go:182:Keccak-256 (Monero cn_fast_hash)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/miner.go",
+            "line": 182
+          },
+          {
+            "location": "hashing/hashing.go",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/miner.go:182=eea0ec8d33079925"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hashing/hashing.go:14=fde7339ea8b6ac3e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Monero Base58 address validation (tools::base58::decode_addr with Keccak-256 checksum, via CGo validate_address)",
+      "bom-ref": "pqs:finding:stratum/handlers.go:22:Monero Base58 address validation (tools::base58::decode_addr with Keccak-256 checksum, via CGo validate_address)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/handlers.go",
+            "line": 22
+          },
+          {
+            "location": "cnutil/src/cnutil.cpp",
+            "line": 26
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/handlers.go:22=dc6df40a83c6b6fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cnutil/src/cnutil.cpp:26=4d7c3462aa7deaec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time digest comparison (recomputed PoW share hash vs miner-submitted result, string ==)",
+      "bom-ref": "pqs:finding:stratum/miner.go:158:non-constant-time digest comparison (recomputed PoW share hash vs miner-submitted result, string ==)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/miner.go",
+            "line": 158
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/miner.go:158=002321580c819cb7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTPS telemetry to New Relic (yvasiyarov/gorelic agent, Go net/http default TLS; Go version unknown — X25519MLKEM768 only from Go 1.24)",
+      "bom-ref": "pqs:finding:main.go:63:HTTPS telemetry to New Relic (yvasiyarov/gorelic agent, Go net/http default TLS; Go version unknown — X25519MLKEM768 only from Go 1.24)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 63
+          },
+          {
+            "location": "main.go",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:63=6f9b20a4b7aee0c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:18=641aac9a4dd3c251"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Plaintext HTTP admin frontend with HTTP Basic Auth — no TLS, credentials travel base64-cleartext",
+      "bom-ref": "pqs:finding:main.go:46,47:Plaintext HTTP admin frontend with HTTP Basic Auth — no TLS, credentials travel base64-cleartext",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 46
+          },
+          {
+            "location": "main.go",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:46=029c15eab449f1e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:47=b12483e329425d59"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CryptoNight slow hash (cn_slow_hash, variant 0-2 auto-selected by block version)",
+      "bom-ref": "pqs:finding:stratum/miner.go:155:CryptoNight slow hash (cn_slow_hash, variant 0-2 auto-selected by block version)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/miner.go",
+            "line": 155
+          },
+          {
+            "location": "hashing/hashing.go",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/miner.go:155=e0af3541b9c0e3ca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hashing/hashing.go:16=3c696ac9de64a9a2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Keccak-256 (Monero cn_fast_hash)",
+      "bom-ref": "pqs:finding:stratum/miner.go:182:Keccak-256 (Monero cn_fast_hash)#2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/miner.go",
+            "line": 182
+          },
+          {
+            "location": "hashing/hashing.go",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/miner.go:182=eea0ec8d33079925"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hashing/hashing.go:14=fde7339ea8b6ac3e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Monero base58 address checksum (Keccak-1600 via tools::base58::decode_addr)",
+      "bom-ref": "pqs:finding:util/util.go:54:Monero base58 address checksum (Keccak-1600 via tools::base58::decode_addr)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "util/util.go",
+            "line": 54
+          },
+          {
+            "location": "cnutil/cnutil.go",
+            "line": 26
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/util.go:54=62a2a417c69098d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cnutil/cnutil.go:26=37f98f18a65bfc7b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTP Basic Auth over plaintext HTTP (admin frontend)",
+      "bom-ref": "pqs:finding:main.go:46,47:HTTP Basic Auth over plaintext HTTP (admin frontend)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 46
+          },
+          {
+            "location": "main.go",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:46=029c15eab449f1e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:47=b12483e329425d59"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "plaintext TCP stratum (no TLS, no session authentication)",
+      "bom-ref": "pqs:finding:stratum/stratum.go:187:plaintext TCP stratum (no TLS, no session authentication)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/stratum.go",
+            "line": 187
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/stratum.go:187=e9eef3a366d86588"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "share and address validation disabled (bypass flags true)",
+      "bom-ref": "pqs:finding:config.example.json:3,4:share and address validation disabled (bypass flags true)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config.example.json",
+            "line": 3
+          },
+          {
+            "location": "config.example.json",
+            "line": 4
+          },
+          {
+            "location": "pool/pool.go",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.example.json:3=bdf43ab7366c9657"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.example.json:4=b622885b792cb8a7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pool/pool.go:6=f3866113d9ff64fd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "FNV-1a 32-bit (non-cryptographic)",
+      "bom-ref": "pqs:finding:stratum/mmap.go:32,34:FNV-1a 32-bit (non-cryptographic)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/mmap.go",
+            "line": 32
+          },
+          {
+            "location": "stratum/mmap.go",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/mmap.go:32=e6135056adaf382a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/mmap.go:34=3f158921c402e85a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "plaintext HTTP — no TLS (monero daemon JSON-RPC upstream)",
+      "bom-ref": "pqs:finding:rpc/rpc.go:57:plaintext HTTP — no TLS (monero daemon JSON-RPC upstream)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "rpc/rpc.go",
+            "line": 57
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "rpc/rpc.go:57=a623375a7645fabb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:6=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "stratum/stratum.go",
+            "line": 5
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stratum/stratum.go:5=a3859508fc6d98bd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:stratum/miner.go:155:CryptoNight (Monero cn_slow_hash, variant 0/1/2 selected from block major version)"
+    },
+    {
+      "ref": "pqs:finding:stratum/miner.go:182:Keccak-256 (Monero cn_fast_hash)"
+    },
+    {
+      "ref": "pqs:finding:stratum/handlers.go:22:Monero Base58 address validation (tools::base58::decode_addr with Keccak-256 checksum, via CGo validate_address)"
+    },
+    {
+      "ref": "pqs:finding:stratum/miner.go:158:non-constant-time digest comparison (recomputed PoW share hash vs miner-submitted result, string ==)"
+    },
+    {
+      "ref": "pqs:finding:main.go:63:HTTPS telemetry to New Relic (yvasiyarov/gorelic agent, Go net/http default TLS; Go version unknown — X25519MLKEM768 only from Go 1.24)"
+    },
+    {
+      "ref": "pqs:finding:main.go:46,47:Plaintext HTTP admin frontend with HTTP Basic Auth — no TLS, credentials travel base64-cleartext"
+    },
+    {
+      "ref": "pqs:finding:stratum/miner.go:155:CryptoNight slow hash (cn_slow_hash, variant 0-2 auto-selected by block version)"
+    },
+    {
+      "ref": "pqs:finding:stratum/miner.go:182:Keccak-256 (Monero cn_fast_hash)#2"
+    },
+    {
+      "ref": "pqs:finding:util/util.go:54:Monero base58 address checksum (Keccak-1600 via tools::base58::decode_addr)"
+    },
+    {
+      "ref": "pqs:finding:main.go:46,47:HTTP Basic Auth over plaintext HTTP (admin frontend)"
+    },
+    {
+      "ref": "pqs:finding:stratum/stratum.go:187:plaintext TCP stratum (no TLS, no session authentication)"
+    },
+    {
+      "ref": "pqs:finding:config.example.json:3,4:share and address validation disabled (bypass flags true)"
+    },
+    {
+      "ref": "pqs:finding:stratum/mmap.go:32,34:FNV-1a 32-bit (non-cryptographic)"
+    },
+    {
+      "ref": "pqs:finding:rpc/rpc.go:57:plaintext HTTP — no TLS (monero daemon JSON-RPC upstream)"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
