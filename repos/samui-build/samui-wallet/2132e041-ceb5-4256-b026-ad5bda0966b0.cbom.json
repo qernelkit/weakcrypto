@@ -1,0 +1,800 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:59e23a60-7329-48b1-bc6d-1b3d761bcf13",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T19:49:38.994Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "samui-build/samui-wallet",
+      "version": "56ddcaaaf9fe8bd20e60846888433781aa0e96fe",
+      "bom-ref": "repo:samui-build/samui-wallet@56ddcaaaf9fe8bd20e60846888433781aa0e96fe",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/samui-build/samui-wallet"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "2132e041-ceb5-4256-b026-ad5bda0966b0"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "10"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "672468"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "BIP39 mnemonic generation (wallet root entropy, 128-bit)",
+      "bom-ref": "pqs:finding:packages/keypair/src/generate-mnemonic.ts:15:BIP39 mnemonic generation (wallet root entropy, 128-bit)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/keypair/src/generate-mnemonic.ts",
+            "line": 15
+          },
+          {
+            "location": "packages/feature-onboarding/src/onboarding-feature-generate.tsx",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/generate-mnemonic.ts:15=eae90c100756ec1b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/feature-onboarding/src/onboarding-feature-generate.tsx:47=a0791570d68c32ce"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2-HMAC-SHA512 (BIP39 mnemonic-to-seed)",
+      "bom-ref": "pqs:finding:packages/keypair/src/create-seed-from-mnemonic.ts:15:PBKDF2-HMAC-SHA512 (BIP39 mnemonic-to-seed)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/keypair/src/create-seed-from-mnemonic.ts",
+            "line": 15
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/create-seed-from-mnemonic.ts:15=c1e9375ed2236646"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SLIP-0010 Ed25519 HD key derivation (HMAC-SHA512)",
+      "bom-ref": "pqs:finding:packages/keypair/src/create-key-pair-signer-from-bip44.ts:39:SLIP-0010 Ed25519 HD key derivation (HMAC-SHA512)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/keypair/src/create-key-pair-signer-from-bip44.ts",
+            "line": 39
+          },
+          {
+            "location": "packages/keypair/src/create-hdkey-from-mnemonic.ts",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/create-key-pair-signer-from-bip44.ts:39=57b244edcf941994"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/create-hdkey-from-mnemonic.ts:14=07cabf929f5a7786"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519 (wallet keypair generation via @solana/kit createKeyPairSignerFromPrivateKeyBytes)",
+      "bom-ref": "pqs:finding:packages/keypair/src/create-key-pair-signer-from-bip44.ts:42:Ed25519 (wallet keypair generation via @solana/kit createKeyPairSignerFromPrivateKeyBytes)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Curve25519",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/keypair/src/create-key-pair-signer-from-bip44.ts",
+            "line": 42
+          },
+          {
+            "location": "packages/keypair/src/create-key-pair-signer-from-bip44.ts",
+            "line": 31
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/create-key-pair-signer-from-bip44.ts:42=2cab2e9325c72fad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/keypair/src/create-key-pair-signer-from-bip44.ts:31=a96c5880a22b5d7a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519 (sign-in signature verification, example app)",
+      "bom-ref": "pqs:finding:examples/basic/src/components/sign-in.tsx:41:Ed25519 (sign-in signature verification, example app)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Curve25519",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "examples/basic/src/components/sign-in.tsx",
+            "line": 41
+          },
+          {
+            "location": "examples/basic/src/components/sign-in.tsx",
+            "line": 40
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "examples/basic/src/components/sign-in.tsx:41=ec266b720146bc64"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "examples/basic/src/components/sign-in.tsx:40=8001fa4021f714c3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "examples/basic/src/components/sign-in.tsx",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "examples/basic/src/components/sign-in.tsx:23=c5a3bef49491451f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/background/src/services/sign.ts",
+            "line": 117
+          },
+          {
+            "location": "packages/background/test/sign-service.test.ts",
+            "line": 162
+          },
+          {
+            "location": "packages/solana-client/src/parse-transaction-inspector-input.ts",
+            "line": 292
+          },
+          {
+            "location": "packages/background/src/services/sign.ts",
+            "line": 98
+          },
+          {
+            "location": "packages/background/test/sign-service.test.ts",
+            "line": 183
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Solana wallet extension (POC — sign.ts carries a \"not safe for production\" TODO). The sign service signs sign-in messages and arbitrary messages with the wallet's Ed25519 key via @solana/kit 6.8.0 (signBytes at sign.ts:92,110; signTransaction at :66,84); the signatureType:'ed25519' sites declare the scheme of those signatures. The transaction inspector imports Ed25519 public keys via WebCrypto (crypto.subtle.importKey {name:'Ed25519'} at parse-transaction-inspector-input.ts:292) and verifies tra"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/background/src/services/sign.ts:117=62ebc3bdf6d68edf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/background/test/sign-service.test.ts:162=62ebc3bdf6d68edf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/solana-client/src/parse-transaction-inspector-input.ts:292=9752da65d18a557c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/background/src/services/sign.ts:98=62ebc3bdf6d68edf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/background/test/sign-service.test.ts:183=eebfb3318bb00507"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/vault/src/encrypted-value-schema.ts",
+            "line": 39
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 122
+          },
+          {
+            "location": "packages/vault/test/encrypted-value.test.ts",
+            "line": 169
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 164
+          },
+          {
+            "location": "packages/vault/test/encrypted-value.test.ts",
+            "line": 179
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 186
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 208
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 216
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 228
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Same logical asset as the AES-256 object (ALG-12f61078): the vault's only cipher is AES-256-GCM. The key size IS stated in the vault — 32 bytes everywhere (VAULT_KEY_LENGTH_BYTES=32, PBKDF2 dklen 32, importVaultKey rejects non-32-byte material) — so the A- \"AES-128 floor\" grading understates the real strength. WebCrypto subtle.encrypt/decrypt with a fresh 12-byte CSPRNG IV per encryption and 16-byte auth tag. At rest this encrypts wallet mnemonics (wallets.mnemonic), account secret keys (account"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value-schema.ts:39=637d8d37eca5bf13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:122=9cc9aeaf63779ea4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/test/encrypted-value.test.ts:169=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:164=5d6c59e446f064e8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/test/encrypted-value.test.ts:179=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:186=e6108d7bf9de0a79"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:208=d498d06302b98b38"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:216=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:228=0cc5e370a7058c9f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/vault/src/encrypted-value-schema.ts",
+            "line": 53
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 177
+          },
+          {
+            "location": "packages/vault/test/encrypted-value.test.ts",
+            "line": 174
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 182
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 200
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 201
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 22
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Vault password KDF: PBKDF2-HMAC-SHA256 at exactly 600,000 iterations (OWASP minimum, defined as PASSWORD_KDF_MIN_ITERATIONS at encrypted-value-schema.ts:3 and enforced as a schema floor at :53), 32-byte derived key, 16-byte CSPRNG salt (encryptWithCredential, encrypted-value.ts:72-81; derivation at :177-182). Derives the AES-256-GCM vault key from the wallet password (8-128 chars) or from a 4-8 digit PIN (wallet-protection.ts:25 wraps the vault key envelope under the PIN-derived key). The KDF is"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value-schema.ts:53=dbdc0cbd392f1fef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:177=2d48c72bc4c06529"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/test/encrypted-value.test.ts:174=9da986a2783f7783"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:182=e5ebb378324d1466"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:200=0ee7cb4bb3e98052"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:201=ba19575e81801d30"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:22=686954edd18b88d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:82=9da986a2783f7783"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/vault/src/encrypted-value-schema.ts",
+            "line": 39
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 216
+          },
+          {
+            "location": "packages/vault/test/encrypted-value.test.ts",
+            "line": 169
+          },
+          {
+            "location": "packages/vault/src/encrypted-value.ts",
+            "line": 228
+          },
+          {
+            "location": "packages/vault/test/encrypted-value.test.ts",
+            "line": 179
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The vault's at-rest cipher: AES-256-GCM (WebCrypto), used to encrypt wallet mnemonics and account secret keys in IndexedDB (packages/db wallet-create.ts:27, account-create.ts:16-21, account-read-secret-key.ts:27, wallet-reprotect.ts:28,34) plus the vault-key envelope under password/PIN protection. Key material is 32 bytes from the WebCrypto CSPRNG (generateVaultKeyMaterial, crypto.getRandomValues) or PBKDF2-SHA256-600k; 12-byte CSPRNG IV per encryption; 16-byte auth tag. Quantum-safe (128-bit Gr"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value-schema.ts:39=637d8d37eca5bf13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:216=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/test/encrypted-value.test.ts:169=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/src/encrypted-value.ts:228=0cc5e370a7058c9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/vault/test/encrypted-value.test.ts:179=0cc5e370a7058c9f"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:packages/keypair/src/generate-mnemonic.ts:15:BIP39 mnemonic generation (wallet root entropy, 128-bit)"
+    },
+    {
+      "ref": "pqs:finding:packages/keypair/src/create-seed-from-mnemonic.ts:15:PBKDF2-HMAC-SHA512 (BIP39 mnemonic-to-seed)"
+    },
+    {
+      "ref": "pqs:finding:packages/keypair/src/create-key-pair-signer-from-bip44.ts:39:SLIP-0010 Ed25519 HD key derivation (HMAC-SHA512)"
+    },
+    {
+      "ref": "pqs:finding:packages/keypair/src/create-key-pair-signer-from-bip44.ts:42:Ed25519 (wallet keypair generation via @solana/kit createKeyPairSignerFromPrivateKeyBytes)"
+    },
+    {
+      "ref": "pqs:finding:examples/basic/src/components/sign-in.tsx:41:Ed25519 (sign-in signature verification, example app)"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
