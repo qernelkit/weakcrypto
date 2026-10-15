@@ -1,0 +1,508 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c2e7d896-2a12-45ae-9e2a-f73a3ebbadde",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T16:31:44.039Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "armorwallet/armor-crypto-mcp",
+      "version": "c026c00b2f3fd40594e31f642d68aa92e742e013",
+      "bom-ref": "repo:armorwallet/armor-crypto-mcp@c026c00b2f3fd40594e31f642d68aa92e742e013",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/armorwallet/armor-crypto-mcp"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8d7f18bf-0939-4056-b838-418a8ecd29c7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "8"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "742150"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256 (HMAC-SHA256 bearer token)",
+      "bom-ref": "pqs:finding:armor_crypto_mcp/armor_client.py:525:JWT HS256 (HMAC-SHA256 bearer token)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "armor_crypto_mcp/armor_client.py",
+            "line": 525
+          },
+          {
+            "location": "armor_crypto_mcp/armor_mcp.py",
+            "line": 76
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_client.py:525=39a294e001247ec0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_mcp.py:76=78d63e667b245d07"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Wallet private key / BIP-39 mnemonic export (custodial ECDSA/EdDSA signing keys, in transit)",
+      "bom-ref": "pqs:finding:armor_crypto_mcp/armor_mcp.py:635,637,642:Wallet private key / BIP-39 mnemonic export (custodial ECDSA/EdDSA signing keys, in transit)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "armor_crypto_mcp/armor_mcp.py",
+            "line": 635
+          },
+          {
+            "location": "armor_crypto_mcp/armor_mcp.py",
+            "line": 637
+          },
+          {
+            "location": "armor_crypto_mcp/armor_mcp.py",
+            "line": 642
+          },
+          {
+            "location": "armor_crypto_mcp/armor_client.py",
+            "line": 390
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_mcp.py:635=524d6b977002a8a9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_mcp.py:637=9805c2e30053a710"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_mcp.py:642=bcfc95be0e82a8c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_client.py:390=2ad5fbb55b9805df"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256 (HMAC-SHA256) bearer token",
+      "bom-ref": "pqs:finding:armor_crypto_mcp/armor_client.py:525:JWT HS256 (HMAC-SHA256) bearer token",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "armor_crypto_mcp/armor_client.py",
+            "line": 525
+          },
+          {
+            "location": "armor_crypto_mcp/armor_mcp.py",
+            "line": 76
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_client.py:525=39a294e001247ec0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_mcp.py:76=78d63e667b245d07"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OpenSSL via unpinned python:3.11-slim (TLS provider version floats)",
+      "bom-ref": "pqs:finding:Dockerfile:2:OpenSSL via unpinned python:3.11-slim (TLS provider version floats)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Dockerfile",
+            "line": 2
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Dockerfile:2=81e1b9ce43d274b1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pyproject.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The TLS transport layer of the whole application. Both site packages read: the two dependency lines that give this MCP server its HTTPS capability — pyproject.toml:13 \"httpx\" (unpinned) and pyproject.toml:11 \"requests>=2.31.0\", mirrored at requirements.txt:5 and requirements.txt:2. No TLS configuration exists anywhere in the codebase (no ssl module import, no cipher/group list, no verify override), so key exchange is whatever the runtime OpenSSL default offers: classical ECDHE/X25519, no post-qu"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pyproject.toml:1=9db496674d490e55"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "httpx",
+      "bom-ref": "pqs:collected:LIB-ae665322",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pyproject.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ae665322"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The HTTPS client actually used: imported at armor_client.py:5 (\"import httpx\"), session constructed at armor_client.py:528 (\"httpx.AsyncClient(timeout=30)\") for every call to https://app.armorwallet.ai/api/v1 with Bearer authentication. Declared with no version constraint (\"httpx\"), so the TLS stack — including any future hybrid X25519MLKEM768 group support — floats with whatever pip resolves at build time (Dockerfile \"RUN pip install .\"). This library IS the TLS key-exchange surface of the syst"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pyproject.toml:1=9db496674d490e55"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "requests",
+      "bom-ref": "pqs:collected:LIB-b9851744",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pyproject.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b9851744"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared but unused: no \"import requests\" or requests.* call site exists anywhere in the application code — the app uses httpx exclusively. The package still ships in the Docker image via \"RUN pip install .\" and brings urllib3 + certifi (the CA trust store) as an available TLS transport surface. 2.31.0 is the CVE-2023-32681 (Proxy-Authorization leak) fix floor. Dependency-inventory record of presence; use is a finding's question, and here there is none — but availability in the shipped image is "
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pyproject.toml:1=9db496674d490e55"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "armor_crypto_mcp/armor_client.py",
+            "line": 528
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "armor_crypto_mcp/armor_client.py:528=4af5fea71848eee5"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:armor_crypto_mcp/armor_client.py:525:JWT HS256 (HMAC-SHA256 bearer token)"
+    },
+    {
+      "ref": "pqs:finding:armor_crypto_mcp/armor_mcp.py:635,637,642:Wallet private key / BIP-39 mnemonic export (custodial ECDSA/EdDSA signing keys, in transit)"
+    },
+    {
+      "ref": "pqs:finding:armor_crypto_mcp/armor_client.py:525:JWT HS256 (HMAC-SHA256) bearer token"
+    },
+    {
+      "ref": "pqs:finding:Dockerfile:2:OpenSSL via unpinned python:3.11-slim (TLS provider version floats)"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:LIB-ae665322"
+    },
+    {
+      "ref": "pqs:collected:LIB-b9851744"
+    },
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    }
+  ]
+}
