@@ -1,0 +1,133 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a5a3ae12-2f63-4cdb-a78f-76f1dd363ad8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T15:29:43.451Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "owocki/adblock-to-bitcoin",
+      "version": "959eea1f102bf1e11c7e1d4e29d2b5331735cc34",
+      "bom-ref": "repo:owocki/adblock-to-bitcoin@959eea1f102bf1e11c7e1d4e29d2b5331735cc34",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/owocki/adblock-to-bitcoin"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "52f293ff-0160-4de1-a7dc-a49f26f0b404"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "875976"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "WordPress anti-CSRF nonce (wp_create_nonce / wp_verify_nonce, HMAC-based token)",
+      "bom-ref": "pqs:finding:wordpress-plugin/settings.php:223:WordPress anti-CSRF nonce (wp_create_nonce / wp_verify_nonce, HMAC-based token)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "wordpress-plugin/settings.php",
+            "line": 223
+          },
+          {
+            "location": "wordpress-plugin/settings.php",
+            "line": 56
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wordpress-plugin/settings.php:223=55c6ea4dadbc2241"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wordpress-plugin/settings.php:56=623c0eedd35a1b10"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "WordPress nonce (HMAC-MD5 via WP core) — CSRF MAC token, verification result discarded",
+      "bom-ref": "pqs:finding:wordpress-plugin/settings.php:56,223:WordPress nonce (HMAC-MD5 via WP core) — CSRF MAC token, verification result discarded",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "wordpress-plugin/settings.php",
+            "line": 56
+          },
+          {
+            "location": "wordpress-plugin/settings.php",
+            "line": 223
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wordpress-plugin/settings.php:56=623c0eedd35a1b10"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wordpress-plugin/settings.php:223=55c6ea4dadbc2241"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:wordpress-plugin/settings.php:223:WordPress anti-CSRF nonce (wp_create_nonce / wp_verify_nonce, HMAC-based token)"
+    },
+    {
+      "ref": "pqs:finding:wordpress-plugin/settings.php:56,223:WordPress nonce (HMAC-MD5 via WP core) — CSRF MAC token, verification result discarded"
+    }
+  ]
+}
