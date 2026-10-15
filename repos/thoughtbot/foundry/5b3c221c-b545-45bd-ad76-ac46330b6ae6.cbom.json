@@ -1,0 +1,185 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:99965a2a-b023-414c-bb43-f9750af2a9cc",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T05:13:29.177Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "thoughtbot/foundry",
+      "version": "6fc7f070abb7092fdb1dc7622008b3b81df086ed",
+      "bom-ref": "repo:thoughtbot/foundry@6fc7f070abb7092fdb1dc7622008b3b81df086ed",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/thoughtbot/foundry"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5b3c221c-b545-45bd-ad76-ac46330b6ae6"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "237275"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS (scheme-only; suite/version decided by system OpenSSL via Ruby — unpinned)",
+      "bom-ref": "pqs:finding:Gemfile:1,2,3:TLS (scheme-only; suite/version decided by system OpenSSL via Ruby — unpinned)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile",
+            "line": 1
+          },
+          {
+            "location": "Gemfile",
+            "line": 2
+          },
+          {
+            "location": "Gemfile",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile:1=45691bb232136119"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile:2=acd68c86c71f96c5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile:3=363eb20c5d94b6fe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "No TLS enforcement (plaintext http favicon, scheme-relative analytics) + CDN script without SRI integrity hash",
+      "bom-ref": "pqs:finding:source/layouts/layout.haml:8,11,14,17:No TLS enforcement (plaintext http favicon, scheme-relative analytics) + CDN script without SRI integrity hash",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "source/layouts/layout.haml",
+            "line": 8
+          },
+          {
+            "location": "source/layouts/layout.haml",
+            "line": 11
+          },
+          {
+            "location": "source/layouts/layout.haml",
+            "line": 14
+          },
+          {
+            "location": "source/layouts/layout.haml",
+            "line": 17
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "source/layouts/layout.haml:8=b5c4e5fbbd82fbf5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "source/layouts/layout.haml:11=e92ecaccc68d851b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "source/layouts/layout.haml:14=c334c10df01e20ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "source/layouts/layout.haml:17=4c0e9cd9f006a92f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "No TLS enforcement — PII (email) form action is scheme-relative (downgrades to cleartext HTTP on an http page)",
+      "bom-ref": "pqs:finding:source/index.haml:19:No TLS enforcement — PII (email) form action is scheme-relative (downgrades to cleartext HTTP on an http page)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "source/index.haml",
+            "line": 19
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "source/index.haml:19=f8b1bcacf21eca38"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:Gemfile:1,2,3:TLS (scheme-only; suite/version decided by system OpenSSL via Ruby — unpinned)"
+    },
+    {
+      "ref": "pqs:finding:source/layouts/layout.haml:8,11,14,17:No TLS enforcement (plaintext http favicon, scheme-relative analytics) + CDN script without SRI integrity hash"
+    },
+    {
+      "ref": "pqs:finding:source/index.haml:19:No TLS enforcement — PII (email) form action is scheme-relative (downgrades to cleartext HTTP on an http page)"
+    }
+  ]
+}
