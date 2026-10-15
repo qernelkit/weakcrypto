@@ -1,0 +1,770 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:20604ba4-bc6b-4073-8a01-c9f6ca982cbd",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T18:11:21.109Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "coinbase/coinbase-ios-sdk",
+      "version": "3548d4612c7d835a6a7b3e444d3cb3a4aef21a75",
+      "bom-ref": "repo:coinbase/coinbase-ios-sdk@3548d4612c7d835a6a7b3e444d3cb3a4aef21a75",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/coinbase/coinbase-ios-sdk"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "a62653f0-d2c1-45f0-807b-5c0b848ccbb1"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "14"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "427896"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS via URLSession.shared (Apple defaults, default trust evaluation — no certificate pinning)",
+      "bom-ref": "pqs:finding:Example/Source/Utils/Utils.swift:19:TLS via URLSession.shared (Apple defaults, default trust evaluation — no certificate pinning)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Example/Source/Utils/Utils.swift",
+            "line": 19
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/Utils.swift:19=00f9287986568725"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "arc4random_uniform (OAuth2 anti-CSRF state token generator, 8 alphanumeric chars ≈ 47 bits entropy)",
+      "bom-ref": "pqs:finding:Source/OAuth/OAuth.swift:224:arc4random_uniform (OAuth2 anti-CSRF state token generator, 8 alphanumeric chars ≈ 47 bits entropy)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg",
+          "parameterSetIdentifier": "47"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/OAuth/OAuth.swift",
+            "line": 224
+          },
+          {
+            "location": "Source/OAuth/String+Random.swift",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/OAuth/OAuth.swift:224=485f1acf123871ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/OAuth/String+Random.swift:24=020119736c237af4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OAuth2 anti-CSRF state token equality check via Swift == (non-constant-time)",
+      "bom-ref": "pqs:finding:Source/OAuth/OAuth.swift:155:OAuth2 anti-CSRF state token equality check via Swift == (non-constant-time)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/OAuth/OAuth.swift",
+            "line": 155
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/OAuth/OAuth.swift:155=574a17371d7b56da"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens — no kSecAttrAccessible attribute set",
+      "bom-ref": "pqs:finding:Example/Source/Utils/KeychainService.swift:23,27:iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens — no kSecAttrAccessible attribute set",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Example/Source/Utils/KeychainService.swift",
+            "line": 23
+          },
+          {
+            "location": "Example/Source/Utils/KeychainService.swift",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/KeychainService.swift:23=1f5ab90f4e5cd2a6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/KeychainService.swift:27=e71f126f715d0d18"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2 ECDHE (Apple URLSession/Security framework defaults; session pinned via SessionManager)",
+      "bom-ref": "pqs:finding:Source/Network/NetworkPromises.swift:67:TLS 1.2 ECDHE (Apple URLSession/Security framework defaults; session pinned via SessionManager)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Network/NetworkPromises.swift",
+            "line": 67
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/NetworkPromises.swift:67=74c9502b3276d4a5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OAuth2 authorization_code + refresh_token grants (confidential client with embedded client_secret, no PKCE)",
+      "bom-ref": "pqs:finding:Source/Resources/Token/TokensAPI.swift:50,53,59,61:OAuth2 authorization_code + refresh_token grants (confidential client with embedded client_secret, no PKCE)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Resources/Token/TokensAPI.swift",
+            "line": 50
+          },
+          {
+            "location": "Source/Resources/Token/TokensAPI.swift",
+            "line": 53
+          },
+          {
+            "location": "Source/Resources/Token/TokensAPI.swift",
+            "line": 59
+          },
+          {
+            "location": "Source/Resources/Token/TokensAPI.swift",
+            "line": 61
+          },
+          {
+            "location": "Example/Source/Constants.swift",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Resources/Token/TokensAPI.swift:50=daa45ae870def0ce"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Resources/Token/TokensAPI.swift:53=241e857b2a60ce0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Resources/Token/TokensAPI.swift:59=4172cad3d0b7f971"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Resources/Token/TokensAPI.swift:61=241e857b2a60ce0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Constants.swift:14=28e4ab9f7baf140e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens",
+      "bom-ref": "pqs:finding:Example/Source/Utils/KeychainService.swift:27,45,64:iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Example/Source/Utils/KeychainService.swift",
+            "line": 27
+          },
+          {
+            "location": "Example/Source/Utils/KeychainService.swift",
+            "line": 45
+          },
+          {
+            "location": "Example/Source/Utils/KeychainService.swift",
+            "line": 64
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/KeychainService.swift:27=e71f126f715d0d18"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/KeychainService.swift:45=d8546b95613b4384"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Example/Source/Utils/KeychainService.swift:64=e4bbbf9baae7dc83"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "arc4random_uniform — OAuth2 anti-CSRF state nonce, 8 alphanumeric chars",
+      "bom-ref": "pqs:finding:Source/OAuth/OAuth.swift:224:arc4random_uniform — OAuth2 anti-CSRF state nonce, 8 alphanumeric chars",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/OAuth/OAuth.swift",
+            "line": 224
+          },
+          {
+            "location": "Source/OAuth/String+Random.swift",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/OAuth/OAuth.swift:224=485f1acf123871ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/OAuth/String+Random.swift:24=020119736c237af4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "URLSession default TLS configuration (Apple Security framework, iOS 11+ floor) — classical ECDHE key exchange, no PQ groups",
+      "bom-ref": "pqs:finding:Source/Network/SessionManager.swift:29:URLSession default TLS configuration (Apple Security framework, iOS 11+ floor) — classical ECDHE key exchange, no PQ groups",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Network/SessionManager.swift",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/SessionManager.swift:29=a2c8d9413d20c27e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-16af57a9",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Supporting Files/PinnedCertificates/BaltimoreCybertrustRoot.cer",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-16af57a9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Supporting Files/PinnedCertificates/BaltimoreCybertrustRoot.cer:1=d03f4876cd0bd584"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-4348a0e9",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Supporting Files/PinnedCertificates/Digicert.cer",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-4348a0e9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Supporting Files/PinnedCertificates/Digicert.cer:1=bdd2a272d539eb63"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-7431e5f4",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Supporting Files/PinnedCertificates/DigicertEV.cer",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-7431e5f4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Supporting Files/PinnedCertificates/DigicertEV.cer:1=f468a8e642477f7d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-9acfab7e",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Supporting Files/PinnedCertificates/Verisign.cer",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-9acfab7e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Supporting Files/PinnedCertificates/Verisign.cer:1=97e36579a958087f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "certificate pinning",
+      "bom-ref": "pqs:collected:ALG-f6d7729c",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Source/Network/ServerTrustValidator.swift",
+            "line": 31
+          },
+          {
+            "location": "Source/Network/SessionManager.swift",
+            "line": 46
+          },
+          {
+            "location": "Source/Network/ServerTrustValidator.swift",
+            "line": 37
+          },
+          {
+            "location": "Source/Network/ServerTrustValidator.swift",
+            "line": 38
+          },
+          {
+            "location": "Source/Network/ServerTrustValidator.swift",
+            "line": 87
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f6d7729c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/ServerTrustValidator.swift:31=e51341abac407d16"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/SessionManager.swift:46=e139542f6a07f0c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/ServerTrustValidator.swift:37=a47d3b7fae39fe39"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/ServerTrustValidator.swift:38=dca57fe9c94797d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/Network/ServerTrustValidator.swift:87=a22ad5e6cc5af249"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:Example/Source/Utils/Utils.swift:19:TLS via URLSession.shared (Apple defaults, default trust evaluation — no certificate pinning)"
+    },
+    {
+      "ref": "pqs:finding:Source/OAuth/OAuth.swift:224:arc4random_uniform (OAuth2 anti-CSRF state token generator, 8 alphanumeric chars ≈ 47 bits entropy)"
+    },
+    {
+      "ref": "pqs:finding:Source/OAuth/OAuth.swift:155:OAuth2 anti-CSRF state token equality check via Swift == (non-constant-time)"
+    },
+    {
+      "ref": "pqs:finding:Example/Source/Utils/KeychainService.swift:23,27:iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens — no kSecAttrAccessible attribute set"
+    },
+    {
+      "ref": "pqs:finding:Source/Network/NetworkPromises.swift:67:TLS 1.2 ECDHE (Apple URLSession/Security framework defaults; session pinned via SessionManager)"
+    },
+    {
+      "ref": "pqs:finding:Source/Resources/Token/TokensAPI.swift:50,53,59,61:OAuth2 authorization_code + refresh_token grants (confidential client with embedded client_secret, no PKCE)"
+    },
+    {
+      "ref": "pqs:finding:Example/Source/Utils/KeychainService.swift:27,45,64:iOS Keychain (kSecClassGenericPassword) storage of OAuth2 access/refresh tokens"
+    },
+    {
+      "ref": "pqs:finding:Source/OAuth/OAuth.swift:224:arc4random_uniform — OAuth2 anti-CSRF state nonce, 8 alphanumeric chars"
+    },
+    {
+      "ref": "pqs:finding:Source/Network/SessionManager.swift:29:URLSession default TLS configuration (Apple Security framework, iOS 11+ floor) — classical ECDHE key exchange, no PQ groups"
+    },
+    {
+      "ref": "pqs:collected:CERT-16af57a9"
+    },
+    {
+      "ref": "pqs:collected:CERT-4348a0e9"
+    },
+    {
+      "ref": "pqs:collected:CERT-7431e5f4"
+    },
+    {
+      "ref": "pqs:collected:CERT-9acfab7e"
+    },
+    {
+      "ref": "pqs:collected:ALG-f6d7729c"
+    }
+  ]
+}
