@@ -1,0 +1,189 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:65553a39-2e92-40b7-8e3a-9b0756838ddd",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T16:35:02.609Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "brandonrobertz/bitcointradingalgorithmtoolkit",
+      "version": "eaff9968065a5cf88048e599af2da35b9481d18a",
+      "bom-ref": "repo:brandonrobertz/bitcointradingalgorithmtoolkit@eaff9968065a5cf88048e599af2da35b9481d18a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/brandonrobertz/BitcoinTradingAlgorithmToolkit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "63c59410-b187-4885-a8b9-c6b839f35dad"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "518841"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "numpy.random MT19937 (random_integers)",
+      "bom-ref": "pqs:finding:src/genetic.py:77,79,71:numpy.random MT19937 (random_integers)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/genetic.py",
+            "line": 77
+          },
+          {
+            "location": "src/genetic.py",
+            "line": 79
+          },
+          {
+            "location": "src/genetic.py",
+            "line": 71
+          },
+          {
+            "location": "src/genetic.py",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/genetic.py:77=7df618b728ded92d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/genetic.py:79=8740404796fa853b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/genetic.py:71=b5117e43cceb828d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/genetic.py:71=b5117e43cceb828d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/genetic.py",
+            "line": 213
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Mersenne-Twister PRNG used to decide whether a gene mutates in a genetic-algorithm search that evolves trading-strategy parameters (logtick trading bot). The \"security context\" in the object name is not borne out — there is no key, token, nonce or verifier generated here; non-cryptographic randomness is the appropriate choice for stochastic search. Changeable here (first-party code), but nothing to migrate: no security decision rests on this PRNG."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/genetic.py:213=ec135fce968be2b0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/genetic.py:77,79,71:numpy.random MT19937 (random_integers)"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
