@@ -1,0 +1,169 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:56c27b3c-72f4-4e40-85a6-99e6e407a11a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T11:28:14.242Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "zju3dv/coin3d",
+      "version": "3de63a14eb214faff4092de6328234f8c1803759",
+      "bom-ref": "repo:zju3dv/coin3d@3de63a14eb214faff4092de6328234f8c1803759",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/zju3dv/Coin3D"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ad936b25-e9a5-448a-bc51-56800c8aae0f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "416518"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "pytorch_lightning.seed_everything (non-cryptographic PRNG seeding, seed=6033)",
+      "bom-ref": "pqs:finding:train_diffusion.py:232:pytorch_lightning.seed_everything (non-cryptographic PRNG seeding, seed=6033)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "train_diffusion.py",
+            "line": 232
+          },
+          {
+            "location": "train_diffusion.py",
+            "line": 41
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "train_diffusion.py:232=25968838a5d38e8d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "train_diffusion.py:41=1f92ae6eff7d3b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "torch.random.manual_seed + np.random.seed (non-cryptographic PRNG seeding, seed=6033)",
+      "bom-ref": "pqs:finding:generate.py:49,50:torch.random.manual_seed + np.random.seed (non-cryptographic PRNG seeding, seed=6033)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "generate.py",
+            "line": 49
+          },
+          {
+            "location": "generate.py",
+            "line": 50
+          },
+          {
+            "location": "generate.py",
+            "line": 44
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate.py:49=d675fdd93f7f550c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate.py:50=c96d001f72ca4215"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "generate.py:44=e3b0c44298fc1c14"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ComfyUI KSampler generation seed (hardcoded in workflow config)",
+      "bom-ref": "pqs:finding:workflow/Coin3D_condition_workflow_api.json:4:ComfyUI KSampler generation seed (hardcoded in workflow config)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "workflow/Coin3D_condition_workflow_api.json",
+            "line": 4
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "workflow/Coin3D_condition_workflow_api.json:4=f532ef1e119a67ad"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:train_diffusion.py:232:pytorch_lightning.seed_everything (non-cryptographic PRNG seeding, seed=6033)"
+    },
+    {
+      "ref": "pqs:finding:generate.py:49,50:torch.random.manual_seed + np.random.seed (non-cryptographic PRNG seeding, seed=6033)"
+    },
+    {
+      "ref": "pqs:finding:workflow/Coin3D_condition_workflow_api.json:4:ComfyUI KSampler generation seed (hardcoded in workflow config)"
+    }
+  ]
+}
