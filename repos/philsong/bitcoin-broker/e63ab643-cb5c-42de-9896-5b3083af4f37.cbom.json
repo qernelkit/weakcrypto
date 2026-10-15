@@ -1,0 +1,1018 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:05f98373-5979-429b-b403-2e96aced954b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T01:19:46.331Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "philsong/bitcoin-broker",
+      "version": "7efbfcb7692236e529d6985eb9378ffc1f1653c7",
+      "bom-ref": "repo:philsong/bitcoin-broker@7efbfcb7692236e529d6985eb9378ffc1f1653c7",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/philsong/bitcoin-broker"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e63ab643-cb5c-42de-9896-5b3083af4f37"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "16"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "733816"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credential",
+      "bom-ref": "pqs:finding:src/db/db.go:47:PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credential",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/db/db.go",
+            "line": 47
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/db/db.go:47=f9bb04143ba2843e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:27=9df6f05be546f923"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "cleartext HTTP transport (no TLS) for market-data feeds",
+      "bom-ref": "pqs:finding:conf/config_sample.json:3,4,7,8:cleartext HTTP transport (no TLS) for market-data feeds",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "conf/config_sample.json",
+            "line": 3
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 4
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 7
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:3=d406b423bf38da39"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:4=c82632aba2ee1a40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:7=97c86bea20999a49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:8=b2563959b51782c4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "exchange API signing keys (MD5/HMAC-MD5 secrets) received over unauthenticated plaintext Thrift RPC and stored unencrypted in postgres",
+      "bom-ref": "pqs:finding:src/trade_server/trade_handler.go:17,20:exchange API signing keys (MD5/HMAC-MD5 secrets) received over unauthenticated plaintext Thrift RPC and stored unencrypted in postgres",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/trade_server/trade_handler.go",
+            "line": 17
+          },
+          {
+            "location": "src/trade_server/trade_handler.go",
+            "line": 20
+          },
+          {
+            "location": "etc/broker.thrift",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_handler.go:17=9d169bf484281847"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_handler.go:20=33f230554b089b6a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "etc/broker.thrift:27=8398274d89428fe9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Thrift TSimpleServer on raw TCP socket — no TLS transport, no authentication (carries config_keys and buy/sell commands)",
+      "bom-ref": "pqs:finding:src/trade_server/trade_server.go:26,35:Thrift TSimpleServer on raw TCP socket — no TLS transport, no authentication (carries config_keys and buy/sell commands)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/trade_server/trade_server.go",
+            "line": 26
+          },
+          {
+            "location": "src/trade_server/trade_server.go",
+            "line": 35
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 28
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_server.go:26=78c03671c45aa839"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_server.go:35=b30b2761bb3b4d78"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:28=3d7c89db87bd128e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5 signing secret (haobtc exchange API key) written to logs in cleartext",
+      "bom-ref": "pqs:finding:src/haobtc/tradeAPI.go:51:MD5 signing secret (haobtc exchange API key) written to logs in cleartext",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/haobtc/tradeAPI.go",
+            "line": 51
+          },
+          {
+            "location": "src/haobtc/tradeAPI.go",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/haobtc/tradeAPI.go:51=9086a134b6f302d8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/haobtc/tradeAPI.go:49=f1a686b33d56f1e2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credentials",
+      "bom-ref": "pqs:finding:src/db/db.go:47:PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credentials",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/db/db.go",
+            "line": 47
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/db/db.go:47=f9bb04143ba2843e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:27=9df6f05be546f923"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Exchange API secret keys stored unencrypted in PostgreSQL (exchange_config table)",
+      "bom-ref": "pqs:finding:src/db/exchange_config.go:26,44,59:Exchange API secret keys stored unencrypted in PostgreSQL (exchange_config table)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/db/exchange_config.go",
+            "line": 26
+          },
+          {
+            "location": "src/db/exchange_config.go",
+            "line": 44
+          },
+          {
+            "location": "src/db/exchange_config.go",
+            "line": 59
+          },
+          {
+            "location": "etc/trader_2016_06_29.sql",
+            "line": 186
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/db/exchange_config.go:26=d564b4f6e675cddc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/db/exchange_config.go:44=2fdcb3b75a4c1eba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/db/exchange_config.go:59=16dbec44713e163c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "etc/trader_2016_06_29.sql:186=89b0d870cb997073"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Thrift trade RPC over plaintext TCP (no TLS transport), server trade_server.go + client trade_client.go:27, carrying ExchangeConfig access/secret keys",
+      "bom-ref": "pqs:finding:src/trade_server/trade_server.go:26,35:Thrift trade RPC over plaintext TCP (no TLS transport), server trade_server.go + client trade_client.go:27, carrying ExchangeConfig access/secret keys",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/trade_server/trade_server.go",
+            "line": 26
+          },
+          {
+            "location": "src/trade_server/trade_server.go",
+            "line": 35
+          },
+          {
+            "location": "etc/broker.thrift",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_server.go:26=78c03671c45aa839"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/trade_server/trade_server.go:35=b30b2761bb3b4d78"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "etc/broker.thrift:27=8398274d89428fe9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "huobi API secret_key transmitted as a raw request parameter in every POST body (and written to debug logs)",
+      "bom-ref": "pqs:finding:src/huobi/tradeapi.go:39,116:huobi API secret_key transmitted as a raw request parameter in every POST body (and written to debug logs)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/huobi/tradeapi.go",
+            "line": 39
+          },
+          {
+            "location": "src/huobi/tradeapi.go",
+            "line": 116
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/huobi/tradeapi.go:39=c6fa26cf8e2ca58e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/huobi/tradeapi.go:116=d916a2befeabdbf3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Cleartext HTTP market-data transport (chbtc/huobi ticker and depth endpoints)",
+      "bom-ref": "pqs:finding:conf/config_sample.json:3,4,7,8:Cleartext HTTP market-data transport (chbtc/huobi ticker and depth endpoints)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "other"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "conf/config_sample.json",
+            "line": 3
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 4
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 7
+          },
+          {
+            "location": "conf/config_sample.json",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:3=d406b423bf38da39"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:4=c82632aba2ee1a40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:7=97c86bea20999a49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "conf/config_sample.json:8=b2563959b51782c4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:collected:ALG-70109388",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/chbtc/tradeAPI.go",
+            "line": 45
+          },
+          {
+            "location": "src/haobtc/tradeAPI.go",
+            "line": 45
+          },
+          {
+            "location": "src/huobi/tradeapi.go",
+            "line": 51
+          },
+          {
+            "location": "src/okcoin/tradeAPI.go",
+            "line": 49
+          },
+          {
+            "location": "src/util/crypto.go",
+            "line": 12
+          },
+          {
+            "location": "src/haobtc/tradeAPI.go",
+            "line": 53
+          },
+          {
+            "location": "src/huobi/tradeapi.go",
+            "line": 55
+          },
+          {
+            "location": "src/okcoin/tradeAPI.go",
+            "line": 57
+          },
+          {
+            "location": "src/util/crypto.go",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-70109388"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/chbtc/tradeAPI.go:45=4889505a78018c3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/haobtc/tradeAPI.go:45=61aca6eb434c3480"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/huobi/tradeapi.go:51=61aca6eb434c3480"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/okcoin/tradeAPI.go:49=61aca6eb434c3480"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/crypto.go:12=ba94b764bd95d6f6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/haobtc/tradeAPI.go:53=be60943aea220e0c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/huobi/tradeapi.go:55=a97b558eea3c6dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/okcoin/tradeAPI.go:57=be60943aea220e0c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/crypto.go:14=a80465c675c33192"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-MD5",
+      "bom-ref": "pqs:collected:ALG-e2f4f87c",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/chbtc/tradeAPI.go",
+            "line": 45
+          },
+          {
+            "location": "src/chbtc/tradeAPI.go",
+            "line": 46
+          },
+          {
+            "location": "src/chbtc/tradeAPI.go",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e2f4f87c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/chbtc/tradeAPI.go:45=4889505a78018c3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/chbtc/tradeAPI.go:46=d38650f8c4312735"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/chbtc/tradeAPI.go:47=85d00a47aed0e9a3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/chbtc/tradeAPI.go",
+            "line": 42
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/chbtc/tradeAPI.go:42=2a0d9fc1ce88fa58"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/broker/main.go",
+            "line": 10
+          },
+          {
+            "location": "src/util/utils.go",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/broker/main.go:10=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/utils.go:13=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go version unknown)",
+      "bom-ref": "pqs:collected:PROTO-c78dc6f6",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/util/httpclient.go",
+            "line": 25
+          },
+          {
+            "location": "src/util/httpclient.go",
+            "line": 44
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-c78dc6f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/httpclient.go:25=95bcb3e09268d252"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/httpclient.go:44=25dccf525ae3a49e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/util/crypto.go",
+            "line": 5
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/util/crypto.go:5=a3859508fc6d98bd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/db/db.go:47:PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credential"
+    },
+    {
+      "ref": "pqs:finding:conf/config_sample.json:3,4,7,8:cleartext HTTP transport (no TLS) for market-data feeds"
+    },
+    {
+      "ref": "pqs:finding:src/trade_server/trade_handler.go:17,20:exchange API signing keys (MD5/HMAC-MD5 secrets) received over unauthenticated plaintext Thrift RPC and stored unencrypted in postgres"
+    },
+    {
+      "ref": "pqs:finding:src/trade_server/trade_server.go:26,35:Thrift TSimpleServer on raw TCP socket — no TLS transport, no authentication (carries config_keys and buy/sell commands)"
+    },
+    {
+      "ref": "pqs:finding:src/haobtc/tradeAPI.go:51:MD5 signing secret (haobtc exchange API key) written to logs in cleartext"
+    },
+    {
+      "ref": "pqs:finding:src/db/db.go:47:PostgreSQL cleartext connection (sslmode=disable) with hardcoded root:root credentials"
+    },
+    {
+      "ref": "pqs:finding:src/db/exchange_config.go:26,44,59:Exchange API secret keys stored unencrypted in PostgreSQL (exchange_config table)"
+    },
+    {
+      "ref": "pqs:finding:src/trade_server/trade_server.go:26,35:Thrift trade RPC over plaintext TCP (no TLS transport), server trade_server.go + client trade_client.go:27, carrying ExchangeConfig access/secret keys"
+    },
+    {
+      "ref": "pqs:finding:src/huobi/tradeapi.go:39,116:huobi API secret_key transmitted as a raw request parameter in every POST body (and written to debug logs)"
+    },
+    {
+      "ref": "pqs:finding:conf/config_sample.json:3,4,7,8:Cleartext HTTP market-data transport (chbtc/huobi ticker and depth endpoints)"
+    },
+    {
+      "ref": "pqs:collected:ALG-70109388"
+    },
+    {
+      "ref": "pqs:collected:ALG-e2f4f87c"
+    },
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:PROTO-c78dc6f6"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
