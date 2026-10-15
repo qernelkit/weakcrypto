@@ -1,0 +1,487 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d443986e-2268-4175-8afb-68158f4394a4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-15T07:38:59.214Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "bbcd802706e4"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "beldur/kraken-go-api-client",
+      "version": "aec2f171d4f8ca76f2e31140bab995bdec151af9",
+      "bom-ref": "repo:beldur/kraken-go-api-client@aec2f171d4f8ca76f2e31140bab995bdec151af9",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/beldur/kraken-go-api-client"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "43e9ca0c-3eed-4e7e-9cc9-df549c2ea33c"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/glm-5.3"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build bbcd802706e4"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "293902"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Default Go net/http TLS (classical ECDHE X25519/P-256; no PQ KEX group configured) to api.kraken.com",
+      "bom-ref": "pqs:finding:krakenapi.go:110:Default Go net/http TLS (classical ECDHE X25519/P-256; no PQ KEX group configured) to api.kraken.com",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 110
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:110=4acf1cc5dbc6ee7a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:23=2d3e5aa6aed3e273"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA512 preshared key (Kraken API secret credential pair)",
+      "bom-ref": "pqs:finding:krakenapi.go:601:HMAC-SHA512 preshared key (Kraken API secret credential pair)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 601
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 597
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:601=9839d221ab5f4966"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:597=13b1fba430a7c4d9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS via http.DefaultClient — Go crypto/tls default ECDHE key exchange to api.kraken.com (default groups X25519/P-256/P-384, no PQ group configured or enforced)",
+      "bom-ref": "pqs:finding:krakenapi.go:645:TLS via http.DefaultClient — Go crypto/tls default ECDHE key exchange to api.kraken.com (default groups X25519/P-256/P-384, no PQ group configured or enforced)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 645
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 110
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:645=ca877349c7318a87"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:110=4acf1cc5dbc6ee7a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-512 (Kraken API-Sign: HMAC-SHA512 over urlPath + SHA256(nonce+postdata), keyed with the base64-decoded API secret)",
+      "bom-ref": "pqs:finding:krakenapi.go:601:HMAC-SHA-512 (Kraken API-Sign: HMAC-SHA512 over urlPath + SHA256(nonce+postdata), keyed with the base64-decoded API secret)",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 601
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 712
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:601=9839d221ab5f4966"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:712=e61bd386ce7c2aeb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 707
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 715
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 709
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 708
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved HMAC-SHA512"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:707=dfd5e0ad43294680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:715=065e845d4ca8af9b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:709=d67c76f200f4f922"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:708=d4433cdc267cfeb3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 700
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 702
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 701
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:700=d88c000cc9108353"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:702=b6631fed0ddc1975"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:701=cf5d90a5cb5973bf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-384/512",
+      "bom-ref": "pqs:collected:ALG-8c748911",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "krakenapi.go",
+            "line": 707
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 709
+          },
+          {
+            "location": "krakenapi.go",
+            "line": 708
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8c748911"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved HMAC-SHA512"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:707=dfd5e0ad43294680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:709=d67c76f200f4f922"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "krakenapi.go:708=d4433cdc267cfeb3"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:krakenapi.go:110:Default Go net/http TLS (classical ECDHE X25519/P-256; no PQ KEX group configured) to api.kraken.com"
+    },
+    {
+      "ref": "pqs:finding:krakenapi.go:601:HMAC-SHA512 preshared key (Kraken API secret credential pair)"
+    },
+    {
+      "ref": "pqs:finding:krakenapi.go:645:TLS via http.DefaultClient — Go crypto/tls default ECDHE key exchange to api.kraken.com (default groups X25519/P-256/P-384, no PQ group configured or enforced)"
+    },
+    {
+      "ref": "pqs:finding:krakenapi.go:601:HMAC-SHA-512 (Kraken API-Sign: HMAC-SHA512 over urlPath + SHA256(nonce+postdata), keyed with the base64-decoded API secret)"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8c748911"
+    }
+  ]
+}
