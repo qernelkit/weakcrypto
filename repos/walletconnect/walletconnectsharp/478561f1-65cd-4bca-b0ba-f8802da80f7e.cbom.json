@@ -1,0 +1,1045 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b1fc3fcf-1434-46de-8cb7-556096cd3fce",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T00:41:20.937Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "walletconnect/walletconnectsharp",
+      "version": "d04c4d3a5ac1ebdfd2adde4090e760bfed51553f",
+      "bom-ref": "repo:walletconnect/walletconnectsharp@d04c4d3a5ac1ebdfd2adde4090e760bfed51553f",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/WalletConnect/WalletConnectSharp"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "478561f1-65cd-4bca-b0ba-f8802da80f7e"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "11"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "148441"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:finding:Core Modules/WalletConnectSharp.Crypto/Crypto.cs:488:Ed25519",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 488
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:488=ae06d95b5dbec87f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ChaCha20-Poly1305",
+      "bom-ref": "pqs:finding:Core Modules/WalletConnectSharp.Crypto/Crypto.cs:304:ChaCha20-Poly1305",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 304
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:304=6cdd9069f8207ff5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Common/Utils/RpcPayloadId.cs",
+            "line": 12
+          },
+          {
+            "location": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs",
+            "line": 273
+          },
+          {
+            "location": "Tests/WalletConnectSharp.Tests.Common/TempFolder.cs",
+            "line": 8
+          },
+          {
+            "location": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs",
+            "line": 444
+          },
+          {
+            "location": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs",
+            "line": 563
+          },
+          {
+            "location": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs",
+            "line": 686
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security-sensitive contexts (RPC payload ID generation, test scenarios)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Common/Utils/RpcPayloadId.cs:12=f3d28798b286c59d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs:273=db645ffd29ea6ef4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Tests.Common/TempFolder.cs:8=4fdab7dd88719945"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs:444=db645ffd29ea6ef4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs:563=db645ffd29ea6ef4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Sign.Test/SignTests.cs:686=db645ffd29ea6ef4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tests/WalletConnectSharp.Auth.Tests/AuthClientTest.cs",
+            "line": 293
+          },
+          {
+            "location": "WalletConnectSharp.Core/Controllers/HeartBeat.cs",
+            "line": 70
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "MAC/digest comparison using == operator instead of constant-time comparison, potentially vulnerable to timing attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WalletConnectSharp.Auth.Tests/AuthClientTest.cs:293=b13d45c72137b4a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "WalletConnectSharp.Core/Controllers/HeartBeat.cs:70=f09d9d707e3651f5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Poly1305",
+      "bom-ref": "pqs:collected:ALG-e6238d01",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 304
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 637
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6238d01"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in two locations for ChaCha20-Poly1305 encryption. The Poly1305 authenticator is part of the ChaCha20-Poly1305 construction which is used for authenticated encryption in this crypto library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:304=6cdd9069f8207ff5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:637=6cdd9069f8207ff5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 32
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 33
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 34
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 488
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 532
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 535
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 536
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 541
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 543
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 549
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used throughout the crypto module for Ed25519 key generation, signing, and verification operations. This represents classical cryptographic signatures that are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:32=17a4a4580592e6a7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:33=677ea2b06b8f5cc3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:34=138ccc84206fbff8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:488=ae06d95b5dbec87f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:532=6c3e248829e17de2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:535=c610da0841a8bf2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:536=21b7537cc68a4b16"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:541=ce9f67974975b5cc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:543=f7de123ca0b9421e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:549=68be4c0949df3c3e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-1138d04b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 158
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 163
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 168
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 593
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 594
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 595
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 606
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 614
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1138d04b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used throughout the crypto module for X25519 key generation, agreement, and cryptographic operations. This represents classical key exchange that is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:158=01b9eb2bbe94de2c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:163=697a2e45fa3b7be8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:168=8bb3ddf789dd4de4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:593=483bf7241e2e411a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:594=9118472d448d8240"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:595=6d0e1c334671f30e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:606=94598b12e5f5c57b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:614=e75cbd0bb357aef3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT EdDSA",
+      "bom-ref": "pqs:collected:ALG-ec7fb449",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Models/IridiumJWTHeader.cs",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ec7fb449"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in JWT header for Ed25519 signature. This represents classical cryptographic signatures that are vulnerable to quantum attacks in the context of JWT authentication."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Models/IridiumJWTHeader.cs:16=1aff1c9710b48553"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Common/Utils/HashUtils.cs",
+            "line": 18
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Common/Utils/RpcPayloadId.cs",
+            "line": 29
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 585
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used for hashing operations in key derivation and message digests"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Common/Utils/HashUtils.cs:18=f299555972f6ffd9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Common/Utils/RpcPayloadId.cs:29=d10aac9d20a5fd4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:585=f299555972f6ffd9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ChaCha20-Poly1305",
+      "bom-ref": "pqs:collected:ALG-3d4cff53",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 304
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 637
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-3d4cff53"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:304=6cdd9069f8207ff5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:637=6cdd9069f8207ff5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 157
+          },
+          {
+            "location": "WalletConnectSharp.Auth/Internals/CryptoUtils.cs",
+            "line": 19
+          },
+          {
+            "location": "WalletConnectSharp.Core/Controllers/Pairing.cs",
+            "line": 213
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 292
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 466
+          },
+          {
+            "location": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs",
+            "line": 669
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness used throughout the codebase including for key generation (X25519) and IV generation"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:157=6cdb3cb975d91c45"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "WalletConnectSharp.Auth/Internals/CryptoUtils.cs:19=8e6dd54a95da2853"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "WalletConnectSharp.Core/Controllers/Pairing.cs:213=3a1d25264dff07a9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:292=fb8cd2563bb40f26"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:466=348421e5cd920190"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Core Modules/WalletConnectSharp.Crypto/Crypto.cs:669=3a981f2d980ad536"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:Core Modules/WalletConnectSharp.Crypto/Crypto.cs:488:Ed25519"
+    },
+    {
+      "ref": "pqs:finding:Core Modules/WalletConnectSharp.Crypto/Crypto.cs:304:ChaCha20-Poly1305"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6238d01"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-1138d04b"
+    },
+    {
+      "ref": "pqs:collected:ALG-ec7fb449"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-3d4cff53"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
