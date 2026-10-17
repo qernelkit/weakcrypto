@@ -17,7 +17,7 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { checkCbom, toSubmission, type Cbom } from "./lib/cbom.ts";
 import { fetchAt } from "./lib/source.ts";
-import { REPOS, SEED, cbomPath, checkEntry, seedPath, targetPath } from "./lib/types.ts";
+import { KEYS, REPOS, RUNS, SEED, cbomPath, checkEntry, seedPath, targetPath } from "./lib/types.ts";
 import { verify } from "./lib/verify.ts";
 
 const root = import.meta.dir;
@@ -25,7 +25,7 @@ const offline = process.argv.includes("--offline");
 const given = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const walk = (d: string): string[] => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
 const exists = (d: string) => { try { return statSync(d).isDirectory(); } catch { return false; } };
-const all = walk(join(root, REPOS)).concat(walk(join(root, "benchmark")).filter((f) => f.endsWith(".json")), exists(join(root, SEED)) ? walk(join(root, SEED)) : []);
+const all = walk(join(root, REPOS)).concat([KEYS, RUNS].flatMap((d) => (exists(join(root, d)) ? walk(join(root, d)) : [])).filter((f) => f.endsWith(".json")), exists(join(root, SEED)) ? walk(join(root, SEED)) : []);
 const files = (given.length ? given.map((f) => resolve(f)) : all).filter((f) => f.endsWith(".json") || f.endsWith(".jsonl"));
 
 // Every CBOM id in the repository, to see that none is used twice.
