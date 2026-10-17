@@ -1,0 +1,553 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b22e0661-a298-4db8-a5e8-7fdc000b23b6",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T10:53:47.862Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "dmihal/eth-permit",
+      "version": "34f3fb59f0e32d8c19933184f5a7121ee125d0a5",
+      "bom-ref": "repo:dmihal/eth-permit@34f3fb59f0e32d8c19933184f5a7121ee125d0a5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/dmihal/eth-permit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "3a65a178-c033-4b5e-8e08-879860082557"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "88708"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/rpc.ts",
+            "line": 1
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security-sensitive context - generating random IDs for RPC calls"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/rpc.ts:1=2a22b30d6fde1b31"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/eth-permit.ts",
+            "line": 86
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "MAC or digest compared with == operator, which leaks via timing side-channels"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/eth-permit.ts:86=b8d9e2ff9d9561dc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/eth-permit.spec.ts",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded private key in test file - used for testing purposes but represents a security risk"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/eth-permit.spec.ts:8=1120176de8b641e4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1182
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1040
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1188
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1046
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1485
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1214
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1491
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1220
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1577
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1688
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 1583
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1694
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3309
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1780
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3315
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 1786
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3412
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 2938
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3418
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 2944
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3515
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 3054
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3521
+          },
+          {
+            "location": "test/contracts/TestERC2612.json",
+            "line": 3060
+          },
+          {
+            "location": "test/contracts/TestDai.json",
+            "line": 3707
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "52"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1182=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1040=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1188=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1046=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1485=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1214=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1491=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1220=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1577=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1688=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:1583=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1694=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3309=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1780=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3315=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:1786=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3412=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:2938=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3418=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:2944=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3515=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:3054=b67044cc8cde633f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3521=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestERC2612.json:3060=c6c6011ecd317dc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/contracts/TestDai.json:3707=b67044cc8cde633f"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    }
+  ]
+}
