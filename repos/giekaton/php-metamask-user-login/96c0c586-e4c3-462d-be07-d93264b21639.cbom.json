@@ -1,0 +1,741 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c0506135-c0a2-4efc-a7ff-3d3071c51988",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T16:51:44.295Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "giekaton/php-metamask-user-login",
+      "version": "97685bc041bc0df2bea5226e92a7bf07a7cf14db",
+      "bom-ref": "repo:giekaton/php-metamask-user-login@97685bc041bc0df2bea5226e92a7bf07a7cf14db",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/giekaton/php-metamask-user-login"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "96c0c586-e4c3-462d-be07-d93264b21639"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "114624"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/JWT/jwt_helper.php",
+            "line": 100
+          },
+          {
+            "location": "backend/lib/JWT/jwt_helper.php",
+            "line": 98
+          },
+          {
+            "location": "backend/lib/JWT/jwt_helper.php",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT HS256/HS384/HS512 signature algorithm used for authentication tokens. These are HMAC-based signatures, not quantum-vulnerable by themselves but part of the overall crypto posture."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/JWT/jwt_helper.php:100=ba6b93348bfbed41"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/JWT/jwt_helper.php:98=aab7070862fc521f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/JWT/jwt_helper.php:99=2b50cf5b8f11627b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1",
+      "bom-ref": "pqs:collected:ALG-673c8f24",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/Elliptic/Curves.php",
+            "line": 941
+          },
+          {
+            "location": "backend/server.php",
+            "line": 83
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-673c8f24"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "secp256k1 elliptic curve used for ECDSA signatures in blockchain-related crypto operations (ethereum signature recovery). This is a quantum-vulnerable algorithm that should be migrated to ML-DSA-65."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Elliptic/Curves.php:941=570d56241ee9ffaf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/server.php:83=f7ee6d27bd8b8e5d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-1138d04b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/Elliptic/Curves.php",
+            "line": 128
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1138d04b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X25519 ECDH key agreement algorithm. This is a quantum-vulnerable key exchange mechanism that should be migrated to hybrid X25519+ML-KEM-768."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Elliptic/Curves.php:128=fee1430d48720486"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/Elliptic/Curves.php",
+            "line": 142
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 signature algorithm (EdDSA). This is a quantum-vulnerable signature mechanism that should be migrated to ML-DSA-65."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Elliptic/Curves.php:142=981fca0804d841f0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/Elliptic/Curves.php",
+            "line": 101
+          },
+          {
+            "location": "backend/lib/Elliptic/Curves.php",
+            "line": 80
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-384 and P-521 elliptic curves used for ECDH key exchange. These are quantum-vulnerable key exchange mechanisms that should be migrated to hybrid X25519+ML-KEM-768."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Elliptic/Curves.php:101=217ec228c202d1cb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Elliptic/Curves.php:80=c1aa84332c4dbc30"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 11
+          },
+          {
+            "location": "backend/server.php",
+            "line": 2
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 121
+          },
+          {
+            "location": "backend/server.php",
+            "line": 71
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 139
+          },
+          {
+            "location": "backend/server.php",
+            "line": 76
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 14
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 15
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 151
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 19
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 194
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 198
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 199
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 228
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 229
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 230
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 231
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 261
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 281
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 294
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 295
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 303
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 311
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 56
+          },
+          {
+            "location": "backend/lib/Keccak/Keccak.php",
+            "line": 60
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-3 (Keccak) hash function implementation used in cryptographic operations. This is actually quantum-safe but is included as part of the cryptographic inventory."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "27"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:11=5a5eb20ee62988c4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/server.php:2=256e2efa523673bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:121=12665de423cc5429"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/server.php:71=f0e403d7a1170a96"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:139=12665de423cc5429"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/server.php:76=326934b42b874371"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:14=afef01d3e10fdd7d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:15=bfb4f8ec9b614dc9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:151=413c56d265451d34"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:19=413c56d265451d34"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:194=7e94644b35bc194c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:198=b88ecc12e3ec4da9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:199=c8beec5e5f995a16"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:228=af8b7e3f7d57901e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:229=e506508d1fdd0c58"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:230=2572291ed9718010"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:231=089a12cb073c6896"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:261=0e2ff297c193cc0f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:281=0e2ff297c193cc0f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:294=37891d0fd6d85cde"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:295=e8686565391778fb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:303=887a16babdf777b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:311=a515e6cbdb5d78f4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:56=7e94644b35bc194c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "backend/lib/Keccak/Keccak.php:60=dbd01fee646c89fb"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    },
+    {
+      "ref": "pqs:collected:ALG-673c8f24"
+    },
+    {
+      "ref": "pqs:collected:ALG-1138d04b"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    }
+  ]
+}
