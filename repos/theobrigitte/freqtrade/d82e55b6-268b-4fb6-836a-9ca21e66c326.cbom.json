@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6e38f246-585b-469d-8c41-435b827688e4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T18:51:39.422Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "theobrigitte/freqtrade",
+      "version": "c9def379b1036064d592c3a0518a07811f5a9a76",
+      "bom-ref": "repo:theobrigitte/freqtrade@c9def379b1036064d592c3a0518a07811f5a9a76",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/TheoBrigitte/freqtrade"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d82e55b6-268b-4fb6-836a-9ca21e66c326"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "1957074"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "sources/sponsors/BadStreak.py",
+            "line": 75
+          },
+          {
+            "location": "sources/sponsors/BadStreak.py",
+            "line": 77
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a trading strategy implementation that compares market color indicators using regular equality operators. The comparison is part of the trading logic, not cryptographic operations. It could potentially leak timing information but this is a side effect of using == instead of constant-time comparison functions in a non-security context."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sources/sponsors/BadStreak.py:75=03b56d2b359cd293"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sources/sponsors/BadStreak.py:77=623282151fb20885"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
