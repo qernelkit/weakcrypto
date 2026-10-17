@@ -1,0 +1,753 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:f38a3b84-2685-4435-9a18-8449bbb7208c",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T12:41:14.837Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "raster-foundry/raster-foundry",
+      "version": "eee86bf45b9ebabbbee7bb36a73dd60bd8a807bf",
+      "bom-ref": "repo:raster-foundry/raster-foundry@eee86bf45b9ebabbbee7bb36a73dd60bd8a807bf",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/raster-foundry/raster-foundry"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8ac42fe5-784a-4e7a-9be6-4d1d3c0ee86d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "8"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "191743"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-backend/common/src/main/scala/utils/CryptoUtils.scala",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing strings in the CryptoUtils.scala file for generating hex digests. This is a cryptographic weakness that should be upgraded to SHA-256 or higher."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/common/src/main/scala/utils/CryptoUtils.scala:7=ae6da0488b14ee0a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-backend/db/src/test/scala/com/azavea/rf/database/AnnotationLabelDaoSpec.scala",
+            "line": 806
+          },
+          {
+            "location": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala",
+            "line": 148
+          },
+          {
+            "location": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala",
+            "line": 149
+          },
+          {
+            "location": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala",
+            "line": 190
+          },
+          {
+            "location": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala",
+            "line": 220
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant time comparisons using == operator in test files for set equality checking. These are test artifacts but represent potential security issues in the codebase's handling of cryptographic comparisons."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/db/src/test/scala/com/azavea/rf/database/AnnotationLabelDaoSpec.scala:806=abd6f15768dee504"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala:148=a0977e3f956ce0d8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala:149=c675f3ef46e89e2e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala:190=f523dadf6e373cfb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/db/src/test/scala/com/azavea/rf/database/UserDaoSpec.scala:220=787352d7522cdf93"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-backend/api/src/main/scala/user/Auth0User.scala",
+            "line": 450
+          },
+          {
+            "location": "project/Dependencies.scala",
+            "line": 129
+          },
+          {
+            "location": "project/Dependencies.scala",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt is used for password hashing in the Auth0User.scala file (line 450) with a cost factor of 10. While bcrypt is secure for password hashing, it's not post-quantum safe and should be considered for migration to ML-DSA or similar."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-backend/api/src/main/scala/user/Auth0User.scala:450=6f968527e8888210"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "project/Dependencies.scala:129=9ea58c2cf64311ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "project/Dependencies.scala:22=a9ac773877545b65"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-hitl/hitl/src/hitl/utils/io.py",
+            "line": 116
+          },
+          {
+            "location": "app-hitl/hitl/src/hitl/utils/notify_intercom.py",
+            "line": 59
+          },
+          {
+            "location": "app-tasks/rf/src/rf/utils/io.py",
+            "line": 188
+          },
+          {
+            "location": "app-hitl/hitl/src/hitl/utils/io.py",
+            "line": 99
+          },
+          {
+            "location": "app-hitl/hitl/src/hitl/utils/notify_intercom.py",
+            "line": 81
+          },
+          {
+            "location": "app-tasks/rf/src/rf/utils/io.py",
+            "line": 205
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Python HTTPS client connections in multiple files (io.py and notify_intercom.py) using default SSL settings without explicit secure configuration. This could lead to insecure key exchanges and cipher suites being used."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-hitl/hitl/src/hitl/utils/io.py:116=89af6e3a5467e4ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-hitl/hitl/src/hitl/utils/notify_intercom.py:59=89af6e3a5467e4ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/src/rf/utils/io.py:188=58a2bbabf5e42073"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-hitl/hitl/src/hitl/utils/io.py:99=58a2bbabf5e42073"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-hitl/hitl/src/hitl/utils/notify_intercom.py:81=89af6e3a5467e4ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/src/rf/utils/io.py:205=89af6e3a5467e4ef"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-tasks/rf/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The requirement specifies requests==2.21.0 which uses system SSL/TLS libraries for HTTPS connections, not direct cryptographic implementation in this codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/requirements.txt:1=480600b72bfed51c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-tasks/rf/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The requirement specifies pyjwt==1.4.2 which is used for JWT handling, but the actual cryptographic operations are handled by the library itself, not directly implemented in application code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/requirements.txt:1=480600b72bfed51c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "pyjwt",
+      "bom-ref": "pqs:collected:LIB-28c4ec30",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-tasks/rf/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-28c4ec30"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The requirement specifies pyjwt==1.4.2 which is used for JWT handling, but the actual cryptographic operations are handled by the library itself, not directly implemented in application code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/requirements.txt:1=480600b72bfed51c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "requests",
+      "bom-ref": "pqs:collected:LIB-b9851744",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app-tasks/rf/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b9851744"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The requirement specifies requests==2.21.0 which handles HTTPS/TLS internally through system libraries, not direct implementation in the application codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app-tasks/rf/requirements.txt:1=480600b72bfed51c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-28c4ec30"
+    },
+    {
+      "ref": "pqs:collected:LIB-b9851744"
+    }
+  ]
+}
