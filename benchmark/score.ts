@@ -26,7 +26,8 @@ export const TOLERANCE = 2;
 export interface Tally { right: number; wrong: number; missed: number }
 /** The same score cut three ways: by the file's language, by the kind of cryptography, by file. */
 export interface Breakdown { language: Record<string, Tally>; type: Record<string, Tally>; file: Record<string, Tally> }
-export interface ModelScore { files: number; failedFiles: number; found: number; right: number; wrong: number; missed: number; correct: number | null; breakdown: Breakdown }
+/** failedFiles: files the provider failed or timed out on (left out of the score). unreadable: files whose reply could not be read (scored as nothing found). */
+export interface ModelScore { files: number; failedFiles: number; unreadable: number; found: number; right: number; wrong: number; missed: number; correct: number | null; breakdown: Breakdown }
 
 const LANGUAGES: Record<string, string> = {
   rs: "Rust", go: "Go", py: "Python", js: "JavaScript", mjs: "JavaScript", cjs: "JavaScript", jsx: "JavaScript", ts: "TypeScript", tsx: "TypeScript",
@@ -82,5 +83,6 @@ export function scoreModelRun(run: ModelRun, labels: Labels, each?: (m: Mark) =>
     // Real sites in a file the run read but did not match; files it failed on don't count against it.
     truth.forEach((t, i) => { if (!used.has(i)) { missed++; tally(f.file, t.type, "missed"); each?.({ file: f.file, kind: "missed", line: t.line, type: t.type, algorithm: t.algorithm }); } });
   }
-  return { files: run.files.length, failedFiles, found, right, wrong, missed, correct: right + wrong ? right / (right + wrong) : null, breakdown };
+  const unreadable = run.files.filter((f) => !f.error && f.unreadable).length;
+  return { files: run.files.length, failedFiles, unreadable, found, right, wrong, missed, correct: right + wrong ? right / (right + wrong) : null, breakdown };
 }
