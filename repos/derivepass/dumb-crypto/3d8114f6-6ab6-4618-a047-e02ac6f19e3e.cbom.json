@@ -1,0 +1,621 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0a60649c-fc2a-443a-8491-5f3d26b116b5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T09:39:27.283Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "derivepass/dumb-crypto",
+      "version": "2380a804833b9d3c5ca86e803092c4a60e8684ac",
+      "bom-ref": "repo:derivepass/dumb-crypto@2380a804833b9d3c5ca86e803092c4a60e8684ac",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/derivepass/dumb-crypto"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "3d8114f6-6ab6-4618-a047-e02ac6f19e3e"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "144791"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "weak password hash",
+      "bom-ref": "pqs:collected:ALG-ca87cf31",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 127
+          },
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 144
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ca87cf31"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Password hashing with PBKDF2 using only 1 iteration - this is extremely weak and vulnerable to brute-force attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:127=dee6abdf8bcc17b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:144=f46196794f13c6f2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 127
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 280
+          },
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 144
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 297
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation with only 1 iteration - this is extremely weak and vulnerable to brute-force attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:127=dee6abdf8bcc17b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:280=525abe96d1cbef04"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:144=f46196794f13c6f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:297=4532d7284cbdc30b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt",
+      "bom-ref": "pqs:collected:ALG-c1f8b585",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 9
+          },
+          {
+            "location": "src/lib.rs",
+            "line": 30
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 225
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 310
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 354
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 402
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 421
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 440
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 459
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c1f8b585"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "scrypt password hashing algorithm implementation - this is a legitimate cryptographic primitive being used in the library"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:9=6f1a3fba9f7a64f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lib.rs:30=32470f71b1402544"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:225=f64cef55ddbe8590"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:310=98f91ba94d10f8bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:354=13457311b3fedf98"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:402=41e0adc266b16a50"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:421=7816ba01b749873b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:440=f27162b9e14707a7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:459=eb414ba4282a9b33"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 9
+          },
+          {
+            "location": "src/lib.rs",
+            "line": 28
+          },
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 127
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 13
+          },
+          {
+            "location": "src/pbkdf2.rs",
+            "line": 144
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 280
+          },
+          {
+            "location": "src/scrypt.rs",
+            "line": 297
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation algorithm implementation - this is a legitimate cryptographic primitive being used in the library"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:9=6f1a3fba9f7a64f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lib.rs:28=09815e436558368d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:127=dee6abdf8bcc17b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:13=6b955ff38740f60e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/pbkdf2.rs:144=f46196794f13c6f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:280=525abe96d1cbef04"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/scrypt.rs:297=4532d7284cbdc30b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/hmac.rs",
+            "line": 75
+          },
+          {
+            "location": "src/sha256.rs",
+            "line": 377
+          },
+          {
+            "location": "src/hmac.rs",
+            "line": 82
+          },
+          {
+            "location": "src/sha256.rs",
+            "line": 386
+          },
+          {
+            "location": "src/hmac.rs",
+            "line": 83
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash algorithm implementation - this is a legitimate cryptographic primitive being used in the library"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/hmac.rs:75=16c692e40071ba1e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/sha256.rs:377=60727eff30f1bfdd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/hmac.rs:82=834ce094f0aea06e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/sha256.rs:386=e23fa8cfdd44db1e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/hmac.rs:83=6f9162850bf5a14b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ca87cf31"
+    },
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-c1f8b585"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
