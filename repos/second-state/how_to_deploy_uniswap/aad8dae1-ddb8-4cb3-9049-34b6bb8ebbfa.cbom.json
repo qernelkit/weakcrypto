@@ -1,0 +1,229 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:f78bb5b8-6c5b-4563-8d9a-353575c5a799",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-17T10:02:09.727Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "second-state/how_to_deploy_uniswap",
+      "version": "ebd37d09a2b8f8132851b9b197cfe084d3565d2a",
+      "bom-ref": "repo:second-state/how_to_deploy_uniswap@ebd37d09a2b8f8132851b9b197cfe084d3565d2a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/second-state/how_to_deploy_uniswap"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "aad8dae1-ddb8-4cb3-9049-34b6bb8ebbfa"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "88252"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "uniswap_interface/change_chain_id.py",
+            "line": 14
+          },
+          {
+            "location": "uniswap_interface/change_chain_id.py",
+            "line": 21
+          },
+          {
+            "location": "uniswap_interface/change_chain_id.py",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Static IV usage in uniswap_interface/change_chain_id.py - this is for text replacement operations, not cryptographic operations. The code is manipulating chain IDs in configuration files using sed commands with hardcoded strings."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "uniswap_interface/change_chain_id.py:14=e72b96dfd662976b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "uniswap_interface/change_chain_id.py:21=d2934310fc59f859"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "uniswap_interface/change_chain_id.py:7=14703da7b8ed96b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "utils/find_init_code_hash.py",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-3 (Keccak) hashing in utils/find_init_code_hash.py - this is being used to calculate Ethereum contract bytecode hashes as part of a deployment process, not for cryptographic security operations that would be vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "utils/find_init_code_hash.py:14=6aff7cc5011e684a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    }
+  ]
+}
