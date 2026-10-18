@@ -1,0 +1,215 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e215e55f-036f-44ea-9e1c-b5c7a0c5d449",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-18T22:49:39.308Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "appleboy/ssh-action",
+      "version": "c4f70287fc37c43b14b30b407224bbbc8e8c6327",
+      "bom-ref": "repo:appleboy/ssh-action@c4f70287fc37c43b14b30b407224bbbc8e8c6327",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/appleboy/ssh-action"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0e9a4a47-0b64-4658-acd2-d98ddd8bf553"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "128193"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "action.yml",
+            "line": 79
+          },
+          {
+            "location": "entrypoint.sh",
+            "line": 57
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS certificate verification is disabled in action.yml and entrypoint.sh, making the system vulnerable to man-in-the-middle attacks as it will accept any certificate without validation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "action.yml:79=0f1b48de812f332c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "entrypoint.sh:57=b0160808c2b14824"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-7a26994c",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "testdata/.ssh/id_rsa",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-7a26994c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "testdata/.ssh/id_rsa:1=8bcac7908eb95041"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:KEY-7a26994c"
+    }
+  ]
+}
