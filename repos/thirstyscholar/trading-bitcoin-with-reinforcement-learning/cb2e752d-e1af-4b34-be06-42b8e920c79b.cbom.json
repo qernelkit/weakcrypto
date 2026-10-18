@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b2c4c901-6c40-4454-a3d7-0c74d60b1f71",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-18T16:15:40.737Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "thirstyscholar/trading-bitcoin-with-reinforcement-learning",
+      "version": "e2163e954b1f5f656c49fbfb560ddd4635548a91",
+      "bom-ref": "repo:thirstyscholar/trading-bitcoin-with-reinforcement-learning@e2163e954b1f5f656c49fbfb560ddd4635548a91",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ThirstyScholar/trading-bitcoin-with-reinforcement-learning"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "cb2e752d-e1af-4b34-be06-42b8e920c79b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "85152"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "frl/env.py",
+            "line": 92
+          },
+          {
+            "location": "main.py",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The non-cryptographic PRNG is used in reinforcement learning contexts where the randomness is for exploration of actions, not for security-sensitive operations. The use of `random.randint()` in both frl/env.py (line 92) and main.py (line 47) represents a potential weakness since this is not suitable for cryptographic applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frl/env.py:92=07acb8f1a86f9548"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.py:47=44fcc31e256b0f9b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
