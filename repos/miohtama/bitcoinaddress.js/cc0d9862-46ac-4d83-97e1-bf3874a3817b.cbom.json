@@ -1,0 +1,181 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4318c307-6fa5-4711-a13b-dd0dcff777bd",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-18T02:03:32.926Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "miohtama/bitcoinaddress.js",
+      "version": "a91bce47f0a04a6fc2dc256af0c1b30b14b46628",
+      "bom-ref": "repo:miohtama/bitcoinaddress.js@a91bce47f0a04a6fc2dc256af0c1b30b14b46628",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/miohtama/bitcoinaddress.js"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "cc0d9862-46ac-4d83-97e1-bf3874a3817b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "120853"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-SHA256",
+      "bom-ref": "pqs:finding:bitcoinaddress.js:297:RSA-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "bitcoinaddress.js",
+            "line": 297
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bitcoinaddress.js:297=1ad3e2c069aece25"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/demo.js",
+            "line": 1001
+          },
+          {
+            "location": "dist/demo.js",
+            "line": 3066
+          },
+          {
+            "location": "dist/demo.js",
+            "line": 4255
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness in a security context - this project uses Math.random() for generating expando properties in jQuery-like code, which is inappropriate for cryptographic purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/demo.js:1001=54f54d8f60a7915c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/demo.js:3066=fec18a3a7c4e58dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/demo.js:4255=163f7d06d3bc43fb"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:bitcoinaddress.js:297:RSA-SHA256"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
