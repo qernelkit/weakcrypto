@@ -1,0 +1,652 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:dc37c9ae-98e2-4ed6-b44a-178bc6b9788e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-18T15:34:19.430Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "succinctlabs/eth-proof-of-consensus",
+      "version": "8324740832ffd18baf7984b99222f140b278d17d",
+      "bom-ref": "repo:succinctlabs/eth-proof-of-consensus@8324740832ffd18baf7984b99222f140b278d17d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/succinctlabs/eth-proof-of-consensus"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e3f499a7-9277-41fb-aaad-56bab56ea6a8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "134456"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 292
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a test file for RLP encoding/decoding. The issue is about using a static nonce/IV which breaks CTR/GCM mode catastrophically. This is a crypto implementation weakness in testing code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:292=a5c0c02be720acb0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 301
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a test file for RLP encoding/decoding. The issue is about using == operator for MAC/digest comparison which leaks timing information and breaks security. This is a crypto implementation weakness in testing code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:301=0f38febf910ba732"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 314
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 316
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 317
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 320
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 321
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 324
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 325
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 328
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 331
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 332
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 335
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 344
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 346
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 347
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 350
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 355
+          },
+          {
+            "location": "contracts/lib/Solidity-RLP/test/basic-tests.js",
+            "line": 359
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-3 (Keccak) is used in RLP encoding/decoding tests for hashing purposes. This is a legitimate cryptographic usage of a quantum-safe hash function."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "17"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:314=6c2b6d3f624261a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:316=d86f275c674e5c6d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:317=0e8b7a5eda225b32"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:320=3b6bf7d5ceb91978"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:321=fecf0f2ba0297f36"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:324=3b6bf7d5ceb91978"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:325=7ee048c4943aec1f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:328=ead00c56043d0708"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:331=02ecc1fb15a77644"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:332=4948d45b2b802c3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:335=e6148c21675ddad7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:344=da70be5f189a91ae"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:346=969190eae5cb509a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:347=83eb1fb380ee90d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:350=946c58cfa292b9b3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:355=78c6e07bcc3a838e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/Solidity-RLP/test/basic-tests.js:359=59fed5687faaeb81"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "circuits/test/bls_utils.ts",
+            "line": 121
+          },
+          {
+            "location": "circuits/test/bls_utils.ts",
+            "line": 125
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function used in cryptographic operations for testing BLS utilities. This is a legitimate cryptographic usage in test code, not just a reference to an algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "circuits/test/bls_utils.ts:121=1af5c7093e839416"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "circuits/test/bls_utils.ts:125=dad4b79705132ce2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "contracts/lib/curve-merkle-oracle/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project depends on 'requests' library version 2.21.0 which uses TLS for HTTPS connections. This is a dependency-level crypto asset that affects the security posture when making network requests."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/curve-merkle-oracle/requirements.txt:1=dd7f6e8a346b8a1d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "requests",
+      "bom-ref": "pqs:collected:LIB-b9851744",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "contracts/lib/curve-merkle-oracle/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b9851744"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project depends on 'requests' library version 2.21.0, which is a Python HTTP library that includes TLS/SSL support for secure communications. This is a crypto-capable dependency that affects the security posture of network operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "contracts/lib/curve-merkle-oracle/requirements.txt:1=dd7f6e8a346b8a1d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:LIB-b9851744"
+    }
+  ]
+}
