@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c0a62aff-d40c-4c86-9d56-e1f91583d766",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-18T00:38:56.939Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ethpandaops/ethereum-genesis-generator",
+      "version": "c3b1df957536b45c80b25c273bb55e9e133d2487",
+      "bom-ref": "repo:ethpandaops/ethereum-genesis-generator@c3b1df957536b45c80b25c273bb55e9e133d2487",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ethpandaops/ethereum-genesis-generator"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "72aec621-f13b-4047-a710-b0ab1f6905dc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "133772"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "HD-Wallet",
+      "bom-ref": "pqs:finding:apps/el-gen/generate_genesis.sh:94,100:HD-Wallet",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "apps/el-gen/generate_genesis.sh",
+            "line": 94
+          },
+          {
+            "location": "apps/el-gen/generate_genesis.sh",
+            "line": 100
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "apps/el-gen/generate_genesis.sh:94=22dee317e14747b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "apps/el-gen/generate_genesis.sh:100=8ec6e674e691322e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "EIP-4788",
+      "bom-ref": "pqs:finding:apps/el-gen/system-contracts.yaml:40:EIP-4788",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "apps/el-gen/system-contracts.yaml",
+            "line": 40
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "apps/el-gen/system-contracts.yaml:40=7fdca1d2796a748c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT Secret",
+      "bom-ref": "pqs:finding:entrypoint.sh:33:JWT Secret",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "entrypoint.sh",
+            "line": 33
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "entrypoint.sh:33=fd1c82c2a7e77cda"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:apps/el-gen/generate_genesis.sh:94,100:HD-Wallet"
+    },
+    {
+      "ref": "pqs:finding:apps/el-gen/system-contracts.yaml:40:EIP-4788"
+    },
+    {
+      "ref": "pqs:finding:entrypoint.sh:33:JWT Secret"
+    }
+  ]
+}
