@@ -1,0 +1,1462 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3f92e773-1abf-4998-a545-b53cf4a35efd",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-19T02:41:44.214Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "defuse/php-encryption",
+      "version": "9b77beb6e1cd997aecfd2392849db5afab128b5e",
+      "bom-ref": "repo:defuse/php-encryption@9b77beb6e1cd997aecfd2392849db5afab128b5e",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/defuse/php-encryption"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "04c85bda-3822-485f-8609-e595551cc5b5"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "16"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "143379"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is the legacy cipher method used for backward compatibility, specifically AES-128 in CBC mode. While it's a legacy method, it's actually being used in the codebase for compatibility reasons."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:24=e9b60b3ad15cd699"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 is used for password-based key derivation with only 100,000 iterations, which is below the recommended OWASP minimum of 600,000 iterations for security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:9=85f0f5ff6d62229e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CTR/CFB/OFB mode",
+      "bom-ref": "pqs:collected:ALG-e4916d9f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e4916d9f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:14=e516983dce81fc64"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 207
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:207=3a7f56338aa0b6ab"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-2fa61d8d",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/signingkey-old.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-2fa61d8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/signingkey-old.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-656f8114",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/phpunit-pubkey.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-656f8114"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/phpunit-pubkey.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-6dd6e677",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/signingkey-new.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-6dd6e677"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/signingkey-new.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-79f7692d",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/signingkey-new.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-79f7692d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/signingkey-new.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-927995ce",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/signingkey-old.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-927995ce"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/signingkey-old.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-d8406d0d",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/phpunit-pubkey.asc",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-d8406d0d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/phpunit-pubkey.asc:1=fdabe801b9a02756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 402
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 104
+          },
+          {
+            "location": "src/Core.php",
+            "line": 407
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 108
+          },
+          {
+            "location": "src/Core.php",
+            "line": 412
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 9
+          },
+          {
+            "location": "src/Core.php",
+            "line": 435
+          },
+          {
+            "location": "src/Core.php",
+            "line": 437
+          },
+          {
+            "location": "src/Core.php",
+            "line": 442
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:402=bc8241ceb845718a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:104=a9cb7c77c7a3ad88"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:407=95205b7a6705affb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:108=3bd4ae496be3eee8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:412=dc3d007980ab2674"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:9=85f0f5ff6d62229e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:435=be3b6b0966567ca3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:437=486a7b6d87c30457"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:442=47a3759cdd5adaad"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HKDF",
+      "bom-ref": "pqs:collected:ALG-ab44ea08",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Crypto.php",
+            "line": 216
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 112
+          },
+          {
+            "location": "src/RuntimeTests.php",
+            "line": 163
+          },
+          {
+            "location": "src/Crypto.php",
+            "line": 226
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 120
+          },
+          {
+            "location": "src/RuntimeTests.php",
+            "line": 174
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 73
+          },
+          {
+            "location": "src/KeyOrPassword.php",
+            "line": 83
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ab44ea08"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Crypto.php:216=30eb3ea2e195bb2a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:112=30eb3ea2e195bb2a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/RuntimeTests.php:163=5661def148026361"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Crypto.php:226=2b86974e03cc08e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:120=2b86974e03cc08e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/RuntimeTests.php:174=097a41a67d75fe73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:73=30eb3ea2e195bb2a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/KeyOrPassword.php:83=2b86974e03cc08e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-128 in CBC mode is used for legacy encryption compatibility purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:24=e9b60b3ad15cd699"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 in CTR mode is used for the primary encryption method in this library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:14=e516983dce81fc64"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Core.php",
+            "line": 221
+          },
+          {
+            "location": "src/Crypto.php",
+            "line": 275
+          },
+          {
+            "location": "src/File.php",
+            "line": 379
+          },
+          {
+            "location": "src/Key.php",
+            "line": 26
+          },
+          {
+            "location": "test/unit/CoreTest.php",
+            "line": 135
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 13
+          },
+          {
+            "location": "src/Crypto.php",
+            "line": 279
+          },
+          {
+            "location": "src/File.php",
+            "line": 385
+          },
+          {
+            "location": "test/unit/CoreTest.php",
+            "line": 142
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 52
+          },
+          {
+            "location": "test/unit/CoreTest.php",
+            "line": 147
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 55
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 72
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 75
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 91
+          },
+          {
+            "location": "test/unit/EncodingTest.php",
+            "line": 94
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "16"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Core.php:221=b823dd4386003ad4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Crypto.php:275=845bfc897da1bb8b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/File.php:379=d49d3136c2a98e8b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Key.php:26=9470be8eb54143b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/CoreTest.php:135=828264a0722e4d5f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:13=87e10eadeee487cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Crypto.php:279=fb3d2dcd28ecbf64"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/File.php:385=db3937c2715910f3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/CoreTest.php:142=e0e3e24364cc89f6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:52=67b5ce531ad64134"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/CoreTest.php:147=ce5210edf28eec59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:55=fc10912a90507ba1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:72=67b5ce531ad64134"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:75=fc10912a90507ba1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:91=67b5ce531ad64134"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/unit/EncodingTest.php:94=fc10912a90507ba1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OpenPGP",
+      "bom-ref": "pqs:collected:SEC-d31df4e6",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/signingkey-new.asc.sig",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-d31df4e6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a detached signature file used for code signing purposes, not a cryptographic algorithm in the application code itself."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/signingkey-new.asc.sig:1=b4fca278e873fa5d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-e4916d9f"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:KEY-2fa61d8d"
+    },
+    {
+      "ref": "pqs:collected:KEY-656f8114"
+    },
+    {
+      "ref": "pqs:collected:KEY-6dd6e677"
+    },
+    {
+      "ref": "pqs:collected:KEY-79f7692d"
+    },
+    {
+      "ref": "pqs:collected:KEY-927995ce"
+    },
+    {
+      "ref": "pqs:collected:KEY-d8406d0d"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-ab44ea08"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:SEC-d31df4e6"
+    }
+  ]
+}
