@@ -1,0 +1,1616 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6f838e8e-dfd8-4fa8-822f-6947647d70ee",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-21T22:26:17.371Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mssun/passforios",
+      "version": "cb836aaeda1828fd9aff55773c3d355d049dc426",
+      "bom-ref": "repo:mssun/passforios@cb836aaeda1828fd9aff55773c3d355d049dc426",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mssun/passforios"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "13f2fd93-5701-4e16-b27c-053c1717b77b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "18"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "104931"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "3DES",
+      "bom-ref": "pqs:collected:ALG-2094eefd",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pass/Services/PasswordDecryptor.swift",
+            "line": 106
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2094eefd"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses 3DES encryption for password decryption, which is a known insecure cipher. This is a confirmed cryptographic asset that needs to be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pass/Services/PasswordDecryptor.swift:106=b98226c2b6f88b2c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKit/Models/Password.swift",
+            "line": 183
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code compares MAC/digest values with == operator instead of using a constant-time comparison function, which can leak timing information and potentially be exploited for cryptanalysis."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKit/Models/Password.swift:183=4d6d24f4236163d8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "bom-ref": "pqs:collected:KEY-47122862",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-47122862"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "bom-ref": "pqs:collected:KEY-7f6400ae",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-7f6400ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Crypto/CryptoFrameworkTest.swift",
+            "line": 46
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 110
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 628
+          },
+          {
+            "location": "passKitTests/Crypto/CryptoFrameworkTest.swift",
+            "line": 47
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 112
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 644
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 157
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 664
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 159
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 69
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 162
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 70
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 44
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 71
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 70
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 76
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 71
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 77
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 78
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 97
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 98
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 signatures are used in the test suite for cryptographic verification purposes, specifically in CryptoFrameworkTest.swift and PGPAgentTest.swift files."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "22"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/CryptoFrameworkTest.swift:46=3b3fe7b6f204e0ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:110=8b79def562c6e40f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:628=36805a563779ae3d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/CryptoFrameworkTest.swift:47=2a54b91a6f452a09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:112=7aae4fdf229a909f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:644=9324c0201620685d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:157=47b38292459500cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:664=b8a3df99cdee74ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:159=e6301c27413f4721"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:69=e04e63a4d7b6b479"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:162=8e892dacd1d71a86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:70=59346595ac7ed880"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:44=1dacf6f92abd2f6c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:71=8be13091364252de"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:70=3b3fe7b6f204e0ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:76=eb94c77a9a378018"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:71=2a54b91a6f452a09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:77=59346595ac7ed880"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:78=bc43a28673b998e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:97=0ae9117f85e52782"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:98=289fd753299375ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:99=dc170e5eed2c28fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-123f6fdf",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-123f6fdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-3072",
+      "bom-ref": "pqs:collected:KEY-456431fc",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-456431fc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:KEY-5fccb081",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-5fccb081"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-787eae1a",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-787eae1a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-3072",
+      "bom-ref": "pqs:collected:KEY-b37cd566",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-b37cd566"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDH X25519",
+      "bom-ref": "pqs:collected:KEY-d11845d5",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-d11845d5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Crypto/CryptoFrameworkTest.swift",
+            "line": 48
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 44
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 682
+          },
+          {
+            "location": "passKitTests/Crypto/PGPAgentTest.swift",
+            "line": 72
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 702
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 83
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 84
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 85
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 97
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 98
+          },
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses NIST P-384 and P-521 curves for cryptographic operations in tests, which are classical elliptic curves that are vulnerable to Shor's algorithm. These are confirmed cryptographic assets needing post-quantum migration."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/CryptoFrameworkTest.swift:48=836e81cda14571de"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:44=1dacf6f92abd2f6c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:682=19493129da8ee7bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Crypto/PGPAgentTest.swift:72=836e81cda14571de"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:702=34f15e6c0049a682"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:83=01d59d3493f768f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:84=73bf89dbfd3704eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:85=8238c8fdc2c4a2af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:97=0ae9117f85e52782"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:98=289fd753299375ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:99=dc170e5eed2c28fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA P-384",
+      "bom-ref": "pqs:collected:KEY-bcd364c0",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-bcd364c0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDH P-384",
+      "bom-ref": "pqs:collected:KEY-d42f0141",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "passKitTests/Testbase/TestPGPKeys.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-d42f0141"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passKitTests/Testbase/TestPGPKeys.swift:1=a2c2339691fc48fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pass/Services/PasswordDecryptor.swift",
+            "line": 108
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-128 for password decryption, which while not quantum-vulnerable, is below the recommended CNSA 2.0 standard of AES-256 and should be reported as a cryptographic asset needing improvement."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pass/Services/PasswordDecryptor.swift:108=818e036752c49c81"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pass/Services/PasswordDecryptor.swift",
+            "line": 110
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-256 for password decryption, which is quantum-safe and meets the recommended CNSA 2.0 standard. This is a confirmed cryptographic asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pass/Services/PasswordDecryptor.swift:110=0776c5acd616bb20"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses JWT signing via the jwt@3.2.0 gem, which relies on classical signature algorithms (likely RSA or ECDSA) that are vulnerable to Shor's algorithm. This is a confirmed cryptographic asset needing post-quantum migration."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=4dec482d4d51e23d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "jwt",
+      "bom-ref": "pqs:collected:LIB-bb3d47ae",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-bb3d47ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application depends on the jwt library (version 3.2.0) which is used for JWT signing operations. This is a confirmed cryptographic library asset that needs to be considered in the security posture."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=4dec482d4d51e23d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2094eefd"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:KEY-47122862"
+    },
+    {
+      "ref": "pqs:collected:KEY-7f6400ae"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:KEY-123f6fdf"
+    },
+    {
+      "ref": "pqs:collected:KEY-456431fc"
+    },
+    {
+      "ref": "pqs:collected:KEY-5fccb081"
+    },
+    {
+      "ref": "pqs:collected:KEY-787eae1a"
+    },
+    {
+      "ref": "pqs:collected:KEY-b37cd566"
+    },
+    {
+      "ref": "pqs:collected:KEY-d11845d5"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:KEY-bcd364c0"
+    },
+    {
+      "ref": "pqs:collected:KEY-d42f0141"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-bb3d47ae"
+    }
+  ]
+}
