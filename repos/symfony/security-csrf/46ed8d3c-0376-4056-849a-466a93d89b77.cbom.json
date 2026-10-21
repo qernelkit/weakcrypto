@@ -1,0 +1,137 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:20070455-5b09-4d99-be73-8d254a1168e2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-21T20:13:11.564Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "symfony/security-csrf",
+      "version": "a8d31dbed271a8de1d55b2293941e44f34400878",
+      "bom-ref": "repo:symfony/security-csrf@a8d31dbed271a8de1d55b2293941e44f34400878",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/symfony/security-csrf"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "46ed8d3c-0376-4056-849a-466a93d89b77"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "76594"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "CsrfTokenManager.php",
+            "line": 102
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This function uses hash_equals() for comparing CSRF tokens in a way that prevents timing attacks, which is a secure approach to CSRF protection. The constant-time comparison is used in the isTokenValid method of CsrfTokenManager."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "CsrfTokenManager.php:102=4033ee93238686d1"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    }
+  ]
+}
