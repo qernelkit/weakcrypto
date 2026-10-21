@@ -1,0 +1,234 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:353316e9-61df-4a15-9e19-4cfd33b9ac20",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-21T05:21:17.123Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "bmoscon/cryptofeed",
+      "version": "f2daed5c75f4514669e2da54a4cbb8d1f5037a47",
+      "bom-ref": "repo:bmoscon/cryptofeed@f2daed5c75f4514669e2da54a4cbb8d1f5037a47",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/bmoscon/cryptofeed"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "eb5e292c-3b50-48d3-a883-13ceab6beed2"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "166521"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cryptofeed/capture/pcap.py",
+            "line": 47
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The SHA-1 hash is used in the WebSocket protocol implementation for generating a response key during the handshake process. This is a security vulnerability as SHA-1 is considered cryptographically broken and unsuitable for security-sensitive applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cryptofeed/capture/pcap.py:47=57cf476d521039e6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cryptofeed/backends/http.py",
+            "line": 48
+          },
+          {
+            "location": "cryptofeed/connection.py",
+            "line": 179
+          },
+          {
+            "location": "tests/backend/test_influxdb.py",
+            "line": 39
+          },
+          {
+            "location": "tests/backend/test_questdb.py",
+            "line": 38
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses aiohttp.ClientSession() which creates HTTPS connections with default SSL context. While not explicitly specifying cipher suites or TLS versions, these connections are subject to the system's default TLS configuration, which may include outdated or insecure protocols."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cryptofeed/backends/http.py:48=3844842f744bc4fe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cryptofeed/connection.py:179=a58b16bba1e13eab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/backend/test_influxdb.py:39=7a94ed6cb4339fda"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/backend/test_questdb.py:38=7a94ed6cb4339fda"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    }
+  ]
+}
