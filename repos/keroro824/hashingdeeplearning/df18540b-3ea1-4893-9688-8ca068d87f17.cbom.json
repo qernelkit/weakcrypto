@@ -1,0 +1,161 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5fc57091-73b2-4316-a33a-855bc8a68619",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-22T13:17:52.306Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "keroro824/hashingdeeplearning",
+      "version": "c9283490ffe34ba97005ec6e11800fdcdf165d79",
+      "bom-ref": "repo:keroro824/hashingdeeplearning@c9283490ffe34ba97005ec6e11800fdcdf165d79",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/keroro824/HashingDeepLearning"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "df18540b-3ea1-4893-9688-8ca068d87f17"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "102640"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SLIDE/Bucket.cpp",
+            "line": 44
+          },
+          {
+            "location": "SLIDE/Layer.cpp",
+            "line": 338
+          },
+          {
+            "location": "SLIDE/Bucket.cpp",
+            "line": 46
+          },
+          {
+            "location": "SLIDE/Layer.cpp",
+            "line": 395
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness is being used in security-sensitive contexts within the SLIDE application. This PRNG is used in reservoir sampling algorithms and network node selection processes where cryptographic security is required. The use of rand() instead of a proper cryptographic random number generator makes these operations vulnerable to predictability attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SLIDE/Bucket.cpp:44=c514f2f208463af5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SLIDE/Layer.cpp:338=818cc7fabb379927"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SLIDE/Bucket.cpp:46=6f65add764e5775b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SLIDE/Layer.cpp:395=14e60aad57c5b479"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
