@@ -1,0 +1,2074 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ae3bc24d-d113-441b-9010-df4974a18f3b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-22T21:46:37.732Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "rustcrypto/password-hashes",
+      "version": "2d15c85026f985c82bc8a40fb41a2706c26d4246",
+      "bom-ref": "repo:rustcrypto/password-hashes@2d15c85026f985c82bc8a40fb41a2706c26d4246",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/RustCrypto/password-hashes"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "9879b4f9-f6a8-4a54-9d2c-05488340ac97"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "17"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "179582"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared in Cargo.lock as a dependency - this is a cryptographic library that could be used by the application but is not actively called from source code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "weak password hash",
+      "bom-ref": "pqs:collected:ALG-ca87cf31",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "yescrypt/src/lib.rs",
+            "line": 145
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ca87cf31"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Password hashing using HMAC-SHA256 instead of a proper password-based KDF like PBKDF2, bcrypt or scrypt. This is a weak implementation that should be improved to use a proper password hashing algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/lib.rs:145=2b58298b63e74613"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 7
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 17
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 2
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 4
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 8
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt password hashing library dependency - this is a legitimate cryptographic dependency used for password hashing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:7=a9497684d3f935fd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:17=28c2b1aa082d97cb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:2=38df986b263d358e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:4=65c909815d7150bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:8=c5004d0e1edf501c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:9=38860ae571583b23"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pbkdf2/src/lib.rs",
+            "line": 176
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation with low iteration count - this is a cryptographic weakness that should be flagged"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/lib.rs:176=3d67e92d93de9892"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Argon2id",
+      "bom-ref": "pqs:collected:ALG-d75ee937",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 5
+          },
+          {
+            "location": "argon2/Cargo.toml",
+            "line": 10
+          },
+          {
+            "location": "argon2/src/algorithm.rs",
+            "line": 106
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 155
+          },
+          {
+            "location": "argon2/src/params.rs",
+            "line": 587
+          },
+          {
+            "location": "argon2/tests/kat.rs",
+            "line": 103
+          },
+          {
+            "location": "argon2/tests/phc_strings.rs",
+            "line": 156
+          },
+          {
+            "location": "benches/Cargo.toml",
+            "line": 10
+          },
+          {
+            "location": "benches/src/argon2.rs",
+            "line": 11
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 24
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 115
+          },
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "Cargo.toml",
+            "line": 59
+          },
+          {
+            "location": "argon2/Cargo.toml",
+            "line": 11
+          },
+          {
+            "location": "argon2/src/algorithm.rs",
+            "line": 22
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 230
+          },
+          {
+            "location": "argon2/tests/kat.rs",
+            "line": 130
+          },
+          {
+            "location": "argon2/tests/phc_strings.rs",
+            "line": 170
+          },
+          {
+            "location": "benches/Cargo.toml",
+            "line": 16
+          },
+          {
+            "location": "benches/src/argon2.rs",
+            "line": 16
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 29
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 116
+          },
+          {
+            "location": "argon2/Cargo.toml",
+            "line": 2
+          },
+          {
+            "location": "argon2/src/algorithm.rs",
+            "line": 48
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 396
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d75ee937"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Argon2id password hashing library dependency - this is a legitimate cryptographic dependency used for password hashing with post-quantum security"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "93"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:5=57efd29ea3a5ac42"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/Cargo.toml:10=efb5d8cbdd403610"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/algorithm.rs:106=b9f94a760885e52d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:155=8f6c72683d837c4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/params.rs:587=e1d13698ebdebdfe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/tests/kat.rs:103=1a5f57307b19c6b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/tests/phc_strings.rs:156=8e46a535dcd151d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "benches/Cargo.toml:10=379016706f5ab6f9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "benches/src/argon2.rs:11=7e02bc22ad69d2ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:24=903eb3fd69fc8448"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:115=1959571f0f26c437"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:59=c3b5997c2f803b91"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/Cargo.toml:11=fe9cac63c7772a02"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/algorithm.rs:22=06761803793cfd59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:230=b8f1b0f898aad3a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/tests/kat.rs:130=3e031023f61c38bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/tests/phc_strings.rs:170=8e46a535dcd151d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "benches/Cargo.toml:16=41bbb5633f2e277a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "benches/src/argon2.rs:16=a22d5d8092582ec5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:29=3055c35f1bea1fa7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:116=5e749af6769d3d51"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/Cargo.toml:2=d91145d55e7ee070"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/algorithm.rs:48=1ab38ad15b3a8411"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:396=b0486df6027cfd10"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 60
+          },
+          {
+            "location": "bcrypt-pbkdf/Cargo.toml",
+            "line": 18
+          },
+          {
+            "location": "bcrypt-pbkdf/src/lib.rs",
+            "line": 113
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 25
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 123
+          },
+          {
+            "location": "pbkdf2/Cargo.toml",
+            "line": 2
+          },
+          {
+            "location": "pbkdf2/benches/lib.rs",
+            "line": 16
+          },
+          {
+            "location": "pbkdf2/src/algorithm.rs",
+            "line": 102
+          },
+          {
+            "location": "pbkdf2/src/lib.rs",
+            "line": 176
+          },
+          {
+            "location": "pbkdf2/src/mcf.rs",
+            "line": 100
+          },
+          {
+            "location": "pbkdf2/src/params.rs",
+            "line": 69
+          },
+          {
+            "location": "pbkdf2/src/phc.rs",
+            "line": 39
+          },
+          {
+            "location": "pbkdf2/tests/pbkdf2.rs",
+            "line": 132
+          },
+          {
+            "location": "scrypt/Cargo.toml",
+            "line": 18
+          },
+          {
+            "location": "scrypt/src/lib.rs",
+            "line": 120
+          },
+          {
+            "location": "yescrypt/Cargo.toml",
+            "line": 19
+          },
+          {
+            "location": "yescrypt/src/lib.rs",
+            "line": 150
+          },
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "Cargo.toml",
+            "line": 9
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 6
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 124
+          },
+          {
+            "location": "pbkdf2/Cargo.toml",
+            "line": 6
+          },
+          {
+            "location": "pbkdf2/benches/lib.rs",
+            "line": 29
+          },
+          {
+            "location": "pbkdf2/src/algorithm.rs",
+            "line": 103
+          },
+          {
+            "location": "pbkdf2/src/lib.rs",
+            "line": 206
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation library dependency - this is a legitimate cryptographic dependency used for key derivation"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "80"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:60=9a92b47d8f606903"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/Cargo.toml:18=79ca7d07347beebc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bcrypt-pbkdf/src/lib.rs:113=f5b3fd67f744f1bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:25=049e2cd87d0f1230"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:123=fb772a2309911275"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/Cargo.toml:2=73aeb30ea9d125bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/benches/lib.rs:16=0442414c2df6d22e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/algorithm.rs:102=38817b71fe86f3d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/lib.rs:176=3d67e92d93de9892"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/mcf.rs:100=bc86632cb70e072b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/params.rs:69=71048a34201116e7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/phc.rs:39=bb024e5bcdc9ac94"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/tests/pbkdf2.rs:132=a3e074201b7a8333"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/Cargo.toml:18=673dbe8a201aeaaa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/lib.rs:120=1378e92754d3e4bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/Cargo.toml:19=c63027997a8564ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/lib.rs:150=e7607857c0941559"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:9=3725060be16ec2b6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:6=1987937b480d72b2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:124=27c1c921c1258c86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/Cargo.toml:6=7d4fae7209e58400"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/benches/lib.rs:29=709f178c7cadf5e8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/algorithm.rs:103=8b4e69ed82431c74"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2/src/lib.rs:206=1e21ca20b1ca22b9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt",
+      "bom-ref": "pqs:collected:ALG-c1f8b585",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 10
+          },
+          {
+            "location": "fuzz/Cargo.toml",
+            "line": 12
+          },
+          {
+            "location": "fuzz/fuzz_targets/scrypt.rs",
+            "line": 19
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 26
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 119
+          },
+          {
+            "location": "scrypt/Cargo.toml",
+            "line": 2
+          },
+          {
+            "location": "scrypt/benches/lib.rs",
+            "line": 13
+          },
+          {
+            "location": "scrypt/src/errors.rs",
+            "line": 28
+          },
+          {
+            "location": "scrypt/src/lib.rs",
+            "line": 193
+          },
+          {
+            "location": "scrypt/src/mcf.rs",
+            "line": 113
+          },
+          {
+            "location": "scrypt/src/phc.rs",
+            "line": 40
+          },
+          {
+            "location": "scrypt/tests/mod.rs",
+            "line": 69
+          },
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "Cargo.toml",
+            "line": 61
+          },
+          {
+            "location": "fuzz/Cargo.toml",
+            "line": 15
+          },
+          {
+            "location": "fuzz/fuzz_targets/scrypt.rs",
+            "line": 37
+          },
+          {
+            "location": "password-auth/Cargo.toml",
+            "line": 6
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 120
+          },
+          {
+            "location": "scrypt/Cargo.toml",
+            "line": 4
+          },
+          {
+            "location": "scrypt/benches/lib.rs",
+            "line": 15
+          },
+          {
+            "location": "scrypt/src/mcf.rs",
+            "line": 236
+          },
+          {
+            "location": "scrypt/src/phc.rs",
+            "line": 68
+          },
+          {
+            "location": "fuzz/Cargo.toml",
+            "line": 16
+          },
+          {
+            "location": "fuzz/fuzz_targets/scrypt.rs",
+            "line": 41
+          },
+          {
+            "location": "password-auth/src/lib.rs",
+            "line": 184
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c1f8b585"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "scrypt password hashing algorithm used in multiple files (Cargo.toml dependencies, fuzz targets, and main library code). This is a legitimate cryptographic asset being used for password hashing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "42"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:10=f7566100194f6a81"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/Cargo.toml:12=6a8059c9acb2cd13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/fuzz_targets/scrypt.rs:19=cab5e83176b3fa7c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:26=5f35232bf6961f46"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:119=e75b3006ee272f15"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/Cargo.toml:2=89aa685359fd9450"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/benches/lib.rs:13=ac000353210193ad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/errors.rs:28=218410e20094976c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/lib.rs:193=045272921464bb00"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/mcf.rs:113=24a9c5ad17fc61aa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/phc.rs:40=01161ce18b29c02a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/tests/mod.rs:69=77022164bec49acd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:61=52e82887a7079543"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/Cargo.toml:15=89aa685359fd9450"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/fuzz_targets/scrypt.rs:37=1bb3627e3f9f78dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/Cargo.toml:6=1987937b480d72b2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:120=74148052cead5a00"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/Cargo.toml:4=87148edd5547d4c7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/benches/lib.rs:15=c065f3b7126915f1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/mcf.rs:236=560dd65d9dddd53c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/phc.rs:68=e0d366aad11026dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/Cargo.toml:16=9f53c90ae13125cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "fuzz/fuzz_targets/scrypt.rs:41=8d8e40fce5f81f1c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password-auth/src/lib.rs:184=f994b701228c9bdf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2/BLAKE3",
+      "bom-ref": "pqs:collected:ALG-84de5a3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 24
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 136
+          },
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 40
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 357
+          },
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 41
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 384
+          },
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 6
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 568
+          },
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 60
+          },
+          {
+            "location": "argon2/src/lib.rs",
+            "line": 593
+          },
+          {
+            "location": "argon2/src/blake2b_long.rs",
+            "line": 65
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84de5a3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "BLAKE2 hash functions used in Argon2 password hashing - this is legitimate cryptographic usage"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:24=e2695da8178a8ca4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:136=e776670bab446cf6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:40=1fc48c945cc6d017"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:357=d1968b988a413e43"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:41=da653cdcec7c47c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:384=6ee87eeedfb4bb8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:6=518f8341d2264a96"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:568=f2e026a1fc0d5157"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:60=ffabcebbd3fedcf0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/lib.rs:593=da653cdcec7c47c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon2/src/blake2b_long.rs:65=68034165c83f76d7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scrypt/src/lib.rs",
+            "line": 120
+          },
+          {
+            "location": "yescrypt/src/lib.rs",
+            "line": 150
+          },
+          {
+            "location": "yescrypt/src/util.rs",
+            "line": 43
+          },
+          {
+            "location": "scrypt/src/lib.rs",
+            "line": 127
+          },
+          {
+            "location": "yescrypt/src/lib.rs",
+            "line": 180
+          },
+          {
+            "location": "yescrypt/src/lib.rs",
+            "line": 184
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA256 operations used in password hashing within scrypt and yescrypt libraries. These are legitimate cryptographic assets being used for integrity protection in password hashing functions."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/lib.rs:120=1378e92754d3e4bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/lib.rs:150=e7607857c0941559"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/util.rs:43=7f2fbd90c622205a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scrypt/src/lib.rs:127=7d0fa486a8be56cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/lib.rs:180=fcc22d45a37bed8a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "yescrypt/src/lib.rs:184=8e1a779f2da7b747"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC",
+      "bom-ref": "pqs:collected:ALG-0db1f0bc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0db1f0bc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA256 library dependency - this is a legitimate cryptographic dependency used for message authentication"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-928ac765",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-928ac765"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared in Cargo.lock as a dependency - this is a cryptographic library that could be used by the application but is not actively called from source code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sha2",
+      "bom-ref": "pqs:collected:LIB-ea6b9ac4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ea6b9ac4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-2 cryptographic library dependency - this is a legitimate cryptographic library being used for hashing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt",
+      "bom-ref": "pqs:collected:LIB-073173ef",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-073173ef"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "argon2",
+      "bom-ref": "pqs:collected:LIB-0dd6fd3c",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-0dd6fd3c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sha1",
+      "bom-ref": "pqs:collected:LIB-8828b3a9",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-8828b3a9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hmac",
+      "bom-ref": "pqs:collected:LIB-b7b84e73",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b7b84e73"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "pbkdf2",
+      "bom-ref": "pqs:collected:LIB-ea49d4c1",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ea49d4c1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 cryptographic library dependency - this is a legitimate cryptographic library being used for key derivation"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-ca87cf31"
+    },
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-d75ee937"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-c1f8b585"
+    },
+    {
+      "ref": "pqs:collected:ALG-84de5a3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-0db1f0bc"
+    },
+    {
+      "ref": "pqs:collected:ALG-928ac765"
+    },
+    {
+      "ref": "pqs:collected:LIB-ea6b9ac4"
+    },
+    {
+      "ref": "pqs:collected:LIB-073173ef"
+    },
+    {
+      "ref": "pqs:collected:LIB-0dd6fd3c"
+    },
+    {
+      "ref": "pqs:collected:LIB-8828b3a9"
+    },
+    {
+      "ref": "pqs:collected:LIB-b7b84e73"
+    },
+    {
+      "ref": "pqs:collected:LIB-ea49d4c1"
+    }
+  ]
+}
