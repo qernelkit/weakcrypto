@@ -1,0 +1,290 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:26aa7e60-79a8-46f8-a1bb-af7f04b59225",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-22T07:32:43.426Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "andresriancho/enumerate-iam",
+      "version": "4529114002d1571035c31980162e401112f356da",
+      "bom-ref": "repo:andresriancho/enumerate-iam@4529114002d1571035c31980162e401112f356da",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/andresriancho/enumerate-iam"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b6a22751-fff8-4504-9a50-8b72549882a7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "91979"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT verification disabled",
+      "bom-ref": "pqs:collected:ALG-07035178",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "enumerate_iam/main.py",
+            "line": 139
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-07035178"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signature verification is disabled in enumerate_iam/main.py at line 139, which means the application accepts unsigned tokens and is vulnerable to tampering."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "enumerate_iam/main.py:139=534154d6f718859f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "enumerate_iam/main.py",
+            "line": 139
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS certificate verification is disabled in enumerate_iam/main.py at line 139 when creating boto3 clients, which means the application accepts any SSL certificate and is vulnerable to MITM attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "enumerate_iam/main.py:139=534154d6f718859f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "managed secret store",
+      "bom-ref": "pqs:collected:ALG-92cfc6cb",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "enumerate_iam/bruteforce_tests.py",
+            "line": 962
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92cfc6cb"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Secrets are fetched from a managed store (AWS Secrets Manager or similar) in enumerate_iam/bruteforce_tests.py at line 962, which is a good security practice as it avoids hardcoding secrets."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "enumerate_iam/bruteforce_tests.py:962=17c08a501e4e21c2"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-07035178"
+    },
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-92cfc6cb"
+    }
+  ]
+}
