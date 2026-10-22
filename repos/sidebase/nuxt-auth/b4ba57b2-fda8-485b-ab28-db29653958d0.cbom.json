@@ -1,0 +1,867 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:f9a04879-a38d-4ea2-a168-13e5a921aad3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-22T00:22:55.999Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "cbb3a8fe7fd2"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sidebase/nuxt-auth",
+      "version": "9fcc5f68029454882e4c1128ef439bf9074e9a5a",
+      "bom-ref": "repo:sidebase/nuxt-auth@9fcc5f68029454882e4c1128ef439bf9074e9a5a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/sidebase/nuxt-auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b4ba57b2-fda8-485b-ab28-db29653958d0"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build cbb3a8fe7fd2"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "9"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "154439"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "playground-local/server/utils/session.ts",
+            "line": 116
+          },
+          {
+            "location": "src/runtime/composables/local/useAuth.ts",
+            "line": 102
+          },
+          {
+            "location": "src/runtime/composables/local/utils/token.ts",
+            "line": 4
+          },
+          {
+            "location": "src/runtime/plugins/refresh-token.server.ts",
+            "line": 37
+          },
+          {
+            "location": "src/runtime/composables/local/useAuth.ts",
+            "line": 262
+          },
+          {
+            "location": "src/runtime/plugins/refresh-token.server.ts",
+            "line": 53
+          },
+          {
+            "location": "src/runtime/composables/local/useAuth.ts",
+            "line": 273
+          },
+          {
+            "location": "src/runtime/composables/local/useAuth.ts",
+            "line": 88
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in token comparison operations. The code compares tokens using the '===' operator which is not constant-time, making it vulnerable to timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "playground-local/server/utils/session.ts:116=e55630715547c5ae"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/local/useAuth.ts:102=4c50326bf0478c7d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/local/utils/token.ts:4=f6383d1b71c88644"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/plugins/refresh-token.server.ts:37=71bd03a221e967a6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/local/useAuth.ts:262=71bd03a221e967a6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/plugins/refresh-token.server.ts:53=4c50326bf0478c7d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/local/useAuth.ts:273=4c50326bf0478c7d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/local/useAuth.ts:88=71bd03a221e967a6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/runtime/composables/authjs/utils/navigateToAuthPage.ts",
+            "line": 70
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code generates HTML content with a static nonce value. While not directly cryptographic, it's a weak configuration that could be problematic if reused in cryptographic contexts."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/runtime/composables/authjs/utils/navigateToAuthPage.ts:70=ec24c83fc8711745"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "playground-local/server/utils/session.ts",
+            "line": 176
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "playground-local/server/utils/session.ts:176=b8abb00cf178a037"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HKDF",
+      "bom-ref": "pqs:collected:ALG-ab44ea08",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 11349
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 1513
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 8106
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ab44ea08"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on @panva/hkdf, which is a legitimate HKDF (HMAC-based Extract-and-Expand Key Derivation) library. This is available in the shipped library and no call site found in the application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:11349=e8e49d88597307d6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:1513=59971fb1ce6a90f8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:8106=547694ef6dfd51ac"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on AES through node-forge@1.4.0. This is available in the shipped library and no call site found in the application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Azure Key Vault",
+      "bom-ref": "pqs:collected:ALG-184451d2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 11463
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 11619
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 11758
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 5882
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 5906
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 7493
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 7724
+          },
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 7807
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-184451d2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares dependencies on Azure Key Vault services (@azure/keyvault-secrets). This is available in the shipped library and no call site found in the application - represents a potential quantum-safe key management capability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:11463=067e117cbdb5fd93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:11619=067e117cbdb5fd93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:11758=067e117cbdb5fd93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:5882=5c74d802e0d3a0d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:5906=b64673e46d49aae1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:7493=067e117cbdb5fd93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:7724=067e117cbdb5fd93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:7807=067e117cbdb5fd93"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "jose",
+      "bom-ref": "pqs:collected:LIB-7ab7aaf6",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "playground-local/package.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-7ab7aaf6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:sites_rejected",
+          "value": "1"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "playground-local/package.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509",
+      "bom-ref": "pqs:collected:ALG-1847d707",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1847d707"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on X.509 certificate handling through node-forge@1.4.0. This is available in the shipped library and no call site found in the application - represents a potential quantum-safe certificate capability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JOSE (JWS/JWE/JWK)",
+      "bom-ref": "pqs:collected:ALG-386b2ee4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "playground-local/package.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-386b2ee4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "playground-local/package.json:1=021fb596db81e6d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    },
+    {
+      "ref": "pqs:collected:ALG-ab44ea08"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-184451d2"
+    },
+    {
+      "ref": "pqs:collected:LIB-7ab7aaf6"
+    },
+    {
+      "ref": "pqs:collected:ALG-1847d707"
+    },
+    {
+      "ref": "pqs:collected:ALG-386b2ee4"
+    }
+  ]
+}
