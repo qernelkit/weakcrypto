@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ba732e9e-41c9-4bd0-a446-08ccf29e21e8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T03:38:50.147Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "robbintt/popup-openvpn",
+      "version": "de989005b757ca08a4eb81ca985ab8e91aad3841",
+      "bom-ref": "repo:robbintt/popup-openvpn@de989005b757ca08a4eb81ca985ab8e91aad3841",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/robbintt/popup-openvpn"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "25f8ace5-f2bc-4392-92d1-d22b1bd5df94"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "80114"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-1024",
+      "bom-ref": "pqs:finding:roles/common/templates/sshd_config.j2:20:RSA-1024",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "roles/common/templates/sshd_config.j2",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "roles/common/templates/sshd_config.j2:20=f281115851bb5d88"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-2048",
+      "bom-ref": "pqs:finding:group_vars/all:12:RSA-2048",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "group_vars/all",
+            "line": 12
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "group_vars/all:12=9518c95af69ff027"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDHE-RSA-AES256-GCM-SHA384",
+      "bom-ref": "pqs:finding:group_vars/all:13:ECDHE-RSA-AES256-GCM-SHA384",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "group_vars/all",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "group_vars/all:13=64a84394f46257b2"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:roles/common/templates/sshd_config.j2:20:RSA-1024"
+    },
+    {
+      "ref": "pqs:finding:group_vars/all:12:RSA-2048"
+    },
+    {
+      "ref": "pqs:finding:group_vars/all:13:ECDHE-RSA-AES256-GCM-SHA384"
+    }
+  ]
+}
