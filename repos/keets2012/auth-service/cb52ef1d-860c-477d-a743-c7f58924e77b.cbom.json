@@ -1,0 +1,388 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:24ba5681-0b37-4716-b24d-e13ff81c7af8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T18:20:09.730Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "keets2012/auth-service",
+      "version": "5aa0028c002abb84056b813e8be0ce207cace5c7",
+      "bom-ref": "repo:keets2012/auth-service@5aa0028c002abb84056b813e8be0ce207cace5c7",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/keets2012/Auth-service"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "cb52ef1d-860c-477d-a743-c7f58924e77b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "109699"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT-Signing",
+      "bom-ref": "pqs:finding:src/main/java/com/blueskykong/auth/config/oauth/OAuth2Config.java:92:JWT-Signing",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/blueskykong/auth/config/oauth/OAuth2Config.java",
+            "line": 92
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/config/oauth/OAuth2Config.java:92=3ff9e32410160e4d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 178
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java",
+            "line": 100
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/filter/CustomLogoutHandler.java",
+            "line": 39
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 216
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java",
+            "line": 176
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 58
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java",
+            "line": 349
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 69
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 73
+          },
+          {
+            "location": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java",
+            "line": 89
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison of MAC/digest values using == operator instead of constant-time comparison functions. This is a security vulnerability that can leak information through timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:178=d638f3c7e14cf89b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java:100=0e6dd8aadf5df2c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/filter/CustomLogoutHandler.java:39=b9af9cc7bc47b2b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:216=d638f3c7e14cf89b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java:176=8f20298fe09379bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:58=b9af9cc7bc47b2b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomRedisTokenStore.java:349=0e6dd8aadf5df2c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:69=0e6dd8aadf5df2c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:73=f206c7183b5b4b22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/blueskykong/auth/security/CustomAuthorizationTokenServices.java:89=e446ac87c1141fa5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pom.xml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing capability via com.auth0:java-jwt library dependency. This represents a cryptographic asset that could be used for signing JWT tokens in the application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pom.xml:1=12c29731e40adc0c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "com.auth0:java-jwt",
+      "bom-ref": "pqs:collected:LIB-217c2ed7",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pom.xml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-217c2ed7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Crypto dependency: com.auth0:java-jwt@2.2.0. This library is available in the project and could be used for JWT operations including signing and verification."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pom.xml:1=12c29731e40adc0c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/main/java/com/blueskykong/auth/config/oauth/OAuth2Config.java:92:JWT-Signing"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-217c2ed7"
+    }
+  ]
+}
