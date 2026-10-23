@@ -1,0 +1,246 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:38ca420d-6700-4fac-9615-4a0d98091305",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T09:57:00.820Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "svlada/springboot-security-jwt",
+      "version": "0292a78f91082b86c14ddf7280b444875a4e9b49",
+      "bom-ref": "repo:svlada/springboot-security-jwt@0292a78f91082b86c14ddf7280b444875a4e9b49",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/svlada/springboot-security-jwt"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "f9814558-110d-4456-8e30-087d5662a201"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "115434"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/svlada/security/auth/ajax/AjaxAuthenticationProvider.java",
+            "line": 32
+          },
+          {
+            "location": "src/main/java/com/svlada/security/config/PasswordEncoderConfig.java",
+            "line": 17
+          },
+          {
+            "location": "src/main/java/com/svlada/security/auth/ajax/AjaxAuthenticationProvider.java",
+            "line": 36
+          },
+          {
+            "location": "src/main/java/com/svlada/security/config/PasswordEncoderConfig.java",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt password hashing is used for user authentication in this application. It's a legitimate use of a KDF for password storage, but it's not quantum-vulnerable (it's not an encryption algorithm, key exchange, or signature scheme that would be affected by Shor's algorithm)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/auth/ajax/AjaxAuthenticationProvider.java:32=7f48df216ffdc737"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/config/PasswordEncoderConfig.java:17=c9661b6bff11b633"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/auth/ajax/AjaxAuthenticationProvider.java:36=8729b976580bb86b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/config/PasswordEncoderConfig.java:18=06559656f18f9d0e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/svlada/security/model/token/JwtTokenFactory.java",
+            "line": 64
+          },
+          {
+            "location": "src/main/java/com/svlada/security/model/token/JwtTokenFactory.java",
+            "line": 88
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens are signed with HMAC-SHA512 for authentication and authorization purposes. This is a legitimate use of a MAC for token integrity, but it doesn't involve quantum-vulnerable cryptographic primitives like RSA encryption, ECDH key exchange, or other algorithms that would be affected by Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/model/token/JwtTokenFactory.java:64=6fbedcd510b8ac60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/svlada/security/model/token/JwtTokenFactory.java:88=6fbedcd510b8ac60"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    }
+  ]
+}
