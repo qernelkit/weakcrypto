@@ -1,0 +1,679 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:fd58e7f2-8a91-4424-82a4-a6dba0604c32",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T09:59:50.720Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "google/oauth2l",
+      "version": "5854a089d8787bc1dc27f53ead5736d544ad808d",
+      "bom-ref": "repo:google/oauth2l@5854a089d8787bc1dc27f53ead5736d544ad808d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/google/oauth2l"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "c9677014-b887-4ff7-aa8f-72fa4a1f41c1"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "142027"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded private key",
+      "bom-ref": "pqs:collected:ALG-394bd8ab",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/fixtures/fake-service-account.json",
+            "line": 4
+          },
+          {
+            "location": "python/oauth2l/testdata/fake_service_account.json",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-394bd8ab"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-service-account.json:4=03cfe2c626ef8d56"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/oauth2l/testdata/fake_service_account.json:3=03cfe2c626ef8d56"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 418
+          },
+          {
+            "location": "util/refresh.go",
+            "line": 36
+          },
+          {
+            "location": "util/tasks.go",
+            "line": 166
+          },
+          {
+            "location": "util/tasks.go",
+            "line": 218
+          },
+          {
+            "location": "util/tasks.go",
+            "line": 232
+          },
+          {
+            "location": "util/tasks.go",
+            "line": 94
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are instances of comparing tokens/credentials with == operator instead of using constant-time comparison functions, which can leak information via timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:418=ff597844408f6206"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/refresh.go:36=da010a96b60cbe09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/tasks.go:166=3db59d3e7b819b75"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/tasks.go:218=e5f0020770301f8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/tasks.go:232=a879923e15d1b628"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/tasks.go:94=a879923e15d1b628"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "python/oauth2l/__init__.py",
+            "line": 304
+          },
+          {
+            "location": "python/oauth2l/oauth2l_test.py",
+            "line": 479
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens signed with RSA algorithms (RS256) are used in authentication flows, making them vulnerable to quantum attacks. The signing uses classical RSA signatures that would be broken by Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/oauth2l/__init__.py:304=90825ed283916896"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/oauth2l/oauth2l_test.py:479=90825ed283916896"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-b8dcbaf3",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/fixtures/fake-service-account.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "python/oauth2l/testdata/fake_service_account.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-b8dcbaf3"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-service-account.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/oauth2l/testdata/fake_service_account.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.26)",
+      "bom-ref": "pqs:collected:PROTO-fd8deeba",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/cli_test.go",
+            "line": 527
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-fd8deeba"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The integration test file references 'go-https-client' which indicates the application makes HTTPS requests using default TLS configurations. Default Go TLS clients may use older cipher suites that are vulnerable to quantum attacks, particularly if they're using RSA or ECDHE key exchanges with insufficient key sizes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/cli_test.go:527=93e6201bdaa2ceb9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "util/pkce.go",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used in the PKCE flow for generating secure challenge values. While SHA-256 is not quantum-safe, it's not a primary concern for post-quantum migration like RSA/ECDH are. The use here is for non-cryptographic purposes (challenge generation)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "util/pkce.go:29=78a30841757a04b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Crypto material: credential",
+      "bom-ref": "pqs:collected:SEC-ce809021",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/fixtures/fake-client-secrets-3lo-loopback.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "integration/fixtures/fake-client-secrets-expired-token-3lo-loopback.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "integration/fixtures/fake-client-secrets-expired-token.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "integration/fixtures/fake-client-secrets.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "python/oauth2l/testdata/fake_client_secrets.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-ce809021"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-client-secrets-3lo-loopback.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-client-secrets-expired-token-3lo-loopback.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-client-secrets-expired-token.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/fixtures/fake-client-secrets.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/oauth2l/testdata/fake_client_secrets.json:1=021fb596db81e6d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-394bd8ab"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:KEY-b8dcbaf3"
+    },
+    {
+      "ref": "pqs:collected:PROTO-fd8deeba"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:SEC-ce809021"
+    }
+  ]
+}
