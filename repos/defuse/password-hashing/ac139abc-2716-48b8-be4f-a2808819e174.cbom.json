@@ -1,0 +1,791 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ba5e026b-426e-4c65-a328-ddf80cb1f550",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-22T23:59:34.159Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "defuse/password-hashing",
+      "version": "f905b7f07d9488e80b1e16a447fc77512b719658",
+      "bom-ref": "repo:defuse/password-hashing@f905b7f07d9488e80b1e16a447fc77512b719658",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/defuse/password-hashing"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ac139abc-2716-48b8-be4f-a2808819e174"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "166138"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "PasswordStorage.cs",
+            "line": 31
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 174
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 10
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 17
+          },
+          {
+            "location": "tests/test.php",
+            "line": 43
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 61
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 37
+          },
+          {
+            "location": "tests/test.php",
+            "line": 53
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 password hashing with insufficient iterations (64,000 vs OWASP minimum 600,000) across multiple language implementations (C#, Java, PHP, Ruby). This makes password hashes more vulnerable to brute-force attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:31=5ad9bb22a28dbc2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:174=8189f6f43803bf71"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:10=dcd69e6ef8e87a9a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:17=88c706c06abeb5ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test.php:43=43d3160f49cbdbab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:61=5de81d2cf34361ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:37=ddf40acf1897081f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test.php:53=61fd0dea8fdf4d1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:62=e67ef46a28728603"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/Test.cs",
+            "line": 57
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Test file demonstrating insecure hash comparison using == operator that leaks timing information"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Test.cs:57=71608c79e3e947ad"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-1",
+      "bom-ref": "pqs:collected:ALG-ba399e5b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "PasswordStorage.java",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ba399e5b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Using deprecated PBKDF2WithHmacSHA1 algorithm which is insecure and should be replaced with stronger hash functions"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:32=1301479ce82f3d38"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "PasswordStorage.php",
+            "line": 152
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PHP file using proper constant-time comparison with hash_equals() when available, which is correct cryptographic practice"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:152=c379a17077536c1c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "PasswordStorage.cs",
+            "line": 137
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 129
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 10
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 101
+          },
+          {
+            "location": "tests/test.php",
+            "line": 43
+          },
+          {
+            "location": "tests/test.rb",
+            "line": 65
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 146
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 132
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 11
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 105
+          },
+          {
+            "location": "tests/test.php",
+            "line": 53
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 177
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 156
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 111
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 108
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 190
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 170
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 113
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 113
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 192
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 174
+          },
+          {
+            "location": "PasswordStorage.php",
+            "line": 12
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 124
+          },
+          {
+            "location": "PasswordStorage.cs",
+            "line": 193
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 175
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation using deprecated HMAC-SHA1 but with sufficient iteration count (64000) for security"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "75"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:137=2930681069597f1d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:129=aef9ad48889ee4f3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:10=dcd69e6ef8e87a9a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:101=8e9c63a7a608c67a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test.php:43=43d3160f49cbdbab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test.rb:65=95def0299d562055"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:146=d400db1ab70142fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:132=d400db1ab70142fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:11=78fb025cdae40470"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:105=81d7196e5611cdaf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test.php:53=61fd0dea8fdf4d1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:177=61e5c4040b1aaf98"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:156=e5e31c263b7b1560"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:111=fa3c9f97a84cf789"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:108=f28d882486ffea15"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:190=176a49e98d9109a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:170=463ef876fa968dd1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:113=a2887cf19334b9b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:113=8576bc3f1461cb1c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:192=8cd599dd13625485"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:174=8189f6f43803bf71"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.php:12=f17a967568bb5ea9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:124=730f8d97a069d861"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:193=20095710902c4fe7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:175=ac9b32aebd75c48d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "PasswordStorage.cs",
+            "line": 46
+          },
+          {
+            "location": "PasswordStorage.java",
+            "line": 57
+          },
+          {
+            "location": "PasswordStorage.rb",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness generators being used properly for salt generation in password hashing functions across multiple language implementations (C#, Java, Ruby). These are appropriate and secure uses of CSPRNGs."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.cs:46=6ed8eb92470b2b7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.java:57=a648989e73cb475b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "PasswordStorage.rb:32=0717de3c2b6cd448"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-ba399e5b"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
