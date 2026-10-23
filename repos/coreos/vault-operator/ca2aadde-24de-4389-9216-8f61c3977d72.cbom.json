@@ -1,0 +1,405 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a452ac1b-36f9-455c-b1d6-ebabcf589d33",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-23T08:37:38.892Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "coreos/vault-operator",
+      "version": "9f310f12f67d3080e16d1fa5dc0d345aa543a966",
+      "bom-ref": "repo:coreos/vault-operator@9f310f12f67d3080e16d1fa5dc0d345aa543a966",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/coreos/vault-operator"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ca2aadde-24de-4389-9216-8f61c3977d72"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "117971"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/backup_restore_test.go",
+            "line": 20
+          },
+          {
+            "location": "test/e2e/upgradetest/upgrade_test.go",
+            "line": 19
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in test files for generating random values, but in a security context where cryptographically secure randomness is required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/backup_restore_test.go:20=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/upgradetest/upgrade_test.go:19=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 66
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in the NewPrivateKey() function to generate 2048-bit RSA keys for TLS certificate creation"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:66=2eb227ab861aeb60"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 121
+          },
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 130
+          },
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 139
+          },
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 168
+          },
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 86
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X.509 certificate parsing and creation using crypto/x509 package for TLS certificate management"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:121=647f7d01dc1468dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:130=eeb18c6820e0c785"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:139=9ef6eb510c4b7e64"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:168=647f7d01dc1468dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:86=5dc8dbf33621a8bd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/util/tlsutil/tls_util.go",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used for generating random values in TLS certificate creation, which is correct usage"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/util/tlsutil/tls_util.go:18=a3859508fc6d98bd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
