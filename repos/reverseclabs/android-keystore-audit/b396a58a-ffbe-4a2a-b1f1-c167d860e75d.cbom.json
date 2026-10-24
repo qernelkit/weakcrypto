@@ -1,0 +1,834 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:64db69f2-da94-4c3f-9038-26aec7143916",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T20:31:37.281Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "reverseclabs/android-keystore-audit",
+      "version": "053ee0a87643fff5daa99ceb607a72469f3892d2",
+      "bom-ref": "repo:reverseclabs/android-keystore-audit@053ee0a87643fff5daa99ceb607a72469f3892d2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ReversecLabs/android-keystore-audit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b396a58a-ffbe-4a2a-b1f1-c167d860e75d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "141226"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-ECB",
+      "bom-ref": "pqs:collected:ALG-136e45af",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 65
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 85
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-136e45af"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-ECB mode encryption with RSA/ECB/OAEPWithSHA-256AndMGF1Padding in two different locations within KeyStoreHelper.kt. This is a cryptographic weakness as ECB mode does not provide semantic security - identical plaintext blocks will produce identical ciphertext blocks, making it vulnerable to pattern analysis attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:65=f9f5d8a93a4ca654"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:85=a063189893db9ff6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-OAEP",
+      "bom-ref": "pqs:collected:ALG-69ccc78e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 65
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 85
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-69ccc78e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses RSA-OAEP encryption padding in two locations within KeyStoreHelper.kt. RSA-OAEP is secure for padding but RSA itself is vulnerable to quantum attacks, making this a quantum-vulnerable cryptographic primitive that needs migration to post-quantum alternatives like ML-KEM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:65=f9f5d8a93a4ca654"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:85=a063189893db9ff6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 91
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses java.util.Random().nextBytes(iv) in KeyStoreHelper.kt at line 91, which is a non-cryptographic PRNG. In cryptographic contexts, this should be replaced with a cryptographically secure random number generator like SecureRandom to ensure unpredictability of initialization vectors and other cryptographic parameters."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:91=de517d7aa7a78018"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/biometrix/BiometricManagerV23.java",
+            "line": 35
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses a direct object comparison (signature != null) in BiometricManagerV23.java at line 35, which is a non-constant-time comparison. This can leak information through timing analysis, making it vulnerable to side-channel attacks that could compromise the security of biometric authentication."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/biometrix/BiometricManagerV23.java:35=14cf0d0e89725126"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 37
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 38
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 46
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 47
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 56
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 57
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 7
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 8
+          },
+          {
+            "location": "frida-scripts/tracer-secretkeyfactory.js",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:37=44c6b38cab54b599"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:38=cc947e5654046430"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:46=72c72bccfd65dc53"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:47=592166d31724129d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:56=a1864ba92cbda6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:57=b78357221e655b8e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:7=36e6556ac86b376d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:8=409a26ce8ac8ae8e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-secretkeyfactory.js:9=41900d29dd938001"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt",
+            "line": 11
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 51
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt",
+            "line": 72
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt",
+            "line": 17
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 66
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt",
+            "line": 94
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 93
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt",
+            "line": 99
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt",
+            "line": 94
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-GCM mode encryption in multiple locations (CryptoHelper.kt, KeyStoreHelper.kt, KeystoreManager.kt). AES-GCM is a quantum-safe authenticated encryption mode and is not vulnerable to Shor's algorithm, making it acceptable for current security needs. However, the key size should be verified to ensure it meets current security standards."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt:11=f2f2b7623544d1cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:51=b8b5137b420863bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt:72=b8b5137b420863bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt:17=f2f2b7623544d1cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:66=e5ec81308e7f9d6f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt:94=eec3a019feb82344"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:93=a12b5a4f0a272c7b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeystoreManager.kt:99=e00f8cb55b2b3ef1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/KeyStoreHelper.kt:94=eec3a019feb82344"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 152
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt",
+            "line": 23
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 153
+          },
+          {
+            "location": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt",
+            "line": 30
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 155
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 160
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 161
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 163
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 168
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 169
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 171
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 176
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 177
+          },
+          {
+            "location": "frida-scripts/tracer-cipher.js",
+            "line": 179
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "14"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:152=360054ab7ded5afc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt:23=366af95d8028ac3b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:153=a655a59870a15f2f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "keystorecrypto-app/app/src/main/java/com/example/keystorecrypto/CryptoHelper.kt:30=366af95d8028ac3b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:155=e1fd1aa7b8bbf00b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:160=a4e3716541d06e73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:161=53db22380a823fc2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:163=a7af618fef04af82"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:168=35009e5d8fc4462f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:169=ec6588513d29e1a2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:171=c7d4c5a0d59304d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:176=2dd6cf1032ca7ff3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:177=bebbcc4f44429688"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "frida-scripts/tracer-cipher.js:179=2094e04ac66badbc"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-136e45af"
+    },
+    {
+      "ref": "pqs:collected:ALG-69ccc78e"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
