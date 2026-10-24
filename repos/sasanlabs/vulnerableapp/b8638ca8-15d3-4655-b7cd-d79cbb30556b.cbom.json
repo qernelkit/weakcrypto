@@ -1,0 +1,3293 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8426c3bd-f770-43e8-b0cd-a08e1a3492c7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T21:09:09.747Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sasanlabs/vulnerableapp",
+      "version": "a03048a580a89b5b36399e66e2fdbd1b628c45a1",
+      "bom-ref": "repo:sasanlabs/vulnerableapp@a03048a580a89b5b36399e66e2fdbd1b628c45a1",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/SasanLabs/VulnerableApp"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b8638ca8-15d3-4655-b7cd-d79cbb30556b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "32"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "257559"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "weak password hash",
+      "bom-ref": "pqs:collected:ALG-ca87cf31",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 67
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java",
+            "line": 103
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java",
+            "line": 46
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java",
+            "line": 47
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java",
+            "line": 87
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java",
+            "line": 88
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ca87cf31"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in PasswordHashingUtils.java for password validation. The function isValidSaltedSha256 uses SHA-256 which is fast and unsuitable for password hashing, making it vulnerable to brute force attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:67=e80025426f74ad60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java:103=2fc649e6ad37f216"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java:46=f1b706f06ed228c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java:47=ee4240ea7f0eec45"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java:87=ba22ddeceab787e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java:88=898a96db2a924d0b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-ECB",
+      "bom-ref": "pqs:collected:ALG-136e45af",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 88
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 150
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 91
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 89
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 152
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 151
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-136e45af"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in EncryptionUtils.java for AES/ECB/PKCS5Padding and PasswordHashingUtils.java for DES/ECB/NoPadding - both are insecure encryption modes that should be replaced with CBC or GCM modes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:88=6af04a04e1527704"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:150=0a77dd94ba998880"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:91=d5d25eb6c6c747d6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:89=e26cf25ed5fc04b1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:152=0012f0ea75932997"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:151=fa69be1f6e5bcb45"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DES",
+      "bom-ref": "pqs:collected:ALG-620f17d4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 150
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 152
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 151
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-620f17d4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in PasswordHashingUtils.java for DES/ECB/NoPadding - this is a direct use of the insecure DES algorithm which has been broken since the 1970s."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:150=0a77dd94ba998880"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:152=0012f0ea75932997"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:151=fa69be1f6e5bcb45"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:collected:ALG-70109388",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 21
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-70109388"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in PasswordHashingUtils.java - this is a direct use of MD5 which has been broken since 2004 and is vulnerable to collision attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:21=09e76f4dd3dd395a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in PasswordHashingUtils.java - this is a direct use of SHA-1 which has been broken since 2017 and is vulnerable to collision attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:22=39d2d5761fce370a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT alg=none",
+      "bom-ref": "pqs:collected:ALG-8788f638",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 33
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8788f638"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT token validation that accepts 'none' algorithm, allowing unverified signatures"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:33=c06e92d8695782b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RC4",
+      "bom-ref": "pqs:collected:ALG-da9bad44",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "stream-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/i18n/messages.properties",
+            "line": 487
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-da9bad44"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Mentioned in i18n/messages.properties as a weak encryption algorithm to be avoided - this shows awareness of RC4 vulnerabilities but doesn't indicate actual usage in the codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages.properties:487=4ba96b4512c3cb2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/configuration/VulnerableAppConfiguration.java",
+            "line": 185
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 101
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java",
+            "line": 124
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthUserAlgorithm.java",
+            "line": 15
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerability.java",
+            "line": 402
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 537
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java",
+            "line": 93
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java",
+            "line": 52
+          },
+          {
+            "location": "src/main/resources/attackvectors/AuthenticationVulnerabilityPayload.properties",
+            "line": 9
+          },
+          {
+            "location": "src/main/resources/i18n/messages.properties",
+            "line": 513
+          },
+          {
+            "location": "src/main/resources/scripts/Authentication/db/data.sql",
+            "line": 27
+          },
+          {
+            "location": "src/main/resources/scripts/Authentication/db/schema.sql",
+            "line": 8
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java",
+            "line": 51
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginServiceTest.java",
+            "line": 159
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthSeedDataRegressionTest.java",
+            "line": 44
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerabilityTest.java",
+            "line": 152
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetResetPageTest.java",
+            "line": 25
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetServiceTest.java",
+            "line": 249
+          },
+          {
+            "location": "build.gradle",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/configuration/VulnerableAppConfiguration.java",
+            "line": 186
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 96
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java",
+            "line": 129
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 599
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java",
+            "line": 63
+          },
+          {
+            "location": "src/main/resources/i18n/messages.properties",
+            "line": 643
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Password hashing using bcrypt algorithm (not quantum-vulnerable but part of vulnerability context)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "47"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/configuration/VulnerableAppConfiguration.java:185=85c0b19121d28ae7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:101=83e5e2b0070108cb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java:124=ee3aeafb3d2eee43"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthUserAlgorithm.java:15=abadc35e0e53c87a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerability.java:402=9acc77220d1e31cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:537=c22aaea30e30dfc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java:93=362eeae84364d9b6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java:52=08140fee1a30bb82"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/attackvectors/AuthenticationVulnerabilityPayload.properties:9=c6bdbf8977773825"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages.properties:513=0000d8fd88763cb0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/scripts/Authentication/db/data.sql:27=1cc41419f518d324"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/scripts/Authentication/db/schema.sql:8=d9b9d4e5f1d89a6d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/internal/utility/PasswordHashingUtilsTest.java:51=3d11435acb172d3d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginServiceTest.java:159=1d01ec240e502981"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthSeedDataRegressionTest.java:44=11c4b209a4506eb3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerabilityTest.java:152=1d01ec240e502981"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetResetPageTest.java:25=fbb678604a7a9b16"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetServiceTest.java:249=c2e403e8774a1643"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "build.gradle:1=38d08550a0542f3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/configuration/VulnerableAppConfiguration.java:186=06559656f18f9d0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:96=83e5e2b0070108cb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java:129=76d2b5ed6f5ae3fb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:599=ee06035dd71fe786"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java:63=0d19b75cfa7f9858"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages.properties:643=2436c6b8b986f155"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java",
+            "line": 68
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java",
+            "line": 147
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java",
+            "line": 118
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 120
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetVulnerability.java",
+            "line": 328
+          },
+          {
+            "location": "src/main/resources/static/vulnerableApp.js",
+            "line": 133
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java",
+            "line": 155
+          },
+          {
+            "location": "src/main/resources/static/vulnerableApp.js",
+            "line": 140
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java",
+            "line": 204
+          },
+          {
+            "location": "src/main/resources/static/vulnerableApp.js",
+            "line": 152
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java",
+            "line": 244
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java",
+            "line": 79
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "MAC or digest compared with == operator, leaking via timing side-channel attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "12"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/PasswordHashingUtils.java:68=e6b101fb6fa04ac8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthLoginService.java:147=98ff8db324341dca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java:118=d1667f527d6662af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:120=af515c23f7b99f19"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetVulnerability.java:328=032ea019ec7962aa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/static/vulnerableApp.js:133=2b11472d0b9acd66"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java:155=536954a812fcb405"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/static/vulnerableApp.js:140=2b11472d0b9acd66"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java:204=536954a812fcb405"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/static/vulnerableApp.js:152=204201bb600dd783"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java:244=641582aead227651"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORVulnerability.java:79=536954a812fcb405"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 580
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/impl/LibBasedJWTGenerator.java",
+            "line": 121
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java",
+            "line": 100
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerabilityTest.java",
+            "line": 77
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/jwt/impl/JWTValidatorTest.java",
+            "line": 52
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 654
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerabilityTest.java",
+            "line": 88
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 798
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 857
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens using RSA-SHA256 signatures (quantum-vulnerable)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:580=f48db932494084a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/impl/LibBasedJWTGenerator.java:121=eb4926df75657a23"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java:100=4f67548ee6552623"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerabilityTest.java:77=189f0e821955c2b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/jwt/impl/JWTValidatorTest.java:52=6a39564c181a40ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:654=f48db932494084a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerabilityTest.java:88=189f0e821955c2b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:798=158c7d2f00dd6414"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:857=f48db932494084a3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 811
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 130
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 812
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 138
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java",
+            "line": 818
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 137
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 161
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "RSA encryption used for JWT signing (quantum-vulnerable)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:811=0ae1935066d5e7a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:130=2a977d0346647fb0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:812=b2da6fa5d4f8d06e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:138=3d97164005b00084"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/JWTVulnerability.java:818=ba87f2ac05b466a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:137=a13ffa2f4903c3ba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:161=ceda9972cf8232b0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 71
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java",
+            "line": 46
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java",
+            "line": 32
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 118
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java",
+            "line": 56
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in multiple locations including OTPService.java and PasswordResetService.java where non-cryptographic Random is used instead of SecureRandom for security-sensitive operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:71=c21006a4f695d63a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java:46=031de595f524adc8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java:32=de0f4028fb813964"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:118=59aa8835c63d0fa5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java:56=9aa222455bf17789"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 41
+          },
+          {
+            "location": "src/main/resources/scripts/JWT/SymmetricAlgoKeys.json",
+            "line": 3
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 85
+          },
+          {
+            "location": "src/main/resources/scripts/JWT/SymmetricAlgoKeys.json",
+            "line": 8
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 86
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens using HMAC-SHA256 (symmetric signature) - not quantum-vulnerable but in vulnerable context"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:41=78a9f0ec2668d3be"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/scripts/JWT/SymmetricAlgoKeys.json:3=87de7d15c0e9d8cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:85=4b18ab3f6d671ef4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/scripts/JWT/SymmetricAlgoKeys.json:8=87de7d15c0e9d8cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:86=c61346e1ada276fe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (JDK 17)",
+      "bom-ref": "pqs:collected:PROTO-7e9b9732",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java",
+            "line": 126
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java",
+            "line": 195
+          },
+          {
+            "location": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java",
+            "line": 198
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-7e9b9732"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Test files show usage of default Java HTTPS client configurations which may not be using the most secure TLS settings available in JDK 17."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java:126=3fc26fb552a9e817"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java:195=fb98cd58faf87724"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/sasanlabs/controller/VulnerableAppRestControllerTest.java:198=38694cbd145ef36f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/i18n/messages_it.properties",
+            "line": 88
+          },
+          {
+            "location": "src/main/resources/i18n/messages_mr_IN.properties",
+            "line": 52
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are comments in i18n message files that mention static IV/nonce patterns - while not actual code, they indicate awareness of this weakness and suggest the project may have similar issues elsewhere."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages_it.properties:88=233a31642a10a1a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages_mr_IN.properties:52=c554a137a98248c8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "keystore password in source",
+      "bom-ref": "pqs:collected:ALG-6732dd68",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java",
+            "line": 41
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-6732dd68"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded keystore password in JWT key management configuration"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java:41=97634280e5e2ebc7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt (low cost)",
+      "bom-ref": "pqs:collected:ALG-ad24b63b",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerability.java",
+            "line": 402
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ad24b63b"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Bcrypt password hashing with low cost factor (not quantum-vulnerable but security issue)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/authentication/AuthenticationVulnerability.java:402=9acc77220d1e31cd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-43adb1b6",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/templates/JWTVulnerability/keys/public_crt.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-43adb1b6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/templates/JWTVulnerability/keys/public_crt.pem:1=8b05bf4e91a03f03"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-57804465",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/templates/JWTVulnerability/keys/private_key.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-57804465"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/templates/JWTVulnerability/keys/private_key.pem:1=8b05bf4e91a03f03"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java",
+            "line": 124
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is correctly implemented using MessageDigest.isEqual() for MAC/digest comparison, which provides constant-time comparison and prevents timing attacks - this is a secure practice."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java:124=42675c9096f9aa10"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/impl/JWTValidator.java",
+            "line": 190
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 signature algorithm used in JWT validation (quantum-safe but in vulnerable context)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/impl/JWTValidator.java:190=3048547e3a439570"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 76
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java",
+            "line": 27
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 84
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 69
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 85
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 70
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java",
+            "line": 86
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 79
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 72
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA-256 usage in JWT signing (not quantum-vulnerable but security context)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:76=f72206f42a9d0b63"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java:27=fb0b7636e471c2c4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:84=a12e3c86bfb4c93a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:69=687f4127a04b11ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:85=4b18ab3f6d671ef4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:70=197bfc2cfe53ffc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/bean/JWTUtils.java:86=c61346e1ada276fe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:79=fc2f7872a674effe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:72=52e7d32221a168c5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:71=1eccb51aed08b8cd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 554
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java",
+            "line": 88
+          },
+          {
+            "location": "src/main/resources/i18n/messages.properties",
+            "line": 512
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 578
+          },
+          {
+            "location": "src/main/resources/i18n/messages.properties",
+            "line": 560
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 596
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in CryptographicFailuresVulnerability.java and CryptographicFailuresSeeder.java as examples of insecure cryptographic practices - this is documentation showing awareness of the vulnerability but not actual usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:554=acfeb7281ab508df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java:88=60262cf85182f949"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages.properties:512=83378bd937fc297f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:578=56f317fd42aa20bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/i18n/messages.properties:560=eff3a39d6646a6a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:596=ae7e22bcc59e12a2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 76
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 77
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 79
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in EncryptionUtils.java for secure password-based key derivation using PBKDF2WithHmacSHA256 - this is a good cryptographic implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:76=f72206f42a9d0b63"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:77=89dea4d3b51f5184"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:79=fc2f7872a674effe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Argon2id",
+      "bom-ref": "pqs:collected:ALG-d75ee937",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 537
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java",
+            "line": 599
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d75ee937"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in CryptographicFailuresVulnerability.java as documentation suggesting modern password hashing standards - these are examples/notes rather than actual implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:537=c22aaea30e30dfc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/CryptographicFailuresVulnerability.java:599=ee06035dd71fe786"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "build.gradle",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES algorithm referenced in build.gradle (not actively used in application code)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "build.gradle:1=38d08550a0542f3e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cachePoisoning/CachePoisoningVulnerability.java",
+            "line": 342
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash usage in cache poisoning vulnerability (not quantum-vulnerable)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cachePoisoning/CachePoisoningVulnerability.java:342=a2b8f44c803aaaa8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java",
+            "line": 71
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java",
+            "line": 18
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java",
+            "line": 46
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java",
+            "line": 32
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 179
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetSeeder.java",
+            "line": 18
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java",
+            "line": 192
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java",
+            "line": 21
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 211
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetSeeder.java",
+            "line": 45
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java",
+            "line": 55
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java",
+            "line": 27
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 273
+          },
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java",
+            "line": 41
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure pseudorandom number generator references (not a direct vulnerability)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "14"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/internal/utility/EncryptionUtils.java:71=c21006a4f695d63a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java:18=448cd9991c414159"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/deserialization/DeserializationUtils.java:46=031de595f524adc8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/idor/IDORLoginService.java:32=de0f4028fb813964"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:179=a648989e73cb475b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetSeeder.java:18=53ff9c17af6b04eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java:192=abdd428c3ddd4032"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java:21=dc914c42e9b977ad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:211=a648989e73cb475b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetSeeder.java:45=b4c94319e4be692a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/passwordReset/PasswordResetService.java:55=53ff9c17af6b04eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/cryptographicFailures/repo/CryptographicFailuresSeeder.java:27=367727dc7bca5c5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:273=a648989e73cb475b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/otp/OTPService.java:41=a648989e73cb475b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java",
+            "line": 89
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PKCS#12 keystore usage in JWT key management"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/sasanlabs/service/vulnerability/jwt/keys/JWTAlgorithmKMS.java:89=09784a0dec7304fd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "org.springframework.security:spring-security-crypto",
+      "bom-ref": "pqs:collected:LIB-c2911489",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "build.gradle",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-c2911489"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Spring Security Crypto library dependency (not actively used in codebase)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "build.gradle:1=38d08550a0542f3e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Crypto material: credential",
+      "bom-ref": "pqs:collected:SEC-ce809021",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/scripts/PathTraversal/secret.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-ce809021"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/scripts/PathTraversal/secret.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 pfx (keystore)",
+      "bom-ref": "pqs:collected:STORE-fed78a9a",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/sasanlabs.p12",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "STORE-fed78a9a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/sasanlabs.p12:1=426c9cb25a4bf7e6"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ca87cf31"
+    },
+    {
+      "ref": "pqs:collected:ALG-136e45af"
+    },
+    {
+      "ref": "pqs:collected:ALG-620f17d4"
+    },
+    {
+      "ref": "pqs:collected:ALG-70109388"
+    },
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-8788f638"
+    },
+    {
+      "ref": "pqs:collected:ALG-da9bad44"
+    },
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    },
+    {
+      "ref": "pqs:collected:PROTO-7e9b9732"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-6732dd68"
+    },
+    {
+      "ref": "pqs:collected:ALG-ad24b63b"
+    },
+    {
+      "ref": "pqs:collected:CERT-43adb1b6"
+    },
+    {
+      "ref": "pqs:collected:KEY-57804465"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-d75ee937"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    },
+    {
+      "ref": "pqs:collected:LIB-c2911489"
+    },
+    {
+      "ref": "pqs:collected:SEC-ce809021"
+    },
+    {
+      "ref": "pqs:collected:STORE-fed78a9a"
+    }
+  ]
+}
