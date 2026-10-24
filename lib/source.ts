@@ -3,7 +3,7 @@
 // already have. The evidence hash proves a line without copying it.
 
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, normalize } from "node:path";
 
 const run = (args: string[], cwd?: string) => {
@@ -57,4 +57,16 @@ export function fetchAt(repo: string, commit: string, cacheDir: string): Source 
     run(["checkout", "--quiet", "FETCH_HEAD"], dir);
   }
   return fromCheckout(dir, commit);
+}
+
+/** Every file under a corpus folder kept in the repository, by its path from that folder, in order. */
+export function corpusFiles(dir: string): string[] {
+  const walk = (d: string): string[] => readdirSync(d, { withFileTypes: true }).flatMap((x) => (x.isDirectory() ? walk(join(d, x.name)) : [join(d, x.name)]));
+  return walk(dir).map((p) => p.slice(normalize(dir).length + 1).replace(/\\/g, "/")).filter((f) => !f.split("/").some((n) => n.startsWith("."))).sort();
+}
+/** A corpus's pin: SHA-1 over each file's path and bytes, in order. */
+export function corpusPin(dir: string): string {
+  const h = createHash("sha1");
+  for (const f of corpusFiles(dir)) { h.update(f); h.update("\0"); h.update(readFileSync(join(dir, f))); h.update("\0"); }
+  return h.digest("hex");
 }
