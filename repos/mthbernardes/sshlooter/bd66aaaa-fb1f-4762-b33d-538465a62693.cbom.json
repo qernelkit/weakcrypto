@@ -1,0 +1,146 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:cd7effcb-b542-4b34-9eb4-08976424b5dc",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T18:15:49.534Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mthbernardes/sshlooter",
+      "version": "ae1693c5c456164fbadecdcda29e94fa9da5de8d",
+      "bom-ref": "repo:mthbernardes/sshlooter@ae1693c5c456164fbadecdcda29e94fa9da5de8d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mthbernardes/sshLooter"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "bd66aaaa-fb1f-4762-b33d-538465a62693"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "79254"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "DES crypt",
+      "bom-ref": "pqs:collected:ALG-a6d10ac2",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "install.sh",
+            "line": 37
+          },
+          {
+            "location": "looter.py",
+            "line": 15
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6d10ac2"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a credential theft malware that uses standard Unix password hashing (DES crypt) for authentication verification. The malware intercepts SSH login credentials via PAM modules and exfiltrates them to a Telegram bot. The DES crypt algorithm is used in the check_pw() functions in both install.sh and looter.py files."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "install.sh:37=d931ace8dea4a172"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "looter.py:15=d931ace8dea4a172"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a6d10ac2"
+    }
+  ]
+}
