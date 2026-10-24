@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6ada01b5-8e2c-4767-a64e-f86205045c07",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T05:22:37.445Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "netdevpack/security.identity",
+      "version": "ba28036b05b90977d89c71d586207adb8d613c38",
+      "bom-ref": "repo:netdevpack/security.identity@ba28036b05b90977d89c71d586207adb8d613c38",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/NetDevPack/Security.Identity"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b5209437-2f3e-477d-a2c5-a7d7c7865c4b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "71187"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/NetDevPack.Identity/Jwt/JwtBuilder.cs",
+            "line": 87
+          },
+          {
+            "location": "src/NetDevPack.Identity/Jwt/JwtBuilderInject.cs",
+            "line": 241
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is an HMAC-SHA256 algorithm used for signing JWT tokens in the NetDevPack.Identity library. It's a symmetric key algorithm used for message authentication, not for encryption or key exchange. While it's quantum-safe (hash functions), it's not a post-quantum cryptographic primitive and falls under the A- category with minimal quantum risk."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/NetDevPack.Identity/Jwt/JwtBuilder.cs:87=ff5ad52fe734a369"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/NetDevPack.Identity/Jwt/JwtBuilderInject.cs:241=d1d5b5466c2f3f34"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    }
+  ]
+}
