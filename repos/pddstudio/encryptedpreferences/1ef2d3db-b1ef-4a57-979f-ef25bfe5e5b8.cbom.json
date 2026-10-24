@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:f04cf3ea-2e95-4f19-828a-7669260a4094",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T12:46:01.753Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "pddstudio/encryptedpreferences",
+      "version": "31a2bc2c7d5c806a662999bad1482a18ac37e1c1",
+      "bom-ref": "repo:pddstudio/encryptedpreferences@31a2bc2c7d5c806a662999bad1482a18ac37e1c1",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/PDDStudio/EncryptedPreferences"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1ef2d3db-b1ef-4a57-979f-ef25bfe5e5b8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "81702"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app/src/main/java/com/pddstudio/encryptedpreferences/MockUtils.java",
+            "line": 16
+          },
+          {
+            "location": "encrypted-preferences/src/androidTest/java/com/pddstudio/preferences/encrypted/EncryptedPreferencesTest.java",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project appears to be an Android library for encrypted preferences. The Random usage is in test files (MockUtils.java and EncryptedPreferencesTest.java) for generating mock test data, not for any actual cryptographic operations. This is a non-cryptographic PRNG used in testing context."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app/src/main/java/com/pddstudio/encryptedpreferences/MockUtils.java:16=1d1d7d53f2c599ba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "encrypted-preferences/src/androidTest/java/com/pddstudio/preferences/encrypted/EncryptedPreferencesTest.java:34=e8aed7f913636afa"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
