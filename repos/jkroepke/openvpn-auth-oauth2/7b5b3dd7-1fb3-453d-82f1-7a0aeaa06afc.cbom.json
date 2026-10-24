@@ -1,0 +1,3242 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ec8a3b23-aef6-4602-9e3d-deeba1a92284",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T14:18:51.518Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "jkroepke/openvpn-auth-oauth2",
+      "version": "ce4f20a5ec76126aadb0e59c0f2fde8c9d45e2a9",
+      "bom-ref": "repo:jkroepke/openvpn-auth-oauth2@ce4f20a5ec76126aadb0e59c0f2fde8c9d45e2a9",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/jkroepke/openvpn-auth-oauth2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "7b5b3dd7-1fb3-453d-82f1-7a0aeaa06afc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "26"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "305529"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/daemon/daemon.go",
+            "line": 258
+          },
+          {
+            "location": "internal/oauth2/cel_context_test.go",
+            "line": 152
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 181
+          },
+          {
+            "location": "internal/oauth2/providers/generic/oidc.go",
+            "line": 22
+          },
+          {
+            "location": "internal/oauth2/providers/generic/user.go",
+            "line": 22
+          },
+          {
+            "location": "internal/oauth2/providers/github/check.go",
+            "line": 22
+          },
+          {
+            "location": "internal/oauth2/providers/github/user.go",
+            "line": 25
+          },
+          {
+            "location": "internal/oauth2/providers/google/api.go",
+            "line": 68
+          },
+          {
+            "location": "internal/oauth2/providers/google/check.go",
+            "line": 15
+          },
+          {
+            "location": "internal/oauth2/refresh.go",
+            "line": 175
+          },
+          {
+            "location": "internal/oauth2/refresh_test.go",
+            "line": 375
+          },
+          {
+            "location": "internal/ssf/discovery_test.go",
+            "line": 170
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 603
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter_test.go",
+            "line": 42
+          },
+          {
+            "location": "internal/ssf/token.go",
+            "line": 58
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 485
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 222
+          },
+          {
+            "location": "internal/oauth2/providers/github/check.go",
+            "line": 53
+          },
+          {
+            "location": "internal/oauth2/refresh.go",
+            "line": 211
+          },
+          {
+            "location": "internal/ssf/token.go",
+            "line": 67
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 662
+          },
+          {
+            "location": "internal/oauth2/refresh.go",
+            "line": 319
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses non-constant time comparisons in multiple locations for checking tokens and credentials. This is a C-level vulnerability that can be exploited via timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "22"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/daemon/daemon.go:258=8d44d97c29bad592"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/cel_context_test.go:152=9f774a0012e2ffce"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:181=219afc07b0efc60a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/generic/oidc.go:22=6759e3def753ecfd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/generic/user.go:22=b3c416cd13ebd5bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/check.go:22=f9419bbcf23b8da6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/user.go:25=f9419bbcf23b8da6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/api.go:68=5d639376fa01eb68"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/check.go:15=f9419bbcf23b8da6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/refresh.go:175=fab36a898e1e241a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/refresh_test.go:375=da010a96b60cbe09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/discovery_test.go:170=0292c6d22d63b2c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:603=ee6c2341f402181e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter_test.go:42=0c438b65c5663392"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/token.go:58=31d3d49072e57bb1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:485=0c438b65c5663392"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:222=c1f534ea5b083db1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/check.go:53=f9419bbcf23b8da6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/refresh.go:211=da010a96b60cbe09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/token.go:67=e3f062163cfe7508"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:662=da010a96b60cbe09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/refresh.go:319=da010a96b60cbe09"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/config/config_test.go",
+            "line": 101
+          },
+          {
+            "location": "internal/tokenstorage/bench_test.go",
+            "line": 14
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 125
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 135
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 181
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 209
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 258
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 347
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 373
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 51
+          },
+          {
+            "location": "internal/config/config_test.go",
+            "line": 55
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project contains hardcoded secrets in configuration test files. These are test fixtures but still represent poor security practices that could be exploited if the test environment is compromised."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:101=321657b18f321bc4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/tokenstorage/bench_test.go:14=910ec1fdefc07661"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:125=59f5fe94afa26665"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:135=321657b18f321bc4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:181=13b4df7d8191b004"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:209=9953940861366e99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:258=f55a2a94778d6752"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:347=5d130478d1a4e5c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:373=3d25585e87dd9503"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:51=321657b18f321bc4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/config_test.go:55=206894ad8991a62b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 90
+          },
+          {
+            "location": "internal/ssf/ssftest/set.go",
+            "line": 155
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 300
+          },
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 34
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 492
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 616
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:90=3ea0ed672c520885"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/set.go:155=cb03c01c8fa137bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:300=cb03c01c8fa137bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:34=d653921be4c61e09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:492=653284326e84f64a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:616=f56fb879f53a82b8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DSA",
+      "bom-ref": "pqs:collected:ALG-507434ae",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 337
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-507434ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved ECDSA-P256"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:337=3ec1abc6ac9f4098"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA PKCS#1 v1.5 encryption",
+      "bom-ref": "pqs:collected:ALG-6a6c7144",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/openvpn/connection/message_test.go",
+            "line": 48
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-6a6c7144"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/connection/message_test.go:48=9fdad2154d3741de"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "self-signed certificate",
+      "bom-ref": "pqs:collected:ALG-a6cca713",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 353
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6cca713"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:353=370c2c00e7bcf122"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.27.3)",
+      "bom-ref": "pqs:collected:PROTO-e062e645",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 82
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 46
+          },
+          {
+            "location": "internal/httpserver/graceful_test.go",
+            "line": 76
+          },
+          {
+            "location": "internal/httpserver/main.go",
+            "line": 180
+          },
+          {
+            "location": "internal/oauth2/providers/github/api_test.go",
+            "line": 113
+          },
+          {
+            "location": "internal/oauth2/providers/github/bench_test.go",
+            "line": 64
+          },
+          {
+            "location": "internal/oauth2/providers/github/check_test.go",
+            "line": 108
+          },
+          {
+            "location": "internal/oauth2/providers/github/user_test.go",
+            "line": 131
+          },
+          {
+            "location": "internal/oauth2/providers/google/api_test.go",
+            "line": 53
+          },
+          {
+            "location": "internal/oauth2/providers/google/check_test.go",
+            "line": 129
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 291
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 203
+          },
+          {
+            "location": "internal/test/testsuite/testsuite.go",
+            "line": 400
+          },
+          {
+            "location": "internal/utils/http.go",
+            "line": 42
+          },
+          {
+            "location": "lib/openvpn-auth-oauth2/internal/openvpn/plugin_test.go",
+            "line": 283
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 85
+          },
+          {
+            "location": "internal/httpserver/main.go",
+            "line": 76
+          },
+          {
+            "location": "internal/oauth2/providers/github/api_test.go",
+            "line": 53
+          },
+          {
+            "location": "internal/oauth2/providers/github/check_test.go",
+            "line": 171
+          },
+          {
+            "location": "internal/oauth2/providers/github/user_test.go",
+            "line": 84
+          },
+          {
+            "location": "internal/oauth2/providers/google/check_test.go",
+            "line": 211
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 324
+          },
+          {
+            "location": "internal/test/testsuite/testsuite.go",
+            "line": 75
+          },
+          {
+            "location": "internal/utils/http.go",
+            "line": 47
+          },
+          {
+            "location": "internal/oauth2/providers/google/check_test.go",
+            "line": 346
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-e062e645"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses default TLS configurations in multiple locations. These configurations use classical ECDHE key exchange which is vulnerable to quantum attacks. The system needs to be updated to use hybrid post-quantum TLS groups."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "26"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:82=6cc597b017e6a32e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:46=6fd1780f3ed8caaa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/httpserver/graceful_test.go:76=a6a5dd4190fc3fe8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/httpserver/main.go:180=ec7d582cd9bc92cc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/api_test.go:113=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/bench_test.go:64=bba32fea1c70b2d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/check_test.go:108=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/user_test.go:131=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/api_test.go:53=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/check_test.go:129=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:291=f2432810d3503b40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:203=90302e80db9ac2f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/test/testsuite/testsuite.go:400=c33f112dd5426097"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/utils/http.go:42=a596ee8f863a427a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/openvpn-auth-oauth2/internal/openvpn/plugin_test.go:283=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:85=6fd1780f3ed8caaa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/httpserver/main.go:76=0ccd1b4bd8d98225"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/api_test.go:53=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/check_test.go:171=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/github/user_test.go:84=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/check_test.go:211=d6ce47d5543b8834"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:324=9854aaa2c12efe66"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/test/testsuite/testsuite.go:75=8ffc6ca9f4e48914"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/utils/http.go:47=25dccf525ae3a49e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/providers/google/check_test.go:346=d6ce47d5543b8834"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/Dockerfile",
+            "line": 32
+          },
+          {
+            "location": "tests/it/Dockerfile",
+            "line": 9
+          },
+          {
+            "location": "tests/plugin/Dockerfile",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Dockerfile:32=10757df0668021d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/it/Dockerfile:9=10757df0668021d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/plugin/Dockerfile:11=10757df0668021d3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 82
+          },
+          {
+            "location": "internal/httpserver/main.go",
+            "line": 77
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 324
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project explicitly configures TLS 1.2 in multiple locations, which uses classical ECDHE/DHE key exchange that is vulnerable to quantum attacks. This is a B- level vulnerability requiring upgrade to TLS 1.3 with hybrid post-quantum groups."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:82=6cc597b017e6a32e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/httpserver/main.go:77=7419e3dc96e936ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:324=9854aaa2c12efe66"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 337
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:337=3ec1abc6ac9f4098"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:8=6344890ebcdc4402"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/managementauth/auth.go",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project correctly uses constant-time comparison for password verification in the management authentication module, which prevents timing attacks. This is good security practice and not a vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/managementauth/auth.go:37=d039bf01d42b009d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-256",
+      "bom-ref": "pqs:collected:ALG-92e838c9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 337
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92e838c9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:337=3ec1abc6ac9f4098"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 156
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 137
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 21
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 115
+          },
+          {
+            "location": "internal/internal_test.go",
+            "line": 35
+          },
+          {
+            "location": "internal/openvpn/bench_test.go",
+            "line": 45
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 204
+          },
+          {
+            "location": "internal/openvpn/client_refresh_test.go",
+            "line": 169
+          },
+          {
+            "location": "internal/openvpn/connection/bench_test.go",
+            "line": 12
+          },
+          {
+            "location": "internal/openvpn/status_test.go",
+            "line": 77
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 231
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 22
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 19
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 205
+          },
+          {
+            "location": "internal/openvpn/client_refresh_test.go",
+            "line": 170
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 23
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 20
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 206
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 28
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 21
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 207
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 217
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 335
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 218
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 221
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses AES-GCM authenticated encryption in various locations. This is a secure cipher mode, but the actual key size used should be verified for appropriate security levels."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "25"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:156=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:137=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:21=d6b02434b913c3be"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:115=fbc20f399c978ab6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/internal_test.go:35=971b01760ef65b86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/bench_test.go:45=12f07631eba8c133"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:204=8e3b916ae89215c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/client_refresh_test.go:169=8e3b916ae89215c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/connection/bench_test.go:12=fdaae728ba317e33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/status_test.go:77=bb1b6ead3259c511"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:231=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:22=af8b2e98f232e684"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:19=2fe0dd7751486223"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:205=1ea94af14d303427"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/client_refresh_test.go:170=f201b6bd01514c81"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:23=8c465895ca01b9a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:20=8fd8b7436aa3c4e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:206=f26716914b107d71"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:28=a442f4cab654d983"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:21=a4db9067ce6ec550"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:207=3679a123a1d21e87"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:217=007da0b47fff7250"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:335=97488f84023925b7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:218=728293c72ada05c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:221=a7b5e5eaa167617d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 90
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 212
+          },
+          {
+            "location": "internal/oauth2/utils.go",
+            "line": 114
+          },
+          {
+            "location": "internal/test/testsuite/const.go",
+            "line": 20
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 696
+          },
+          {
+            "location": "internal/oauth2/handler.go",
+            "line": 777
+          },
+          {
+            "location": "internal/oauth2/utils.go",
+            "line": 118
+          },
+          {
+            "location": "internal/oauth2/utils.go",
+            "line": 115
+          },
+          {
+            "location": "internal/oauth2/utils.go",
+            "line": 116
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses SHA-256 hashing in HKDF key derivation and various other cryptographic operations. SHA-256 is secure against classical attacks but is vulnerable to quantum attacks through Grover's algorithm, making it a potential concern for long-term security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:90=8a22ab06c8455540"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:212=cd6ee98af52db631"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/utils.go:114=95af5de830b3a7f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/test/testsuite/const.go:20=75ecbd8f007378b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:696=cd6ee98af52db631"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/handler.go:777=86bff9808c72ee46"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/utils.go:118=4812023b881379d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/utils.go:115=1b9c1cd4c7a24a4a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/utils.go:116=c1ca29960a72f51d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 156
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 137
+          },
+          {
+            "location": "internal/internal_test.go",
+            "line": 35
+          },
+          {
+            "location": "internal/openvpn/bench_test.go",
+            "line": 45
+          },
+          {
+            "location": "internal/openvpn/connection/bench_test.go",
+            "line": 12
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 231
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses AES-128-GCM cipher suites in configuration files and tests. This is a standard cipher with adequate security for classical attacks but represents the minimum acceptable security level for some applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:156=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:137=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/internal_test.go:35=971b01760ef65b86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/bench_test.go:45=12f07631eba8c133"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/connection/bench_test.go:12=fdaae728ba317e33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:231=0e3d2854da1b8a05"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 67
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 120
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 125
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 27
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 98
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 101
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 112
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 118
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 122
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 136
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 148
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 151
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 164
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 169
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 181
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 186
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 229
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 256
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 259
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 281
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 286
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 308
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 313
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 329
+          },
+          {
+            "location": "internal/crypto/crypto_test.go",
+            "line": 335
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses AES-128-GCM encryption for cryptographic operations. This is a standard and secure cipher, but the key size of 128 bits is at the lower end of acceptable security levels for some applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "53"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:67=6410b3eee1d8cc93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:120=6410b3eee1d8cc93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:125=477c68a069e36c8c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:27=a8270da674e48779"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:98=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:101=24d75684e6bacb85"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:112=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:118=e4185fbbb2b56be6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:122=d514ef9784e3626c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:136=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:148=c773b74ff8b572b6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:151=8b281c523932f417"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:164=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:169=24d75684e6bacb85"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:181=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:186=626c9cf9589b4cc1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:229=aedb5ba2782a6444"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:256=800693a8e741fe0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:259=24d75684e6bacb85"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:281=c323e086d15b9114"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:286=56763336b8ef082c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:308=83013f8120f9033b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:313=83b0c8bffcbbdce1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:329=38016e5f878ff1d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto_test.go:335=0b043caf0e790e5a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HKDF",
+      "bom-ref": "pqs:collected:ALG-ab44ea08",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 7
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 90
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ab44ea08"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses HKDF (RFC 5869) key derivation function in cryptographic operations. This is a standard and secure key derivation method, but the underlying hash function SHA-256 is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:7=4b5a8991d8d33419"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:90=8a22ab06c8455540"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 156
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 137
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 20
+          },
+          {
+            "location": "internal/openvpn/bench_test.go",
+            "line": 45
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 204
+          },
+          {
+            "location": "internal/openvpn/client_refresh_test.go",
+            "line": 169
+          },
+          {
+            "location": "internal/openvpn/connection/bench_test.go",
+            "line": 12
+          },
+          {
+            "location": "internal/openvpn/status_test.go",
+            "line": 77
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 231
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 23
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 205
+          },
+          {
+            "location": "internal/openvpn/client_refresh_test.go",
+            "line": 170
+          },
+          {
+            "location": "internal/crypto/crypto.go",
+            "line": 90
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 206
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 207
+          },
+          {
+            "location": "internal/openvpn/callbacks_test.go",
+            "line": 335
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "16"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:156=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:137=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:20=5516f25a509ee55e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/bench_test.go:45=12f07631eba8c133"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:204=8e3b916ae89215c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/client_refresh_test.go:169=8e3b916ae89215c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/connection/bench_test.go:12=fdaae728ba317e33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/status_test.go:77=bb1b6ead3259c511"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:231=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:23=8c465895ca01b9a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:205=1ea94af14d303427"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/client_refresh_test.go:170=f201b6bd01514c81"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/crypto/crypto.go:90=8a22ab06c8455540"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:206=f26716914b107d71"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:207=3679a123a1d21e87"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/callbacks_test.go:335=97488f84023925b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ChaCha20-Poly1305",
+      "bom-ref": "pqs:collected:ALG-3d4cff53",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/openvpn-auth-oauth2/full_test.go",
+            "line": 156
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 137
+          },
+          {
+            "location": "internal/internal_test.go",
+            "line": 35
+          },
+          {
+            "location": "internal/openvpn/bench_test.go",
+            "line": 45
+          },
+          {
+            "location": "internal/openvpn/connection/bench_test.go",
+            "line": 12
+          },
+          {
+            "location": "cmd/openvpn-auth-oauth2/reload_test.go",
+            "line": 231
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-3d4cff53"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project uses ChaCha20-Poly1305 cipher suites in multiple configuration files. This is a modern and secure authenticated encryption mode that is resistant to quantum attacks, making it a good choice for post-quantum security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/full_test.go:156=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:137=0e3d2854da1b8a05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/internal_test.go:35=971b01760ef65b86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/bench_test.go:45=12f07631eba8c133"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/openvpn/connection/bench_test.go:12=fdaae728ba317e33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/openvpn-auth-oauth2/reload_test.go:231=0e3d2854da1b8a05"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 4
+          },
+          {
+            "location": "internal/ssf/ssftest/set.go",
+            "line": 4
+          },
+          {
+            "location": "internal/ssf/ssftest/transmitter.go",
+            "line": 4
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 10
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:4=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/set.go:4=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf/ssftest/transmitter.go:4=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:10=a3859508fc6d98bd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Crypto material: credential",
+      "bom-ref": "pqs:collected:SEC-ce809021",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "docs/demo/.env",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "internal/config/types/secret_test.go",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "internal/oauth2/client_credentials.go",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-ce809021"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project contains credential information in configuration files and test fixtures. While these are test configurations, they represent poor security practices and should be addressed to prevent potential exposure of real credentials."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docs/demo/.env:1=13d2f818416f6395"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/config/types/secret_test.go:1=041c4e3d4bdd621d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials.go:1=9e28c06d31428bc1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:1=9e28c06d31428bc1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/httpserver/main.go",
+            "line": 130
+          },
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 93
+          },
+          {
+            "location": "internal/ssf_keycloak_it_test.go",
+            "line": 356
+          },
+          {
+            "location": "internal/oauth2/client_credentials_internal_test.go",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved RSA-ENC-2048"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project handles X.509 certificates for TLS operations, which is standard practice. However, the RSA-2048 keys being used in test configurations are vulnerable to quantum attacks and should be upgraded."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/httpserver/main.go:130=e7aab1fd847dd6e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:93=036f605f21579915"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/ssf_keycloak_it_test.go:356=e2dbaa8aee1f846b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/oauth2/client_credentials_internal_test.go:34=d653921be4c61e09"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dbef91e4ac81a3ba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JOSE (JWS/JWE/JWK)",
+      "bom-ref": "pqs:collected:ALG-386b2ee4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-386b2ee4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dbef91e4ac81a3ba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dbef91e4ac81a3ba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/go-jose/go-jose/v4",
+      "bom-ref": "pqs:collected:LIB-a9eeef71",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a9eeef71"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dbef91e4ac81a3ba"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-507434ae"
+    },
+    {
+      "ref": "pqs:collected:ALG-6a6c7144"
+    },
+    {
+      "ref": "pqs:collected:ALG-a6cca713"
+    },
+    {
+      "ref": "pqs:collected:PROTO-e062e645"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-92e838c9"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-ab44ea08"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-3d4cff53"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:SEC-ce809021"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:ALG-386b2ee4"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    },
+    {
+      "ref": "pqs:collected:LIB-a9eeef71"
+    }
+  ]
+}
