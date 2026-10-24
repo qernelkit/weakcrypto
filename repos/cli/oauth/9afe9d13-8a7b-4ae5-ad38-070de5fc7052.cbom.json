@@ -1,0 +1,269 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:494ce94d-72e1-490a-9546-67fc23001881",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T11:06:38.387Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "cli/oauth",
+      "version": "7efb8e657cd3a69387b05401be9ce36fa464d3ba",
+      "bom-ref": "repo:cli/oauth@7efb8e657cd3a69387b05401be9ce36fa464d3ba",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/cli/oauth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "9afe9d13-8a7b-4ae5-ad38-070de5fc7052"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "135216"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "api/access_token.go",
+            "line": 28
+          },
+          {
+            "location": "refresh.go",
+            "line": 37
+          },
+          {
+            "location": "refresh_test.go",
+            "line": 210
+          },
+          {
+            "location": "webapp/webapp_flow_test.go",
+            "line": 170
+          },
+          {
+            "location": "api/access_token.go",
+            "line": 42
+          },
+          {
+            "location": "refresh.go",
+            "line": 69
+          },
+          {
+            "location": "refresh_test.go",
+            "line": 214
+          },
+          {
+            "location": "refresh_test.go",
+            "line": 217
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time string comparison in OAuth token validation. This is a security issue where attackers could potentially determine the length or content of tokens through timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/access_token.go:28=ca06b8a3d6e7e231"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "refresh.go:37=06ace3630241768f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "refresh_test.go:210=f90381c267e4eeea"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "webapp/webapp_flow_test.go:170=085799b691f37021"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/access_token.go:42=d398c582d091a7a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "refresh.go:69=fab36a898e1e241a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "refresh_test.go:214=d9b8e965caf0a7a2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "refresh_test.go:217=28382eef80c40ab0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "webapp/webapp_flow.go",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Usage of crypto/rand package for generating cryptographically secure random numbers in the OAuth web application flow implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "webapp/webapp_flow.go:7=a3859508fc6d98bd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
