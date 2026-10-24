@@ -1,0 +1,1854 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:dbe726fb-efb0-4284-a714-81d3898c9a36",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T14:30:37.391Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "googleapis/google-auth-library-ruby",
+      "version": "476ae059352f6faea2a43a6797055da92de1d885",
+      "bom-ref": "repo:googleapis/google-auth-library-ruby@476ae059352f6faea2a43a6797055da92de1d885",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/googleapis/google-auth-library-ruby"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4678aafe-f449-4b44-b76a-cd08d25d6254"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "16"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "181157"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT decoded without verifying",
+      "bom-ref": "pqs:collected:ALG-a02cc131",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/googleauth/service_account_spec.rb",
+            "line": 85
+          },
+          {
+            "location": "spec/googleauth/signet_spec.rb",
+            "line": 51
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a02cc131"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a JWT decoding operation that bypasses signature verification, which is a serious security issue. The codebase uses JWTs for authentication but doesn't verify the signatures, making it vulnerable to token manipulation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_spec.rb:85=a144f9b8696f1f1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/signet_spec.rb:51=a144f9b8696f1f1a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded private key",
+      "bom-ref": "pqs:collected:ALG-394bd8ab",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/googleauth/credentials_spec.rb",
+            "line": 28
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-394bd8ab"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a hardcoded private key found in the test file. While it's in a test file, hardcoded keys in any source file are a serious security issue that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/credentials_spec.rb:28=619af85a8f1de361"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 80
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing in test code, which makes the system vulnerable to collision attacks that can compromise integrity checks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:80=9701785ff6d08bdc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-e7dd381b",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/googleauth/credentials_spec.rb",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-e7dd381b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/credentials_spec.rb:1=2c535de05c73ad29"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/id_tokens/key_source_test.rb",
+            "line": 31
+          },
+          {
+            "location": "lib/googleauth/service_account_jwt_header.rb",
+            "line": 37
+          },
+          {
+            "location": "spec/googleauth/compute_engine_spec.rb",
+            "line": 206
+          },
+          {
+            "location": "spec/googleauth/service_account/jwt_header_auth_examples.rb",
+            "line": 33
+          },
+          {
+            "location": "spec/googleauth/service_account_jwt_header_spec.rb",
+            "line": 177
+          },
+          {
+            "location": "spec/googleauth/service_account_spec.rb",
+            "line": 229
+          },
+          {
+            "location": "spec/googleauth/signet_spec.rb",
+            "line": 53
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 122
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 41
+          },
+          {
+            "location": "integration/id_tokens/key_source_test.rb",
+            "line": 41
+          },
+          {
+            "location": "spec/googleauth/service_account_spec.rb",
+            "line": 87
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 123
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 50
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 134
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 160
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 21
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 223
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "17"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/id_tokens/key_source_test.rb:31=b799f2329b6238cc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/service_account_jwt_header.rb:37=c1b825ca12eef2c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/compute_engine_spec.rb:206=d08c904d8a0246ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account/jwt_header_auth_examples.rb:33=d201dc60b621bbd3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_jwt_header_spec.rb:177=f98f5c3b1813b49c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_spec.rb:229=d08c904d8a0246ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/signet_spec.rb:53=7ad27e6a6afe01d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:122=7665046e6a2679db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:41=90825ed283916896"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/id_tokens/key_source_test.rb:41=b799f2329b6238cc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_spec.rb:87=7ad27e6a6afe01d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:123=aaffeb33be1c98b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:50=90825ed283916896"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:134=d08c904d8a0246ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:160=d08c904d8a0246ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:21=e7c0408e33f7b406"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:223=7665046e6a2679db"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 134
+          },
+          {
+            "location": "lib/googleauth/service_account.rb",
+            "line": 119
+          },
+          {
+            "location": "lib/googleauth/service_account_jwt_header.rb",
+            "line": 74
+          },
+          {
+            "location": "spec/googleauth/get_application_default_spec.rb",
+            "line": 32
+          },
+          {
+            "location": "spec/googleauth/impersonated_service_account_spec.rb",
+            "line": 21
+          },
+          {
+            "location": "spec/googleauth/service_account_jwt_header_spec.rb",
+            "line": 190
+          },
+          {
+            "location": "spec/googleauth/service_account_spec.rb",
+            "line": 58
+          },
+          {
+            "location": "spec/googleauth/signet_spec.rb",
+            "line": 27
+          },
+          {
+            "location": "spec/googleauth/user_refresh_spec.rb",
+            "line": 452
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 60
+          },
+          {
+            "location": "test/principal_test.rb",
+            "line": 66
+          },
+          {
+            "location": "spec/googleauth/service_account_jwt_header_spec.rb",
+            "line": 53
+          },
+          {
+            "location": "spec/googleauth/user_refresh_spec.rb",
+            "line": 50
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 61
+          },
+          {
+            "location": "test/principal_test.rb",
+            "line": 80
+          },
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 135
+          },
+          {
+            "location": "spec/googleauth/service_account_jwt_header_spec.rb",
+            "line": 192
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is RSA encryption/signing being used in the service account JWT header and key sources. The code uses OpenSSL::PKey::RSA.new to create RSA keys for signing operations, which are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "17"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:134=63015557ae8c9d0d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/service_account.rb:119=310d6e42c71ead32"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/service_account_jwt_header.rb:74=2f7866a7104a3f87"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/get_application_default_spec.rb:32=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/impersonated_service_account_spec.rb:21=67fb0f0e3427208e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_jwt_header_spec.rb:190=79b9d859852c6be8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_spec.rb:58=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/signet_spec.rb:27=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/user_refresh_spec.rb:452=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:60=39a4806d87bfed19"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/principal_test.rb:66=c40a7929f27b766e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_jwt_header_spec.rb:53=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/user_refresh_spec.rb:50=85b1c028bd929d90"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:61=5473398df8ccf9bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/principal_test.rb:80=c40a7929f27b766e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:135=5f0e886ea8f7f53c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/service_account_jwt_header_spec.rb:192=52278ca66f28eec7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 112
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 137
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 162
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 187
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 212
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 22
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 23
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 237
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 263
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 289
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 315
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 346
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 37
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 62
+          },
+          {
+            "location": "spec/googleauth/external_account/aws_request_signer_spec.rb",
+            "line": 87
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "15"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:112=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:137=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:162=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:187=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:212=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:22=be2d104d36ec5373"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:23=7694fb1d020f5f13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:237=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:263=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:289=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:315=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:346=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:37=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:62=f95ba0ef90c2ca92"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/external_account/aws_request_signer_spec.rb:87=f95ba0ef90c2ca92"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1",
+      "bom-ref": "pqs:collected:ALG-673c8f24",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 142
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-673c8f24"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "secp256k1 curve used for ECDSA signing (blockchain curve) - classical and quantum-vulnerable"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:142=a9a0c9abc2bb6a44"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT ES256",
+      "bom-ref": "pqs:collected:ALG-36874020",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "integration/id_tokens/key_source_test.rb",
+            "line": 56
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 149
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 146
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 22
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 155
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 227
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 164
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 173
+          },
+          {
+            "location": "test/id_tokens/verifier_test.rb",
+            "line": 182
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36874020"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is JWT ES256 signing using the P-256 elliptic curve. While P-256 is stronger than SHA-1, it's still vulnerable to quantum computing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "integration/id_tokens/key_source_test.rb:56=450bd59bf2038267"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:149=8a15aa37aac5d5cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:146=dee9be177dc1a2ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:22=2f307cfe43d744e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:155=dee9be177dc1a2ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:227=0e2ff6c87456dd7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:164=dee9be177dc1a2ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:173=dee9be177dc1a2ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/verifier_test.rb:182=dee9be177dc1a2ec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-256",
+      "bom-ref": "pqs:collected:ALG-92e838c9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 139
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 229
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92e838c9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-256 curve used for ECDH key agreement - classical and quantum-vulnerable, retroactively breakable"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:139=e2f7e5f4688dd6c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:229=319c99db1dabf55e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 140
+          },
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 141
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-384/P-521 curves used for ECDH key agreement - classical and quantum-vulnerable, retroactively breakable"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:140=b5beba9073bf0a79"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:141=6caf1b36ed43a023"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/api_key.rb",
+            "line": 137
+          },
+          {
+            "location": "lib/googleauth/base_client.rb",
+            "line": 37
+          },
+          {
+            "location": "lib/googleauth/external_account/aws_credentials.rb",
+            "line": 365
+          },
+          {
+            "location": "lib/googleauth/external_account/base_credentials.rb",
+            "line": 173
+          },
+          {
+            "location": "lib/googleauth/service_account_jwt_header.rb",
+            "line": 115
+          },
+          {
+            "location": "lib/googleauth/signet.rb",
+            "line": 206
+          },
+          {
+            "location": "lib/googleauth/user_authorizer.rb",
+            "line": 346
+          },
+          {
+            "location": "test/api_key_test.rb",
+            "line": 94
+          },
+          {
+            "location": "test/bearer_token_test.rb",
+            "line": 81
+          },
+          {
+            "location": "lib/googleauth/external_account/aws_credentials.rb",
+            "line": 369
+          },
+          {
+            "location": "lib/googleauth/external_account/base_credentials.rb",
+            "line": 210
+          },
+          {
+            "location": "lib/googleauth/signet.rb",
+            "line": 210
+          },
+          {
+            "location": "lib/googleauth/external_account/aws_credentials.rb",
+            "line": 417
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function used in cryptographic contexts (quantum-safe but potentially insufficient for future requirements)"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "13"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/api_key.rb:137=9c3b11b948acb074"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/base_client.rb:37=db761807852c07b6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/external_account/aws_credentials.rb:365=6b6dcb4d5572a32a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/external_account/base_credentials.rb:173=bb608f6fe1a1aab1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/service_account_jwt_header.rb:115=a77ab2219fa2fa8b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/signet.rb:206=64190c9e84ed6478"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/user_authorizer.rb:346=ebefbf03acc59d4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/api_key_test.rb:94=187910304884c207"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/bearer_token_test.rb:81=c737abca7dea7bbd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/external_account/aws_credentials.rb:369=a908361332cc2b1e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/external_account/base_credentials.rb:210=a53ffdfcc48955e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/signet.rb:210=5ff92f0010c91069"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/external_account/aws_credentials.rb:417=4b6e06f8f25bb737"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/user_authorizer.rb",
+            "line": 278
+          },
+          {
+            "location": "lib/googleauth/web_user_authorizer.rb",
+            "line": 168
+          },
+          {
+            "location": "spec/googleauth/web_user_authorizer_spec.rb",
+            "line": 74
+          },
+          {
+            "location": "spec/googleauth/web_user_authorizer_spec.rb",
+            "line": 80
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness (SecureRandom) used in session management and token generation - properly implemented"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/user_authorizer.rb:278=00a5223ba374f64d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/web_user_authorizer.rb:168=792e1c8d2641f7a2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/web_user_authorizer_spec.rb:74=c29fcfd9600bee6c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/googleauth/web_user_authorizer_spec.rb:80=c29fcfd9600bee6c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 321
+          },
+          {
+            "location": "test/id_tokens/key_sources_test.rb",
+            "line": 73
+          },
+          {
+            "location": "lib/googleauth/id_tokens/key_sources.rb",
+            "line": 324
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X.509 certificate parsing and validation - standard cryptographic operation for key extraction"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:321=0fa8be2fc3fc0425"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/id_tokens/key_sources_test.rb:73=34eeda352bf52bd2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/googleauth/id_tokens/key_sources.rb:324=cbefa757d0d190e2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing via jwt@3.2.0 dependency - cryptographic operation for token generation/verification"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "jwt",
+      "bom-ref": "pqs:collected:LIB-bb3d47ae",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-bb3d47ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Crypto dependency: jwt@3.2.0 - cryptographic library for token handling"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a02cc131"
+    },
+    {
+      "ref": "pqs:collected:ALG-394bd8ab"
+    },
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:KEY-e7dd381b"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-673c8f24"
+    },
+    {
+      "ref": "pqs:collected:ALG-36874020"
+    },
+    {
+      "ref": "pqs:collected:ALG-92e838c9"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-bb3d47ae"
+    }
+  ]
+}
