@@ -1,0 +1,1097 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:52273ea1-57c5-4848-933a-b8caa58c6ba7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T11:38:40.875Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "aws-samples/cloudfront-authorization-at-edge",
+      "version": "580a78a032d4fcb43859e0aedc176f8bb38d1349",
+      "bom-ref": "repo:aws-samples/cloudfront-authorization-at-edge@580a78a032d4fcb43859e0aedc176f8bb38d1349",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/aws-samples/cloudfront-authorization-at-edge"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "45d0904f-d57b-4de0-97cb-cd0301409333"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "13"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "187516"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.0/1.1 pinned",
+      "bom-ref": "pqs:collected:ALG-34ca11ec",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "template.yaml",
+            "line": 231
+          },
+          {
+            "location": "template.yaml",
+            "line": 234
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-34ca11ec"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Deprecated TLS versions SSLv3 and TLSv1.1 are vulnerable to attacks like POODLE and BEAST that compromise forward secrecy and are not suitable for modern security requirements. These versions are being used in AWS CloudFormation template for defining security settings."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:231=715e0e84f83cdc60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:234=d4c9dd7e7a83e144"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/lambda-edge/parse-auth/index.ts",
+            "line": 258
+          },
+          {
+            "location": "src/lambda-edge/refresh-auth/index.ts",
+            "line": 193
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses standard equality comparison (===) instead of constant-time comparison for HMAC verification in both parse-auth and refresh-auth Lambda functions. This is a security vulnerability that could allow attackers to perform timing attacks to extract secret information."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lambda-edge/parse-auth/index.ts:258=b5b7276a4e0bef44"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lambda-edge/refresh-auth/index.ts:193=b5b7276a4e0bef44"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on node-forge for RSA encryption, but there's no actual cryptographic usage in the source code files that would make this a live asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/lambda-edge/shared/shared.ts",
+            "line": 614
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Math.random() being used for exponential backoff in retry logic within the authentication flow. This is a non-cryptographic random number generator but is used in a security-sensitive context where better randomness might be needed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lambda-edge/shared/shared.ts:614=19a1418f8bd1bcb6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "template.yaml",
+            "line": 229
+          },
+          {
+            "location": "template.yaml",
+            "line": 235
+          },
+          {
+            "location": "template.yaml",
+            "line": 236
+          },
+          {
+            "location": "template.yaml",
+            "line": 237
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The CloudFormation template explicitly defines TLS versions including TLSv1.2_2018, TLSv1.2_2019 and TLSv1.2_2021 which while using TLS 1.2, still rely on classical key exchange methods (likely DHE/ECDHE) that are vulnerable to quantum attacks and should be migrated to hybrid post-quantum configurations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:229=f15eb2dbdba2423c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:235=30ad69ae48be99ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:236=a72f4df04bd08026"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:237=e07702c1d7c27d1a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on node-forge for AES encryption, but there's no actual cryptographic usage in the source code files that would make this a live asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/lambda-edge/check-auth/index.ts",
+            "line": 230
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function being used for PKCE verification in the authentication flow. This is a legitimate use of SHA-256 for cryptographic purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lambda-edge/check-auth/index.ts:230=54e5ced667f4dfd4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/lambda-edge/shared/shared.ts",
+            "line": 675
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA-256 being used for signing authentication data in the shared utilities. This is a legitimate cryptographic usage for message authentication."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lambda-edge/shared/shared.ts:675=3651acdd4bc4106f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "template.yaml",
+            "line": 332
+          },
+          {
+            "location": "template.yaml",
+            "line": 344
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 is a secure symmetric encryption algorithm that provides strong protection against classical and quantum attacks. This is a standard security configuration for data at rest in S3 buckets."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:332=579870780def3b0f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "template.yaml:344=579870780def3b0f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "node-forge",
+      "bom-ref": "pqs:collected:LIB-fe0eb9a4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-fe0eb9a4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "node-forge is a cryptographic library for Node.js. While it's not directly vulnerable to quantum attacks, it's a third-party crypto dependency that should be monitored for potential vulnerabilities or the need for post-quantum migration."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 self-signed",
+      "bom-ref": "pqs:collected:ALG-0e533e47",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0e533e47"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on selfsigned for X.509 self-signed certificate generation, but there's no actual cryptographic usage in the source code files that would make this a live asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509",
+      "bom-ref": "pqs:collected:ALG-1847d707",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1847d707"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on node-forge for X.509 certificate handling, but there's no actual cryptographic usage in the source code files that would make this a live asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "selfsigned",
+      "bom-ref": "pqs:collected:LIB-b4358cea",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cfn-custom-resources/react-app/react-app/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b4358cea"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on selfsigned library, but there's no actual cryptographic usage in the source code files that would make this a live asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cfn-custom-resources/react-app/react-app/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-34ca11ec"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:LIB-fe0eb9a4"
+    },
+    {
+      "ref": "pqs:collected:ALG-0e533e47"
+    },
+    {
+      "ref": "pqs:collected:ALG-1847d707"
+    },
+    {
+      "ref": "pqs:collected:LIB-b4358cea"
+    }
+  ]
+}
