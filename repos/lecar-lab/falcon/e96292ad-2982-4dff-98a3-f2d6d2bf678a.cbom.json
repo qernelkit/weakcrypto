@@ -1,0 +1,193 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8a6c3629-acc3-4f48-98ec-bd472c52bc69",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T09:25:44.622Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lecar-lab/falcon",
+      "version": "a967a6d8494f57777cf8d266a644ac8e45833301",
+      "bom-ref": "repo:lecar-lab/falcon@a967a6d8494f57777cf8d266a644ac8e45833301",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/LeCAR-Lab/FALCON"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e96292ad-2982-4dff-98a3-f2d6d2bf678a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "82127"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 151
+          },
+          {
+            "location": "humanoidverse/utils/motion_lib/motion_lib_base.py",
+            "line": 400
+          },
+          {
+            "location": "isaac_utils/isaac_utils/maths.py",
+            "line": 28
+          },
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 158
+          },
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 169
+          },
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 170
+          },
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 183
+          },
+          {
+            "location": "humanoidverse/envs/env_utils/terrain.py",
+            "line": 184
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a non-cryptographic PRNG being used in security-sensitive contexts across multiple files (terrain.py, motion_lib_base.py, maths.py). The code uses np.random.randint(), random.randint() and random.seed() functions which are not cryptographically secure. This is being used for setting seeds in machine learning environments and generating random values for simulation parameters."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:151=d9e7a61afd31548c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/utils/motion_lib/motion_lib_base.py:400=041876b940f77508"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "isaac_utils/isaac_utils/maths.py:28=f7f866b8a093324a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:158=d9e7a61afd31548c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:169=b567e7335ae05c12"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:170=340d0febc325b3b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:183=2889891ef2e1c4eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "humanoidverse/envs/env_utils/terrain.py:184=0c5d67db2d085361"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
