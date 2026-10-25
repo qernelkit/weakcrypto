@@ -1,0 +1,176 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e508f3ab-890d-467d-a9cd-a1d1650c60d8",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T14:45:20.483Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "making/oauth2-sso-demo",
+      "version": "42780eae3d386250fa1e432e3d6210a06b873a54",
+      "bom-ref": "repo:making/oauth2-sso-demo@42780eae3d386250fa1e432e3d6210a06b873a54",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/making/oauth2-sso-demo"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "24f6de08-158f-440d-a773-d99a2d8c6ec4"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "114724"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:finding:authorization/src/main/resources/application.properties:3,4:RSA-4096",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "authorization/src/main/resources/application.properties",
+            "line": 3
+          },
+          {
+            "location": "authorization/src/main/resources/application.properties",
+            "line": 4
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "authorization/src/main/resources/application.properties:3=e01f21b714bbd7be"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "authorization/src/main/resources/application.properties:4=65df6cbbe956d25e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-8b4e34a2",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "authorization/src/main/resources/private_key.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "authorization/src/main/resources/public.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-8b4e34a2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "authorization/src/main/resources/private_key.pem:1=3021d90eb9437b2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "authorization/src/main/resources/public.pem:1=59a58325e88756ac"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:authorization/src/main/resources/application.properties:3,4:RSA-4096"
+    },
+    {
+      "ref": "pqs:collected:KEY-8b4e34a2"
+    }
+  ]
+}
