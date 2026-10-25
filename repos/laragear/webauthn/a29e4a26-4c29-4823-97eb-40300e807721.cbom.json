@@ -1,0 +1,495 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8709278f-0789-4707-955e-ddeba0947ab7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T17:12:00.544Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "laragear/webauthn",
+      "version": "719ba978a18c95118e1ac5bba810522d0768ebb8",
+      "bom-ref": "repo:laragear/webauthn@719ba978a18c95118e1ac5bba810522d0768ebb8",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Laragear/WebAuthn"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "a29e4a26-4c29-4823-97eb-40300e807721"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "138203"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "resources/js/webauthn.js",
+            "line": 81
+          },
+          {
+            "location": "resources/js/webauthn.js",
+            "line": 96
+          },
+          {
+            "location": "resources/js/webauthn.js",
+            "line": 98
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in the WebAuthn library where CSRF/XSRF tokens are compared using the === operator instead of a constant-time comparison function like hash_equals(). This could potentially allow an attacker to extract token values through timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "resources/js/webauthn.js:81=d340aa2b6e5639dd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "resources/js/webauthn.js:96=be7b4ef873f1632b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "resources/js/webauthn.js:98=62c3b2f73d376e21"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-7f9d7882",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/Assertion/ValidationTest.php",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-7f9d7882"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Assertion/ValidationTest.php:1=fe5bcb54c56e0b9f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Assertion/Validator/Pipes/CheckCredentialIsForUser.php",
+            "line": 82
+          },
+          {
+            "location": "src/Attestation/AuthenticatorData.php",
+            "line": 104
+          },
+          {
+            "location": "src/ByteBuffer.php",
+            "line": 133
+          },
+          {
+            "location": "src/SharedPipes/CheckRelyingPartyIdContained.php",
+            "line": 118
+          },
+          {
+            "location": "src/SharedPipes/CheckRelyingPartyIdContained.php",
+            "line": 119
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Assertion/Validator/Pipes/CheckCredentialIsForUser.php:82=ecb477bb851b5955"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Attestation/AuthenticatorData.php:104=bd299405007d4653"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/ByteBuffer.php:133=4041cd1fb483f4b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/SharedPipes/CheckRelyingPartyIdContained.php:118=68ba0047cc99d9ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/SharedPipes/CheckRelyingPartyIdContained.php:119=a93ed8058c4cea00"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Attestation/AuthenticatorData.php",
+            "line": 489
+          },
+          {
+            "location": "src/Attestation/Creator/Pipes/AddAcceptedAlgorithms.php",
+            "line": 29
+          },
+          {
+            "location": "src/Attestation/AuthenticatorData.php",
+            "line": 79
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Attestation/AuthenticatorData.php:489=caae6e2297e82a28"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Attestation/Creator/Pipes/AddAcceptedAlgorithms.php:29=d1e9cd0ee5b51a4e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Attestation/AuthenticatorData.php:79=82c2c4d18f81ed08"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Assertion/Validator/Pipes/CheckPublicKeySignature.php",
+            "line": 66
+          },
+          {
+            "location": "src/Attestation/AuthenticatorData.php",
+            "line": 101
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Assertion/Validator/Pipes/CheckPublicKeySignature.php:66=1320173ebd71da05"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Attestation/AuthenticatorData.php:101=9e178ad847b5c582"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:KEY-7f9d7882"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
