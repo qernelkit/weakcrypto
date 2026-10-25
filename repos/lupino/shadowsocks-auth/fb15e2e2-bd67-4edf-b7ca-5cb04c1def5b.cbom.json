@@ -1,0 +1,365 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8ee8c528-2c61-4ff0-a1ba-7e6ee6b44b59",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T23:30:34.250Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lupino/shadowsocks-auth",
+      "version": "4375a6df21c6e64bc042950358f94875292261b9",
+      "bom-ref": "repo:lupino/shadowsocks-auth@4375a6df21c6e64bc042950358f94875292261b9",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Lupino/shadowsocks-auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "fb15e2e2-bd67-4edf-b7ca-5cb04c1def5b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "114368"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RC4",
+      "bom-ref": "pqs:collected:ALG-da9bad44",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "stream-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "local/local.go",
+            "line": 401
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-da9bad44"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application supports RC4 encryption method as an option in the command-line interface (local/local.go:401) and configuration file (config.json), though it defaults to aes-256-cfb. RC4 is a broken stream cipher that is vulnerable to bias attacks and should not be used."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "local/local.go:401=d607d6cb9d4cf3ad"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "local/local.go",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses math/rand for seeding random number generation in the security context (local/local.go:11). This is inappropriate for cryptographic use as math/rand is not cryptographically secure. It should use crypto/rand instead."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "local/local.go:11=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CTR/CFB/OFB mode",
+      "bom-ref": "pqs:collected:ALG-e4916d9f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config.json",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e4916d9f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-256 in CFB mode as specified in config.json:6. CFB mode is a feedback mode that provides confidentiality but lacks authenticated encryption, making it vulnerable to malleability attacks without separate MACs."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.json:6=c6685f18d53fa2b8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config.json",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses AES-256 as specified in config.json:6. This is a quantum-safe algorithm with sufficient key size (256 bits) to provide strong security and a 128-bit quantum margin according to CNSA 2.0 standards."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config.json:6=c6685f18d53fa2b8"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-da9bad44"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-e4916d9f"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
