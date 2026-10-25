@@ -1,0 +1,169 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0b0702df-947f-44fe-84db-529f2d2428cc",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T00:55:35.296Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "millermedeiros/hasher",
+      "version": "a87fcd26096440e5efdd2ec2b45c97b59cb409e4",
+      "bom-ref": "repo:millermedeiros/hasher@a87fcd26096440e5efdd2ec2b45c97b59cb409e4",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/millermedeiros/Hasher"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "45e25e3f-a683-47cd-9564-b6181e692e17"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "97973"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/js/hasher.js",
+            "line": 103
+          },
+          {
+            "location": "dist/js/hasher.js",
+            "line": 114
+          },
+          {
+            "location": "dist/js/hasher.js",
+            "line": 135
+          },
+          {
+            "location": "dist/js/hasher.js",
+            "line": 142
+          },
+          {
+            "location": "dist/js/hasher.js",
+            "line": 153
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a security vulnerability in the hasher library where hash values are compared using regular equality (===) instead of constant-time comparison, which can leak information through timing attacks. The issue occurs in multiple locations in dist/js/hasher.js"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/js/hasher.js:103=40331d37cc492097"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/js/hasher.js:114=42f7bea8d7cc5c2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/js/hasher.js:135=d5a52fce9b07be61"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/js/hasher.js:142=2768e37933992ecc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/js/hasher.js:153=41aa771b68a7159c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
