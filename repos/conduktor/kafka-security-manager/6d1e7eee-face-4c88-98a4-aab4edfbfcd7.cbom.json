@@ -1,0 +1,447 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:442f3291-e3fa-4518-8ea0-d3cc66dd4715",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T23:21:35.899Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "conduktor/kafka-security-manager",
+      "version": "69f3707629b41db1dde86bc432d5de578cd1201d",
+      "bom-ref": "repo:conduktor/kafka-security-manager@69f3707629b41db1dde86bc432d5de578cd1201d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/conduktor/kafka-security-manager"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6d1e7eee-face-4c88-98a4-aab4edfbfcd7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "126923"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (JDK 25)",
+      "bom-ref": "pqs:collected:PROTO-c0de0cda",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/io/conduktor/ksm/source/HttpTransport.java",
+            "line": 26
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-c0de0cda"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The HttpTransport.java file configures an HttpClient without explicit cipher suite configuration, relying on default Java TLS settings which use classical cryptography."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/io/conduktor/ksm/source/HttpTransport.java:26=c36a7db32bdd8c6b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 488
+          },
+          {
+            "location": "scripts/resilience-tests.py",
+            "line": 478
+          },
+          {
+            "location": "scripts/verify-distribution.py",
+            "line": 195
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used for checksum verification in test scripts to ensure file integrity during downloads and distribution verification. This is a legitimate use of SHA-256 for non-cryptographic purposes (integrity checking)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:488=c842322fc29ce245"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/resilience-tests.py:478=fa067044a21ad095"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/verify-distribution.py:195=6c8198f18cbadc99"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-384/512",
+      "bom-ref": "pqs:collected:ALG-8c748911",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 65
+          },
+          {
+            "location": "scripts/test_broker_download.py",
+            "line": 73
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 77
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8c748911"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved SHA-512"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-512 is used for checksum verification in test scripts to ensure file integrity during downloads and distribution verification. This is a legitimate use of SHA-512 for non-cryptographic purposes (integrity checking)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:65=85988cd09c8df535"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/test_broker_download.py:73=bfbda8c3ee03bfc5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:77=873c0302a6b4dfd7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 136
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 173
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 187
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 285
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 288
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 314
+          },
+          {
+            "location": "scripts/broker-tests.py",
+            "line": 323
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PKCS#12 keystores are being configured in test scripts for SSL/TLS connections. This is a standard configuration for testing certificate-based authentication and is not a vulnerability in itself."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:136=18beecddb4cc418a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:173=18beecddb4cc418a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:187=18beecddb4cc418a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:285=084a9fa2095803b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:288=fa48a2b913f696db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:314=fa48a2b913f696db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/broker-tests.py:323=084a9fa2095803b4"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-c0de0cda"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8c748911"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    }
+  ]
+}
