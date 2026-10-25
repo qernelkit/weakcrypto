@@ -1,0 +1,346 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1d4bb1da-99b1-4280-998d-6d1f6173f89b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T18:00:21.950Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "rabbitmq/tls-gen",
+      "version": "8152e35b98160c37c9c7a6a43279c30e6dc5cb40",
+      "bom-ref": "repo:rabbitmq/tls-gen@8152e35b98160c37c9c7a6a43279c30e6dc5cb40",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/rabbitmq/tls-gen"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ea9dfc53-ef4f-4bd5-83ea-aea4df7cea95"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "129263"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "P-256",
+      "bom-ref": "pqs:collected:ALG-92e838c9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tls_gen/cli.py",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92e838c9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Configuration option for ECC curve selection in CLI tool. The default curve is P-256 which is quantum-vulnerable and needs migration to X25519MLKEM768 hybrid."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/cli.py:34=e2c3d40b6d152566"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tls_gen/gen.py",
+            "line": 180
+          },
+          {
+            "location": "tls_gen/gen.py",
+            "line": 256
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 encryption used in OpenSSL command-line tools for password-protecting generated keys and certificates. This is a symmetric cipher that is quantum-safe but part of the overall cryptographic ecosystem."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/gen.py:180=53d30c9078e743e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/gen.py:256=53d30c9078e743e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "basic/profile.py",
+            "line": 122
+          },
+          {
+            "location": "tls_gen/gen.py",
+            "line": 106
+          },
+          {
+            "location": "tls_gen/verify.py",
+            "line": 40
+          },
+          {
+            "location": "basic/profile.py",
+            "line": 87
+          },
+          {
+            "location": "tls_gen/gen.py",
+            "line": 299
+          },
+          {
+            "location": "tls_gen/verify.py",
+            "line": 41
+          },
+          {
+            "location": "basic/profile.py",
+            "line": 88
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PKCS#12 keystore handling in certificate generation and verification. This is a container format used to store certificates and keys, part of the broader certificate infrastructure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "basic/profile.py:122=0f70cf3fb8d6cefc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/gen.py:106=4407ec9f1c33cdfc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/verify.py:40=c239f19a4ddc0399"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "basic/profile.py:87=99786fa221a70140"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/gen.py:299=324238a5122bd528"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tls_gen/verify.py:41=6ee4c60c7afd364a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "basic/profile.py:88=f720048891649d85"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-92e838c9"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    }
+  ]
+}
