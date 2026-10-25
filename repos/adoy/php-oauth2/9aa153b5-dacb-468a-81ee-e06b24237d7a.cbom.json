@@ -1,0 +1,213 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b345b732-8c7a-46f8-904f-9262119d3e41",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-25T18:20:26.497Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "adoy/php-oauth2",
+      "version": "2f28fc76ad5ad6974333eaf84a3d05164f2ed586",
+      "bom-ref": "repo:adoy/php-oauth2@2f28fc76ad5ad6974333eaf84a3d05164f2ed586",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/adoy/PHP-OAuth2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "9aa153b5-dacb-468a-81ee-e06b24237d7a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "74184"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/OAuth2/Client.php",
+            "line": 463
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a certificate verification switch-off in an OAuth2 client implementation. The code disables SSL peer verification when no custom certificate file is provided, making the application vulnerable to MITM attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/OAuth2/Client.php:463=6f1ee82044b1aa5b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hostname check disabled",
+      "bom-ref": "pqs:collected:ALG-f9de03f1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/OAuth2/Client.php",
+            "line": 464
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f9de03f1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a certificate hostname verification switch-off in an OAuth2 client implementation. The code disables SSL hostname verification when no custom certificate file is provided, making the application vulnerable to MITM attacks where any valid certificate would be accepted."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/OAuth2/Client.php:464=3b900536727124ab"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-f9de03f1"
+    }
+  ]
+}
