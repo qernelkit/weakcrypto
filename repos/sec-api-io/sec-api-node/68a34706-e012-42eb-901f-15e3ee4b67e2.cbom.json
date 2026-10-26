@@ -1,0 +1,142 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2f9ada3e-9096-4dc0-94cf-995762db83fa",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T20:49:46.089Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "sec-api-io/sec-api-node",
+      "version": "997200e8e6df9d9704598255bf9e70820c2ad801",
+      "bom-ref": "repo:sec-api-io/sec-api-node@997200e8e6df9d9704598255bf9e70820c2ad801",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/SEC-API-io/sec-api-node"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "68a34706-e012-42eb-901f-15e3ee4b67e2"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "99976"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Node.js tls sessions on default settings (at least Node.js 12)",
+      "bom-ref": "pqs:collected:PROTO-1845b939",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "modules/http-client.js",
+            "line": 193
+          },
+          {
+            "location": "modules/http-client.js",
+            "line": 42
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-1845b939"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Default TLS configuration in Node.js HTTP client that uses classical key exchange algorithms vulnerable to quantum attacks. The application does not explicitly configure cipher suites or key exchange algorithms, relying on defaults which are typically ECDHE-RSA or similar classical algorithms."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/http-client.js:193=a38645f1f5122dde"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/http-client.js:42=1c40d4e47947150b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-1845b939"
+    }
+  ]
+}
