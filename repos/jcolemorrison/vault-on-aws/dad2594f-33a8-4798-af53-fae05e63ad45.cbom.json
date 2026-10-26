@@ -1,0 +1,345 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:186c3fc2-9a73-4ea5-9844-6e5421766db0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T07:42:46.350Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "jcolemorrison/vault-on-aws",
+      "version": "c1100f96e66905b48b07c348c4bb873800fbe543",
+      "bom-ref": "repo:jcolemorrison/vault-on-aws@c1100f96e66905b48b07c348c4bb873800fbe543",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/jcolemorrison/vault-on-aws"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "dad2594f-33a8-4798-af53-fae05e63ad45"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "113929"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "self-signed certificate",
+      "bom-ref": "pqs:collected:ALG-a6cca713",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "files/userdata_template.sh",
+            "line": 90
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6cca713"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Self-signed certificate created during VM provisioning with openssl command, using RSA-4096 key for signing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "files/userdata_template.sh:90=39e0b0a2c4c62a42"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "s3.tf",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "S3 bucket encryption using AES-256 for server-side encryption of vault data"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "s3.tf:16=b7bb7535f3457fed"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS KMS",
+      "bom-ref": "pqs:collected:ALG-89c5c4b8",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ec2-launch-template.tf",
+            "line": 40
+          },
+          {
+            "location": "files/userdata_template.sh",
+            "line": 134
+          },
+          {
+            "location": "files/vault_credentials_template.sh",
+            "line": 6
+          },
+          {
+            "location": "iam-policies.tf",
+            "line": 14
+          },
+          {
+            "location": "kms.tf",
+            "line": 15
+          },
+          {
+            "location": "outputs.tf",
+            "line": 21
+          },
+          {
+            "location": "kms.tf",
+            "line": 2
+          },
+          {
+            "location": "outputs.tf",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-89c5c4b8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AWS KMS used for Vault auto-unseal functionality in EC2 launch template configuration"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ec2-launch-template.tf:40=e47bb667f58107e8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "files/userdata_template.sh:134=4e08aadd46a61a50"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "files/vault_credentials_template.sh:6=9bdc3874cc15889d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "iam-policies.tf:14=eb4d7d1c5e20b7b6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "kms.tf:15=6f6c8c594d6b9b1f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "outputs.tf:21=d322d099e8a66e74"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "kms.tf:2=8541beccabf264a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "outputs.tf:7=e47bb667f58107e8"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a6cca713"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-89c5c4b8"
+    }
+  ]
+}
