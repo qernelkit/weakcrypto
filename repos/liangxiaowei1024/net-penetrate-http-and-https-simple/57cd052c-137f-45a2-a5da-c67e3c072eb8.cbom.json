@@ -1,0 +1,286 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5b4fbaae-0a3a-4dde-b359-9f07d3e28b2d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T14:13:24.283Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "liangxiaowei1024/net-penetrate-http-and-https-simple",
+      "version": "807619a379e6861b033565201d22841b37025ae6",
+      "bom-ref": "repo:liangxiaowei1024/net-penetrate-http-and-https-simple@807619a379e6861b033565201d22841b37025ae6",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/LiangXiaoWei1024/net-penetrate-http-and-https-simple"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "57cd052c-137f-45a2-a5da-c67e3c072eb8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "88454"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.0/1.1 pinned",
+      "bom-ref": "pqs:collected:ALG-34ca11ec",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-34ca11ec"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code in SSLSocketClientUtil.java uses SSLContext.getInstance(\"SSL\") which defaults to using older SSL/TLS versions including 1.0 and 1.1, both of which are deprecated and vulnerable to attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java:18=a118e2af9e326316"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (at least JDK 8)",
+      "bom-ref": "pqs:collected:PROTO-7e89cc84",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-7e89cc84"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The SSLSocketClientUtil.java file creates SSL contexts with default settings, which means it's using standard Java SSL/TLS defaults that don't prioritize post-quantum security. The default cipher suites include older algorithms that are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java:18=a118e2af9e326316"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java",
+            "line": 19
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code in SSLSocketClientUtil.java uses SecureRandom for generating random numbers in SSL context initialization. While this is good for cryptographic security, it's not specifically related to quantum vulnerabilities but represents a cryptographic primitive being used correctly."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "penetrate-protocol/src/main/java/com/kele/penetrate/utils/SSLSocketClientUtil.java:19=c3413067fda7959a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-34ca11ec"
+    },
+    {
+      "ref": "pqs:collected:PROTO-7e89cc84"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
