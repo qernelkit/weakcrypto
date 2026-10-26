@@ -1,0 +1,1697 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6e7f1e41-f5c0-4c69-b7c2-769e35bd5cd7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T06:29:55.844Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "zksecurity/zkbugs",
+      "version": "212cc500b7cf1a2221d3e42ff47baff453afd070",
+      "bom-ref": "repo:zksecurity/zkbugs@212cc500b7cf1a2221d3e42ff47baff453afd070",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/zksecurity/zkbugs"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "85e58ee8-d1bc-425e-82b1-32fff82f0292"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "13"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "122244"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA family",
+      "bom-ref": "pqs:collected:ALG-50e53f84",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-50e53f84"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA family algorithms are referenced as dependencies in circomlib package-lock.json, but these are not actual cryptographic operations performed by the application code itself - they are just declared dependencies."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1",
+      "bom-ref": "pqs:collected:ALG-673c8f24",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-673c8f24"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "secp256k1 curve used in ECDSA signatures for zk-SNARKs, specifically referenced in the Spartan-ECDSA project for circuit verification. This is a classical (non-post-quantum) curve vulnerable to Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json:16=50d12ea5c978a41e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/Arianee/arianee-sdk/veridise_creditnoteproofs_can_be_stolen/zkbugs_config.json",
+            "line": 46
+          },
+          {
+            "location": "dataset/circom/Arianee/arianee-sdk/veridise_ownershipproofs_could_identify_issuers/zkbugs_config.json",
+            "line": 37
+          },
+          {
+            "location": "dataset/circom/aptos-labs/keyless-zk-proofs/koukyosyumei_unconstrained_base64_decoded_len/zkbugs_config.json",
+            "line": 47
+          },
+          {
+            "location": "dataset/circom/iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained/zkbugs_config.json",
+            "line": 42
+          },
+          {
+            "location": "dataset/circom/inference-labs-inc/subnet-2-circom/koukyosyumei_subtract_unconstrained_multiplier/zkbugs_config.json",
+            "line": 47
+          },
+          {
+            "location": "dataset/circom/pantherfoundation/panther-core/veridise_zaccount_renewal_multiple_nullifiers_same_utxo/zkbugs_config.json",
+            "line": 46
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json",
+            "line": 13
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_vars.sh",
+            "line": 5
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json",
+            "line": 13
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_vars.sh",
+            "line": 5
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json",
+            "line": 13
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_vars.sh",
+            "line": 5
+          },
+          {
+            "location": "dataset/circom/selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound/zkbugs_config.json",
+            "line": 37
+          },
+          {
+            "location": "dataset/circom/siv-org/verifiable-private-overrides/koukyosyumei_extractstringfrompoint_shiftedfirstbyte_unconstrained/zkbugs_config.json",
+            "line": 47
+          },
+          {
+            "location": "dataset/circom/succinctlabs/telepathy-circuits/veridise_arrayxor_is_under_constrained/zkbugs_config.json",
+            "line": 49
+          },
+          {
+            "location": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction/zkbugs_config.json",
+            "line": 32
+          },
+          {
+            "location": "dataset/zkbugs_similar_bugs.json",
+            "line": 21
+          },
+          {
+            "location": "scripts/download_sources.sh",
+            "line": 233
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json",
+            "line": 3
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json",
+            "line": 3
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json",
+            "line": 3
+          },
+          {
+            "location": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction/zkbugs_config.json",
+            "line": 34
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json",
+            "line": 4
+          },
+          {
+            "location": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json",
+            "line": 4
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Multiple ECDSA signature references in zkbugs configuration files from various circom projects (Arianee, Aptos, Iden3, etc.). These represent actual usage of classical ECDSA signatures in zero-knowledge circuits, which are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "28"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/Arianee/arianee-sdk/veridise_creditnoteproofs_can_be_stolen/zkbugs_config.json:46=888c50d30d4d3e3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/Arianee/arianee-sdk/veridise_ownershipproofs_could_identify_issuers/zkbugs_config.json:37=035d2ae28b0f1c02"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/aptos-labs/keyless-zk-proofs/koukyosyumei_unconstrained_base64_decoded_len/zkbugs_config.json:47=43c49c1e24f5b807"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/iden3/circomlib/kobi_gurkan_mimc_hash_assigned_but_not_constrained/zkbugs_config.json:42=43c49c1e24f5b807"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/inference-labs-inc/subnet-2-circom/koukyosyumei_subtract_unconstrained_multiplier/zkbugs_config.json:47=43c49c1e24f5b807"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/pantherfoundation/panther-core/veridise_zaccount_renewal_multiple_nullifiers_same_utxo/zkbugs_config.json:46=4969c79336cd410f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json:13=d65f23b1c63a47e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_vars.sh:5=23399456c23abfa3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json:13=d65f23b1c63a47e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_vars.sh:5=23399456c23abfa3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json:13=d65f23b1c63a47e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_vars.sh:5=23399456c23abfa3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/selfxyz/self/zksecurity_big_integer_zero_check_is_not_sound/zkbugs_config.json:37=fd5e12a3ba94919d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/siv-org/verifiable-private-overrides/koukyosyumei_extractstringfrompoint_shiftedfirstbyte_unconstrained/zkbugs_config.json:47=43c49c1e24f5b807"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/succinctlabs/telepathy-circuits/veridise_arrayxor_is_under_constrained/zkbugs_config.json:49=43c49c1e24f5b807"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction/zkbugs_config.json:32=bce1ef51a725c829"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/zkbugs_similar_bugs.json:21=4969c79336cd410f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/download_sources.sh:233=c2831f4fc98b67ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json:3=70b42aa3a1092d1f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json:3=eaeaf11d557f24b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_under_constrained_circuits_compromising_the_soundness_of_the_system/zkbugs_config.json:3=33d165e2e6c09a7c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/halo2/scroll-tech/zkevm-circuits/zellic_The_sv_address_is_not_constrained_to_be_equal_throughout_a_single_transaction/zkbugs_config.json:34=8af248ad4268da94"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_Knowledge_of_any_member_signature_allow_to_generate_proof_of_membership/zkbugs_config.json:4=681ff5325c908343"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/personaelabs/spartan-ecdsa/yacademy_input_signal_s_is_not_constrained_in_eff_ecdsa_circom/zkbugs_config.json:4=e4b5f8a26629c3ed"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDH",
+      "bom-ref": "pqs:collected:ALG-c9ffc8a8",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c9ffc8a8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project uses the elliptic library (version 6.5.4) which provides ECDH functionality. While this is only a dependency reference and not actual code usage, it's part of the cryptographic surface of the project and should be included in the inventory as an algorithm that could be used."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2/BLAKE3",
+      "bom-ref": "pqs:collected:ALG-84de5a3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits/zkbugs_config.json",
+            "line": 41
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 13
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_vars.sh",
+            "line": 5
+          },
+          {
+            "location": "dataset/circom/darkforest-eth/darkforest-v0.3/daira_hopwood_darkforest_v0_3_missing_bit_length_check/zkbugs_config.json",
+            "line": 42
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1113
+          },
+          {
+            "location": "dataset/circom/selfxyz/self/zksecurity_the_registration_and_disclosure_circuits_lack_range_checks_for_the_input_indices/zkbugs_config.json",
+            "line": 47
+          },
+          {
+            "location": "scripts/download_sources.sh",
+            "line": 711
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 16
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 2528
+          },
+          {
+            "location": "scripts/download_sources.sh",
+            "line": 723
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 17
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3473
+          },
+          {
+            "location": "scripts/download_sources.sh",
+            "line": 725
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 2
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3479
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 23
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3483
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 3
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3672
+          },
+          {
+            "location": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json",
+            "line": 4
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 4712
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 877
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 883
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 887
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84de5a3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project references BLAKE2/BLAKE3 hashing algorithms through dependencies. These are hash functions that could be used for cryptographic purposes in the circuits or tests within this library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "24"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/Unirep/Unirep/veridise_missing_range_checks_on_comparison_circuits/zkbugs_config.json:41=52df93df4078ccb4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:13=6744a2198418e4d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_vars.sh:5=358f5d8adea5d6a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/darkforest-eth/darkforest-v0.3/daira_hopwood_darkforest_v0_3_missing_bit_length_check/zkbugs_config.json:42=52df93df4078ccb4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1113=d1370a926b044a0b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/selfxyz/self/zksecurity_the_registration_and_disclosure_circuits_lack_range_checks_for_the_input_indices/zkbugs_config.json:47=52df93df4078ccb4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/download_sources.sh:711=2a4304d4b48a819c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:16=7c36f6a3086b4451"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:2528=bdf1a2aa3db67538"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/download_sources.sh:723=c57c4f848df29151"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:17=bc469647985fc8d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3473=c24ee7dc0883ed2c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/download_sources.sh:725=44cdb370b3cbaba1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:2=f85e85456f966d74"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3479=b4e9f2af5d2a054f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:23=7f05b9aa4b7a0556"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3483=7919f16aa954218c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:3=e80bacb490d48cf5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3672=d1370a926b044a0b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/banyancomputer/hot-proofs-blake3-circom/koukyosyumei_checkdepth_comparator_overflow/zkbugs_config.json:4=191b0310a52f24a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:4712=bdf1a2aa3db67538"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:877=fece72d2221d3cf4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:883=b4e9f2af5d2a054f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:887=a7cb7efaf5c6f9cd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 112
+          },
+          {
+            "location": "dataset/circom/semaphore-protocol/semaphore/veridise_no_zero_value_validation/generateInput.js",
+            "line": 14
+          },
+          {
+            "location": "dataset/circom/semaphore-protocol/semaphore/veridise_no_zero_value_validation/zkbugs_js_setup.sh",
+            "line": 6
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1371
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 263
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 2960
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3002
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3083
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3119
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3130
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 319
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3255
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3282
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 330
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3314
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3868
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 40
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 565
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 612
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 664
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project has references to SHA-3 hashing algorithms through various dependencies and configuration files. These are cryptographic hash functions that could be used in circuits or tests."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "20"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:112=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/semaphore-protocol/semaphore/veridise_no_zero_value_validation/generateInput.js:14=28da219c1d69185c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/semaphore-protocol/semaphore/veridise_no_zero_value_validation/zkbugs_js_setup.sh:6=b85fae9e9a34da69"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1371=796a9c4170e42c76"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:263=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:2960=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3002=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3083=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3119=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3130=cf15be09f5f561ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:319=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3255=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3282=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:330=051440cb7296ff83"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3314=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3868=796a9c4170e42c76"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:40=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:565=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:612=fe7d146707018506"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:664=fe7d146707018506"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1374
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 290
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3100
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3121
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3155
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 321
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 385
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3871
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project has references to PBKDF2 key derivation function through various dependencies. This is a cryptographic algorithm that could be used for password-based key derivation in circuits or tests."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1374=f504bb29565bf622"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:290=091626863aa54dd4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3100=091626863aa54dd4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3121=091626863aa54dd4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3155=86f385354fbe4116"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:321=091626863aa54dd4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:385=04629ee852c145ad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3871=f504bb29565bf622"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt",
+      "bom-ref": "pqs:collected:ALG-c1f8b585",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 2492
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 3127
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 327
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 4679
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c1f8b585"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project has references to scrypt key derivation function through various dependencies. This is a cryptographic algorithm that could be used for password-based key derivation in circuits or tests."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:2492=6ed41c19200a3928"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:3127=416a9450e5daedab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:327=416a9450e5daedab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:4679=d36f354bd40d621f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/test/sha256.js",
+            "line": 104
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/test/sha256.js",
+            "line": 64
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/test/sha256.js",
+            "line": 69
+          },
+          {
+            "location": "dataset/circom/dependencies/circomlib/test/sha256.js",
+            "line": 84
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project has references to SHA-256 hashing algorithm through dependencies and actual test code. This is a cryptographic hash function that is used in the project's test suite for verifying SHA-256 functionality."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/test/sha256.js:104=bdc7eb70cbd0f0ba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/test/sha256.js:64=bdc7eb70cbd0f0ba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/test/sha256.js:69=07d68e04e299a92d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/test/sha256.js:84=bdc7eb70cbd0f0ba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes/generateInput.js",
+            "line": 12
+          },
+          {
+            "location": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes/generateInput.js",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Usage of crypto.randomBytes(32) in generateInput.js for generating private keys and messages. This is a CSPRNG usage but the actual cryptographic primitives used are not specified here - they depend on the underlying Node.js crypto implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes/generateInput.js:12=b424038ab02995a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/zkopru-network/zkopru/leastauthority_previously_correct_ownership_proof_disabled_via_code_changes/generateInput.js:18=27207f421831c47e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt-js",
+      "bom-ref": "pqs:collected:LIB-73d70f43",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-73d70f43"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project depends on scrypt-js, which is a JavaScript implementation of the scrypt key derivation function. This is part of the cryptographic libraries used in the project."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "elliptic",
+      "bom-ref": "pqs:collected:LIB-a0bfbc1a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a0bfbc1a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project depends on elliptic, which is a JavaScript implementation of elliptic curve cryptography including ECDH functionality. This is part of the cryptographic libraries used in the project."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hash.js",
+      "bom-ref": "pqs:collected:LIB-e966a74e",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dataset/circom/dependencies/circomlib/package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-e966a74e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The circomlib project depends on hash.js, which is a JavaScript implementation of various hash functions. This is part of the cryptographic libraries used in the project."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dataset/circom/dependencies/circomlib/package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-50e53f84"
+    },
+    {
+      "ref": "pqs:collected:ALG-673c8f24"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-c9ffc8a8"
+    },
+    {
+      "ref": "pqs:collected:ALG-84de5a3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-c1f8b585"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:LIB-73d70f43"
+    },
+    {
+      "ref": "pqs:collected:LIB-a0bfbc1a"
+    },
+    {
+      "ref": "pqs:collected:LIB-e966a74e"
+    }
+  ]
+}
