@@ -1,0 +1,142 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0bb6f53b-ee13-4e8f-9f76-3c6763167a41",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T11:09:45.604Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "spook/sshping",
+      "version": "558bcce6d39758efb3dc540ccd2cb836431faa27",
+      "bom-ref": "repo:spook/sshping@558bcce6d39758efb3dc540ccd2cb836431faa27",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/spook/sshping"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8fd9d0ba-69ed-4081-988a-fda57a3651a7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "88068"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "libssh (C) sessions on default settings (libssh version unknown)",
+      "bom-ref": "pqs:collected:PROTO-14c555a0",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/sshping.cxx",
+            "line": 532
+          },
+          {
+            "location": "src/sshping.cxx",
+            "line": 564
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-14c555a0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The sshping.cxx file establishes SSH connections using libssh library with default configurations. It calls ssh_init(), ssh_new(), and ssh_connect() without setting specific key exchange algorithms, relying on the library's defaults which typically use ECDH or DH key exchange methods that are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/sshping.cxx:532=7059ab417e89278b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/sshping.cxx:564=c1b89ca2e1a1f3a1"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-14c555a0"
+    }
+  ]
+}
