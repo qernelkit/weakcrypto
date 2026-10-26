@@ -1,0 +1,604 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2cc0f801-856a-443b-92e2-7b4aa9772a34",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T16:19:46.606Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "rustonbsd/iroh-ssh",
+      "version": "82e99719f8b4e44c69622140f4acb25e5ae54184",
+      "bom-ref": "repo:rustonbsd/iroh-ssh@82e99719f8b4e44c69622140f4acb25e5ae54184",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/rustonbsd/iroh-ssh"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4356d728-83e8-4f67-a11a-71bd71ab4360"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "154820"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.toml",
+            "line": 18
+          },
+          {
+            "location": "src/ssh.rs",
+            "line": 407
+          },
+          {
+            "location": "src/ssh.rs",
+            "line": 408
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 is used for SSH key management in this project. It's a classical signature algorithm that is vulnerable to Shor's algorithm and needs migration to ML-DSA-65."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.toml:18=4bf5b8fbef371499"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/ssh.rs:407=9c58de7438f6da09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/ssh.rs:408=22b01aa7b17f6c01"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-defedad1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-defedad1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X25519 is used through the ring crate dependency. It's a classical key agreement algorithm vulnerable to Shor's algorithm and needs hybrid migration to X25519MLKEM768."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ed25519-dalek",
+      "bom-ref": "pqs:collected:LIB-7efff9f3",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-7efff9f3"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The ed25519-dalek library is used for Ed25519 signature operations in this SSH implementation. This is a crypto library that provides classical cryptographic primitives vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.3",
+      "bom-ref": "pqs:collected:ALG-f42564d9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f42564d9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS 1.3 is used through the rustls crate dependency. While this project is primarily an SSH implementation, it may use TLS for other communication channels and TLS 1.3 is a quantum-vulnerable protocol."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "aes-gcm",
+      "bom-ref": "pqs:collected:LIB-72279505",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-72279505"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The aes-gcm crate is a cryptographic dependency used for AES-GCM encryption operations. This is a symmetric encryption algorithm with quantum-safe alternatives available."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "blake3",
+      "bom-ref": "pqs:collected:LIB-88ef0f9c",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-88ef0f9c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The blake3 crate is a cryptographic hash function dependency. While not directly vulnerable to quantum attacks, it's part of the cryptographic ecosystem used in this project."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "rustls",
+      "bom-ref": "pqs:collected:LIB-da9e9820",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Cargo.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-da9e9820"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The rustls crate is a TLS implementation library that would be used for secure communications in this project. It's part of the cryptographic stack and needs quantum-safe migration considerations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Cargo.lock:1=3de5d5451b16bfa0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-defedad1"
+    },
+    {
+      "ref": "pqs:collected:LIB-7efff9f3"
+    },
+    {
+      "ref": "pqs:collected:ALG-f42564d9"
+    },
+    {
+      "ref": "pqs:collected:LIB-72279505"
+    },
+    {
+      "ref": "pqs:collected:LIB-88ef0f9c"
+    },
+    {
+      "ref": "pqs:collected:LIB-da9e9820"
+    }
+  ]
+}
