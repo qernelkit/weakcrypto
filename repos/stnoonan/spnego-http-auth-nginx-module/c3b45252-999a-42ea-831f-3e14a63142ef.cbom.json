@@ -1,0 +1,539 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:dc5ade74-daad-4d20-888a-978b91762a0c",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-26T21:58:20.720Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "stnoonan/spnego-http-auth-nginx-module",
+      "version": "ad93349d38d63847053673a76181ecbb37b402fc",
+      "bom-ref": "repo:stnoonan/spnego-http-auth-nginx-module@ad93349d38d63847053673a76181ecbb37b402fc",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/stnoonan/spnego-http-auth-nginx-module"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "c3b45252-999a-42ea-831f-3e14a63142ef"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "89519"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ngx_http_auth_spnego_module.c",
+            "line": 749
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in the SPNEGO authentication module where MAC comparisons are done with regular equality checks instead of constant-time operations, potentially leaking information about the authentication tokens."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ngx_http_auth_spnego_module.c:749=fc176f5f337511e7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Kerberos default_tkt_enctypes",
+      "bom-ref": "pqs:collected:PROTO-031d1b16",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "README.Windows.md",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-031d1b16"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Kerberos ticket encryption configuration in the Windows README documentation, specifying default encryption types for tickets. This is a protocol configuration issue rather than a direct cryptographic vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "README.Windows.md:1=ba284e5a5c24ad50"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Kerberos default_tgs_enctypes",
+      "bom-ref": "pqs:collected:PROTO-a68fdd7b",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "README.Windows.md",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-a68fdd7b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Kerberos TGS (Ticket Granting Service) encryption configuration in the Windows README documentation, specifying default encryption types for tickets. This is a protocol configuration issue rather than a direct cryptographic vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "README.Windows.md:1=ba284e5a5c24ad50"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ngx_http_auth_spnego_module.c",
+            "line": 1678
+          },
+          {
+            "location": "ngx_http_auth_spnego_module.c",
+            "line": 1702
+          },
+          {
+            "location": "ngx_http_auth_spnego_module.c",
+            "line": 1697
+          },
+          {
+            "location": "ngx_http_auth_spnego_module.c",
+            "line": 1700
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function used in the nginx SPNEGO authentication module for computing TLS server end-point channel bindings. This is a legitimate cryptographic usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ngx_http_auth_spnego_module.c:1678=293871f4d0c4c093"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ngx_http_auth_spnego_module.c:1702=fa7c505ef653772f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ngx_http_auth_spnego_module.c:1697=0c71371dd42ac9f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ngx_http_auth_spnego_module.c:1700=b2e1272a14c11d00"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Certificate reference: example.com.crt",
+      "bom-ref": "pqs:collected:SEC-479a8441",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "README.Windows.md",
+            "line": 159
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-479a8441"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Reference to a certificate file (example.com.crt) in the nginx SPNEGO module documentation. This is a crypto-related configuration element."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "README.Windows.md:159=8bd621e845950a9b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Key reference: example.com.crt",
+      "bom-ref": "pqs:collected:SEC-87b32eb1",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "README.Windows.md",
+            "line": 160
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-87b32eb1"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Reference to a key file (example.com.crt) in the nginx SPNEGO module documentation. This is a crypto-related configuration element."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "README.Windows.md:160=6937bd6b86173093"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:PROTO-031d1b16"
+    },
+    {
+      "ref": "pqs:collected:PROTO-a68fdd7b"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:SEC-479a8441"
+    },
+    {
+      "ref": "pqs:collected:SEC-87b32eb1"
+    }
+  ]
+}
