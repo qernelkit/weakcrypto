@@ -1,0 +1,218 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5600f773-6be0-47d0-90e0-208a4c4b253a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T06:39:29.077Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mesutpiskin/keycloak-2fa-email-authenticator",
+      "version": "2dc41f009ab837d34602146e3e2bdbbc09fe440e",
+      "bom-ref": "repo:mesutpiskin/keycloak-2fa-email-authenticator@2dc41f009ab837d34602146e3e2bdbbc09fe440e",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mesutpiskin/keycloak-2fa-email-authenticator"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "364c98d7-c712-46b0-bfc3-95076751db19"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "114231"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (at least JDK 21)",
+      "bom-ref": "pqs:collected:PROTO-f23b8d7f",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mesutpiskin/keycloak/auth/email/service/impl/MailgunEmailSender.java",
+            "line": 72
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-f23b8d7f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a default Java HTTPS client that uses the system's default TLS settings with no explicit configuration of quantum-safe parameters. It's used for sending emails via Mailgun API over HTTPS."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mesutpiskin/keycloak/auth/email/service/impl/MailgunEmailSender.java:72=64ddf4dc8de230ec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mesutpiskin/keycloak/auth/email/EmailAuthenticatorRequiredAction.java",
+            "line": 415
+          },
+          {
+            "location": "src/main/java/com/mesutpiskin/keycloak/auth/email/OtpHashUtils.java",
+            "line": 61
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Constant-time comparison using MessageDigest.isEqual() is used for comparing OTP codes in email authentication. This prevents timing attacks and is secure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mesutpiskin/keycloak/auth/email/EmailAuthenticatorRequiredAction.java:415=706c7b771d8788c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mesutpiskin/keycloak/auth/email/OtpHashUtils.java:61=9eb354e0400b107b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-f23b8d7f"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    }
+  ]
+}
