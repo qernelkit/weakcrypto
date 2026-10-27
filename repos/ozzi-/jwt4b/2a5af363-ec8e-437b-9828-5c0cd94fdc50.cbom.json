@@ -1,0 +1,1196 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5f5da3b3-d2d5-44e8-bd74-23ace5cc1d28",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T16:00:46.901Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ozzi-/jwt4b",
+      "version": "6ac99bec12d8e9b6415df44a194cb1e0ab504c5c",
+      "bom-ref": "repo:ozzi-/jwt4b@6ac99bec12d8e9b6415df44a194cb1e0ab504c5c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ozzi-/JWT4B"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "2a5af363-ec8e-437b-9828-5c0cd94fdc50"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "12"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "152261"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT decoded without verifying",
+      "bom-ref": "pqs:collected:ALG-a02cc131",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/helpers/TokenChecker.java",
+            "line": 34
+          },
+          {
+            "location": "src/main/java/model/CustomJWToken.java",
+            "line": 229
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a02cc131"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT token decoding without verification - this allows forged tokens to be accepted as valid"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/TokenChecker.java:34=f7c62a5743c4e1ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/model/CustomJWToken.java:229=3e502a5301d7f42e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded private key",
+      "bom-ref": "pqs:collected:ALG-394bd8ab",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/helpers/Config.java",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-394bd8ab"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded RSA private key committed in source code - this allows anyone with access to the source to impersonate the service"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/Config.java:49=8865a96dd6295edd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 20
+          },
+          {
+            "location": "src/test/java/app/TestAlgorithmWrapper.java",
+            "line": 23
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 21
+          },
+          {
+            "location": "src/test/java/app/TestAlgorithmWrapper.java",
+            "line": 38
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signed with a shared HMAC secret: any party that can verify can also mint. A key-distribution risk, not a quantum one."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:20=26bea0ec4056ac77"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestAlgorithmWrapper.java:23=e72ccc6cd2d30fb7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:21=a82d9f2357e3729a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestAlgorithmWrapper.java:38=183d760407f8bf65"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:22=0886a3b719d70fec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 23
+          },
+          {
+            "location": "src/main/java/app/controllers/JWTInterceptTabController.java",
+            "line": 91
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 24
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signed with RSA: classical, deadline-class quantum risk"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:23=419933e71ce4185f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/controllers/JWTInterceptTabController.java:91=b73eb2fb6fbba0d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:24=23f317b8ddfb31d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:25=8ae48999e9197e9f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/tokenposition/ITokenPosition.java",
+            "line": 62
+          },
+          {
+            "location": "src/main/java/model/CustomJWToken.java",
+            "line": 52
+          },
+          {
+            "location": "src/test/java/app/TestCookieDetection.java",
+            "line": 49
+          },
+          {
+            "location": "src/test/java/app/TestCookieDetection.java",
+            "line": 50
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time string comparison - this could leak timing information that might be exploited in side-channel attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/tokenposition/ITokenPosition.java:62=522e6ef51f41924c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/model/CustomJWToken.java:52=af515c23f7b99f19"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestCookieDetection.java:49=960046eef7122972"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestCookieDetection.java:50=e4f8f1902b2b3ef5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 151
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 44
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 152
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "RSA in use: classical, broken by Shor"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:151=90968c583157c88d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:44=9b4f50a94d66eb91"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:152=41cb646d02b8b1db"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT ES256",
+      "bom-ref": "pqs:collected:ALG-36874020",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 26
+          },
+          {
+            "location": "src/test/java/app/TestAlgorithmWrapper.java",
+            "line": 23
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 27
+          },
+          {
+            "location": "src/test/java/app/TestAlgorithmWrapper.java",
+            "line": 38
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 28
+          },
+          {
+            "location": "src/main/java/app/algorithm/AlgorithmWrapper.java",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36874020"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signed with ECDSA: classical, deadline-class quantum risk"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:26=b0a28bec080f6001"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestAlgorithmWrapper.java:23=e72ccc6cd2d30fb7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:27=12d5d419f461e5e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/app/TestAlgorithmWrapper.java:38=183d760407f8bf65"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:28=4dfd8ceaf5f2b262"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/algorithm/AlgorithmWrapper.java:29=8fb2bdcaf7204725"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA key generation - this uses a quantum-vulnerable signature algorithm that will be broken by Shor's algorithm"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:54=6bca60dbd1d34d44"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 125
+          },
+          {
+            "location": "src/main/java/app/helpers/O365.java",
+            "line": 49
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 126
+          },
+          {
+            "location": "src/main/java/app/helpers/O365.java",
+            "line": 51
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 131
+          },
+          {
+            "location": "src/main/java/app/helpers/O365.java",
+            "line": 52
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 135
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 34
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 128
+          },
+          {
+            "location": "src/main/java/app/helpers/KeyHelper.java",
+            "line": 130
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA256 cryptographic function - commonly used for message authentication"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:125=da65f8454ccd8180"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/O365.java:49=8eeed3aeda782f2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:126=5008a2a54391561d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/O365.java:51=36b1007f1c389d26"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:131=76291a77ad31f746"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/O365.java:52=4d8181c10e3a817a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:135=1d15dd64d4bf252a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:34=99e0b3e7b4714deb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:128=2642690f3f471f24"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/KeyHelper.java:130=15d677e20523995c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/app/helpers/O365.java",
+            "line": 38
+          },
+          {
+            "location": "src/main/java/app/helpers/O365.java",
+            "line": 39
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 cryptographic hash function - used for data integrity"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/O365.java:38=600077c66fd6f073"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/app/helpers/O365.java:39=ac1fa4d9b32b97fe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "build.gradle",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing via com.auth0:java-jwt@3.11.0"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "build.gradle:1=4e95d1b9af680352"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "com.auth0:java-jwt",
+      "bom-ref": "pqs:collected:LIB-217c2ed7",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "build.gradle",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-217c2ed7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Crypto dependency: com.auth0:java-jwt@3.11.0"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "build.gradle:1=4e95d1b9af680352"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a02cc131"
+    },
+    {
+      "ref": "pqs:collected:ALG-394bd8ab"
+    },
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-36874020"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-217c2ed7"
+    }
+  ]
+}
