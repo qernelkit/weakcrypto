@@ -1,0 +1,1382 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0328d95a-4c2b-4540-a7a6-a8b1a361ed97",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T05:23:46.108Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "hlandau/passlib",
+      "version": "45ceed2af32eb316c58b26bf5b9d914a3fb9dfd8",
+      "bom-ref": "repo:hlandau/passlib@45ceed2af32eb316c58b26bf5b9d914a3fb9dfd8",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/hlandau/passlib"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "eb3c2129-0b94-48e8-b95b-f63044ce856b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "10"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "156528"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 40
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is being used for password hashing in the pbkdf2 module. This is a known weakness as SHA-1 is collision-broken and should not be used for password hashing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:40=83136e3a3cf9fefd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:20=e9be8d5c3d779b4c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "weak password hash",
+      "bom-ref": "pqs:collected:ALG-ca87cf31",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "hash/scrypt/scrypt.go",
+            "line": 96
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ca87cf31"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The scrypt implementation is using SHA-256 as the hash function, which is considered weak for password hashing purposes. Proper password hashing should use dedicated KDFs like Argon2 or PBKDF2 with sufficient rounds."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/scrypt/scrypt.go:96=ad7d0dc23ebeb9ab"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "default.go",
+            "line": 38
+          },
+          {
+            "location": "hash/bcrypt/bcrypt.go",
+            "line": 44
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 25
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 219
+          },
+          {
+            "location": "default.go",
+            "line": 51
+          },
+          {
+            "location": "hash/bcrypt/bcrypt.go",
+            "line": 53
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 28
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 223
+          },
+          {
+            "location": "default.go",
+            "line": 7
+          },
+          {
+            "location": "hash/bcrypt/bcrypt.go",
+            "line": 54
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 36
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 226
+          },
+          {
+            "location": "hash/bcrypt/bcrypt.go",
+            "line": 62
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 64
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 227
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 76
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 228
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 95
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 229
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 230
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 231
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "22"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:38=5d4b9477db12f639"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcrypt/bcrypt.go:44=adcccaa9af3a5b21"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:25=3677b728fb15cf9c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:219=06f544a37fc9e9ca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:51=5d4b9477db12f639"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcrypt/bcrypt.go:53=85e01b8313ef20f0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:28=d93a4338b9455b0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:223=d7da5e0ec43b34c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:7=966061566f247324"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcrypt/bcrypt.go:54=d0edb50f31e5ae41"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:36=12ddf00499640b3c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:226=1fa47d172af323d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcrypt/bcrypt.go:62=dde21e261679507c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:64=62df0693589d73ca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:227=2ed11ef5f645680b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:76=6e2d7093d1aaa0f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:228=9c156bb7681c258a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:95=728ff6c93e9af255"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:229=68c7518185c4c6c4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:230=8a9db93639d2e02b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:231=4c8cf037df34b951"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:8=966061566f247324"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "abstract/compare.go",
+            "line": 10
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Constant-time comparison function using Go's standard library crypto/subtle package for secure MAC/digest comparisons."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "abstract/compare.go:10=a9bc56be694f5f58"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "default.go",
+            "line": 36
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 14
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 11
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 20
+          },
+          {
+            "location": "hash/pbkdf2/raw/pbkdf2.go",
+            "line": 14
+          },
+          {
+            "location": "hash/pbkdf2/test.py",
+            "line": 5
+          },
+          {
+            "location": "default.go",
+            "line": 37
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 40
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 12
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 21
+          },
+          {
+            "location": "hash/pbkdf2/raw/pbkdf2.go",
+            "line": 4
+          },
+          {
+            "location": "default.go",
+            "line": 39
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 41
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 13
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 22
+          },
+          {
+            "location": "default.go",
+            "line": 49
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 42
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 139
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 27
+          },
+          {
+            "location": "default.go",
+            "line": 50
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 14
+          },
+          {
+            "location": "default.go",
+            "line": 52
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 15
+          },
+          {
+            "location": "default.go",
+            "line": 9
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2_test.go",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 is being used for password hashing with multiple hash functions including SHA1 (which is weak), SHA256, and SHA512. While PBKDF2 itself is secure, the inclusion of SHA1 makes this configuration less secure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "84"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:36=5b1f8191157182b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:14=2001aeb534bd8362"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:11=af314bb726d1c8b4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:20=e9be8d5c3d779b4c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/pbkdf2.go:14=ebe4d19265552cf7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/test.py:5=ffe6f356fd6682df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:37=6567bd6ef67fa929"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:40=83136e3a3cf9fefd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:12=5f47f46cdb668452"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:21=64a5a9302632da29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/pbkdf2.go:4=6f9e629a00daca0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:39=5b15ddad42686372"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:41=0be697b05176a104"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:13=a1b7b203655284fd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:22=3a6a607f36612ca9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:49=5b1f8191157182b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:42=38ef31a8464440d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:139=8247a7c7f5bf1949"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:27=aaf32a6ad98d80ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:50=6567bd6ef67fa929"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:14=a41c2934ba122f81"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:52=5b15ddad42686372"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:15=3c118cb723b64617"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:9=b038f2889d665ca3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2_test.go:16=497704847fad37b1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Argon2id",
+      "bom-ref": "pqs:collected:ALG-d75ee937",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "default.go",
+            "line": 32
+          },
+          {
+            "location": "hash/argon2/argon2.go",
+            "line": 11
+          },
+          {
+            "location": "hash/argon2/raw/argon2.go",
+            "line": 33
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 247
+          },
+          {
+            "location": "default.go",
+            "line": 44
+          },
+          {
+            "location": "hash/argon2/argon2.go",
+            "line": 13
+          },
+          {
+            "location": "hash/argon2/raw/argon2.go",
+            "line": 7
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 7
+          },
+          {
+            "location": "default.go",
+            "line": 6
+          },
+          {
+            "location": "hash/argon2/argon2.go",
+            "line": 88
+          },
+          {
+            "location": "hash/argon2/argon2.go",
+            "line": 98
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d75ee937"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Argon2id password hashing using Go's standard library crypto package - a quantum-safe KDF with good security properties."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:32=32f95c1ab6e82446"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/argon2.go:11=e73013c37ea32393"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/raw/argon2.go:33=7c3f8abca7e7b260"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:247=dc80742671865730"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:44=32f95c1ab6e82446"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/argon2.go:13=3cd9524a91953731"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/raw/argon2.go:7=e73013c37ea32393"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:7=8551df1824ad4ad0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:6=8551df1824ad4ad0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/argon2.go:88=22d2f73f352ad06e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/argon2.go:98=005af6b04093badf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "scrypt",
+      "bom-ref": "pqs:collected:ALG-c1f8b585",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "default.go",
+            "line": 10
+          },
+          {
+            "location": "hash/scrypt/raw/scrypt.go",
+            "line": 31
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 10
+          },
+          {
+            "location": "default.go",
+            "line": 31
+          },
+          {
+            "location": "passlib_test.go",
+            "line": 240
+          },
+          {
+            "location": "default.go",
+            "line": 45
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c1f8b585"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "scrypt password hashing using Go's standard library crypto package - a quantum-safe KDF with good security properties."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:10=5951b2426a65e638"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/scrypt/raw/scrypt.go:31=5f2dd0f19ec6cb2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:10=5951b2426a65e638"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:31=afbdcc37b0f3edba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "passlib_test.go:240=7f5fbe4304b5ce0b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "default.go:45=afbdcc37b0f3edba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 57
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 41
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 21
+          },
+          {
+            "location": "hash/pbkdf2/test.py",
+            "line": 5
+          },
+          {
+            "location": "hash/sha2crypt/raw/sha2crypt.go",
+            "line": 41
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 59
+          },
+          {
+            "location": "hash/bcryptsha256/bcryptsha256.go",
+            "line": 58
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is being used in password hashing contexts (bcryptsha256 and pbkdf2) and while SHA-256 is cryptographically secure, for password hashing SHA-384 or higher are preferred according to CNSA 2.0 standards."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:57=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:41=0be697b05176a104"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:21=64a5a9302632da29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/test.py:5=ffe6f356fd6682df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/sha2crypt/raw/sha2crypt.go:41=f21003ed1f6d76f6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:59=73909733ef968a9a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/bcryptsha256/bcryptsha256.go:58=3b1d0781acc40622"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-384/512",
+      "bom-ref": "pqs:collected:ALG-8c748911",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 42
+          },
+          {
+            "location": "hash/pbkdf2/raw/parse.go",
+            "line": 22
+          },
+          {
+            "location": "hash/sha2crypt/raw/sha2crypt.go",
+            "line": 57
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8c748911"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-512 is being used in the pbkdf2 module for password hashing, which is acceptable and meets CNSA 2.0 requirements for national security systems. This is a good choice for password hashing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:42=38ef31a8464440d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/raw/parse.go:22=3a6a607f36612ca9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/sha2crypt/raw/sha2crypt.go:57=5b7c00d9a248986e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "hash/argon2/argon2.go",
+            "line": 6
+          },
+          {
+            "location": "hash/pbkdf2/pbkdf2.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The codebase correctly uses crypto/rand for cryptographically secure randomness in multiple modules (argon2, pbkdf2, scrypt, sha2crypt). This is a good security practice."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/argon2/argon2.go:6=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hash/pbkdf2/pbkdf2.go:8=a3859508fc6d98bd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-ca87cf31"
+    },
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-d75ee937"
+    },
+    {
+      "ref": "pqs:collected:ALG-c1f8b585"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8c748911"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
