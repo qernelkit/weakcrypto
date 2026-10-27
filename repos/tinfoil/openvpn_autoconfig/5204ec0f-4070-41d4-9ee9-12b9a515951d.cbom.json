@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:da3baab1-62c9-4d81-8bd6-4e54b4f004cf",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T01:35:21.843Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "tinfoil/openvpn_autoconfig",
+      "version": "017a9df073dfab433e551dd0128a197bb57026c5",
+      "bom-ref": "repo:tinfoil/openvpn_autoconfig@017a9df073dfab433e551dd0128a197bb57026c5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/tinfoil/openvpn_autoconfig"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5204ec0f-4070-41d4-9ee9-12b9a515951d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "71755"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "bin/openvpn.sh",
+            "line": 23
+          },
+          {
+            "location": "bin/openvpn.sh",
+            "line": 29
+          },
+          {
+            "location": "bin/openvpn.sh",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This script generates RSA-2048 bit keys for OpenVPN setup (CA, server, and client certificates). These are classical RSA keys that are vulnerable to Shor's algorithm and need migration to ML-KEM-based hybrid solutions. The script is generating these keys as part of a standard OpenVPN configuration process."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bin/openvpn.sh:23=861b1462e46e7730"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bin/openvpn.sh:29=78b11e5f8ac11a3a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "bin/openvpn.sh:34=54c1f3b5e5648b4a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    }
+  ]
+}
