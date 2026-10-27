@@ -1,0 +1,993 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8b1e5cb3-8237-4d9c-99d6-60044b1452e0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T05:42:03.183Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "codesiddhant/jasmin-ransomware",
+      "version": "b766d10c21bd75f07b7d5afad860d06884623f2b",
+      "bom-ref": "repo:codesiddhant/jasmin-ransomware@b766d10c21bd75f07b7d5afad860d06884623f2b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/codesiddhant/Jasmin-Ransomware"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "12ab6eba-abb8-49ac-a995-b840f7bf39cf"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "12"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "156346"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/mainform.cs",
+            "line": 566
+          },
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 460
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-CBC mode without authenticated encryption in Jasmin ransomware tools. This is a real cryptographic asset that uses CBC mode which is vulnerable to padding oracle attacks when used without MACs."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/mainform.cs:566=03e8371155c2fda3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:460=03e8371155c2fda3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/mainform.cs",
+            "line": 562
+          },
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 456
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 with insufficient iterations (1000) in Jasmin ransomware tools. This is a real cryptographic asset that uses weak key derivation which can be brute-forced more easily than recommended."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/mainform.cs:562=1f7e373325454170"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:456=1f7e373325454170"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-215c4457",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/packages/Costura.Fody.4.1.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "Jasmin Encrypter/packages/Costura.Fody.4.1.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-215c4457"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/packages/Costura.Fody.4.1.0/.signature.p7s:1=47c6d34bc864fc29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/Costura.Fody.4.1.0/.signature.p7s:1=47c6d34bc864fc29"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-6a56ebc6",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/packages/Fody.6.0.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "Jasmin Encrypter/packages/Fody.6.0.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-6a56ebc6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/packages/Fody.6.0.0/.signature.p7s:1=42c9d71f29fbc069"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/Fody.6.0.0/.signature.p7s:1=42c9d71f29fbc069"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-10298fc2",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Encrypter/packages/IpInfo.1.0.5.1/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-10298fc2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/IpInfo.1.0.5.1/.signature.p7s:1=42c9d71f29fbc069"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-14269127",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Encrypter/packages/SharpCompress.0.24.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-14269127"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/SharpCompress.0.24.0/.signature.p7s:1=42c9d71f29fbc069"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-7b80338b",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Encrypter/packages/System.Management.4.7.0/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-7b80338b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/System.Management.4.7.0/.signature.p7s:1=dc5d1074ba2f0bdf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-c893e7b5",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Encrypter/packages/Newtonsoft.Json.12.0.3/.signature.p7s",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-c893e7b5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/packages/Newtonsoft.Json.12.0.3/.signature.p7s:1=15e4f942682e5f00"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/mainform.cs",
+            "line": 562
+          },
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 456
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation in Jasmin ransomware tools with 1000 iterations. This is a real cryptographic asset using key derivation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/mainform.cs:562=1f7e373325454170"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:456=1f7e373325454170"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/mainform.cs",
+            "line": 211
+          },
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 424
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hashing in Jasmin ransomware tools for password processing. This is a real cryptographic asset using hash functions."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/mainform.cs:211=38e6f8f813b718dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:424=7a6b0456adbf84d1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Decryptor/mainform.cs",
+            "line": 559
+          },
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 453
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 encryption in Jasmin ransomware tools. This is a real cryptographic asset using symmetric encryption with 256-bit keys."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Decryptor/mainform.cs:559=cf6ae70b116290e3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:453=cf6ae70b116290e3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Jasmin Encrypter/Program.cs",
+            "line": 56
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Jasmin Encrypter/Program.cs:56=e28ffd9b243c4ed1"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:CERT-215c4457"
+    },
+    {
+      "ref": "pqs:collected:CERT-6a56ebc6"
+    },
+    {
+      "ref": "pqs:collected:CERT-10298fc2"
+    },
+    {
+      "ref": "pqs:collected:CERT-14269127"
+    },
+    {
+      "ref": "pqs:collected:CERT-7b80338b"
+    },
+    {
+      "ref": "pqs:collected:CERT-c893e7b5"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
