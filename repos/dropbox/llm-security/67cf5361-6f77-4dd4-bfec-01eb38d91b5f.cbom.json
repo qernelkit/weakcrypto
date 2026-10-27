@@ -1,0 +1,134 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:715d5671-b0d3-4690-b7d4-48f92362b8ad",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-27T19:46:20.357Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "dropbox/llm-security",
+      "version": "d5cd5615de671f2461ce542669aec0e9a881b00a",
+      "bom-ref": "repo:dropbox/llm-security@d5cd5615de671f2461ce542669aec0e9a881b00a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/dropbox/llm-security"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "67cf5361-6f77-4dd4-bfec-01eb38d91b5f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "84202"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/common/openai.py",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a Python script that makes HTTPS requests to OpenAI's API using the standard requests.Session() object. It does not implement any custom cryptographic protocols or use any specific crypto algorithms beyond what the underlying HTTP/HTTPS stack provides. The session uses default TLS settings which are not quantum-vulnerable in this context."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/common/openai.py:25=89af6e3a5467e4ef"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    }
+  ]
+}
