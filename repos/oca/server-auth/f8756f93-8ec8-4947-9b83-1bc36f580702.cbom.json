@@ -1,0 +1,1347 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1d4398c7-5d9c-427d-a263-45f83f681b37",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T16:01:40.366Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "oca/server-auth",
+      "version": "4f5bf8a18a087b83808a832c4414ad605aa09289",
+      "bom-ref": "repo:oca/server-auth@4f5bf8a18a087b83808a832c4414ad605aa09289",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/OCA/server-auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "f8756f93-8ec8-4947-9b83-1bc36f580702"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "16"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "144342"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT decoded without verifying",
+      "bom-ref": "pqs:collected:ALG-a02cc131",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/models/auth_oauth_provider.py",
+            "line": 94
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a02cc131"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code decodes JWT tokens without verifying their signature, which allows for potential token forgery. This is a cryptographic vulnerability in the authentication flow."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/models/auth_oauth_provider.py:94=57f6082df16189ed"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/models/auth_oauth_provider.py",
+            "line": 97
+          },
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 1366
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 135
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens are signed using RSA algorithms, which are vulnerable to Shor's algorithm. This represents a harvest-now-decrypt-later risk for authentication tokens."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/models/auth_oauth_provider.py:97=275fe4611327d712"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:1366=aa5ab925cc21dce3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:135=b424a4472aafacd6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-dcb806fd",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_saml/tests/data/idp.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "auth_saml/tests/data/sp.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-dcb806fd"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/idp.pem:1=ddddb6cbd348658f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/sp.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-38aaab8a",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_saml/tests/data/idp.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "auth_saml/tests/data/sp.key",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-38aaab8a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/idp.pem:1=ddddb6cbd348658f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/sp.key:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 48
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 52
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 57
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 58
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 66
+          },
+          {
+            "location": "auth_oidc/tests/test_auth_oidc_auth_code.py",
+            "line": 67
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "RSA key generation is used in authentication tests. This is a quantum-vulnerable cryptographic primitive that should be migrated to post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:48=744a22cb21d264cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:52=381233e3f5a21689"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:57=5558079b20872988"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:58=f5e5ecdf95a9e4ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:66=b16d18f3355a190c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/test_auth_oidc_auth_code.py:67=399e3a65cc0d4c9e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-1",
+      "bom-ref": "pqs:collected:ALG-ba399e5b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 380
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ba399e5b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA-1 is used for OTP policy algorithm configuration. While not directly quantum-vulnerable, it's a deprecated cryptographic primitive that should be upgraded to SHA-256 or higher."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:380=842f38b3f21ee163"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT HS256",
+      "bom-ref": "pqs:collected:ALG-c6eac685",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 1350
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c6eac685"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens are signed using HMAC-SHA-256. While this is not directly quantum-vulnerable, it's a key-distribution risk where any party that can verify can also forge tokens."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:1350=40a54b40f1e8baee"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "password_security/tests/test_totp.py",
+            "line": 54
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "A hardcoded secret is used for TOTP validation. While this is not directly cryptographic in nature, it's a security vulnerability that makes the system more susceptible to attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "password_security/tests/test_totp.py:54=ea7005ffc963ac11"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-e6bfe0b1",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_saml/tests/data/cert_idp_expired.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-e6bfe0b1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/cert_idp_expired.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-83a3ec80",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_saml/tests/data/key_idp_expired.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-83a3ec80"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_saml/tests/data/key_idp_expired.pem:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT ES256",
+      "bom-ref": "pqs:collected:ALG-36874020",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 387
+          },
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 397
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36874020"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT tokens are signed using ECDSA algorithms, which are vulnerable to Shor's algorithm. This represents a deadline-class quantum risk for authentication tokens."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:387=28807416d5b387a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:397=45fa5a8f61e0ebfe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 420
+          },
+          {
+            "location": "auth_oidc/tests/keycloak/keycloak-config.json",
+            "line": 445
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 is used for password key derivation with 27500 iterations. While not quantum-vulnerable, this may not meet current security recommendations for password hashing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:420=9f68eb3dcb0955e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/tests/keycloak/keycloak-config.json:445=9f68eb3dcb0955e4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_oidc/controllers/main.py",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/controllers/main.py:37=b53b49610dea46a2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth_api_key/models/auth_api_key.py",
+            "line": 50
+          },
+          {
+            "location": "auth_oidc/controllers/main.py",
+            "line": 25
+          },
+          {
+            "location": "auth_oidc/models/auth_oauth_provider.py",
+            "line": 42
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses Python's secrets module for generating secure random tokens, which is appropriate cryptographic practice for nonce generation and token creation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_api_key/models/auth_api_key.py:50=f7072dfb49054fbc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/controllers/main.py:25=65d9d7938eaa3251"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth_oidc/models/auth_oauth_provider.py:42=33042af0dbaa004d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JOSE (JWS/JWE/JWK)",
+      "bom-ref": "pqs:collected:ALG-386b2ee4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-386b2ee4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements.txt:1=217690f72e1e451a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "python-jose",
+      "bom-ref": "pqs:collected:LIB-20b015f3",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-20b015f3"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "requirements.txt:1=217690f72e1e451a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a02cc131"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:CERT-dcb806fd"
+    },
+    {
+      "ref": "pqs:collected:KEY-38aaab8a"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-ba399e5b"
+    },
+    {
+      "ref": "pqs:collected:ALG-c6eac685"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:CERT-e6bfe0b1"
+    },
+    {
+      "ref": "pqs:collected:KEY-83a3ec80"
+    },
+    {
+      "ref": "pqs:collected:ALG-36874020"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-386b2ee4"
+    },
+    {
+      "ref": "pqs:collected:LIB-20b015f3"
+    }
+  ]
+}
