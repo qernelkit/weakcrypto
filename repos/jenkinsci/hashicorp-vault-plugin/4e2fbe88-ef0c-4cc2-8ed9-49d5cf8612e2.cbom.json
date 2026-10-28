@@ -1,0 +1,170 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:77c7db4e-6c35-4483-ad0b-af5249cd1534",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T18:21:46.163Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "jenkinsci/hashicorp-vault-plugin",
+      "version": "da86ec66c537e984c1a7fab1743d575b40667508",
+      "bom-ref": "repo:jenkinsci/hashicorp-vault-plugin@da86ec66c537e984c1a7fab1743d575b40667508",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/jenkinsci/hashicorp-vault-plugin"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4e2fbe88-ef0c-4cc2-8ed9-49d5cf8612e2"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "164521"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SSL/TLS with verification disabled",
+      "bom-ref": "pqs:finding:src/main/java/com/datapipe/jenkins/vault/configuration/VaultConfiguration.java:280:SSL/TLS with verification disabled",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/datapipe/jenkins/vault/configuration/VaultConfiguration.java",
+            "line": 280
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/datapipe/jenkins/vault/configuration/VaultConfiguration.java:280=dd347d7523a27b7e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "managed secret store",
+      "bom-ref": "pqs:collected:ALG-92cfc6cb",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/datapipe/jenkins/vault/VaultAccessor.java",
+            "line": 220
+          },
+          {
+            "location": "src/main/java/com/datapipe/jenkins/vault/model/VaultSecret.java",
+            "line": 69
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92cfc6cb"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/datapipe/jenkins/vault/VaultAccessor.java:220=fa40360ade0ca3c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/datapipe/jenkins/vault/model/VaultSecret.java:69=3065699f1b0fad49"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/main/java/com/datapipe/jenkins/vault/configuration/VaultConfiguration.java:280:SSL/TLS with verification disabled"
+    },
+    {
+      "ref": "pqs:collected:ALG-92cfc6cb"
+    }
+  ]
+}
