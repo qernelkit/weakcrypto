@@ -1,0 +1,405 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:03834dc6-aa06-4c81-830f-defaa49c0a77",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T18:01:18.727Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ylorenzana/node-express-api-auth",
+      "version": "c8b704c83499b2a29d7935c75d7729c9a268b32e",
+      "bom-ref": "repo:ylorenzana/node-express-api-auth@c8b704c83499b2a29d7935c75d7729c9a268b32e",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ylorenzana/node-express-api-auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "87659b06-9052-4fb4-8eb6-feb964c980d8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "139113"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/models/user.js",
+            "line": 29
+          },
+          {
+            "location": "server/routes/users.js",
+            "line": 146
+          },
+          {
+            "location": "package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "server/models/user.js",
+            "line": 32
+          },
+          {
+            "location": "server/routes/users.js",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt is being used for password hashing in the user authentication system. It's a KDF (Key Derivation Function) that is quantum-safe but not the primary focus of this hunt which looks for quantum-vulnerable primitives like RSA, ECDH, DH, and TLS key exchanges."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/models/user.js:29=d8123d5b5a500ed8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/routes/users.js:146=fa4c2351e5a4a9b7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "package-lock.json:1=021fb596db81e6d0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/models/user.js:32=16735b5c69381e37"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/routes/users.js:82=fa4c2351e5a4a9b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/middleware/authenticate.js",
+            "line": 7
+          },
+          {
+            "location": "server/middleware/csrfCheck.js",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time string comparisons in authentication middleware. This is a security issue but not related to quantum cryptography - it's about side-channel timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/middleware/authenticate.js:7=b8d9e2ff9d9561dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/middleware/csrfCheck.js:8=59704cec312dd49c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/models/session.js",
+            "line": 35
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness being used for session token generation in the session model. This is good security practice and not a quantum vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/models/session.js:35=2ec8e838a825a28c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcryptjs",
+      "bom-ref": "pqs:collected:LIB-9aad6768",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "package-lock.json",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-9aad6768"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcryptjs dependency being used for password hashing. This is a standard security practice for storing passwords securely, though not the focus of quantum vulnerability assessment."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "package-lock.json:1=021fb596db81e6d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:LIB-9aad6768"
+    }
+  ]
+}
