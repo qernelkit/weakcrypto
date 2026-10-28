@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b1275a26-2cd9-479b-af96-040aa111dc6f",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T04:14:12.869Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ethanroi/springcloud_oauth2.0",
+      "version": "35731407840be791b7878bc221130b5043e8e94c",
+      "bom-ref": "repo:ethanroi/springcloud_oauth2.0@35731407840be791b7878bc221130b5043e8e94c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/EthanRoi/springcloud_oauth2.0"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "993e2ac1-25d1-43c8-bcf8-ec935cb03318"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "97383"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java",
+            "line": 171
+          },
+          {
+            "location": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java",
+            "line": 343
+          },
+          {
+            "location": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing attack vulnerability in the RedisTokenStore.java file where non-constant-time string comparison is used for authentication key validation, making it susceptible to timing attacks that could allow attackers to extract sensitive information through timing analysis."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java:171=8f20298fe09379bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java:343=0e6dd8aadf5df2c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "eshop/eshop-auth/src/main/java/com/curise/eshop/auth/config/oauth/RedisTokenStore.java:99=0e6dd8aadf5df2c9"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
