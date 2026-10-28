@@ -1,0 +1,708 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:99a0a125-3cad-4dec-938a-81e0024320e2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T08:18:01.859Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "glv2/bruteforce-salted-openssl",
+      "version": "30b272ec518e0f21b2409126e2e27fd1642d2319",
+      "bom-ref": "repo:glv2/bruteforce-salted-openssl@30b272ec518e0f21b2409126e2e27fd1642d2319",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/glv2/bruteforce-salted-openssl"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "468526ad-4199-4333-ad11-13260bf529f3"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "134449"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1149
+          },
+          {
+            "location": "tests/crack-encrypted1.sh",
+            "line": 7
+          },
+          {
+            "location": "tests/crack-encrypted2.sh",
+            "line": 7
+          },
+          {
+            "location": "tests/crack-encrypted4.sh",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-CBC usage in bruteforce-salted-openssl - this is a tool that tries to decrypt files using various passwords and ciphers. The CBC mode usage is standard for the tool's function but not quantum-vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1149=65b5ca3874f40e0c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted1.sh:7=a30dcab6ee90451d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted2.sh:7=69e1133bdd24b4f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted4.sh:7=be38613f55bbd958"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "EVP_BytesToKey",
+      "bom-ref": "pqs:collected:ALG-97a780a0",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 479
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 492
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-97a780a0"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in bruteforce-salted-openssl tool to derive keys from passwords for decrypting OpenSSL encrypted files. This is part of the tool's core functionality for breaking password-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:479=8de2fd6038102f9b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:492=54051652b515c488"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1000
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1150
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in bruteforce-salted-openssl tool for comparing password candidates during brute-force decryption attempts. This is part of the tool's core functionality for breaking password-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1000=1f3ab668153067e1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1150=1f3ab668153067e1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 473
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in bruteforce-salted-openssl tool for password-based key derivation with insufficient iterations. This is part of the tool's core functionality for breaking password-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:473=d05d4e6aac6a61d8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1042
+          },
+          {
+            "location": "tests/crack-encrypted4.sh",
+            "line": 7
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 471
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 473
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 484
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 486
+          },
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in bruteforce-salted-openssl tool for password-based key derivation with PBKDF2. This is part of the tool's core functionality for breaking password-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1042=7342d9b379bd457f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted4.sh:7=be38613f55bbd958"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:471=0d20f4bc2b4be116"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:473=d05d4e6aac6a61d8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:484=0d20f4bc2b4be116"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:486=11004fd47e2249bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:82=11e535c2b2a8c929"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1151
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in bruteforce-salted-openssl tool as the digest algorithm for password-based key derivation. This is part of the tool's core functionality for breaking password-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1151=d02c4fda517c9f51"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/bruteforce-salted-openssl.c",
+            "line": 1149
+          },
+          {
+            "location": "tests/crack-encrypted1.sh",
+            "line": 7
+          },
+          {
+            "location": "tests/crack-encrypted2.sh",
+            "line": 7
+          },
+          {
+            "location": "tests/crack-encrypted4.sh",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 usage in bruteforce-salted-openssl - this is a tool that tries to decrypt files using various passwords and ciphers. The AES-256 usage is standard for the tool's function and is quantum-safe."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/bruteforce-salted-openssl.c:1149=65b5ca3874f40e0c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted1.sh:7=a30dcab6ee90451d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted2.sh:7=69e1133bdd24b4f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/crack-encrypted4.sh:7=be38613f55bbd958"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-97a780a0"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
