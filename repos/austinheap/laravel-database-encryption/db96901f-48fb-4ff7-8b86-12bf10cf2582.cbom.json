@@ -1,0 +1,229 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4ed7d9a3-5c02-472b-b2a7-ac7eeed4a084",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T00:07:15.703Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "austinheap/laravel-database-encryption",
+      "version": "30515c1c0c5267f3917faa7d35e027baf8fcbc54",
+      "bom-ref": "repo:austinheap/laravel-database-encryption@30515c1c0c5267f3917faa7d35e027baf8fcbc54",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/austinheap/laravel-database-encryption"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "db96901f-48fb-4ff7-8b86-12bf10cf2582"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "92338"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Console/Commands/MigrateEncryptionCommand.php",
+            "line": 169
+          },
+          {
+            "location": "tests/Models/DummyModel.php",
+            "line": 35
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This package implements database attribute encryption using Laravel's built-in Crypt::encrypt() method which defaults to AES-256-CBC. The CBC mode without authenticated encryption is vulnerable to malleability attacks as noted by the security audit rules."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Console/Commands/MigrateEncryptionCommand.php:169=b77dced64be0abbb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Models/DummyModel.php:35=785e1c33928cb5d8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Console/Commands/MigrateEncryptionCommand.php",
+            "line": 169
+          },
+          {
+            "location": "tests/Models/DummyModel.php",
+            "line": 35
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This package implements database attribute encryption using Laravel's built-in Crypt::encrypt() method which defaults to AES-256-CBC. While AES-256 is not directly broken by Shor's algorithm like RSA/ECDH, it's still vulnerable to quantum attacks via Grover's algorithm which reduces the effective security to 128 bits. This makes it a quantum-vulnerable cryptographic asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Console/Commands/MigrateEncryptionCommand.php:169=b77dced64be0abbb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Models/DummyModel.php:35=785e1c33928cb5d8"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
