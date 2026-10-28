@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:aace6b45-50f7-4c9d-ae37-fb07939590be",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T05:33:26.911Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "crowdstrike/falcon-scripts",
+      "version": "572bd9c6d88736d84a0896f131f8cc2c469625ed",
+      "bom-ref": "repo:crowdstrike/falcon-scripts@572bd9c6d88736d84a0896f131f8cc2c469625ed",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/CrowdStrike/falcon-scripts"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "50a1521b-cc87-4a1c-afa5-5e58c92cea56"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "69458"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "powershell/install/falcon_windows_install.ps1",
+            "line": 575
+          },
+          {
+            "location": "powershell/install/falcon_windows_uninstall.ps1",
+            "line": 557
+          },
+          {
+            "location": "powershell/migrate/falcon_windows_migrate.ps1",
+            "line": 1246
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are PowerShell scripts that configure .NET SecurityProtocol to use TLS 1.2 for HTTPS communication with Falcon cloud services. This is a security protocol setting that impacts how HTTPS connections are established, not an actual crypto algorithm usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "powershell/install/falcon_windows_install.ps1:575=8b93189c46f23cbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "powershell/install/falcon_windows_uninstall.ps1:557=8b93189c46f23cbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "powershell/migrate/falcon_windows_migrate.ps1:1246=8b93189c46f23cbf"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    }
+  ]
+}
