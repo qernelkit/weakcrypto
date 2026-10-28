@@ -1,0 +1,166 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e14481fe-6b0b-4d49-9c8b-d780f8ae459a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T22:13:43.543Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "h4ck-root/lynda-decryptor",
+      "version": "2099f6cba734c7423350ac1f831bf603054f3e2e",
+      "bom-ref": "repo:h4ck-root/lynda-decryptor@2099f6cba734c7423350ac1f831bf603054f3e2e",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/h4ck-rOOt/Lynda-Decryptor"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e5ed3252-2ea6-4833-aa2f-750d1689d239"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "70379"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RijndaelManaged",
+      "bom-ref": "pqs:finding:LyndaDecryptor/Decryptor.cs:71:RijndaelManaged",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke",
+          "parameterSetIdentifier": "128"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "LyndaDecryptor/Decryptor.cs",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "LyndaDecryptor/Decryptor.cs:71=2634ab81be852131"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:collected:ALG-70109388",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "LyndaDecryptor/Decryptor.cs",
+            "line": 391
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-70109388"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This MD5 usage is in the ConvertSub method of Decryptor.cs where it's used to create a hash of video IDs for generating subtitle filenames. The application is a video decryption tool and this MD5 usage is for file organization purposes, not security-critical operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "LyndaDecryptor/Decryptor.cs:391=bb8c71645090fdf6"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:LyndaDecryptor/Decryptor.cs:71:RijndaelManaged"
+    },
+    {
+      "ref": "pqs:collected:ALG-70109388"
+    }
+  ]
+}
