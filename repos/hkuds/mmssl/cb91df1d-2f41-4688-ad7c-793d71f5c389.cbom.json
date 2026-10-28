@@ -1,0 +1,177 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:64c61a1d-4bf7-4b62-aaf0-6b072d28645a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T14:53:16.309Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "hkuds/mmssl",
+      "version": "fe41516ad5afede683172fa6d9260e215c0bff4d",
+      "bom-ref": "repo:hkuds/mmssl@fe41516ad5afede683172fa6d9260e215c0bff4d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/HKUDS/MMSSL"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "cb91df1d-2f41-4688-ad7c-793d71f5c389"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "61987"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "LATTICE/codes/utility/load_data.py",
+            "line": 175
+          },
+          {
+            "location": "MICRO/codes/utility/load_data.py",
+            "line": 175
+          },
+          {
+            "location": "MMSSL/utility/load_data.py",
+            "line": 166
+          },
+          {
+            "location": "LATTICE/codes/utility/load_data.py",
+            "line": 186
+          },
+          {
+            "location": "MICRO/codes/utility/load_data.py",
+            "line": 186
+          },
+          {
+            "location": "MMSSL/utility/load_data.py",
+            "line": 177
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used for sampling items in recommendation system training and testing. The code uses np.random.randint() which is not cryptographically secure and should be replaced with a proper cryptographic PRNG for security-sensitive operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "LATTICE/codes/utility/load_data.py:175=ebcfddf876dd8d49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "MICRO/codes/utility/load_data.py:175=ebcfddf876dd8d49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "MMSSL/utility/load_data.py:166=ebcfddf876dd8d49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "LATTICE/codes/utility/load_data.py:186=16a4dc6bb4c2a545"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "MICRO/codes/utility/load_data.py:186=16a4dc6bb4c2a545"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "MMSSL/utility/load_data.py:177=16a4dc6bb4c2a545"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
