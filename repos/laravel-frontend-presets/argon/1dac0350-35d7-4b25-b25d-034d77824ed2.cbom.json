@@ -1,0 +1,294 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:778fa354-f2c3-4f01-9a41-4c625ba52cff",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T09:56:18.320Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "laravel-frontend-presets/argon",
+      "version": "76720a39720d2bed7ea20b37170d61049ca99e26",
+      "bom-ref": "repo:laravel-frontend-presets/argon@76720a39720d2bed7ea20b37170d61049ca99e26",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/laravel-frontend-presets/argon"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1dac0350-35d7-4b25-b25d-034d77824ed2"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "88973"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/argon-stubs/Models/User.php",
+            "line": 59
+          },
+          {
+            "location": "src/argon-stubs/app/Models/User.php",
+            "line": 60
+          },
+          {
+            "location": "src/argon-stubs/database/seeders/DatabaseSeeder.php",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a password hashing algorithm used in a Laravel/PHP application for storing user passwords. The bcrypt() function is called in three different locations within the application's user model and seeder files. This is legitimate cryptographic usage for authentication purposes, though it doesn't fall into the primary quantum-vulnerable categories we're hunting for (RSA, ECDH, TLS key exchanges, etc.)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/argon-stubs/Models/User.php:59=e1bbb18af44c9ff1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/argon-stubs/app/Models/User.php:60=e1bbb18af44c9ff1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/argon-stubs/database/seeders/DatabaseSeeder.php:23=c6c379fae6794458"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-d829502f",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/argon-stubs/resources/argon/vendor/ramsey/collection/SECURITY.md",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-d829502f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/argon-stubs/resources/argon/vendor/ramsey/collection/SECURITY.md:1=d3ac25ddc7ba9779"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-4096",
+      "bom-ref": "pqs:collected:KEY-e1dacf0f",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/argon-stubs/resources/argon/vendor/ramsey/collection/SECURITY.md",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-e1dacf0f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/argon-stubs/resources/argon/vendor/ramsey/collection/SECURITY.md:1=d3ac25ddc7ba9779"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:KEY-d829502f"
+    },
+    {
+      "ref": "pqs:collected:KEY-e1dacf0f"
+    }
+  ]
+}
