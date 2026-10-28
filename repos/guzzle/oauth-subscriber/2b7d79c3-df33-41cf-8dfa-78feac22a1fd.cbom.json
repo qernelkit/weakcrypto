@@ -1,0 +1,209 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:67f2c5ce-0213-4032-95e7-236e403abb01",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T05:40:00.386Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "guzzle/oauth-subscriber",
+      "version": "b9522e2fa103b08d503cf58403d276f00dbb22f3",
+      "bom-ref": "repo:guzzle/oauth-subscriber@b9522e2fa103b08d503cf58403d276f00dbb22f3",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/guzzle/oauth-subscriber"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "2b7d79c3-df33-41cf-8dfa-78feac22a1fd"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "63764"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-SHA1",
+      "bom-ref": "pqs:finding:src/Oauth1.php:445:RSA-SHA1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Oauth1.php",
+            "line": 445
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Oauth1.php:445=6f9560a219dd4104"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA256",
+      "bom-ref": "pqs:finding:src/Oauth1.php:405:HMAC-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Oauth1.php",
+            "line": 405
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Oauth1.php:405=b4955e6837077077"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/Oauth1.php",
+            "line": 274
+          },
+          {
+            "location": "tests/Oauth1Test.php",
+            "line": 994
+          },
+          {
+            "location": "src/Oauth1.php",
+            "line": 36
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA256 signature method used in OAuth 1.0 implementation for authenticating API requests. This is actual cryptographic usage in the application's security mechanism."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Oauth1.php:274=90d8cfca2b252997"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Oauth1Test.php:994=d72173c7b36f34fe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Oauth1.php:36=1cf653ce8e43c2cd"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/Oauth1.php:445:RSA-SHA1"
+    },
+    {
+      "ref": "pqs:finding:src/Oauth1.php:405:HMAC-SHA256"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    }
+  ]
+}
