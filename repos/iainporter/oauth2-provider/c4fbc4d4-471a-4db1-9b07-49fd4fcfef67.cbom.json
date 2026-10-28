@@ -1,0 +1,353 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a5dc9f47-63c5-40cd-9eb1-3afdf1e8802b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T15:46:44.521Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "iainporter/oauth2-provider",
+      "version": "53af5328e8e00d2736374d3f68306014a41b39ef",
+      "bom-ref": "repo:iainporter/oauth2-provider@53af5328e8e00d2736374d3f68306014a41b39ef",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/iainporter/oauth2-provider"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "c4fbc4d4-471a-4db1-9b07-49fd4fcfef67"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "96681"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java",
+            "line": 102
+          },
+          {
+            "location": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java",
+            "line": 109
+          },
+          {
+            "location": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java",
+            "line": 59
+          },
+          {
+            "location": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java",
+            "line": 147
+          },
+          {
+            "location": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java",
+            "line": 69
+          },
+          {
+            "location": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java",
+            "line": 181
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are instances of comparing tokens/credentials with == operator instead of using constant-time comparison methods, which can leak information through timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java:102=267a12d79b8cf999"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java:109=64fa24293cb94afe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java:59=d4ce72e1bfb9f9a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java:147=64fa24293cb94afe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/oauth2/mongodb/OAuth2RepositoryTokenStore.java:69=ba4e1e714b3b167c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/porterhead/user/VerificationTokenServiceImpl.java:181=64fa24293cb94afe"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/resources/META-INF/spring/oauth/client-details.xml",
+            "line": 22
+          },
+          {
+            "location": "src/main/resources/META-INF/spring/oauth/client-details.xml",
+            "line": 33
+          },
+          {
+            "location": "src/main/resources/META-INF/spring/oauth/client-details.xml",
+            "line": 44
+          },
+          {
+            "location": "src/main/resources/META-INF/spring/oauth/client-details.xml",
+            "line": 55
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded OAuth client secrets in XML configuration files. These should be managed through secure configuration management rather than being embedded in source code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/META-INF/spring/oauth/client-details.xml:22=5c96e8ba9a900cb3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/META-INF/spring/oauth/client-details.xml:33=e947b5d5c2409dd8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/META-INF/spring/oauth/client-details.xml:44=ffdc889673fde3dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/resources/META-INF/spring/oauth/client-details.xml:55=5d0eba8255b3ca04"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/webapp/js/sha256.js",
+            "line": 15
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "HMAC-SHA-256 is used for message authentication in a JavaScript web application. While SHA-256 is theoretically vulnerable to quantum attacks, the HMAC construction provides security against quantum attacks and this is a legitimate cryptographic use."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/webapp/js/sha256.js:15=af2d9fa8db38f62e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    }
+  ]
+}
