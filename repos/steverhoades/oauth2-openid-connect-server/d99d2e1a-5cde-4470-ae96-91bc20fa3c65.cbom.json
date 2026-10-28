@@ -1,0 +1,186 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:30545363-8139-43c8-93a9-434b82f89938",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T23:45:12.467Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "steverhoades/oauth2-openid-connect-server",
+      "version": "f20665aeeeec78fb336c1bc89e8152b4b2380221",
+      "bom-ref": "repo:steverhoades/oauth2-openid-connect-server@f20665aeeeec78fb336c1bc89e8152b4b2380221",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/steverhoades/oauth2-openid-connect-server"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d99d2e1a-5cde-4470-ae96-91bc20fa3c65"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "71221"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-SHA256",
+      "bom-ref": "pqs:finding:src/IdTokenResponse.php:110:RSA-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/IdTokenResponse.php",
+            "line": 110
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/IdTokenResponse.php:110=9ec42cd3fcb400e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-cd42bbb6",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/ResponseTypes/IdTokenResponseTest.php",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "tests/Stubs/private.key",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "tests/Stubs/private.key.crlf",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "tests/Stubs/public.key",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-cd42bbb6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/ResponseTypes/IdTokenResponseTest.php:1=fe5bcb54c56e0b9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Stubs/private.key:1=8bcac7908eb95041"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Stubs/private.key.crlf:1=8bcac7908eb95041"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/Stubs/public.key:1=59a58325e88756ac"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/IdTokenResponse.php:110:RSA-SHA256"
+    },
+    {
+      "ref": "pqs:collected:KEY-cd42bbb6"
+    }
+  ]
+}
