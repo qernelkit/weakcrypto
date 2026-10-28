@@ -1,0 +1,597 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5e23dd7f-dfe9-4257-b9aa-c957d46bdc87",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-28T11:17:23.109Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "frozon/passbook",
+      "version": "4136e1459e2f5eebb851421c80863e29b71aa54c",
+      "bom-ref": "repo:frozon/passbook@4136e1459e2f5eebb851421c80863e29b71aa54c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/frozon/passbook"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5f755979-a149-4bbd-b614-0f0735ac3fa8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "172884"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/passbook/pkpass.rb",
+            "line": 85
+          },
+          {
+            "location": "lib/passbook/pkpass.rb",
+            "line": 89
+          },
+          {
+            "location": "lib/passbook/pkpass.rb",
+            "line": 91
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in lib/passbook/pkpass.rb for creating manifest files with Digest::SHA1.hexdigest, which is a cryptographic weakness as SHA-1 is broken."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/pkpass.rb:85=b799eb8e4db0d9d8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/pkpass.rb:89=52a32c12f497471d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/pkpass.rb:91=b752735166e3dae6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/passbook/signer.rb",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in lib/passbook/signer.rb with OpenSSL::PKey::RSA.new for creating RSA keys, which is a quantum-vulnerable cryptographic primitive requiring post-quantum migration."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/signer.rb:32=9d11e54891a60aa8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/commands/build.rb",
+            "line": 44
+          },
+          {
+            "location": "lib/passbook/signer.rb",
+            "line": 35
+          },
+          {
+            "location": "spec/lib/commands/build_spec.rb",
+            "line": 81
+          },
+          {
+            "location": "spec/lib/passbook/signer_spec.rb",
+            "line": 45
+          },
+          {
+            "location": "spec/lib/passbook/signer_spec.rb",
+            "line": 56
+          },
+          {
+            "location": "spec/lib/passbook/signer_spec.rb",
+            "line": 73
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in lib/commands/build.rb and lib/passbook/signer.rb for handling PKCS#12 certificate files, which contains cryptographic key material requiring proper security handling."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/commands/build.rb:44=3452d729eeb4ae65"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/signer.rb:35=d4214b7298da1903"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/commands/build_spec.rb:81=36dbd689a7db793b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/passbook/signer_spec.rb:45=4b654625cd417978"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/passbook/signer_spec.rb:56=8ac6798b1db2c438"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/passbook/signer_spec.rb:73=8ac6798b1db2c438"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/passbook/signer.rb",
+            "line": 17
+          },
+          {
+            "location": "spec/lib/passbook/signer_spec.rb",
+            "line": 17
+          },
+          {
+            "location": "lib/passbook/signer.rb",
+            "line": 33
+          },
+          {
+            "location": "spec/lib/passbook/signer_spec.rb",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in lib/passbook/signer.rb with OpenSSL::X509::Certificate.new for handling X.509 certificates, which are fundamental to the PKI infrastructure used in passbook signing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/signer.rb:17=4870f81d0b9c0fcd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/passbook/signer_spec.rb:17=a29782630127bbb8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/passbook/signer.rb:33=b48adbe57114ae51"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/lib/passbook/signer_spec.rb:34=a29782630127bbb8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in Gemfile.lock referencing the jwt gem (version 1.2.0), which is used for JWT signing operations that involve cryptographic key management."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=4dec482d4d51e23d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "jwt",
+      "bom-ref": "pqs:collected:LIB-bb3d47ae",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-bb3d47ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Referenced in Gemfile.lock (version 1.2.0) - this is a cryptographic library used for JWT operations that involves cryptographic key management."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=4dec482d4d51e23d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-bb3d47ae"
+    }
+  ]
+}
