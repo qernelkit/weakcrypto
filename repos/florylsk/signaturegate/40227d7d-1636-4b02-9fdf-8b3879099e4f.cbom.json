@@ -1,0 +1,361 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:be6c40a3-edc6-483e-9927-f940614ae34d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T07:55:48.556Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "florylsk/signaturegate",
+      "version": "3f910c2cfd51a8455161c6bf1b7801aafd136bc2",
+      "bom-ref": "repo:florylsk/signaturegate@3f910c2cfd51a8455161c6bf1b7801aafd136bc2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/florylsk/SignatureGate"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "40227d7d-1636-4b02-9fdf-8b3879099e4f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "121251"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:finding:SigFlip/SigFlip/Utils.cs:147:non-cryptographic PRNG",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SigFlip/SigFlip/Utils.cs",
+            "line": 147
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SigFlip/SigFlip/Utils.cs:147=a591bb7cd40a3dc5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:finding:SignatureGate/SignatureGate/Module/SystemModule.cs:132:non-constant-time comparison",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SignatureGate/SignatureGate/Module/SystemModule.cs",
+            "line": 132
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SignatureGate/SignatureGate/Module/SystemModule.cs:132=851fddac48a23b96"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SigFlip/SigFlip/Utils.cs",
+            "line": 17
+          },
+          {
+            "location": "SigFlip/SigFlip/Utils.cs",
+            "line": 19
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing in the SigFlip utility class for computing hashes of data. This is a quantum-vulnerable algorithm that should be replaced with a post-quantum resistant alternative like SHA-256 or higher."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SigFlip/SigFlip/Utils.cs:17=92a8ce576eca3556"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SigFlip/SigFlip/Utils.cs:19=812c0f03d8fc4244"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SignatureGate/SignatureGate/Module/SystemModule.cs",
+            "line": 118
+          },
+          {
+            "location": "SignatureGate/SignatureGate/Module/SystemModule.cs",
+            "line": 215
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant time string comparison used in cryptographic context. This could enable timing attacks that compromise security. Should use constant-time comparison methods like String.Equals with StringComparison.Ordinal or similar approaches."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SignatureGate/SignatureGate/Module/SystemModule.cs:118=e3b0c44298fc1c14"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SignatureGate/SignatureGate/Module/SystemModule.cs:215=7882e521c2996f24"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "SigFlip/SigFlip/Utils.cs",
+            "line": 147
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic PRNG (Random) used for generating random data. This is inappropriate for cryptographic use cases and should be replaced with SecureRandom or similar cryptographically secure alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "SigFlip/SigFlip/Utils.cs:147=a591bb7cd40a3dc5"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:SigFlip/SigFlip/Utils.cs:147:non-cryptographic PRNG"
+    },
+    {
+      "ref": "pqs:finding:SignatureGate/SignatureGate/Module/SystemModule.cs:132:non-constant-time comparison"
+    },
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
