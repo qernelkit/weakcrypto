@@ -1,0 +1,177 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d58b564e-6874-46bf-8b4d-95baf1f67bcc",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T14:20:33.799Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "rajithd/spring-boot-oauth2",
+      "version": "15fab2417c10cde179a4437951db17361d7eda8c",
+      "bom-ref": "repo:rajithd/spring-boot-oauth2@15fab2417c10cde179a4437951db17361d7eda8c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/rajithd/spring-boot-oauth2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4aea75c4-5f3c-4379-9577-6d14dbadb4ec"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "112365"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "StandardPasswordEncoder",
+      "bom-ref": "pqs:finding:src/main/java/com/rd/config/SecurityConfiguration.java:29:StandardPasswordEncoder",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/rd/config/SecurityConfiguration.java",
+            "line": 29
+          },
+          {
+            "location": "src/main/java/com/rd/config/SecurityConfiguration.java",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/rd/config/SecurityConfiguration.java:29=595c60c94b0098b9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/rd/config/SecurityConfiguration.java:25=e8e2743abd2e719e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/rd/security/CustomLogoutSuccessHandler.java",
+            "line": 40
+          },
+          {
+            "location": "src/main/java/com/rd/security/CustomLogoutSuccessHandler.java",
+            "line": 44
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/rd/security/CustomLogoutSuccessHandler.java:40=4b51613f5aa22cdc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/rd/security/CustomLogoutSuccessHandler.java:44=bea860d6136ba8f1"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/main/java/com/rd/config/SecurityConfiguration.java:29:StandardPasswordEncoder"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
