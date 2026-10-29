@@ -1,0 +1,173 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d5378b1d-13be-44f9-adf7-fa14bb462664",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T02:41:03.041Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "magnusbaeck/logstash-filter-verifier",
+      "version": "b9b4509585d014580680f690e212872880638650",
+      "bom-ref": "repo:magnusbaeck/logstash-filter-verifier@b9b4509585d014580680f690e212872880638650",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/magnusbaeck/logstash-filter-verifier"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ade8bb00-078f-432f-96fc-fd4c2443b2cb"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "137658"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Insecure gRPC connection without TLS",
+      "bom-ref": "pqs:finding:internal/app/daemon/daemon.go:143:Insecure gRPC connection without TLS",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/app/daemon/daemon.go",
+            "line": 143
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/app/daemon/daemon.go:143=2ec21853fb8d4f8b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Insecure gRPC client connection using grpc.WithInsecure()",
+      "bom-ref": "pqs:finding:internal/app/daemon/run/run.go:121:Insecure gRPC client connection using grpc.WithInsecure()",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/app/daemon/run/run.go",
+            "line": 121
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/app/daemon/run/run.go:121=0040087b0f0f66e7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Insecure gRPC client connection using grpc.WithInsecure()",
+      "bom-ref": "pqs:finding:internal/app/daemon/shutdown/shutdown.go:32:Insecure gRPC client connection using grpc.WithInsecure()",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "internal/app/daemon/shutdown/shutdown.go",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/app/daemon/shutdown/shutdown.go:32=0040087b0f0f66e7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HTTP server without TLS",
+      "bom-ref": "pqs:finding:pprof.go:14:HTTP server without TLS",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pprof.go",
+            "line": 14
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pprof.go:14=354cbcfd666aa183"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:internal/app/daemon/daemon.go:143:Insecure gRPC connection without TLS"
+    },
+    {
+      "ref": "pqs:finding:internal/app/daemon/run/run.go:121:Insecure gRPC client connection using grpc.WithInsecure()"
+    },
+    {
+      "ref": "pqs:finding:internal/app/daemon/shutdown/shutdown.go:32:Insecure gRPC client connection using grpc.WithInsecure()"
+    },
+    {
+      "ref": "pqs:finding:pprof.go:14:HTTP server without TLS"
+    }
+  ]
+}
