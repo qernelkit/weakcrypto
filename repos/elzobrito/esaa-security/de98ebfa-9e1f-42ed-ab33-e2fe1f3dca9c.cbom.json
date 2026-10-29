@@ -1,0 +1,501 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2c67a4c9-f0d3-4d4c-a383-12019c81176c",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T08:38:26.067Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "elzobrito/esaa-security",
+      "version": "cb632435643a410654059314812e854aeeaf7752",
+      "bom-ref": "repo:elzobrito/esaa-security@cb632435643a410654059314812e854aeeaf7752",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/elzobrito/ESAA-Security"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "de98ebfa-9e1f-42ed-ab33-e2fe1f3dca9c"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "119926"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "plugins/security-audit/0.1.0/roadmap.json",
+            "line": 691
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a security audit guideline/requirement, not an actual cryptographic implementation in the codebase. The document mentions checking for these patterns as part of security controls."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "plugins/security-audit/0.1.0/roadmap.json:691=a562edd1ec4febfc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/esaa/execution.py",
+            "line": 196
+          },
+          {
+            "location": "src/esaa/service_core.py",
+            "line": 247
+          },
+          {
+            "location": "src/esaa/store.py",
+            "line": 134
+          },
+          {
+            "location": "src/esaa/store.py",
+            "line": 508
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are instances of insecure hash comparison in the codebase that could be vulnerable to timing attacks. This is a real cryptographic weakness."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/execution.py:196=5d5003d1ba152022"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/service_core.py:247=41cfed5c142e758e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/store.py:134=56a68096718fab52"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/store.py:508=2d28201b25ad596a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT RS256/PS256",
+      "bom-ref": "pqs:collected:ALG-52eca3f6",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "plugins/security-audit/0.1.0/roadmap.json",
+            "line": 583
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-52eca3f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a security audit guideline/requirement for checking JWT signing with RSA algorithms, indicating a potential quantum vulnerability that needs to be addressed in the codebase. This represents a risk category rather than an actual implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "plugins/security-audit/0.1.0/roadmap.json:583=9feb29ca78561fbc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/esaa/edits.py",
+            "line": 85
+          },
+          {
+            "location": "src/esaa/file_effects.py",
+            "line": 46
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 183
+          },
+          {
+            "location": "src/esaa/projector.py",
+            "line": 62
+          },
+          {
+            "location": "src/esaa/snapshot.py",
+            "line": 123
+          },
+          {
+            "location": "src/esaa/store.py",
+            "line": 87
+          },
+          {
+            "location": "src/esaa/utils.py",
+            "line": 30
+          },
+          {
+            "location": "tests/test_file_update_edits.py",
+            "line": 17
+          },
+          {
+            "location": "src/esaa/snapshot.py",
+            "line": 70
+          },
+          {
+            "location": "tests/test_file_update_edits.py",
+            "line": 293
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 188
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 189
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 190
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 191
+          },
+          {
+            "location": "src/esaa/plugins.py",
+            "line": 192
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is being used for hashing purposes throughout the codebase (in edits, file effects, plugins, etc.). While SHA-256 is quantum-safe for hashing, it's still a legacy hash function that should be upgraded to SHA-3 for future-proofing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "15"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/edits.py:85=4b3b14cbac36fd7d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/file_effects.py:46=0a3ae440412ea345"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:183=8b81a9a066d2c45a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/projector.py:62=a1727c7cdbcb3613"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/snapshot.py:123=44a588bce8718233"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/store.py:87=0a3ae440412ea345"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/utils.py:30=6335f635d2a1342e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_file_update_edits.py:17=e667166e07f56628"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/snapshot.py:70=93951958e87a161e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_file_update_edits.py:293=03fe51955384635e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:188=29fa60e028fbe420"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:189=e9713852ba3f62cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:190=7c6d4ac18543e9ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:191=e9713852ba3f62cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/esaa/plugins.py:192=4b3db524da3aff94"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-52eca3f6"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
