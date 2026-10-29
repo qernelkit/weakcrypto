@@ -1,0 +1,413 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3511fc0e-548d-4837-89a4-1561a7529942",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T05:35:35.761Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "evian-zhang/introduction-to-modern-cryptography",
+      "version": "87a28d92466ecea94b52a97782a4cd5596b9a921",
+      "bom-ref": "repo:evian-zhang/introduction-to-modern-cryptography@87a28d92466ecea94b52a97782a4cd5596b9a921",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Evian-Zhang/Introduction-to-modern-cryptography"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "fc6183bb-62c5-41e4-a8d8-6266d5802672"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "123720"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "3DES",
+      "bom-ref": "pqs:collected:ALG-2094eefd",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "algorithms/DES.cpp",
+            "line": 367
+          },
+          {
+            "location": "algorithms/DES.cpp",
+            "line": 372
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2094eefd"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The repository contains a custom implementation of 3DES encryption/decryption algorithms in algorithms/DES.cpp. This is a quantum-vulnerable symmetric encryption algorithm that should be replaced with post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/DES.cpp:367=fb3b275580f8ddb6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/DES.cpp:372=17595d85a7890dd0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "algorithms/BigInteger.cpp",
+            "line": 1005
+          },
+          {
+            "location": "algorithms/RSA.cpp",
+            "line": 28
+          },
+          {
+            "location": "algorithms/BigInteger.cpp",
+            "line": 764
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The repository contains a custom BigInteger implementation that uses a non-cryptographic PRNG (as seen in BigInteger.cpp line 1005). This is used in cryptographic operations and represents a security weakness because it's not suitable for cryptographic use."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/BigInteger.cpp:1005=1f9987d43e3c11ae"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/RSA.cpp:28=e5ac14021257b48d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/BigInteger.cpp:764=1f9987d43e3c11ae"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Poly1305",
+      "bom-ref": "pqs:collected:ALG-e6238d01",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "algorithms/Poly1305.cpp",
+            "line": 46
+          },
+          {
+            "location": "algorithms/Poly1305.cpp",
+            "line": 79
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6238d01"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The repository contains a custom implementation of the Poly1305 MAC algorithm in algorithms/Poly1305.cpp. This is a quantum-vulnerable message authentication code that should be replaced with post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/Poly1305.cpp:46=32bb33084ad33390"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/Poly1305.cpp:79=6fa50df7d0fae980"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "algorithms/AES.cpp",
+            "line": 361
+          },
+          {
+            "location": "algorithms/AES.cpp",
+            "line": 398
+          },
+          {
+            "location": "algorithms/AES.cpp",
+            "line": 443
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The repository contains a custom implementation of AES-128 encryption/decryption algorithms in algorithms/AES.cpp. While AES-128 is not directly broken by Shor's algorithm, it's vulnerable to quantum attacks for key exchange and should be replaced with post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/AES.cpp:361=b3781e04bb4759c6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/AES.cpp:398=b4876aee7525574c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algorithms/AES.cpp:443=9cac2e6118582014"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2094eefd"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6238d01"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    }
+  ]
+}
