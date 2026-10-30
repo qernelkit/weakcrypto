@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2abc767a-a875-40f8-9e55-35b6b4be26e9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-30T01:34:05.320Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "gladius/firebase-spring-boot-rest-api-authentication",
+      "version": "1cf8f06ccad1694616d78d2e4321f455d012077c",
+      "bom-ref": "repo:gladius/firebase-spring-boot-rest-api-authentication@1cf8f06ccad1694616d78d2e4321f455d012077c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/gladius/firebase-spring-boot-rest-api-authentication"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "98e64f2b-a295-489c-814c-a8393e97b9fd"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "85280"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/io/thepro/apiservice/security/SecurityFilter.java",
+            "line": 109
+          },
+          {
+            "location": "src/main/java/io/thepro/apiservice/security/SecurityFilter.java",
+            "line": 74
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses Firebase authentication and handles session cookies. The vulnerability is in the SecurityFilter.java file where string comparisons are not done in constant time, potentially allowing timing attacks to extract information about tokens or credentials."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/io/thepro/apiservice/security/SecurityFilter.java:109=ca21a30cd4f8e759"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/io/thepro/apiservice/security/SecurityFilter.java:74=fcedbc3d956e6838"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
