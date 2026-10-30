@@ -1,0 +1,593 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5395875b-2d93-4050-9178-124015a0d537",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-30T13:15:35.432Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "awslabs/ecs-secrets",
+      "version": "dc1866d09b3821d74895506960671f862f5a5b9c",
+      "bom-ref": "repo:awslabs/ecs-secrets@dc1866d09b3821d74895506960671f862f5a5b9c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/awslabs/ecs-secrets"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8ec15629-4f7a-40cd-a285-a49b9fece022"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "125491"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 28
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 39
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 61
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 is used as the key spec when generating data keys through AWS KMS for encrypting secrets. This is part of an envelope encryption system where KMS manages the master keys and generates data keys for actual encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:28=9f7766f2034c1627"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:39=73a1f2003eb33a72"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:61=73a1f2003eb33a72"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:82=73a1f2003eb33a72"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS KMS",
+      "bom-ref": "pqs:collected:ALG-89c5c4b8",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "modules/cloudformation/client/template.go",
+            "line": 108
+          },
+          {
+            "location": "modules/cmd/setup.go",
+            "line": 111
+          },
+          {
+            "location": "modules/cmd/setup_test.go",
+            "line": 105
+          },
+          {
+            "location": "modules/cmd/utils.go",
+            "line": 60
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 114
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 104
+          },
+          {
+            "location": "modules/kms/client/interface.go",
+            "line": 25
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 67
+          },
+          {
+            "location": "modules/cmd/setup.go",
+            "line": 25
+          },
+          {
+            "location": "modules/cmd/setup_test.go",
+            "line": 123
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 40
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 121
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 68
+          },
+          {
+            "location": "modules/cmd/setup.go",
+            "line": 58
+          },
+          {
+            "location": "modules/cmd/setup_test.go",
+            "line": 128
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 48
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 132
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 74
+          },
+          {
+            "location": "modules/cmd/setup.go",
+            "line": 97
+          },
+          {
+            "location": "modules/cmd/setup_test.go",
+            "line": 145
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 57
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 149
+          },
+          {
+            "location": "modules/cmd/setup_test.go",
+            "line": 163
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 98
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 157
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-89c5c4b8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AWS KMS is used for managing encryption keys in the system. The application uses KMS GenerateDataKey API calls to create data keys for encrypting secrets, which is a standard and secure approach for cloud-based encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "44"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cloudformation/client/template.go:108=0d7b337087aa82db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup.go:111=c5eec7588a143091"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup_test.go:105=a6357ef84573953a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/utils.go:60=5450499bc77bebf9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:114=f31375da1b2e21c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:104=7b39c174c1f33277"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/interface.go:25=211884405febb333"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:67=5cbab48cf8d3d936"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup.go:25=d3cb2aef4a39db10"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup_test.go:123=28e978a8bb22c5b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:40=a1ca21f8e3efa9c5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:121=5bbea6b4de7a55e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:68=243938c510cee3b7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup.go:58=82fb0eb91e616faa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup_test.go:128=c05296caab6e5ab0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:48=f08b912f1620d27c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:132=7b39c174c1f33277"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:74=7a1146db661ef5e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup.go:97=363f1085da96322a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup_test.go:145=a6357ef84573953a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:57=07db18779ac5c70c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:149=3f8894b8708881e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cmd/setup_test.go:163=28e978a8bb22c5b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:98=866013552a9df550"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:157=5bbea6b4de7a55e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "envelope encryption",
+      "bom-ref": "pqs:collected:ALG-bb001e2c",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "modules/cloudformation/client/template.go",
+            "line": 108
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 57
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 38
+          },
+          {
+            "location": "modules/kms/client/interface.go",
+            "line": 25
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 67
+          },
+          {
+            "location": "modules/crypt/crypt.go",
+            "line": 98
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 41
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 68
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 60
+          },
+          {
+            "location": "modules/kms/client/mock/client_mock.go",
+            "line": 74
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 81
+          },
+          {
+            "location": "modules/crypt/crypt_test.go",
+            "line": 84
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-bb001e2c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Envelope encryption is implemented using AWS KMS where KMS generates data keys (using AES-256) for encrypting secrets. The system uses KMS client to generate data keys and then performs the actual encryption with those keys, which is a standard approach in cloud security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "12"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/cloudformation/client/template.go:108=0d7b337087aa82db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:57=07db18779ac5c70c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:38=dc85243ded116adc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/interface.go:25=211884405febb333"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:67=5cbab48cf8d3d936"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt.go:98=866013552a9df550"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:41=10579af872659875"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:68=243938c510cee3b7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:60=dc85243ded116adc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/kms/client/mock/client_mock.go:74=7a1146db661ef5e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:81=dc85243ded116adc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "modules/crypt/crypt_test.go:84=10579af872659875"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-89c5c4b8"
+    },
+    {
+      "ref": "pqs:collected:ALG-bb001e2c"
+    }
+  ]
+}
