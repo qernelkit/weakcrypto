@@ -1,0 +1,785 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4d4a8172-9223-4042-b9ce-b07acd2548a5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-30T12:15:49.654Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "brokenhandsio/swift-webauthn",
+      "version": "030acd1eedaa835958ae3fcc0e491bec03b2abf1",
+      "bom-ref": "repo:brokenhandsio/swift-webauthn@030acd1eedaa835958ae3fcc0e491bec03b2abf1",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/brokenhandsio/swift-webauthn"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "a7d3506a-31d4-4a8f-996f-1970978529fa"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "8"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "125171"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift",
+            "line": 58
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing in WebAuthn signature verification. This is a cryptographic weakness as SHA-1 is collision-broken and should not be used for security purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift:58=d663b2a03eb0606e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift",
+            "line": 120
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Registration/AttestationObject.swift",
+            "line": 45
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison using == operator for verifying MACs or digests in WebAuthn authentication and registration processes. This can be exploited via timing attacks to recover secret values."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift:120=39a2caf6cf27034d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Registration/AttestationObject.swift:45=86d1d8abda0cc05f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-cf450211",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tests/WebAuthnTests/Utils/TestModels/TestRSAKeyPair.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-cf450211"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/Utils/TestModels/TestRSAKeyPair.swift:1=d6cdb6f30ee65c67"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:KEY-7feff913",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Tests/WebAuthnTests/Utils/TestModels/TestECCKeyPair.swift",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-7feff913"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/Utils/TestModels/TestECCKeyPair.swift:1=d6cdb6f30ee65c67"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 signature algorithm used in WebAuthn for authentication. While Ed25519 is quantum-safe, this implementation uses it within a system where other components (like key exchange) may be vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift:22=d339207f8015184b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift",
+            "line": 18
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift",
+            "line": 148
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift",
+            "line": 20
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift",
+            "line": 149
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift",
+            "line": 154
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift",
+            "line": 155
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-384 and P-521 elliptic curves used for ECDSA signatures in WebAuthn credential creation and verification. These classical curves are vulnerable to quantum attacks and need migration to post-quantum cryptography."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift:18=d3e891fd27013f77"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift:148=05677ccbd0272c3d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSECurve.swift:20=88666f21d79a1287"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift:149=a71ccda08c893f1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift:154=f6504317ae396ebc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/CredentialPublicKey.swift:155=68ef08a27144bf2a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift",
+            "line": 119
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Registration/AttestationObject.swift",
+            "line": 43
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Registration/RegistrationCredential.swift",
+            "line": 111
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift",
+            "line": 52
+          },
+          {
+            "location": "Tests/WebAuthnTests/Utils/TestModels/TestAuthData.swift",
+            "line": 107
+          },
+          {
+            "location": "Tests/WebAuthnTests/Utils/TestModels/TestECCKeyPair.swift",
+            "line": 53
+          },
+          {
+            "location": "Tests/WebAuthnTests/Utils/TestModels/TestRSAKeyPair.swift",
+            "line": 81
+          },
+          {
+            "location": "Tests/WebAuthnTests/WebAuthnManagerAuthenticationTests.swift",
+            "line": 195
+          },
+          {
+            "location": "Tests/WebAuthnTests/WebAuthnManagerIntegrationTests.swift",
+            "line": 140
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift",
+            "line": 137
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used in WebAuthn for hashing data during authentication and registration processes to ensure data integrity."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift:119=abce3a5938904e8c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Registration/AttestationObject.swift:43=bf24d8daca9e004e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Registration/RegistrationCredential.swift:111=3038d5cd13548b23"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift:52=b13457fc85aeb438"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/Utils/TestModels/TestAuthData.swift:107=0be0b1881dd19962"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/Utils/TestModels/TestECCKeyPair.swift:53=d87574f84bc9fa22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/Utils/TestModels/TestRSAKeyPair.swift:81=d87574f84bc9fa22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/WebAuthnManagerAuthenticationTests.swift:195=d87574f84bc9fa22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/WebAuthnTests/WebAuthnManagerIntegrationTests.swift:140=d87574f84bc9fa22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Authentication/AuthenticatorAssertionResponse.swift:137=8dea1723b2806c5a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-384/512",
+      "bom-ref": "pqs:collected:ALG-8c748911",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift",
+            "line": 54
+          },
+          {
+            "location": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift",
+            "line": 56
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8c748911"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-384 and SHA-512 hash functions used in WebAuthn for signature verification. These are classical hash functions that are not quantum-safe, though they're currently considered secure against classical attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift:54=d9aea68975aa4c35"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Sources/WebAuthn/Ceremonies/Shared/COSE/COSEAlgorithmIdentifier.swift:56=1d05a60000a1ab55"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:KEY-cf450211"
+    },
+    {
+      "ref": "pqs:collected:KEY-7feff913"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8c748911"
+    }
+  ]
+}
