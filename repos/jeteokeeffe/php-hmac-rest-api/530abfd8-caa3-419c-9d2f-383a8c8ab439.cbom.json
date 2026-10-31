@@ -1,0 +1,285 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:7b9b4d12-ab28-437b-a533-5979f32facb9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T23:48:49.123Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "jeteokeeffe/php-hmac-rest-api",
+      "version": "63b38f2919a253ec378a083e0d33ec9e414db1a1",
+      "bom-ref": "repo:jeteokeeffe/php-hmac-rest-api@63b38f2919a253ec378a083e0d33ec9e414db1a1",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/jeteokeeffe/php-hmac-rest-api"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "530abfd8-caa3-419c-9d2f-383a8c8ab439"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "90971"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA256",
+      "bom-ref": "pqs:finding:client-connect.php:27:HMAC-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "client-connect.php",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "client-connect.php:27=4b24effcc620f126"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA256",
+      "bom-ref": "pqs:finding:app/library/events/api/HmacAuthenticate.php:64:HMAC-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app/library/events/api/HmacAuthenticate.php",
+            "line": 64
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app/library/events/api/HmacAuthenticate.php:64=b32282c9b23a3398"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "client-connect.php",
+            "line": 19
+          },
+          {
+            "location": "mysql.data.sql",
+            "line": 11
+          },
+          {
+            "location": "postgres.data.sql",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded private key used for HMAC-SHA256 authentication in API communications"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "client-connect.php:19=bacb4b6ad95381dc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mysql.data.sql:11=f535adad613d9b47"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "postgres.data.sql:11=f535adad613d9b47"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app/library/events/api/HmacAuthenticate.php",
+            "line": 69
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison in HMAC hash verification that leaks timing information"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app/library/events/api/HmacAuthenticate.php:69=6b0aa747ba99387b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:client-connect.php:27:HMAC-SHA256"
+    },
+    {
+      "ref": "pqs:finding:app/library/events/api/HmacAuthenticate.php:64:HMAC-SHA256"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
