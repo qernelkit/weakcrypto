@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2daf557b-f3ca-4b5b-a3f5-790b2ed34663",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T02:51:39.525Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "fifsky/ssh-action",
+      "version": "5a841de87115730aff750ac127773e3b2b3f56dd",
+      "bom-ref": "repo:fifsky/ssh-action@5a841de87115730aff750ac127773e3b2b3f56dd",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/fifsky/ssh-action"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b745e7b9-fccf-467e-92c5-663ac6e08a8e"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "64274"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SSH host key check disabled",
+      "bom-ref": "pqs:collected:ALG-ccf6c378",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "entrypoint.sh",
+            "line": 39
+          },
+          {
+            "location": "entrypoint.sh",
+            "line": 41
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ccf6c378"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SSH host key verification is disabled in the entrypoint.sh script, which means the system won't verify the identity of SSH hosts it connects to. This is a configuration issue rather than a cryptographic algorithm issue."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "entrypoint.sh:39=13e53c3f056595bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "entrypoint.sh:41=917c1157ac78b01e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ccf6c378"
+    }
+  ]
+}
