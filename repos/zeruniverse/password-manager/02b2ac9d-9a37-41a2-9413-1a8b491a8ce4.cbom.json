@@ -1,0 +1,1183 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:05b9664b-d6cb-43f3-8ce5-720cf5cc179b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T00:02:25.131Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "zeruniverse/password-manager",
+      "version": "3280d5429594550695392dcb381fbaa624753343",
+      "bom-ref": "repo:zeruniverse/password-manager@3280d5429594550695392dcb381fbaa624753343",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/zeruniverse/Password-Manager"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "02b2ac9d-9a37-41a2-9413-1a8b491a8ce4"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "9"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "161074"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/backend/rest/changeuserpw.php",
+            "line": 23
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 67
+          },
+          {
+            "location": "src/backend/rest/getpinpk.php",
+            "line": 41
+          },
+          {
+            "location": "src/backend/rest/reg.php",
+            "line": 57
+          },
+          {
+            "location": "src/backend/rest/setpin.php",
+            "line": 21
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 13
+          },
+          {
+            "location": "src/frontend/js/index.js",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation with low iterations used for password hashing in multiple backend PHP files and frontend JavaScript files. The iterations are significantly below recommended OWASP minimum of 600,000."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/changeuserpw.php:23=723542f71999944b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:67=7dcc9b0ddf693c1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/getpinpk.php:41=b89745e928d460f1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/reg.php:57=6393c9dae51203ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/setpin.php:21=05661f5d3589c5c8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:13=e36f3f1f7d10889f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/index.js:22=90b40f09640636a5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/frontend/js/common/backend.js",
+            "line": 408
+          },
+          {
+            "location": "src/frontend/js/common/backend.js",
+            "line": 635
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/backend.js:408=93f22497df4346c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/backend.js:635=5748f962a14c4ed5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/backend/function/cors.php",
+            "line": 50
+          },
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 123
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 69
+          },
+          {
+            "location": "src/backend/rest/getpinpk.php",
+            "line": 42
+          },
+          {
+            "location": "src/backend/function/cors.php",
+            "line": 58
+          },
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 130
+          },
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 42
+          },
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 75
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Constant-time comparison using hash_equals() function in multiple locations for security purposes. This prevents timing attacks when comparing cryptographic values."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/cors.php:50=a1e7bd060950d3f5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:123=860729493f6db500"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:69=58b1be563cace9b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/getpinpk.php:42=19d4bcfe279c0ed2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/cors.php:58=27a226f2855f9643"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:130=fdfdca67fbfc5d4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:42=e29fb827df12c0d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:75=c5590aa5af9805b7"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 16
+          },
+          {
+            "location": "src/frontend/js/common/backend.js",
+            "line": 661
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 100
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 284
+          },
+          {
+            "location": "src/frontend/js/index.js",
+            "line": 25
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 17
+          },
+          {
+            "location": "src/frontend/js/common/backend.js",
+            "line": 662
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 113
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 291
+          },
+          {
+            "location": "src/frontend/js/index.js",
+            "line": 26
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 18
+          },
+          {
+            "location": "src/frontend/js/common/backend.js",
+            "line": 663
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 123
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 20
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 124
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 209
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 126
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 210
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 131
+          },
+          {
+            "location": "src/frontend/js/common/account.js",
+            "line": 211
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 133
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 136
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 140
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 147
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 148
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "30"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:16=f0fbcdf663a4c0ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/backend.js:661=f0fbcdf663a4c0ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:100=7ab0c81be01e491d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:284=675702ed5efa94c6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/index.js:25=aebbb8d79e50cd0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:17=badb92525d0864e3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/backend.js:662=2263c8de4342f6d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:113=4ec6095028c22117"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:291=204070bc4f1ba904"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/index.js:26=dae7f5d6675e207b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:18=238738b3e2f6c646"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/backend.js:663=2d69a74feb24b61c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:123=f55af8681f94cb29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:20=146ffc37928eca1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:124=9f53705ee5297858"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:209=f0fbcdf663a4c0ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:126=a91f4051a9685b21"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:210=2134e63e6f0d4890"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:131=5c5063dfe6735810"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/account.js:211=3b258f90635336b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:133=5cb1fa6137e5d0d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:136=5cb1fa6137e5d0d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:140=0c1e70ffd4ad45e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:147=cbfee089dc206baf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:148=a9b49a08ea555d4f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/backend/function/config.php",
+            "line": 54
+          },
+          {
+            "location": "src/backend/rest/changeuserpw.php",
+            "line": 23
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 100
+          },
+          {
+            "location": "src/backend/rest/getpinpk.php",
+            "line": 41
+          },
+          {
+            "location": "src/backend/rest/reg.php",
+            "line": 57
+          },
+          {
+            "location": "src/backend/rest/setpin.php",
+            "line": 21
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 19
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 13
+          },
+          {
+            "location": "src/frontend/js/index.js",
+            "line": 22
+          },
+          {
+            "location": "src/nginx.conf",
+            "line": 60
+          },
+          {
+            "location": "src/start.sh",
+            "line": 69
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 67
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 26
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 21
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 69
+          },
+          {
+            "location": "src/backend/rest/check.php",
+            "line": 86
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation used for password hashing in backend PHP files and frontend JavaScript files. The iterations are set to 64000 in config, and there are additional calls with specific iteration counts in JavaScript code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "16"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/config.php:54=e5c860823a089d81"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/changeuserpw.php:23=723542f71999944b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:100=8ba93b85a97bd425"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/getpinpk.php:41=b89745e928d460f1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/reg.php:57=6393c9dae51203ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/setpin.php:21=05661f5d3589c5c8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:19=3965a4d6442a40f3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:13=e36f3f1f7d10889f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/index.js:22=90b40f09640636a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/nginx.conf:60=3313f0da28fc6f43"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/start.sh:69=73329b6645f5ca68"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:67=7dcc9b0ddf693c1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:26=cbfa2740cb1b6bef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:21=b878167ccb6e6de6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:69=58b1be563cace9b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/rest/check.php:86=a5d584db717c618f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 130
+          },
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 93
+          },
+          {
+            "location": "src/backend/function/totp.php",
+            "line": 86
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function used for password hashing and data integrity verification in both backend PHP and frontend JavaScript code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:130=fdfdca67fbfc5d4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:93=e6b0350344faa602"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/totp.php:86=e4ddafb8ae8b9a98"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/backend/function/common.php",
+            "line": 92
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-3 (Keccak) hash function used for hash verification in backend PHP code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function/common.php:92=3e2d2ee251becbe8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-384/512",
+      "bom-ref": "pqs:collected:ALG-8c748911",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/frontend/js/common/crypto.js",
+            "line": 42
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8c748911"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved SHA-512"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/crypto.js:42=7fe9924d59dcb5cf"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 311
+          },
+          {
+            "location": "src/frontend/js/common/cryptowrapper.js",
+            "line": 347
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:311=0ef2b8207867455e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/frontend/js/common/cryptowrapper.js:347=2434d72d05ad55ee"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-8c748911"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
