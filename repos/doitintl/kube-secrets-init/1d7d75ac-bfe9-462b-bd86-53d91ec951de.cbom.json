@@ -1,0 +1,1341 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9866daad-35b4-4536-b0bb-cefff933697a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T11:39:46.447Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "doitintl/kube-secrets-init",
+      "version": "c35b84f80d71306eff2c4feae42a008e0386ae91",
+      "bom-ref": "repo:doitintl/kube-secrets-init@c35b84f80d71306eff2c4feae42a008e0386ae91",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/doitintl/kube-secrets-init"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1d7d75ac-bfe9-462b-bd86-53d91ec951de"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "14"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "173883"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/secrets-init-webhook/registry/registry.go",
+            "line": 135
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/registry/registry.go:135=4b37405443086b57"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "deployment/webhook-create-self-signed-cert.sh",
+            "line": 77
+          },
+          {
+            "location": "deployment/webhook-create-signed-cert.sh",
+            "line": 78
+          },
+          {
+            "location": "deployment/webhook-create-self-signed-cert.sh",
+            "line": 81
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are certificate creation scripts that generate RSA-2048 keys for use in a Kubernetes webhook. The keys are used for TLS communication but are classical RSA keys vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-self-signed-cert.sh:77=7a37f465b4e3f4d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-signed-cert.sh:78=885086ef6c9da2c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-self-signed-cert.sh:81=cd9d664fc8d48142"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "self-signed certificate",
+      "bom-ref": "pqs:collected:ALG-a6cca713",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "deployment/webhook-create-self-signed-cert.sh",
+            "line": 78
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6cca713"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Self-signed certificate created in the deployment scripts for use in Kubernetes webhook TLS communication. This certificate is generated using classical RSA encryption which is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-self-signed-cert.sh:78=440bc5ddb69307ec"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.21)",
+      "bom-ref": "pqs:collected:PROTO-6bfc97d4",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/secrets-init-webhook/main.go",
+            "line": 530
+          },
+          {
+            "location": "cmd/secrets-init-webhook/registry/registry.go",
+            "line": 135
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-6bfc97d4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main.go:530=be8351a8fbe7fcdd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/registry/registry.go:135=4b37405443086b57"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "managed secret store",
+      "bom-ref": "pqs:collected:ALG-92cfc6cb",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/secrets-init-webhook/main.go",
+            "line": 128
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 101
+          },
+          {
+            "location": "example/aws-secrets.yaml",
+            "line": 15
+          },
+          {
+            "location": "example/job-eks.yaml",
+            "line": 24
+          },
+          {
+            "location": "example/job-gke.yaml",
+            "line": 20
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main.go",
+            "line": 129
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 145
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 175
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 191
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 222
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 238
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 268
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 284
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 409
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 424
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 433
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 449
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 458
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 473
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 482
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 498
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 552
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 570
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 578
+          },
+          {
+            "location": "cmd/secrets-init-webhook/main_test.go",
+            "line": 598
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92cfc6cb"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "31"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main.go:128=ef7a9a9a87c479d6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:101=15b48120748b5266"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/aws-secrets.yaml:15=ce89396696d8ed8d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/job-eks.yaml:24=e8232ff12cf3ad79"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/job-gke.yaml:20=47ffa4d36ae34fe8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main.go:129=9c9128ebc403a355"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:145=35df8c2133847702"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:175=59ac31afb758386f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:191=59ac31afb758386f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:222=35df8c2133847702"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:238=35df8c2133847702"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:268=35df8c2133847702"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:284=35df8c2133847702"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:409=9d91bdacff1830eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:424=b44636e3f8ac630b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:433=9d91bdacff1830eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:449=b44636e3f8ac630b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:458=0dca94a82b72e26a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:473=b44636e3f8ac630b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:482=0dca94a82b72e26a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:498=b44636e3f8ac630b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:552=9d91bdacff1830eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:570=b44636e3f8ac630b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:578=9d91bdacff1830eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/secrets-init-webhook/main_test.go:598=b44636e3f8ac630b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "certificate signing request",
+      "bom-ref": "pqs:collected:ALG-dcb96cd2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "deployment/webhook-create-self-signed-cert.sh",
+            "line": 82
+          },
+          {
+            "location": "deployment/webhook-create-signed-cert.sh",
+            "line": 79
+          },
+          {
+            "location": "deployment/webhook-create-signed-cert.sh",
+            "line": 87
+          },
+          {
+            "location": "deployment/webhook-create-signed-cert.sh",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-dcb96cd2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Certificate Signing Requests created as part of the deployment process for Kubernetes webhook certificates. These CSRs use RSA keys and are ultimately signed with classical RSA signatures, making them vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-self-signed-cert.sh:82=164d971c2d21395c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-signed-cert.sh:79=503932504ca5cd17"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-signed-cert.sh:87=612fbc6025d8b94c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "deployment/webhook-create-signed-cert.sh:9=ee6815ce040a8990"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing is used for authentication within the Kubernetes webhook system. This uses classical signature algorithms (likely ECDSA) that are vulnerable to quantum attacks, and would need migration to ML-DSA or SLH-DSA for post-quantum security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=709a100138e5d683"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=709a100138e5d683"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DNSSEC",
+      "bom-ref": "pqs:collected:ALG-f65301b0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f65301b0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/golang-jwt/jwt/v4",
+      "bom-ref": "pqs:collected:LIB-17b49471",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-17b49471"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT library dependency for authentication within the webhook system. The JWT signing uses classical signature algorithms (likely ECDSA) that are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=709a100138e5d683"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/dgrijalva/jwt-go",
+      "bom-ref": "pqs:collected:LIB-1d84a23e",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-1d84a23e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Older JWT library dependency (deprecated) that would have been used for authentication. This library also uses classical signature algorithms vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=709a100138e5d683"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/miekg/dns",
+      "bom-ref": "pqs:collected:LIB-d92378da",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-d92378da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "DNS library dependency used for DNS resolution within the application. While not directly cryptographic, it may be involved in certificate validation and other security-related operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=33bcf0c62eca636e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Crypto material: credential",
+      "bom-ref": "pqs:collected:SEC-ce809021",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "example/aws-secrets.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-ce809021"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/aws-secrets.yaml:1=cb3f91d54eee30e5"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-a6cca713"
+    },
+    {
+      "ref": "pqs:collected:PROTO-6bfc97d4"
+    },
+    {
+      "ref": "pqs:collected:ALG-92cfc6cb"
+    },
+    {
+      "ref": "pqs:collected:ALG-dcb96cd2"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:ALG-f65301b0"
+    },
+    {
+      "ref": "pqs:collected:LIB-17b49471"
+    },
+    {
+      "ref": "pqs:collected:LIB-1d84a23e"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    },
+    {
+      "ref": "pqs:collected:LIB-d92378da"
+    },
+    {
+      "ref": "pqs:collected:SEC-ce809021"
+    }
+  ]
+}
