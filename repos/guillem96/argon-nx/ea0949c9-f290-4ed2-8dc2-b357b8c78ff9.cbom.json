@@ -1,0 +1,161 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4623c965-e036-4025-9c67-80b1090b0bbb",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T00:46:48.229Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "guillem96/argon-nx",
+      "version": "a4bf7774c829382bcc2fec970eb2877ee8730c64",
+      "bom-ref": "repo:guillem96/argon-nx@a4bf7774c829382bcc2fec970eb2877ee8730c64",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Guillem96/argon-nx"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ea0949c9-f290-4ed2-8dc2-b357b8c78ff9"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "104827"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "argon-first-stage/src/soc/fuse.c",
+            "line": 100
+          },
+          {
+            "location": "argon-nx-gui/src/soc/fuse.c",
+            "line": 100
+          },
+          {
+            "location": "argon-first-stage/src/soc/fuse.c",
+            "line": 152
+          },
+          {
+            "location": "argon-nx-gui/src/soc/fuse.c",
+            "line": 152
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in the fuse.c files where hash values are compared using regular equality instead of constant-time comparison. This could potentially leak information about the hash value through timing attacks, but does not involve quantum-vulnerable cryptographic primitives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon-first-stage/src/soc/fuse.c:100=d9c072e14449ba5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon-nx-gui/src/soc/fuse.c:100=d9c072e14449ba5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon-first-stage/src/soc/fuse.c:152=d9c072e14449ba5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "argon-nx-gui/src/soc/fuse.c:152=d9c072e14449ba5c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
