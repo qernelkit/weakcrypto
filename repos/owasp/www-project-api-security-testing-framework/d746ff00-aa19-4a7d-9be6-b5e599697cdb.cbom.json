@@ -1,0 +1,683 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:30de7488-aad2-4f6a-83a0-c274cae7a9f4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T16:10:29.286Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "owasp/www-project-api-security-testing-framework",
+      "version": "f5ddaeef6deec825dcdef8401e8ea98f9a2c1fd9",
+      "bom-ref": "repo:owasp/www-project-api-security-testing-framework@f5ddaeef6deec825dcdef8401e8ea98f9a2c1fd9",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/OWASP/www-project-api-security-testing-framework"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d746ff00-aa19-4a7d-9be6-b5e599697cdb"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "190415"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/cli/ASTFCli.java",
+            "line": 229
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/core/config/ScanConfig.java",
+            "line": 294
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/core/http/HttpClient.java",
+            "line": 206
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/integration/GitHubActionsIntegration.java",
+            "line": 73
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java",
+            "line": 439
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/cli/ASTFCli.java",
+            "line": 230
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/cli/ASTFCli.java:229=1837d73d55f89cb1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/config/ScanConfig.java:294=73304cc9a8c9c350"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/http/HttpClient.java:206=1f97f381d2a72421"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/integration/GitHubActionsIntegration.java:73=9f4fab85ad8568e9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java:439=7f751a63b750a942"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/cli/ASTFCli.java:230=cf9fe2854bb3ef35"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (at least JDK 21)",
+      "bom-ref": "pqs:collected:PROTO-f23b8d7f",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/core/http/HttpClient.java",
+            "line": 297
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/integration/GitHubActionsIntegration.java",
+            "line": 135
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-f23b8d7f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/http/HttpClient.java:297=2ff8a2497065ef93"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/integration/GitHubActionsIntegration.java:135=3f8f2194da294667"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 572
+          },
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 574
+          },
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 573
+          },
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 575
+          },
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 576
+          },
+          {
+            "location": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java",
+            "line": 577
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:572=6278b8c242593eb9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:574=063ba6b63da83cc1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:573=e7c2a4934b3e297d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:575=5f7fe4af62547d29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:576=3d1f26c57151c27a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/org/owasp/astf/testcases/BrokenAuthenticationTestcaseTest.java:577=96e682fa38d8965d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java",
+            "line": 845
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java",
+            "line": 850
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java",
+            "line": 851
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java:845=687f4127a04b11ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java:850=9bf054ad0cb24c07"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/testcases/BrokenAuthenticationTestCase.java:851=f54d99185d00e8aa"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/cli/ASTFCli.java",
+            "line": 118
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/core/http/HttpClient.java",
+            "line": 280
+          },
+          {
+            "location": "src/main/java/org/owasp/astf/cli/ASTFCli.java",
+            "line": 125
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/cli/ASTFCli.java:118=7f538644b04404d5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/http/HttpClient.java:280=09784a0dec7304fd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/cli/ASTFCli.java:125=050529770bafae00"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/core/http/HttpClient.java",
+            "line": 297
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/http/HttpClient.java:297=2ff8a2497065ef93"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/org/owasp/astf/core/http/HttpClient.java",
+            "line": 299
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/org/owasp/astf/core/http/HttpClient.java:299=66b8851168f5d525"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:PROTO-f23b8d7f"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
