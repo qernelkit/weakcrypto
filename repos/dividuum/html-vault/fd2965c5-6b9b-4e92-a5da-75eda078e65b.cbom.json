@@ -1,0 +1,128 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:727865dc-e2a6-47c8-864e-eb3fe9f731b1",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T15:43:45.742Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "dividuum/html-vault",
+      "version": "71a9021be8f210cdbcd7f395e07805e16aa6dc2f",
+      "bom-ref": "repo:dividuum/html-vault@71a9021be8f210cdbcd7f395e07805e16aa6dc2f",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/dividuum/html-vault"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "fd2965c5-6b9b-4e92-a5da-75eda078e65b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "82591"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM-256",
+      "bom-ref": "pqs:finding:html-vault:77,78:AES-GCM-256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "mode": "gcm",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "html-vault",
+            "line": 77
+          },
+          {
+            "location": "html-vault",
+            "line": 78
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "html-vault:77=d392fe324a89ab6c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "html-vault:78=5a7ae931988ba404"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2-SHA256",
+      "bom-ref": "pqs:finding:html-vault:76:PBKDF2-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "html-vault",
+            "line": 76
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "html-vault:76=e6ac3ecb11299034"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:html-vault:77,78:AES-GCM-256"
+    },
+    {
+      "ref": "pqs:finding:html-vault:76:PBKDF2-SHA256"
+    }
+  ]
+}
