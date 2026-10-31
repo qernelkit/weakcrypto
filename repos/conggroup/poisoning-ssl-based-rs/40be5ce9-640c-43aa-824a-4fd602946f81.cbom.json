@@ -1,0 +1,193 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4c03df47-4554-4a2c-bc1e-1dc27de101e9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-31T17:32:22.312Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "conggroup/poisoning-ssl-based-rs",
+      "version": "7c30ca3d9df621080afc38f8aa20c09e0b5e6891",
+      "bom-ref": "repo:conggroup/poisoning-ssl-based-rs@7c30ca3d9df621080afc38f8aa20c09e0b5e6891",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/CongGroup/Poisoning-SSL-based-RS"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "40be5ce9-640c-43aa-824a-4fd602946f81"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "98949"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Seq-poison/dataloader.py",
+            "line": 119
+          },
+          {
+            "location": "Seq-poison/generator.py",
+            "line": 71
+          },
+          {
+            "location": "Seq-poison/train_classify.py",
+            "line": 59
+          },
+          {
+            "location": "Seq-poison/dataloader.py",
+            "line": 122
+          },
+          {
+            "location": "Seq-poison/train_classify.py",
+            "line": 60
+          },
+          {
+            "location": "Seq-poison/dataloader.py",
+            "line": 123
+          },
+          {
+            "location": "Seq-poison/train_classify.py",
+            "line": 85
+          },
+          {
+            "location": "Seq-poison/train_classify.py",
+            "line": 87
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security-sensitive contexts for data loading and training processes"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/dataloader.py:119=0aa2ac7e8209a7c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/generator.py:71=d01d86fd2e33c401"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/train_classify.py:59=d34fb1bb97d16d35"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/dataloader.py:122=5a882386a36b6cb8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/train_classify.py:60=ef8c359137d0d90f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/dataloader.py:123=5e6fe528b8097555"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/train_classify.py:85=ad20bed89b98e6c7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Seq-poison/train_classify.py:87=ad20bed89b98e6c7"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
