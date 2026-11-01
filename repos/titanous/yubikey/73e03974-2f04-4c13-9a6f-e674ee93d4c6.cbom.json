@@ -1,0 +1,877 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:66e2372a-f876-407a-97aa-fc9421c02254",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T21:30:49.825Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "titanous/yubikey",
+      "version": "8d1d111bfd72a96b75d266aa68bb8b6fbb8d9d78",
+      "bom-ref": "repo:titanous/yubikey@8d1d111bfd72a96b75d266aa68bb8b6fbb8d9d78",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/titanous/yubikey"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "73e03974-2f04-4c13-9a6f-e674ee93d4c6"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "11"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "90339"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-ECB",
+      "bom-ref": "pqs:collected:ALG-136e45af",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/yubikey/otp.rb",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-136e45af"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses AES in ECB mode, which is fundamentally broken for most cryptographic purposes because identical plaintext blocks produce identical ciphertext blocks. This is a clear cryptographic vulnerability that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/yubikey/otp.rb:37=d1019cd127c90c98"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-58d01727",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/cert/chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-58d01727"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/cert/chain.pem:1=cb3f91d54eee30e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/yubikey/otp_verify_spec.rb",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses a static nonce for encryption operations, which breaks the security guarantees of authenticated encryption modes like GCM. This is a cryptographic weakness that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/yubikey/otp_verify_spec.rb:9=b656e2a412590958"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/yubikey/otp_verify.rb",
+            "line": 77
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time string comparison (== operator) used for HMAC signature verification in lib/yubikey/otp_verify.rb line 77. This could allow timing attacks to extract the HMAC key."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/yubikey/otp_verify.rb:77=c2ce4a18e05014f6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-1",
+      "bom-ref": "pqs:collected:ALG-ba399e5b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/yubikey/otp_verify.rb",
+            "line": 95
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ba399e5b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses HMAC with SHA-1, which is deprecated due to known vulnerabilities in the SHA-1 hash function. While HMAC-SHA-1 is still secure as a MAC, SHA-1 itself is considered cryptographically weak and should be upgraded to SHA-256 or higher."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/yubikey/otp_verify.rb:95=1e114ad8336dac76"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/yubikey_spec.rb",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The API key is hardcoded in the test suite, which represents a cryptographic asset that could be misused if the test environment were compromised. This is a security concern even in testing contexts."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/yubikey_spec.rb:27=3fd5e5b361581e1f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-09ed6e99",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/cert/chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-09ed6e99"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/cert/chain.pem:1=cb3f91d54eee30e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-18f8a7a1",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/cert/chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-18f8a7a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/cert/chain.pem:1=cb3f91d54eee30e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-e656f840",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/cert/chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-e656f840"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/cert/chain.pem:1=cb3f91d54eee30e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/yubikey/otp.rb",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved AES-128 in ECB mode (insecure)"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses AES-128 in ECB mode, which is fundamentally broken for most cryptographic purposes. While AES-128 itself is not inherently weak (it's quantum-safe), the ECB mode makes it vulnerable to pattern analysis attacks. This is a cryptographic weakness that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/yubikey/otp.rb:37=d1019cd127c90c98"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/yubikey/otp_verify.rb",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses SecureRandom for generating nonces, which is appropriate for cryptographic purposes. This is a legitimate cryptographic asset that contributes to the security of the system."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/yubikey/otp_verify.rb:82=dff752f6b6d4aaf4"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-136e45af"
+    },
+    {
+      "ref": "pqs:collected:CERT-58d01727"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-ba399e5b"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:CERT-09ed6e99"
+    },
+    {
+      "ref": "pqs:collected:CERT-18f8a7a1"
+    },
+    {
+      "ref": "pqs:collected:CERT-e656f840"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
