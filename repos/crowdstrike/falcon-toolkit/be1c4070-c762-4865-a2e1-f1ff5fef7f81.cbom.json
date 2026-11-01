@@ -1,0 +1,894 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4baf200f-0d11-4dd8-b0a7-d24a1a7254c0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T00:52:19.209Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "crowdstrike/falcon-toolkit",
+      "version": "c7addde2bd2e8ea15ed0dc39264d7d519a15111e",
+      "bom-ref": "repo:crowdstrike/falcon-toolkit@c7addde2bd2e8ea15ed0dc39264d7d519a15111e",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/CrowdStrike/Falcon-Toolkit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "be1c4070-c762-4865-a2e1-f1ff5fef7f81"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "11"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "146046"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a declared dependency on cryptography library which includes RSA functionality. The project declares this dependency in poetry.lock but I haven't found concrete usage patterns in the Python source files examined."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on cryptography@50.0.2 which includes ECDSA support, but based on code review no actual ECDSA signing is used in the application. The application uses TLS for API communication with CrowdStrike."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on cryptography@50.0.2 which includes AES support, but based on code review no actual AES encryption is used in the application. The application uses TLS for API communication with CrowdStrike."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on requests@2.34.2 which handles TLS automatically for API communication with CrowdStrike. No explicit TLS cipher suite or key exchange configuration is found in the source code, so this appears to use default system TLS settings."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CA trust bundle",
+      "bom-ref": "pqs:collected:ALG-065af532",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-065af532"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared dependency on certifi, which is a CA trust bundle used for SSL/TLS certificate verification - an essential part of the cryptographic infrastructure for secure communications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509",
+      "bom-ref": "pqs:collected:ALG-1847d707",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1847d707"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on cryptography@50.0.2 which includes X.509 certificate support, but based on code review no actual X.509 certificate operations are used in the application. The application uses TLS for API communication with CrowdStrike."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "certifi",
+      "bom-ref": "pqs:collected:LIB-0a1caea6",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-0a1caea6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared dependency on certifi library, which provides a CA trust bundle for SSL/TLS certificate verification - an essential component in cryptographic infrastructure for secure communications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "urllib3",
+      "bom-ref": "pqs:collected:LIB-2dbdc8e2",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-2dbdc8e2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared dependency on urllib3 library, which is used for HTTP requests and contains cryptographic components for secure connections (HTTPS) - an essential part of the project's cryptographic infrastructure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "pycryptodomex",
+      "bom-ref": "pqs:collected:LIB-43ad6313",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-43ad6313"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on pycryptodomex@3.24.1, but based on code review no actual usage of this library is found in the application. The application uses the cryptography library for API communication with CrowdStrike."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "requests",
+      "bom-ref": "pqs:collected:LIB-b9851744",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b9851744"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Declared dependency on requests library, which is used for HTTP requests and contains cryptographic components for secure connections (HTTPS) - an essential part of the project's cryptographic infrastructure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "cryptography",
+      "bom-ref": "pqs:collected:LIB-dfb9c980",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "poetry.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-dfb9c980"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project declares a dependency on cryptography@50.0.2 which is used for API authentication and communication with CrowdStrike. Based on code review, no explicit quantum-vulnerable cryptographic operations are used directly in the application - it relies on standard TLS for secure communication."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poetry.lock:1=7713d5e3fa3ec2d0"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:ALG-065af532"
+    },
+    {
+      "ref": "pqs:collected:ALG-1847d707"
+    },
+    {
+      "ref": "pqs:collected:LIB-0a1caea6"
+    },
+    {
+      "ref": "pqs:collected:LIB-2dbdc8e2"
+    },
+    {
+      "ref": "pqs:collected:LIB-43ad6313"
+    },
+    {
+      "ref": "pqs:collected:LIB-b9851744"
+    },
+    {
+      "ref": "pqs:collected:LIB-dfb9c980"
+    }
+  ]
+}
