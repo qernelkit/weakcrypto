@@ -1,0 +1,254 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a07d9e3f-3517-49eb-93b2-98f96c308659",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T01:35:13.582Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mitsuhiko/python-pbkdf2",
+      "version": "712d4aee1a21394e6849f275576d7a876e0da056",
+      "bom-ref": "repo:mitsuhiko/python-pbkdf2@712d4aee1a21394e6849f275576d7a876e0da056",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/mitsuhiko/python-pbkdf2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "981bde2f-7103-4743-9395-12711bda3c42"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "94682"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pbkdf2.py",
+            "line": 64
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing in a PBKDF2 implementation, which makes it vulnerable to collision attacks and should be replaced with a stronger hash function like SHA-256 or SHA-3."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2.py:64=270f47a369bcbb83"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pbkdf2.py",
+            "line": 55
+          },
+          {
+            "location": "setup.py",
+            "line": 11
+          },
+          {
+            "location": "pbkdf2.py",
+            "line": 83
+          },
+          {
+            "location": "setup.py",
+            "line": 12
+          },
+          {
+            "location": "setup.py",
+            "line": 13
+          },
+          {
+            "location": "setup.py",
+            "line": 7
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a PBKDF2 implementation that defaults to using SHA-1 for hashing. Although PBKDF2 is a strong key derivation function, the use of SHA-1 as the underlying hash function makes it vulnerable to collision attacks and should be updated to use SHA-256 or higher."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2.py:55=1f5ced83e224bb73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "setup.py:11=1f7714058822d177"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pbkdf2.py:83=710f9db8ac78b11c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "setup.py:12=6c81baf59b104a45"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "setup.py:13=1e668d1bc56909a7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "setup.py:7=2cf93e0b621efd3d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    }
+  ]
+}
