@@ -1,0 +1,137 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9aa01e3c-2a95-4d8a-8366-f0752460c387",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T21:48:57.097Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "closeio/redis-hashring",
+      "version": "b82bbd3450f9b0d9935e654f476733bdf90ac380",
+      "bom-ref": "repo:closeio/redis-hashring@b82bbd3450f9b0d9935e654f476733bdf90ac380",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/closeio/redis-hashring"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5014b122-2bd8-4612-b101-a161f682dca9"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "68740"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "redis_hashring/__init__.py",
+            "line": 220
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The redis_hashring library uses Python's `random` module and `os.urandom()` to generate unique identifiers for replicas in a consistent hash ring. While this is used for distribution purposes rather than cryptographic security, it represents a non-cryptographically secure random number generation that could be problematic in security-sensitive contexts."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "redis_hashring/__init__.py:220=fb4f7d0fcbdfb841"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
