@@ -1,0 +1,134 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e86cffda-3c89-491c-9ea1-1547f6794cea",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T07:12:27.251Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "falkojoseph/certificate-dashboard",
+      "version": "124b18450a25dbac676d0186a90bf024726a2800",
+      "bom-ref": "repo:falkojoseph/certificate-dashboard@124b18450a25dbac676d0186a90bf024726a2800",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/FalkoJoseph/certificate-dashboard"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "53ea6adf-75c0-4498-ab3b-bcadf6b0c633"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "101870"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Node.js tls sessions on default settings (Node.js 5.9.1)",
+      "bom-ref": "pqs:collected:PROTO-ab23d6e5",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/certificate.js",
+            "line": 30
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-ab23d6e5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This codebase makes HTTPS requests to monitor certificate expiration for various hosts. It uses the standard Node.js https.request() function with default TLS settings, which means it's susceptible to quantum-vulnerable key exchange mechanisms (ECDHE/RSA-KEX) as part of its default TLS configuration. The application doesn't explicitly configure cipher suites or key exchange, relying on Node.js defaults."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/certificate.js:30=d0707dfbe0b42144"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-ab23d6e5"
+    }
+  ]
+}
