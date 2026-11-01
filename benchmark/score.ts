@@ -1,7 +1,7 @@
 // The model track: a model reads each file of a benchmark repository, one call
 // per whole file, and names every line that is cryptography.
 // No tool in between, so this measures the model. Scored file by file against
-// the repository's reviewed answer key.
+// the benchmark's answer key.
 //
 // benchmark/runs/<model>/<owner>/<repo>.json
 
@@ -26,14 +26,16 @@ export const TOLERANCE = 2;
 export interface Tally { right: number; wrong: number; missed: number }
 /** The same score cut three ways: by the file's language, by the kind of cryptography, by file. */
 export interface Breakdown { language: Record<string, Tally>; type: Record<string, Tally>; file: Record<string, Tally> }
-export interface ModelScore { files: number; failedFiles: number; found: number; right: number; wrong: number; missed: number; correct: number | null; breakdown: Breakdown }
+/** failedFiles: files the provider failed or timed out on (left out of the score). unreadable: files whose reply could not be read (scored as nothing found). */
+export interface ModelScore { files: number; failedFiles: number; unreadable: number; found: number; right: number; wrong: number; missed: number; correct: number | null; breakdown: Breakdown }
 
 const LANGUAGES: Record<string, string> = {
   rs: "Rust", go: "Go", py: "Python", js: "JavaScript", mjs: "JavaScript", cjs: "JavaScript", jsx: "JavaScript", ts: "TypeScript", tsx: "TypeScript",
   java: "Java", kt: "Kotlin", kts: "Kotlin", scala: "Scala", c: "C", h: "C/C++ header", cc: "C++", cpp: "C++", cxx: "C++", hpp: "C/C++ header",
   cs: "C#", rb: "Ruby", php: "PHP", swift: "Swift", m: "Objective-C", sh: "Shell", bash: "Shell", ps1: "PowerShell", sol: "Solidity",
   json: "JSON", yml: "YAML", yaml: "YAML", toml: "TOML", xml: "XML", gradle: "Gradle", lock: "Lockfile", md: "Markdown", txt: "Text",
-  pem: "Key or certificate file", der: "Key or certificate file", crt: "Key or certificate file", cer: "Key or certificate file", key: "Key or certificate file", p8: "Key or certificate file", p12: "Key or certificate file", pub: "Key or certificate file",
+  conf: "Configuration", cnf: "Configuration", cfg: "Configuration", ini: "Configuration", env: "Configuration",
+  pem: "Key or certificate file", csr: "Key or certificate file", der: "Key or certificate file", crt: "Key or certificate file", cer: "Key or certificate file", key: "Key or certificate file", p8: "Key or certificate file", p12: "Key or certificate file", pub: "Key or certificate file",
 };
 /** The language of a file, by its name: what a reader would call it. */
 export function languageOf(file: string): string {
@@ -51,11 +53,18 @@ const typeOf = (p: string | null | undefined) => { const k = (p ?? "").toLowerCa
  *  line is the model's line for right and wrong, the key's for missed; keyLine is the site a right one matched. */
 export interface Mark { file: string; kind: keyof Tally; line: number; type: string; keyLine?: number; algorithm?: string | null }
 
-/** Right, wrong and missed for one run against the repository's key. Each real site is matched at most once.
+/** Right, wrong and missed for one run against the key. Each real site (a line of a file) is matched at most once.
  *  In the breakdown a right or missed site counts under the key's type for it; a wrong one under the type the model gave. */
 export function scoreModelRun(run: ModelRun, labels: Labels, each?: (m: Mark) => void): ModelScore {
   const real = new Map<string, Array<{ line: number; type: string; algorithm: string | null }>>();
-  for (const s of labels.sites) if (s.verdict === "confirmed") real.set(s.file, [...(real.get(s.file) ?? []), { line: s.line, type: typeOf(s.primitive), algorithm: s.algorithm ?? null }]);
+  // A model names a line once, so the key counts a line once: several assets on one line are one site
+  // (typed by the first, all of them named).
+  for (const s of labels.sites) {
+    if (s.verdict !== "confirmed") continue;
+    const list = real.get(s.file) ?? [], same = list.find((x) => x.line === s.line);
+    if (same) { if (s.algorithm && !same.algorithm?.split(", ").includes(s.algorithm)) same.algorithm = same.algorithm ? `${same.algorithm}, ${s.algorithm}` : s.algorithm; }
+    else real.set(s.file, [...list, { line: s.line, type: typeOf(s.primitive), algorithm: s.algorithm ?? null }]);
+  }
   const breakdown: Breakdown = { language: {}, type: {}, file: {} };
   const tally = (file: string, type: string, k: keyof Tally) => {
     for (const [cut, key] of [["language", languageOf(file)], ["type", type], ["file", `${run.repo}:${file}`]] as const) (breakdown[cut][key] ??= { right: 0, wrong: 0, missed: 0 })[k]++;
@@ -69,18 +78,28 @@ export function scoreModelRun(run: ModelRun, labels: Labels, each?: (m: Mark) =>
     const used = new Set<number>();
     const claimed = new Map<number, string>();
     for (const x of f.sites) if (!claimed.has(x.line)) claimed.set(x.line, typeOf(x.primitive));
-    for (const s of [...claimed.keys()].sort((a, b) => a - b)) {
-      found++;
-      // The nearest unmatched real site within tolerance.
+    // A named line on a real site is that site. Only the lines left over are matched to the nearest
+    // real site still unmatched, within tolerance (a statement over several lines).
+    const match = new Map<number, number>();
+    const named = [...claimed.keys()].sort((a, b) => a - b);
+    for (const s of named) { const i = truth.findIndex((t, k) => t.line === s && !used.has(k)); if (i >= 0) { used.add(i); match.set(s, i); } }
+    for (const s of named) {
+      if (match.has(s)) continue;
       let best = -1, dist = Infinity;
       truth.forEach((t, i) => { const d = Math.abs(t.line - s); if (!used.has(i) && d <= TOLERANCE && d < dist) { best = i; dist = d; } });
-      if (best >= 0) {
-        used.add(best); right++; tally(f.file, truth[best]!.type, "right");
+      if (best >= 0) { used.add(best); match.set(s, best); }
+    }
+    for (const s of named) {
+      found++;
+      const best = match.get(s);
+      if (best != null) {
+        right++; tally(f.file, truth[best]!.type, "right");
         each?.({ file: f.file, kind: "right", line: s, type: truth[best]!.type, keyLine: truth[best]!.line, algorithm: truth[best]!.algorithm });
       } else { wrong++; tally(f.file, claimed.get(s)!, "wrong"); each?.({ file: f.file, kind: "wrong", line: s, type: claimed.get(s)! }); }
     }
     // Real sites in a file the run read but did not match; files it failed on don't count against it.
     truth.forEach((t, i) => { if (!used.has(i)) { missed++; tally(f.file, t.type, "missed"); each?.({ file: f.file, kind: "missed", line: t.line, type: t.type, algorithm: t.algorithm }); } });
   }
-  return { files: run.files.length, failedFiles, found, right, wrong, missed, correct: right + wrong ? right / (right + wrong) : null, breakdown };
+  const unreadable = run.files.filter((f) => !f.error && f.unreadable).length;
+  return { files: run.files.length, failedFiles, unreadable, found, right, wrong, missed, correct: right + wrong ? right / (right + wrong) : null, breakdown };
 }
