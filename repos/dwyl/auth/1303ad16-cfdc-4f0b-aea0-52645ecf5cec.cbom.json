@@ -1,0 +1,382 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:a0b691ae-371c-445f-b152-b4937bdc9ee3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T13:34:35.434Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "dwyl/auth",
+      "version": "fbaaadad0800c2eddf15e81061b3b027a1857e91",
+      "bom-ref": "repo:dwyl/auth@fbaaadad0800c2eddf15e81061b3b027a1857e91",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/dwyl/auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1303ad16-cfdc-4f0b-aea0-52645ecf5cec"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "141774"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config/test.exs",
+            "line": 23
+          },
+          {
+            "location": "config/test.exs",
+            "line": 28
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded secrets in config files. These are credentials that should be managed through environment variables or secure key management systems rather than being hardcoded."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config/test.exs:23=98f75bdba863dcb5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config/test.exs:28=3e959e78538a4d58"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/auth/user_agent.ex",
+            "line": 30
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison in user agent validation. This could potentially allow for timing-based attacks where an attacker could determine information about the expected value based on timing differences."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/auth/user_agent.ex:30=35c0ac0c57a97544"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/auth/email.ex",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS 1.2 configuration using classical key exchange (specifically mentioned as using tlsv1.2). This is vulnerable to future quantum attacks since it relies on RSA/ECDHE/DH key exchanges which can be broken by Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/auth/email.ex:32=56ba4377d41f0d4a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Argon2id",
+      "bom-ref": "pqs:collected:ALG-d75ee937",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/auth_web/controllers/auth_controller.ex",
+            "line": 385
+          },
+          {
+            "location": "lib/auth_web/controllers/auth_controller.ex",
+            "line": 395
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d75ee937"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Argon2id password hashing algorithm being used for password verification. This is a quantum-safe implementation of a password-based key derivation function."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/auth_web/controllers/auth_controller.ex:385=3c25011798788a53"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/auth_web/controllers/auth_controller.ex:395=1ed62d517c1d3f3c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-d75ee937"
+    }
+  ]
+}
