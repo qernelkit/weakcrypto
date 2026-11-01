@@ -1,0 +1,342 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d51e9938-398d-449f-b069-60f62505edf2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-01T02:44:55.728Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "kelseyhightower/vault-init",
+      "version": "d9e854b29e8808a48d168d521ba257fae9299636",
+      "bom-ref": "repo:kelseyhightower/vault-init@d9e854b29e8808a48d168d521ba257fae9299636",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/kelseyhightower/vault-init"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "697bf8b2-a020-43f2-8e3f-93c78a6728bc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "133520"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 129
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a security vulnerability where the application skips TLS certificate verification, making it susceptible to MITM attacks. The setting is in the http.Client's Transport.TLSClientConfig at line 129 in main.go."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:129=b78020ce5bfacdcb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.10.2)",
+      "bom-ref": "pqs:collected:PROTO-c0ae16ca",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 126
+          },
+          {
+            "location": "main.go",
+            "line": 128
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-c0ae16ca"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a protocol configuration using default Go TLS settings with Go 1.10.2. Default configurations use classical ECDHE key exchange which is vulnerable to quantum attacks. No explicit post-quantum configuration is in place."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:126=d80681881463fceb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:128=39de3f23d9400732"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Google Cloud KMS",
+      "bom-ref": "pqs:collected:ALG-d449b39b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "main.go",
+            "line": 103
+          },
+          {
+            "location": "main.go",
+            "line": 109
+          },
+          {
+            "location": "main.go",
+            "line": 238
+          },
+          {
+            "location": "main.go",
+            "line": 248
+          },
+          {
+            "location": "main.go",
+            "line": 26
+          },
+          {
+            "location": "main.go",
+            "line": 304
+          },
+          {
+            "location": "main.go",
+            "line": 36
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-d449b39b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a cryptographic library usage - Google Cloud KMS is being used for key management and cryptographic operations. The application uses KMS-managed keys for encrypting data (as seen in the encrypt calls on lines 238, 248), which are quantum-vulnerable classical algorithms that need to be migrated to post-quantum alternatives like ML-KEM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:103=127eab0bce7b42a5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:109=15fe570c68a330d1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:238=182197b83f837680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:248=a5c0a0489a2010e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:26=258edf22d002e1ad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:304=527862e8afd71448"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "main.go:36=d1e60f63489e897f"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:PROTO-c0ae16ca"
+    },
+    {
+      "ref": "pqs:collected:ALG-d449b39b"
+    }
+  ]
+}
