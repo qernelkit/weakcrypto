@@ -1,0 +1,757 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d69357dd-81d7-4791-80ab-e18fb855829e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T19:27:45.442Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "web-auth/webauthn-lib",
+      "version": "a272f254c056fb3d6c80a4801d3c7c5fedc6a08d",
+      "bom-ref": "repo:web-auth/webauthn-lib@a272f254c056fb3d6c80a4801d3c7c5fedc6a08d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/web-auth/webauthn-lib"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "fc086dea-5590-4804-8655-3050bd098abb"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "191255"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "secp256k1",
+      "bom-ref": "pqs:collected:ALG-673c8f24",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 105
+          },
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 107
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-673c8f24"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The secp256k1 curve is used for ECDSA signatures in FIDO2 attestation statements, and while not directly quantum-vulnerable, it's part of the cryptographic landscape that needs to be monitored."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:105=092bfa14827f59c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:107=b3d7a241bdab367d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/AttestationStatement/AndroidKeyAttestationStatementSupport.php",
+            "line": 203
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "A MAC/digest comparison is done with '===' instead of a constant-time comparison function, creating a timing side-channel vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/AndroidKeyAttestationStatementSupport.php:203=650c1d7bf1e1506e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/AttestationStatement/AppleAttestationStatementSupport.php",
+            "line": 194
+          },
+          {
+            "location": "src/AttestationStatement/PackedAttestationStatementSupport.php",
+            "line": 227
+          },
+          {
+            "location": "src/AttestationStatement/TPMAttestationStatementSupport.php",
+            "line": 451
+          },
+          {
+            "location": "src/CeremonyStep/CheckAllowedCredentialList.php",
+            "line": 42
+          },
+          {
+            "location": "src/CeremonyStep/CheckChallenge.php",
+            "line": 36
+          },
+          {
+            "location": "src/CeremonyStep/CheckRelyingPartyIdIdHash.php",
+            "line": 47
+          },
+          {
+            "location": "src/CeremonyStep/CheckUserHandle.php",
+            "line": 39
+          },
+          {
+            "location": "src/Denormalizer/PublicKeyCredentialDenormalizer.php",
+            "line": 32
+          },
+          {
+            "location": "src/CeremonyStep/CheckUserHandle.php",
+            "line": 41
+          },
+          {
+            "location": "src/CeremonyStep/CheckUserHandle.php",
+            "line": 44
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Constant-time comparisons using hash_equals() function to prevent timing side-channel attacks in FIDO2 verification processes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/AppleAttestationStatementSupport.php:194=37f924bc35a97d3a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/PackedAttestationStatementSupport.php:227=6f293bbdd904ad09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/TPMAttestationStatementSupport.php:451=6f293bbdd904ad09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckAllowedCredentialList.php:42=705911a933b801e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckChallenge.php:36=6f293bbdd904ad09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckRelyingPartyIdIdHash.php:47=6f293bbdd904ad09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckUserHandle.php:39=f9f2f0960623baf9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Denormalizer/PublicKeyCredentialDenormalizer.php:32=7f003e31bcd87af9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckUserHandle.php:41=b2f29a6b7d9ccbdb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckUserHandle.php:44=2ded2fef6a7aa047"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/AuthenticatorDataLoader.php",
+            "line": 118
+          },
+          {
+            "location": "src/Denormalizer/AuthenticatorDataDenormalizer.php",
+            "line": 151
+          },
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 131
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 signatures are used in FIDO2 attestation verification, and this algorithm is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AuthenticatorDataLoader.php:118=7f794deb3431229e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/Denormalizer/AuthenticatorDataDenormalizer.php:151=7f794deb3431229e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:131=5721254c7ce6a2c5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-256",
+      "bom-ref": "pqs:collected:ALG-92e838c9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/AttestationStatement/FidoU2FAttestationStatementSupport.php",
+            "line": 181
+          },
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 97
+          },
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92e838c9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-256 curve is used for ECDSA signatures in FIDO2 attestation statements, making it vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/FidoU2FAttestationStatementSupport.php:181=1f702f0b287c4032"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:97=44b2a87a050de713"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:99=5c231cb7809972f9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 127
+          },
+          {
+            "location": "src/MetadataService/Statement/MetadataStatement.php",
+            "line": 129
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-384 and P-521 curves are used for ECDSA signatures in FIDO2 attestation statements, making them vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:127=0d235abf0c42d39f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/MetadataService/Statement/MetadataStatement.php:129=20b812ac8fa59289"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/AttestationStatement/AppleAttestationStatementSupport.php",
+            "line": 192
+          },
+          {
+            "location": "src/CeremonyStep/CheckAttestationFormatIsKnownAndValid.php",
+            "line": 51
+          },
+          {
+            "location": "src/CeremonyStep/CheckRelyingPartyIdIdHash.php",
+            "line": 46
+          },
+          {
+            "location": "src/CeremonyStep/CheckSignature.php",
+            "line": 61
+          },
+          {
+            "location": "src/SimpleFakeCredentialGenerator.php",
+            "line": 56
+          },
+          {
+            "location": "src/SimpleFakeCredentialGenerator.php",
+            "line": 61
+          },
+          {
+            "location": "src/SimpleFakeCredentialGenerator.php",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/AttestationStatement/AppleAttestationStatementSupport.php:192=4fbadcd4d478a729"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckAttestationFormatIsKnownAndValid.php:51=4f18caacc6ef5544"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckRelyingPartyIdIdHash.php:46=f782ac9656b25877"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/CeremonyStep/CheckSignature.php:61=3ad88b19ef9f3195"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/SimpleFakeCredentialGenerator.php:56=8095ecc4efa8fa2c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/SimpleFakeCredentialGenerator.php:61=7b60b928df0d6762"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/SimpleFakeCredentialGenerator.php:71=38aafe8148b0abfe"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-673c8f24"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    },
+    {
+      "ref": "pqs:collected:ALG-92e838c9"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
