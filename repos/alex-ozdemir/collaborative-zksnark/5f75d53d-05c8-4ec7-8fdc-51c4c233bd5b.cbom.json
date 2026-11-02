@@ -1,0 +1,781 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:012551ce-450b-4043-b485-a889ebf31326",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T04:07:11.743Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "alex-ozdemir/collaborative-zksnark",
+      "version": "8cff2c2c45cbc4d5c126082a3d1521f3e662475b",
+      "bom-ref": "repo:alex-ozdemir/collaborative-zksnark@8cff2c2c45cbc4d5c126082a3d1521f3e662475b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/alex-ozdemir/collaborative-zksnark"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5f75d53d-05c8-4ec7-8fdc-51c4c233bd5b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "140353"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto-primitives/src/merkle_tree/mod.rs",
+            "line": 196
+          },
+          {
+            "location": "crypto-primitives/src/merkle_tree/mod.rs",
+            "line": 57
+          },
+          {
+            "location": "crypto-primitives/src/merkle_tree/mod.rs",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are actual crypto operations in the merkle tree implementation that use insecure comparisons, making them vulnerable to timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/merkle_tree/mod.rs:196=4fcc264a2357400c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/merkle_tree/mod.rs:57=da2d828420ed803f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/merkle_tree/mod.rs:71=0036f62c5a7bcf7a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "mpc-snarks/scripts/build-debian-10.zsh",
+            "line": 2
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS 1.2 version specification in build script - indicates use of classical key exchange which is vulnerable to quantum attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mpc-snarks/scripts/build-debian-10.zsh:2=8ffd0bb64ffe783f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "algebra/ff/src/fields/mod.rs",
+            "line": 611
+          },
+          {
+            "location": "algebra/ff/src/fields/models/mod.rs",
+            "line": 25
+          },
+          {
+            "location": "algebra/ff/src/test_field/mod.rs",
+            "line": 118
+          },
+          {
+            "location": "algebra/test-curves/src/bls12_381/fq.rs",
+            "line": 4
+          },
+          {
+            "location": "algebra/test-curves/src/bn384_small_two_adicity/fq.rs",
+            "line": 3
+          },
+          {
+            "location": "algebra/test-curves/src/bn384_small_two_adicity/fr.rs",
+            "line": 3
+          },
+          {
+            "location": "curves/bls12_381/src/fields/fq.rs",
+            "line": 4
+          },
+          {
+            "location": "curves/ed_on_cp6_782/src/fields/fr.rs",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "P-384 field implementations in algebra libraries - these are mathematical definitions not crypto operations themselves, but indicate the project uses or could use classical elliptic curves"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/ff/src/fields/mod.rs:611=a2ba17b0ae53a7f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/ff/src/fields/models/mod.rs:25=30e20ff45797d37f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/ff/src/test_field/mod.rs:118=fd8c574f513d597a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/test-curves/src/bls12_381/fq.rs:4=fd8c574f513d597a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/test-curves/src/bn384_small_two_adicity/fq.rs:3=fd8c574f513d597a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "algebra/test-curves/src/bn384_small_two_adicity/fr.rs:3=fd8c574f513d597a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "curves/bls12_381/src/fields/fq.rs:4=fd8c574f513d597a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "curves/ed_on_cp6_782/src/fields/fr.rs:3=fd8c574f513d597a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2/BLAKE3",
+      "bom-ref": "pqs:collected:ALG-84de5a3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypto-primitives/Cargo.toml",
+            "line": 9
+          },
+          {
+            "location": "crypto-primitives/cp-benches/Cargo.toml",
+            "line": 34
+          },
+          {
+            "location": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs",
+            "line": 14
+          },
+          {
+            "location": "crypto-primitives/src/commitment/blake2s/constraints.rs",
+            "line": 37
+          },
+          {
+            "location": "crypto-primitives/src/commitment/mod.rs",
+            "line": 7
+          },
+          {
+            "location": "crypto-primitives/src/prf/blake2s/constraints.rs",
+            "line": 236
+          },
+          {
+            "location": "crypto-primitives/src/prf/blake2s/mod.rs",
+            "line": 21
+          },
+          {
+            "location": "crypto-primitives/src/prf/mod.rs",
+            "line": 11
+          },
+          {
+            "location": "crypto-primitives/src/signature/mod.rs",
+            "line": 93
+          },
+          {
+            "location": "marlin/benches/bench.rs",
+            "line": 123
+          },
+          {
+            "location": "mpc-plonk/src/lib.rs",
+            "line": 435
+          },
+          {
+            "location": "poly-commit/src/ipa_pc/mod.rs",
+            "line": 1060
+          },
+          {
+            "location": "crypto-primitives/cp-benches/Cargo.toml",
+            "line": 7
+          },
+          {
+            "location": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs",
+            "line": 15
+          },
+          {
+            "location": "crypto-primitives/src/commitment/blake2s/constraints.rs",
+            "line": 4
+          },
+          {
+            "location": "crypto-primitives/src/prf/blake2s/constraints.rs",
+            "line": 277
+          },
+          {
+            "location": "crypto-primitives/src/prf/blake2s/mod.rs",
+            "line": 80
+          },
+          {
+            "location": "crypto-primitives/src/prf/mod.rs",
+            "line": 12
+          },
+          {
+            "location": "crypto-primitives/src/signature/mod.rs",
+            "line": 94
+          },
+          {
+            "location": "marlin/benches/bench.rs",
+            "line": 129
+          },
+          {
+            "location": "mpc-plonk/src/lib.rs",
+            "line": 87
+          },
+          {
+            "location": "poly-commit/src/ipa_pc/mod.rs",
+            "line": 1067
+          },
+          {
+            "location": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs",
+            "line": 22
+          },
+          {
+            "location": "crypto-primitives/src/commitment/blake2s/constraints.rs",
+            "line": 5
+          },
+          {
+            "location": "crypto-primitives/src/prf/blake2s/constraints.rs",
+            "line": 280
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84de5a3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are actual cryptographic uses of Blake2s hash functions in commitment schemes and PRF implementations within the crypto-primitives library. While BLAKE2 is cryptographically strong, it's a classical hash function without post-quantum security properties."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "60"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/Cargo.toml:9=afd4a2adf7494a09"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/cp-benches/Cargo.toml:34=871afa94fe13eb66"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs:14=7f1af33a67623546"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/commitment/blake2s/constraints.rs:37=59293c500e0b52d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/commitment/mod.rs:7=bfd000a377d2ec4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/blake2s/constraints.rs:236=d3da3f62341627a8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/blake2s/mod.rs:21=bee3b57036db1321"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/mod.rs:11=bfd000a377d2ec4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/signature/mod.rs:93=47a8dfface6dedc1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "marlin/benches/bench.rs:123=4b45b2c2c13921d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mpc-plonk/src/lib.rs:435=8983989f32cc2d0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poly-commit/src/ipa_pc/mod.rs:1060=7e69d6ec6414fe1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/cp-benches/Cargo.toml:7=75fa32b3427e63e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs:15=d3db3cc9421a803a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/commitment/blake2s/constraints.rs:4=1f4a00977b8b13f9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/blake2s/constraints.rs:277=854dd7fb2813b0b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/blake2s/mod.rs:80=69fd1c9ebf7c63e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/mod.rs:12=826cbecbba8416a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/signature/mod.rs:94=639bb55d1a9930e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "marlin/benches/bench.rs:129=4b45b2c2c13921d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mpc-plonk/src/lib.rs:87=8983989f32cc2d0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "poly-commit/src/ipa_pc/mod.rs:1067=7e69d6ec6414fe1a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/cp-benches/benches/crypto_primitives/prf.rs:22=ef1babe8e788a93c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/commitment/blake2s/constraints.rs:5=8acaff8af194d899"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypto-primitives/src/prf/blake2s/constraints.rs:280=d2c0793726c590c0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-928ac765",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "mpc-algebra/Cargo.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-928ac765"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is referenced as a dependency in the mpc-algebra crate's Cargo.toml file. While SHA-256 is a strong classical hash function, it does not provide post-quantum security properties and would need replacement with quantum-safe alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mpc-algebra/Cargo.toml:1=70acf00586aa7b90"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "sha2",
+      "bom-ref": "pqs:collected:LIB-ea6b9ac4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "mpc-algebra/Cargo.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ea6b9ac4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-2 hash function usage via sha2 crate - actual crypto operations being performed in mpc-algebra/src/channel.rs"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "mpc-algebra/Cargo.toml:1=70acf00586aa7b90"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-84de5a3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-928ac765"
+    },
+    {
+      "ref": "pqs:collected:LIB-ea6b9ac4"
+    }
+  ]
+}
