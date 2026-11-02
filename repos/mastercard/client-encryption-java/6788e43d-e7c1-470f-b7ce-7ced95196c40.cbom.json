@@ -1,0 +1,2186 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6c62784d-627f-41a4-81d9-34ffb782c8f3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T01:31:45.502Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "mastercard/client-encryption-java",
+      "version": "8fcce7175f17fd3fa355e720a97693cf1b05ae69",
+      "bom-ref": "repo:mastercard/client-encryption-java@8fcce7175f17fd3fa355e720a97693cf1b05ae69",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Mastercard/client-encryption-java"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6788e43d-e7c1-470f-b7ce-7ced95196c40"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "27"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "173299"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA/ECB/OAEPWith{ALG}AndMGF1Padding",
+      "bom-ref": "pqs:finding:src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:23,44:RSA/ECB/OAEPWith{ALG}AndMGF1Padding",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java",
+            "line": 23
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java",
+            "line": 44
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:23=ae555bc88741eaf3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:44=016f38ac2c0ec725"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES/CBC/PKCS5Padding",
+      "bom-ref": "pqs:finding:src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java:31:AES/CBC/PKCS5Padding",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java",
+            "line": 31
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java:31=1a17326e5f1a97ba"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-ECB",
+      "bom-ref": "pqs:collected:ALG-136e45af",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-136e45af"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm being used for encryption. While it's part of an RSA-OAEP wrapper, the underlying AES-ECB usage is a vulnerability that should be reported."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:20=d650feb1b64ca65c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-28f4d651",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/certificates/test_certificate-512.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-28f4d651"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/certificates/test_certificate-512.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-498e3172",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/certificates/test_certificate-1024.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-498e3172"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/certificates/test_certificate-1024.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-04e970e1",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-1024.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-04e970e1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-1024.pem:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-1170d437",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs1/test_key_pkcs1-1024.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-1170d437"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs1/test_key_pkcs1-1024.pem:1=8bcac7908eb95041"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-6089d6a2",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-512.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-6089d6a2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-512.pem:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-7507f995",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs1/test_key_pkcs1-512.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-7507f995"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs1/test_key_pkcs1-512.pem:1=8bcac7908eb95041"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-88641786",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-1024.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-2048.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-4096.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-512.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-88641786"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Test RSA keys for encryption/decryption testing purposes - these are not actual usage in the application but are cryptographic assets that need to be tracked"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-1024.der:1=e7b8644adec7fc4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-2048.der:1=fcc6c547b1372952"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-4096.der:1=32e51d2886ab48d7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-512.der:1=0d34ac809a92ff69"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-80810fc1",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/certificates/test_certificate-2048.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "src/test/resources/certificates/test_certificate-2048.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-80810fc1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/certificates/test_certificate-2048.der:1=3781ba54eab4cef2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/certificates/test_certificate-2048.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/FieldLevelEncryptionWithDefaultJsonEngineTest.java",
+            "line": 87
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic vulnerability where a static IV/nonce is used for encryption. This is a known weakness that breaks the security of CTR/GCM modes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/FieldLevelEncryptionWithDefaultJsonEngineTest.java:87=b4fc797be11112dc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-CBC",
+      "bom-ref": "pqs:collected:ALG-443012b9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java",
+            "line": 18
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-443012b9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm being used for encryption with CBC mode that lacks authentication. This is a well-known vulnerability in the cryptography library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java:18=a411ba9091892bf6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-OAEP",
+      "bom-ref": "pqs:collected:ALG-69ccc78e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-69ccc78e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm being used for RSA encryption with OAEP padding. While OAEP is good for encryption padding, RSA itself is vulnerable to quantum algorithms and requires migration to ML-KEM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:20=d650feb1b64ca65c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-0eed9108",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs1/test_key_pkcs1-2048.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-0eed9108"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs1/test_key_pkcs1-2048.pem:1=8bcac7908eb95041"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-4aa22a15",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-4096.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-4aa22a15"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-4096.pem:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-4c0cebb1",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs8/test_key_pkcs8-2048.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-4c0cebb1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs8/test_key_pkcs8-2048.pem:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-d3c46848",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/certificates/test_certificate-4096.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-d3c46848"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/certificates/test_certificate-4096.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-844bbe05",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs1/test_key_pkcs1-4096.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-844bbe05"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs1/test_key_pkcs1-4096.pem:1=8bcac7908eb95041"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java",
+            "line": 15
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java",
+            "line": 50
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 24
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/test/TestUtils.java",
+            "line": 59
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java",
+            "line": 19
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java",
+            "line": 67
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 26
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/test/TestUtils.java",
+            "line": 67
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java",
+            "line": 23
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java",
+            "line": 76
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 28
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java",
+            "line": 28
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 34
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm using AES-GCM for authenticated encryption. GCM is a secure mode but the specific key size is not clear from this usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "13"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java:15=108a6e7079386ea6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java:50=4843f72a327539a2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:24=bf6161096bce3770"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/test/TestUtils.java:59=71c15a5ab60e8265"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java:19=65e7fc1c258d16ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java:67=78c183ebe535c0e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:26=a0348e01ecc827b3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/test/TestUtils.java:67=ae912f68abcb7497"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java:23=864008d73ecf02b0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/jwe/JweObject.java:76=c707d2d95ae1e753"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:28=3c471d69548d53fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESGCM.java:28=4baedd49d6b20933"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:34=50a84da3a23942f9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java",
+            "line": 51
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/utils/EncodingUtilsTest.java",
+            "line": 25
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java",
+            "line": 53
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java",
+            "line": 52
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm using SHA-256 for hashing purposes. It's not a vulnerability in itself but is part of the quantum-safety assessment."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java:51=68a4d0f9e9bb5300"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/utils/EncodingUtilsTest.java:25=b37bbe3da7d86e41"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java:53=d4420b33a31cc8eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/EncryptionConfigBuilder.java:52=b5c62a24b3238b06"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 26
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/test/TestUtils.java",
+            "line": 59
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm using AES-128 bit key size for encryption. It's quantum-vulnerable and needs migration to AES-256 or better."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:26=a0348e01ecc827b3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/test/TestUtils.java:59=71c15a5ab60e8265"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java",
+            "line": 28
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/test/TestUtils.java",
+            "line": 67
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic algorithm using AES-256 bit key size for encryption. It provides adequate quantum security and meets CNSA 2.0 requirements."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/jwe/JWEObjectTest.java:28=3c471d69548d53fc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/test/TestUtils.java:67=ae912f68abcb7497"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 keystore",
+      "bom-ref": "pqs:collected:ALG-c0f2ba13",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java",
+            "line": 87
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/encryption/FieldLevelEncryptionWithDefaultJsonEngineTest.java",
+            "line": 1315
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/utils/EncryptionUtilsTest.java",
+            "line": 133
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java",
+            "line": 90
+          },
+          {
+            "location": "src/test/java/com/mastercard/developer/utils/EncryptionUtilsTest.java",
+            "line": 136
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java",
+            "line": 91
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java",
+            "line": 92
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c0f2ba13"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PKCS#12 keystore handling for decryption keys - this is actual usage of the PKCS#12 format in the encryption/decryption process"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java:87=28eb6cecfcc6b8e9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/encryption/FieldLevelEncryptionWithDefaultJsonEngineTest.java:1315=b36424e8c97cf036"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/utils/EncryptionUtilsTest.java:133=01a9651b4d613436"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java:90=a17990de33c28549"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/java/com/mastercard/developer/utils/EncryptionUtilsTest.java:136=6ecccd355478ec8c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java:91=e371857709d4eeae"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java:92=988d8f236a9369ea"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java",
+            "line": 19
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java",
+            "line": 21
+          },
+          {
+            "location": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a real cryptographic random number generator being used for IV generation. The use of SHA1PRNG is a weakness that needs addressing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java:19=280fd6898b06ba29"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java:21=0bec1663f9d757e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/encryption/aes/AESEncryption.java:29=a648989e73cb475b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java",
+            "line": 43
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X.509 certificate parsing - this is actual usage of certificate handling in the encryption utilities"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/main/java/com/mastercard/developer/utils/EncryptionUtils.java:43=5a82d90256d59023"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 pfx (keystore)",
+      "bom-ref": "pqs:collected:STORE-fed78a9a",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/test/resources/keys/pkcs12/test_key.p12",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "STORE-fed78a9a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PKCS#12 keystore file containing decryption key material - this is an actual cryptographic asset used in testing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/test/resources/keys/pkcs12/test_key.p12:1=1d5f1023cac4be5c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:src/main/java/com/mastercard/developer/encryption/rsa/RSA.java:23,44:RSA/ECB/OAEPWith{ALG}AndMGF1Padding"
+    },
+    {
+      "ref": "pqs:finding:src/main/java/com/mastercard/developer/encryption/aes/AESCBC.java:31:AES/CBC/PKCS5Padding"
+    },
+    {
+      "ref": "pqs:collected:ALG-136e45af"
+    },
+    {
+      "ref": "pqs:collected:CERT-28f4d651"
+    },
+    {
+      "ref": "pqs:collected:CERT-498e3172"
+    },
+    {
+      "ref": "pqs:collected:KEY-04e970e1"
+    },
+    {
+      "ref": "pqs:collected:KEY-1170d437"
+    },
+    {
+      "ref": "pqs:collected:KEY-6089d6a2"
+    },
+    {
+      "ref": "pqs:collected:KEY-7507f995"
+    },
+    {
+      "ref": "pqs:collected:KEY-88641786"
+    },
+    {
+      "ref": "pqs:collected:CERT-80810fc1"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-443012b9"
+    },
+    {
+      "ref": "pqs:collected:ALG-69ccc78e"
+    },
+    {
+      "ref": "pqs:collected:KEY-0eed9108"
+    },
+    {
+      "ref": "pqs:collected:KEY-4aa22a15"
+    },
+    {
+      "ref": "pqs:collected:KEY-4c0cebb1"
+    },
+    {
+      "ref": "pqs:collected:CERT-d3c46848"
+    },
+    {
+      "ref": "pqs:collected:KEY-844bbe05"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-c0f2ba13"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:STORE-fed78a9a"
+    }
+  ]
+}
