@@ -1,0 +1,442 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:0873ed4c-8529-4e06-be72-777a069f53b3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T23:47:22.334Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "chokepoint/crypthook",
+      "version": "690dcae5e86c2363a4f0c2a574ab4da2738865a5",
+      "bom-ref": "repo:chokepoint/crypthook@690dcae5e86c2363a4f0c2a574ab4da2738865a5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/chokepoint/CryptHook"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "31984d3e-a872-4eed-a9e4-2e487bbf96ee"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "68686"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypthook.c",
+            "line": 57
+          },
+          {
+            "location": "crypthook.c",
+            "line": 59
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation used in the crypthook library for deriving encryption keys from passphrases. It uses SHA-1 as the hash function and is part of the key generation process for AES encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:57=53e9a787ef982196"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:59=70ebaaa56ec640d1"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypthook.c",
+            "line": 138
+          },
+          {
+            "location": "crypthook.c",
+            "line": 83
+          },
+          {
+            "location": "crypthook.c",
+            "line": 91
+          },
+          {
+            "location": "crypthook.c",
+            "line": 81
+          },
+          {
+            "location": "crypthook.c",
+            "line": 150
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved AES-256 in GCM mode"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a complete cryptographic library implementation that encrypts/decrypts network traffic using AES-256-GCM mode with PBKDF2 key derivation. It's a full crypto system used for securing TCP/UDP connections."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:138=f032fbe49448401b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:83=882713babb92e673"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:91=b21540bf5fb8b5bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:81=5f9dcef4a8948f4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:150=1e8ed11081a861dd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypthook.c",
+            "line": 138
+          },
+          {
+            "location": "crypthook.c",
+            "line": 83
+          },
+          {
+            "location": "crypthook.c",
+            "line": 91
+          },
+          {
+            "location": "crypthook.c",
+            "line": 81
+          },
+          {
+            "location": "crypthook.c",
+            "line": 150
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 encryption used in the crypthook library for securing network traffic. The implementation uses AES-256 in GCM mode with 12-byte IV and 16-byte authentication tag."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:138=f032fbe49448401b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:83=882713babb92e673"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:91=b21540bf5fb8b5bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:81=5f9dcef4a8948f4f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:150=1e8ed11081a861dd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crypthook.c",
+            "line": 78
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness used in the crypthook library for generating random IVs for encryption. Uses OpenSSL's RAND_bytes function which is appropriate for cryptographic use."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crypthook.c:78=a11e9699090e2a4e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
