@@ -1,0 +1,296 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:6a7bd007-c946-4dd7-9e89-ad825e86f9ee",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T10:20:08.460Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "aws-samples/aws-iam-permissions-guardrails",
+      "version": "7e96a3ccb2858f28cd4b4fd5dbb50cba96be66ba",
+      "bom-ref": "repo:aws-samples/aws-iam-permissions-guardrails@7e96a3ccb2858f28cd4b4fd5dbb50cba96be66ba",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/aws-samples/aws-iam-permissions-guardrails"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6c7ba3fb-3348-4020-b2c7-5998643288dc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "81836"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS KMS",
+      "bom-ref": "pqs:collected:ALG-89c5c4b8",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "access-analyzer/step-functions-archive-findings/functions/context-enrichment/app.py",
+            "line": 24
+          },
+          {
+            "location": "access-analyzer/step-functions-archive-findings/functions/context-enrichment/app.py",
+            "line": 46
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-89c5c4b8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AWS KMS is being used via boto3 in the context-enrichment function to list resource tags and aliases for KMS keys. This indicates that the application has access to KMS key management capabilities, which may involve RSA encryption operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "access-analyzer/step-functions-archive-findings/functions/context-enrichment/app.py:24=f63b40cb5f5acd2a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "access-analyzer/step-functions-archive-findings/functions/context-enrichment/app.py:46=f63b40cb5f5acd2a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AWS KMS-managed keys",
+      "bom-ref": "pqs:collected:ALG-842ed87d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "access-analyzer/iam-role-findings-resolution/layers/boto3/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-842ed87d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "boto3 library dependency that provides access to AWS KMS services for cryptographic operations including key management and encryption/decryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "access-analyzer/iam-role-findings-resolution/layers/boto3/requirements.txt:1=a61c0c9671df2c19"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "boto3",
+      "bom-ref": "pqs:collected:LIB-5b3129df",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "access-analyzer/iam-role-findings-resolution/layers/boto3/requirements.txt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-5b3129df"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "boto3 library dependency that provides access to AWS KMS and other cryptographic services including key management and encryption operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "access-analyzer/iam-role-findings-resolution/layers/boto3/requirements.txt:1=a61c0c9671df2c19"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-89c5c4b8"
+    },
+    {
+      "ref": "pqs:collected:ALG-842ed87d"
+    },
+    {
+      "ref": "pqs:collected:LIB-5b3129df"
+    }
+  ]
+}
