@@ -1,0 +1,204 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4352fb53-b30d-4f56-8c18-72c749bc2967",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T21:11:14.613Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "stechstudio/laravel-jwt",
+      "version": "aba633d022fb5ab264c963ba1d29b59ca300e49d",
+      "bom-ref": "repo:stechstudio/laravel-jwt@aba633d022fb5ab264c963ba1d29b59ca300e49d",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/stechstudio/laravel-jwt"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "55e638c2-831b-4eef-a542-e0b0f82aa03a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "81084"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-SHA256",
+      "bom-ref": "pqs:finding:config/jwt.php:8:RSA-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "config/jwt.php",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "config/jwt.php:8=d63306fd30de72eb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA-SHA256",
+      "bom-ref": "pqs:finding:src/JWTServiceProvider.php:50:RSA-SHA256",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/JWTServiceProvider.php",
+            "line": 50
+          },
+          {
+            "location": "src/JWTServiceProvider.php",
+            "line": 30
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/JWTServiceProvider.php:50=854d9d21e3f18362"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/JWTServiceProvider.php:30=e3b0c44298fc1c14"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-16326773",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/keys/jwtRS256.key",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "tests/keys/jwtRS256.key.pub",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-16326773"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/keys/jwtRS256.key:1=8bcac7908eb95041"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/keys/jwtRS256.key.pub:1=59a58325e88756ac"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:config/jwt.php:8:RSA-SHA256"
+    },
+    {
+      "ref": "pqs:finding:src/JWTServiceProvider.php:50:RSA-SHA256"
+    },
+    {
+      "ref": "pqs:collected:KEY-16326773"
+    }
+  ]
+}
