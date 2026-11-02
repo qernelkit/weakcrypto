@@ -1,0 +1,193 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:8df60f43-bc39-4c6e-b786-0f16543286f6",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T07:11:39.336Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "google/gtm-oauth2",
+      "version": "a4847ec39e40b09f9341f3054e9f9541f97df414",
+      "bom-ref": "repo:google/gtm-oauth2@a4847ec39e40b09f9341f3054e9f9541f97df414",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/google/gtm-oauth2"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "318e32d6-81f5-48cc-a305-9f7970e5a5c4"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "125488"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Examples/OAuth2Sample/OAuth2SampleAppController.m",
+            "line": 494
+          },
+          {
+            "location": "Source/GTMOAuth2Authentication.m",
+            "line": 297
+          },
+          {
+            "location": "Source/GTMOAuth2SignIn.m",
+            "line": 863
+          },
+          {
+            "location": "Examples/OAuth2Sample/OAuth2SampleAppController.m",
+            "line": 496
+          },
+          {
+            "location": "Source/GTMOAuth2Authentication.m",
+            "line": 298
+          },
+          {
+            "location": "Source/GTMOAuth2Authentication.m",
+            "line": 662
+          },
+          {
+            "location": "Source/GTMOAuth2Authentication.m",
+            "line": 974
+          },
+          {
+            "location": "Source/GTMOAuth2Authentication.m",
+            "line": 995
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a non-constant-time comparison vulnerability in OAuth2 authentication code. The code compares MACs/digests using '==' operator instead of constant-time comparison functions, which could be vulnerable to timing attacks. However, this is not a quantum cryptography issue as it doesn't involve Shor-vulnerable primitives like RSA, ECDH, or DH."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Examples/OAuth2Sample/OAuth2SampleAppController.m:494=f5c0bc0750927197"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2Authentication.m:297=466aab56d159b728"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2SignIn.m:863=cffaa998346553ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Examples/OAuth2Sample/OAuth2SampleAppController.m:496=dac8f491271c004b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2Authentication.m:298=addc5f8e9fdc1cfb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2Authentication.m:662=579b084c7cd55fa6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2Authentication.m:974=39433ea156d8ead0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Source/GTMOAuth2Authentication.m:995=455f59fc09e0ad02"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
