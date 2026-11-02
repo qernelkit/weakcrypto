@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ce7077e5-2c5f-4222-9138-12ee2c5913c2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T08:08:38.930Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lassl/lassl",
+      "version": "28911c74336e5a07d2a97f8d661fe7c1e71fa1d3",
+      "bom-ref": "repo:lassl/lassl@28911c74336e5a07d2a97f8d661fe7c1e71fa1d3",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lassl/lassl"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e3a614c4-e0a2-41a4-a258-a5d0df8a7ccf"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "78756"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/lassl/collators.py",
+            "line": 141
+          },
+          {
+            "location": "src/lassl/utils.py",
+            "line": 148
+          },
+          {
+            "location": "src/lassl/collators.py",
+            "line": 83
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security-sensitive contexts for data splitting and processing in language model training pipeline. The random module is imported and used in src/lassl/collators.py and src/lassl/utils.py for generating offsets and splits during data preprocessing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lassl/collators.py:141=566ab747068ad25c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lassl/utils.py:148=09a9152ce3b53938"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/lassl/collators.py:83=566ab747068ad25c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
