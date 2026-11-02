@@ -1,0 +1,1477 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:e1e23bcb-9083-4a93-a677-c255087e2c7a",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T04:36:14.568Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "google/hashr",
+      "version": "f4250ffd79dbc80fce760df6dd9820cbd76fd6ea",
+      "bom-ref": "repo:google/hashr@f4250ffd79dbc80fce760df6dd9820cbd76fd6ea",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/google/hashr"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "b32d958b-36f0-44c8-9c1e-5be993190a55"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "15"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "202836"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SSH host key check disabled",
+      "bom-ref": "pqs:collected:ALG-ccf6c378",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/aws/aws.go",
+            "line": 626
+          },
+          {
+            "location": "scripts/aws/hashr_setup.sh",
+            "line": 97
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ccf6c378"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SSH host key verification is disabled in AWS importer, making connections vulnerable to man-in-the-middle attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/aws/aws.go:626=0b8568a9c0ca328e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/aws/hashr_setup.sh:97=4e2f6b958701fb8a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go x/crypto/ssh sessions on default settings (at least golang.org/x/crypto 0.21.0)",
+      "bom-ref": "pqs:collected:PROTO-8c0cf242",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/aws/aws.go",
+            "line": 623
+          },
+          {
+            "location": "importers/aws/aws.go",
+            "line": 629
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-8c0cf242"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Go x/crypto/ssh sessions on default settings in AWS importer use weak key exchange groups that are vulnerable to quantum attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/aws/aws.go:623=4da354eff2a654db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/aws/aws.go:629=2f560d8099ca43db"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/aws/aws.go",
+            "line": 172
+          },
+          {
+            "location": "importers/common/common_test.go",
+            "line": 275
+          },
+          {
+            "location": "importers/deb/deb.go",
+            "line": 195
+          },
+          {
+            "location": "importers/gcp/gcp.go",
+            "line": 125
+          },
+          {
+            "location": "importers/gcp/gcp_test.go",
+            "line": 465
+          },
+          {
+            "location": "importers/iso9660/iso9660.go",
+            "line": 183
+          },
+          {
+            "location": "importers/rpm/rpm.go",
+            "line": 126
+          },
+          {
+            "location": "importers/targz/targz.go",
+            "line": 98
+          },
+          {
+            "location": "importers/wsus/wsus.go",
+            "line": 117
+          },
+          {
+            "location": "importers/zip/zip.go",
+            "line": 169
+          },
+          {
+            "location": "importers/gcp/gcp_test.go",
+            "line": 526
+          },
+          {
+            "location": "importers/wsus/wsus.go",
+            "line": 349
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison of hash values in multiple files (aws, deb, gcp, iso9660, rpm, targz, wsus, zip) using '!=' operator instead of constant-time comparison functions"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "12"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/aws/aws.go:172=bf602eb6aea880d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/common/common_test.go:275=4f5bcd84c61a9781"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/deb/deb.go:195=b358c17b31bb6680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcp/gcp.go:125=18ff99f53317a157"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcp/gcp_test.go:465=8a582a84e2959f46"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/iso9660/iso9660.go:183=b358c17b31bb6680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/rpm/rpm.go:126=b358c17b31bb6680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/targz/targz.go:98=b358c17b31bb6680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/wsus/wsus.go:117=52f23e6d8a7df428"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/zip/zip.go:169=b358c17b31bb6680"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcp/gcp_test.go:526=4f5bcd84c61a9781"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/wsus/wsus.go:349=ff597844408f6206"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DSA",
+      "bom-ref": "pqs:collected:ALG-507434ae",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 246
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-507434ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved ECDSA-P521"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA signature generation using P521 curve in gcr_test.go - this is a classical signature algorithm that would be vulnerable under quantum computing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:246=f5410a653300e81e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.18)",
+      "bom-ref": "pqs:collected:PROTO-9e5cbe1b",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcp/gcp_test.go",
+            "line": 86
+          },
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 275
+          },
+          {
+            "location": "importers/wsus/wsus_test.go",
+            "line": 227
+          },
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 284
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-9e5cbe1b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Go crypto/tls sessions using default settings in gcp_test.go, gcr_test.go, and wsus_test.go - these are default TLS configurations that may use classical key exchange algorithms (ECDHE/DHE) that are vulnerable under Shor's algorithm"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcp/gcp_test.go:86=d0ac3b8c492a4dcf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:275=99335dfe082db37b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/wsus/wsus_test.go:227=d0ac3b8c492a4dcf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:284=39de3f23d9400732"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 246
+          },
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 6
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved ECDSA-P521"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA signature generation using P521 curve in gcr_test.go - this is a classical signature algorithm that would be vulnerable under quantum computing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:246=f5410a653300e81e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:6=6344890ebcdc4402"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 246
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B+"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved ECDSA-P521"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Use of P-521 curve (ECDSA) in gcr_test.go - this is a classical elliptic curve that would be vulnerable under quantum computing"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:246=f5410a653300e81e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/common/common_test.go",
+            "line": 257
+          },
+          {
+            "location": "importers/deb/deb.go",
+            "line": 212
+          },
+          {
+            "location": "importers/deb/deb_test.go",
+            "line": 35
+          },
+          {
+            "location": "importers/iso9660/iso9660.go",
+            "line": 200
+          },
+          {
+            "location": "importers/iso9660/iso9660_test.go",
+            "line": 35
+          },
+          {
+            "location": "importers/rpm/rpm.go",
+            "line": 143
+          },
+          {
+            "location": "importers/rpm/rpm_test.go",
+            "line": 35
+          },
+          {
+            "location": "importers/targz/targz.go",
+            "line": 115
+          },
+          {
+            "location": "importers/targz/targz_test.go",
+            "line": 35
+          },
+          {
+            "location": "importers/wsus/wsus_test.go",
+            "line": 708
+          },
+          {
+            "location": "importers/zip/zip.go",
+            "line": 186
+          },
+          {
+            "location": "importers/zip/zip_test.go",
+            "line": 35
+          },
+          {
+            "location": "importers/common/common_test.go",
+            "line": 267
+          },
+          {
+            "location": "importers/deb/deb.go",
+            "line": 216
+          },
+          {
+            "location": "importers/iso9660/iso9660.go",
+            "line": 204
+          },
+          {
+            "location": "importers/rpm/rpm.go",
+            "line": 147
+          },
+          {
+            "location": "importers/targz/targz.go",
+            "line": 119
+          },
+          {
+            "location": "importers/zip/zip.go",
+            "line": 190
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash functions used in multiple files (common, deb, iso9660, rpm, targz, wsus, zip) - these are classical cryptographic hashes that may need upgrading for quantum safety"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "18"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/common/common_test.go:257=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/deb/deb.go:212=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/deb/deb_test.go:35=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/iso9660/iso9660.go:200=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/iso9660/iso9660_test.go:35=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/rpm/rpm.go:143=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/rpm/rpm_test.go:35=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/targz/targz.go:115=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/targz/targz_test.go:35=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/wsus/wsus_test.go:708=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/zip/zip.go:186=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/zip/zip_test.go:35=a26bd1e486312687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/common/common_test.go:267=d449d3925015a7e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/deb/deb.go:216=17a98b4d54ccd21a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/iso9660/iso9660.go:204=17a98b4d54ccd21a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/rpm/rpm.go:147=17a98b4d54ccd21a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/targz/targz.go:119=17a98b4d54ccd21a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/zip/zip.go:190=17a98b4d54ccd21a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The golang.org/x/crypto library is imported and used in the project for cryptographic operations"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=96da585c6f83652e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Extended Go cryptography functionality from golang.org/x/crypto library is being used for various cryptographic operations"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=96da585c6f83652e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SSH key handling",
+      "bom-ref": "pqs:collected:ALG-36beadc0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/aws/aws.go",
+            "line": 618
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36beadc0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SSH private key parsing and signing used in AWS importer for SSH authentication"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/aws/aws.go:618=61b2ee27ce8a60a5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SSH",
+      "bom-ref": "pqs:collected:ALG-3a58cf79",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-3a58cf79"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SSH functionality via golang.org/x/crypto/ssh package is used in the project"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=96da585c6f83652e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Use of crypto/rand in gcr_test.go - cryptographically secure randomness source used for generating keys/signatures"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:8=a3859508fc6d98bd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "importers/gcr/gcr_test.go",
+            "line": 261
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X.509 certificate handling in gcr_test.go using x509.MarshalECPrivateKey - this involves classical cryptographic operations that may be vulnerable to quantum attacks"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "importers/gcr/gcr_test.go:261=a5028af52e732574"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto/ssh",
+      "bom-ref": "pqs:collected:LIB-a66a5a9f",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a66a5a9f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "golang.org/x/crypto/ssh package is used for SSH functionality in the project"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=96da585c6f83652e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ccf6c378"
+    },
+    {
+      "ref": "pqs:collected:PROTO-8c0cf242"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-507434ae"
+    },
+    {
+      "ref": "pqs:collected:PROTO-9e5cbe1b"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:ALG-36beadc0"
+    },
+    {
+      "ref": "pqs:collected:ALG-3a58cf79"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:LIB-a66a5a9f"
+    }
+  ]
+}
