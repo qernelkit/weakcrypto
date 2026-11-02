@@ -1,0 +1,221 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2f6617ee-eb27-45ab-a485-fcc386775208",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-02T15:59:06.966Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ethack/docker-vpn",
+      "version": "acf6878cffa4af8741ef442ebb8d0938311458a5",
+      "bom-ref": "repo:ethack/docker-vpn@acf6878cffa4af8741ef442ebb8d0938311458a5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ethack/docker-vpn"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "c49bc777-7427-4065-8c76-e8aa142f79b6"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "67891"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SSH host key check disabled",
+      "bom-ref": "pqs:collected:ALG-ccf6c378",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "etc/supervisord.conf",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ccf6c378"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Disabling StrictHostKeyChecking in SSH configuration means the system won't verify the identity of hosts when connecting, making it vulnerable to man-in-the-middle attacks. This is a configuration issue rather than a cryptographic primitive usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "etc/supervisord.conf:23=b054716768fa3591"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-5e08bdf5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "docker-entrypoint.sh",
+            "line": 27
+          },
+          {
+            "location": "docker-entrypoint.sh",
+            "line": 28
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-5e08bdf5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 is used as an SSH host key algorithm in the docker container. While it's a quantum-safe algorithm, the configuration shows it's being actively generated and used for host authentication."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docker-entrypoint.sh:27=4af2616df596c502"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "docker-entrypoint.sh:28=221ea013eeac352e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-ccf6c378"
+    },
+    {
+      "ref": "pqs:collected:ALG-5e08bdf5"
+    }
+  ]
+}
