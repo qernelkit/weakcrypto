@@ -1,0 +1,245 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:4a72197f-c3e2-4d07-9c28-f220d0515952",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-03T12:52:34.819Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "crowdstrike/falcon-helm",
+      "version": "cf5ebe1b259159bd04484533038fc6ed8758fec2",
+      "bom-ref": "repo:crowdstrike/falcon-helm@cf5ebe1b259159bd04484533038fc6ed8758fec2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/CrowdStrike/falcon-helm"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4eb8e098-5cfe-423c-94b0-b183b93db24d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "94416"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "helm-charts/falcon-image-analyzer/ci/cid-values.yaml",
+            "line": 6
+          },
+          {
+            "location": "helm-charts/falcon-platform/ci/cid-values.yaml",
+            "line": 10
+          },
+          {
+            "location": "helm-charts/falcon-self-hosted-registry-assessment/ci/cid-values.yaml",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded CrowdStrike Falcon API credentials found in Helm chart configuration files. These are secrets used for authentication with the CrowdStrike platform."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-image-analyzer/ci/cid-values.yaml:6=c16e80c16e610510"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-platform/ci/cid-values.yaml:10=72dc8727e9d2dcfa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-self-hosted-registry-assessment/ci/cid-values.yaml:25=c16e80c16e610510"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Azure Key Vault",
+      "bom-ref": "pqs:collected:ALG-184451d2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "helm-charts/falcon-image-analyzer/templates/secret-provider-class-azure.yaml",
+            "line": 33
+          },
+          {
+            "location": "helm-charts/falcon-kac/templates/secret-provider-class-azure.yaml",
+            "line": 33
+          },
+          {
+            "location": "helm-charts/falcon-sensor/templates/secret-provider-class-azure.yaml",
+            "line": 33
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-184451d2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "References to Azure Key Vault configuration in Helm chart templates for secret management. These point to external secret storage systems rather than crypto algorithms themselves."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-image-analyzer/templates/secret-provider-class-azure.yaml:33=32fd446c3ab2e9d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-kac/templates/secret-provider-class-azure.yaml:33=32fd446c3ab2e9d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-charts/falcon-sensor/templates/secret-provider-class-azure.yaml:33=32fd446c3ab2e9d3"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-184451d2"
+    }
+  ]
+}
