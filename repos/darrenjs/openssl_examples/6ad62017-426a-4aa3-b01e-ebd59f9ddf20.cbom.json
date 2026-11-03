@@ -1,0 +1,226 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:fb66aad5-e719-487c-ac62-970bda4eea27",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-03T00:05:08.659Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "darrenjs/openssl_examples",
+      "version": "9c09892c5d14662c487eb206457758f2fb22e7b3",
+      "bom-ref": "repo:darrenjs/openssl_examples@9c09892c5d14662c487eb206457758f2fb22e7b3",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/darrenjs/openssl_examples"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6ad62017-426a-4aa3-b01e-ebd59f9ddf20"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "84139"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.0/1.1 pinned",
+      "bom-ref": "pqs:collected:ALG-34ca11ec",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "common.h",
+            "line": 375
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-34ca11ec"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This code explicitly disables SSLv2 and SSLv3 but doesn't set any specific minimum TLS version, leaving it to default behavior which could allow TLS 1.0 or 1.1 to be negotiated. This is a cryptographic weakness as these versions are vulnerable to attacks like POODLE."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "common.h:375=b4c9c9bfa84db3d9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OpenSSL (C) sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-14647db4",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "common.h",
+            "line": 189
+          },
+          {
+            "location": "common.h",
+            "line": 354
+          },
+          {
+            "location": "common.h",
+            "line": 356
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-14647db4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The code uses default SSL/TLS configurations without specifying post-quantum safe cipher suites or key exchange methods. This means it's relying on classical algorithms like RSA and ECDHE which are vulnerable to quantum computing attacks. The default settings may include vulnerable cipher suites that don't provide forward secrecy."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "common.h:189=0ba0e794b89659f4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "common.h:354=344bdfa528ac4908"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "common.h:356=74d8cff1feb587e4"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-34ca11ec"
+    },
+    {
+      "ref": "pqs:collected:PROTO-14647db4"
+    }
+  ]
+}
