@@ -1,0 +1,624 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5822713f-061e-4eee-b7bc-451dd8c396f6",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-03T12:00:29.121Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "rjurado01/rails_jwt_auth",
+      "version": "9726ea4cfe2c27c728a5a1926545cc98d82b025c",
+      "bom-ref": "repo:rjurado01/rails_jwt_auth@9726ea4cfe2c27c728a5a1926545cc98d82b025c",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/rjurado01/rails_jwt_auth"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "24298ae3-3820-480a-bfc3-45855f141acd"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "109116"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT decoded without verifying",
+      "bom-ref": "pqs:collected:ALG-a02cc131",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/rails_jwt_auth/jwt_manager.rb",
+            "line": 20
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a02cc131"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a JWT token decoding vulnerability where the signature is not verified before the token is decoded. This allows attackers to forge tokens and gain unauthorized access. The application uses the RailsJwtAuth gem which implements JWT authentication without proper signature verification."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/rails_jwt_auth/jwt_manager.rb:20=d62182c434d84939"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:ALG-2384a3f4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2384a3f4"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt is used for password hashing in this Rails application. It's a well-established and secure password hashing algorithm, but it's not quantum-vulnerable since it's based on key derivation rather than public-key cryptography."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "static IV/nonce",
+      "bom-ref": "pqs:collected:ALG-28948e91",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "spec/dummy/app/views/layouts/mailer.html.erb",
+            "line": 4
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-28948e91"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The static IV/nonce issue appears in the email layout template where a hardcoded value is used. This is a security misconfiguration that could lead to predictable encryption patterns if encryption were being used, though the actual use of encryption isn't clear from this specific file."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/dummy/app/views/layouts/mailer.html.erb:4=c2b90ec2a708afb9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "app/models/concerns/rails_jwt_auth/authenticatable.rb",
+            "line": 28
+          },
+          {
+            "location": "lib/rails_jwt_auth.rb",
+            "line": 114
+          },
+          {
+            "location": "spec/controllers/unlock_accounts_controller_spec.rb",
+            "line": 14
+          },
+          {
+            "location": "spec/mailers/mailer_spec.rb",
+            "line": 156
+          },
+          {
+            "location": "spec/models/concerns/lockable_spec.rb",
+            "line": 16
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application correctly uses Ruby's SecureRandom library throughout for generating secure tokens, passwords, and other cryptographic material. This is good practice as SecureRandom is a proper CSPRNG implementation that meets security requirements for cryptographic use cases."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "app/models/concerns/rails_jwt_auth/authenticatable.rb:28=0d8478ce6104b828"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/rails_jwt_auth.rb:114=32408c99cbb61151"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/controllers/unlock_accounts_controller_spec.rb:14=1ec46d390a7cbc15"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/mailers/mailer_spec.rb:156=1ec46d390a7cbc15"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "spec/models/concerns/lockable_spec.rb:16=1ec46d390a7cbc15"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing is used for authentication tokens in this Rails application. The application uses HS256 (HMAC with SHA-256) signing which is not quantum-vulnerable, but the JWT library itself is a dependency that could be involved in cryptographic operations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "bcrypt",
+      "bom-ref": "pqs:collected:LIB-02f86fe9",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-02f86fe9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "bcrypt is a cryptographic library used for password hashing in this Rails application. It's a well-established and secure library, but not quantum-vulnerable as it's based on key derivation rather than public-key cryptography."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "jwt",
+      "bom-ref": "pqs:collected:LIB-bb3d47ae",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Gemfile.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-bb3d47ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "jwt is a cryptographic library used for JSON Web Token operations in this Rails application. It's used for authentication tokens with HS256 signing which is not quantum-vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Gemfile.lock:1=d4db71eecc1adeea"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a02cc131"
+    },
+    {
+      "ref": "pqs:collected:ALG-2384a3f4"
+    },
+    {
+      "ref": "pqs:collected:ALG-28948e91"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:LIB-02f86fe9"
+    },
+    {
+      "ref": "pqs:collected:LIB-bb3d47ae"
+    }
+  ]
+}
