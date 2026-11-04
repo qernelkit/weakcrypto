@@ -1,0 +1,1421 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:28e65e02-77bb-453b-b906-0a626494cb9b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-04T17:31:27.013Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "cloud-security-research/sgx-ra-tls",
+      "version": "1e355623593c432d516aa990ad3c3c24418f4e26",
+      "bom-ref": "repo:cloud-security-research/sgx-ra-tls@1e355623593c432d516aa990ad3c3c24418f4e26",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/cloud-security-research/sgx-ra-tls"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "7f8de67d-3fdd-4a0a-b590-bd55e1318bd6"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "15"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "168073"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Makefile",
+            "line": 488
+          },
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 136
+          },
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 140
+          },
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 144
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "RSA key generation for enclave signing keys in the SGX attestation system. This is classical RSA encryption which is vulnerable to Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:488=1d7ff538afc6b4c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:136=4312bd1b5002a771"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:140=6fc0c0c35a712937"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:144=3313b6b138fca431"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "self-signed certificate",
+      "bom-ref": "pqs:collected:ALG-a6cca713",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "apps/secret-provisioning-example/Makefile",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6cca713"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Self-signed certificate generated for secret provisioning service. Uses RSA-3072 key for signing, which is vulnerable to Shor's algorithm and needs migration to ML-DSA."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "apps/secret-provisioning-example/Makefile:24=727c75c70b51afb6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-66b31f9e",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/ecdsa-ratls.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-66b31f9e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/ecdsa-ratls.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 29
+          },
+          {
+            "location": "Makefile",
+            "line": 103
+          },
+          {
+            "location": "tests/00_ecdsa_attester_challenger.py",
+            "line": 37
+          },
+          {
+            "location": "tests/ra-attester.c",
+            "line": 47
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 31
+          },
+          {
+            "location": "Makefile",
+            "line": 104
+          },
+          {
+            "location": "tests/00_ecdsa_attester_challenger.py",
+            "line": 41
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 37
+          },
+          {
+            "location": "Makefile",
+            "line": 109
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 38
+          },
+          {
+            "location": "Makefile",
+            "line": 111
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 39
+          },
+          {
+            "location": "Makefile",
+            "line": 112
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 41
+          },
+          {
+            "location": "Makefile",
+            "line": 136
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 43
+          },
+          {
+            "location": "Makefile",
+            "line": 137
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 45
+          },
+          {
+            "location": "Makefile",
+            "line": 138
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 51
+          },
+          {
+            "location": "Makefile",
+            "line": 160
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 52
+          },
+          {
+            "location": "Makefile",
+            "line": 171
+          },
+          {
+            "location": ".gitlab-ci.yml",
+            "line": 53
+          },
+          {
+            "location": "Makefile",
+            "line": 175
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA signatures used in CI builds for SGX attestation components. This is a classical signature algorithm that will be vulnerable once quantum computers exist."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "62"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:29=2980d8300ba3d8e7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:103=c4975d45390fa342"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/00_ecdsa_attester_challenger.py:37=5425cda2dbfe4f0f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/ra-attester.c:47=2b9c35e812b6d03a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:31=d3645baa7d49eddf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:104=4f5dace2881de893"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/00_ecdsa_attester_challenger.py:41=041154e53355ba24"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:37=b8467704d813ec9b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:109=f7bc49943b083968"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:38=cafe8df1d2e78a55"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:111=9f3512c8f8c21522"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:39=aed83dcaabdfb0a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:112=69ab9a00ba21a3df"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:41=a8a85a779e1047f3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:136=e9b0e1633125a04b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:43=378daad1433cc0f3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:137=e5c11066c577dab5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:45=d3645baa7d49eddf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:138=0425acdd3d08c33c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:51=b8467704d813ec9b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:160=ed8051136371f87b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:52=cafe8df1d2e78a55"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:171=ed8051136371f87b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": ".gitlab-ci.yml:53=aed83dcaabdfb0a0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Makefile:175=9f3512c8f8c21522"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-5173e3b1",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/pckSignChain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "ecdsa-sample-data/tcbSignChain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "ecdsa-sample-data/trustedRootCaCert.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-5173e3b1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/pckSignChain.pem:1=ddddb6cbd348658f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/tcbSignChain.pem:1=ddddb6cbd348658f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/trustedRootCaCert.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-9cdb7197",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/pckcert-rsa3072.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "ecdsa-sample-data/pckcert-rsa3072.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-9cdb7197"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/pckcert-rsa3072.der:1=352b9ca4298d278c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/pckcert-rsa3072.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-0c334876",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/tcbSignChain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-0c334876"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/tcbSignChain.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ecdsa-with-SHA256",
+      "bom-ref": "pqs:collected:CERT-0f04a7a0",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/rootCaCrl.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-0f04a7a0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/rootCaCrl.pem:1=d607d87a5ecff117"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-16f73695",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/pckCert.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-16f73695"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/pckCert.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ecdsa-with-SHA256",
+      "bom-ref": "pqs:collected:CERT-1d6a380c",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/intermediateCaCrl.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-1d6a380c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/intermediateCaCrl.pem:1=d607d87a5ecff117"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-a28cc4f7",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/pckSignChain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-a28cc4f7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/pckSignChain.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-efb37b30",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/ecdsa-ratls.der",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-efb37b30"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/ecdsa-ratls.der:1=de5ee5472ebeb838"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:CERT-fc64f807",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "ecdsa-sample-data/real/trustedRootCaCert.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-fc64f807"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ecdsa-sample-data/real/trustedRootCaCert.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 113
+          },
+          {
+            "location": "openssl-ra-challenger.c",
+            "line": 203
+          },
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 83
+          },
+          {
+            "location": "openssl-ra-challenger.c",
+            "line": 238
+          },
+          {
+            "location": "openssl-ra-attester.c",
+            "line": 114
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hashes used in certificate signing and verification processes. While SHA-256 itself is not directly vulnerable to Shor's algorithm, it's part of the cryptographic infrastructure that needs to be upgraded to SHA-384 or higher for CNSA 2.0 compliance."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:113=ab10f2dc67ede5ee"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-challenger.c:203=2cccfe3617cfdfec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:83=c6c10c6ff929ce8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-challenger.c:238=4a83b0ba856c53a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-ra-attester.c:114=bb3ef3f1f18a457c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "OpenSSL (C) sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-14647db4",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "openssl-client.c",
+            "line": 110
+          },
+          {
+            "location": "openssl-client.c",
+            "line": 114
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-14647db4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "OpenSSL TLS client sessions using default settings, which means classical ECDHE/DHE key exchanges that are vulnerable to quantum attacks. This requires migration to hybrid TLS with ML-KEM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-client.c:110=313ca996cafd83a3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "openssl-client.c:114=9b0332136bb366ab"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-a6cca713"
+    },
+    {
+      "ref": "pqs:collected:CERT-66b31f9e"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:CERT-5173e3b1"
+    },
+    {
+      "ref": "pqs:collected:CERT-9cdb7197"
+    },
+    {
+      "ref": "pqs:collected:CERT-0c334876"
+    },
+    {
+      "ref": "pqs:collected:CERT-0f04a7a0"
+    },
+    {
+      "ref": "pqs:collected:CERT-16f73695"
+    },
+    {
+      "ref": "pqs:collected:CERT-1d6a380c"
+    },
+    {
+      "ref": "pqs:collected:CERT-a28cc4f7"
+    },
+    {
+      "ref": "pqs:collected:CERT-efb37b30"
+    },
+    {
+      "ref": "pqs:collected:CERT-fc64f807"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:PROTO-14647db4"
+    }
+  ]
+}
