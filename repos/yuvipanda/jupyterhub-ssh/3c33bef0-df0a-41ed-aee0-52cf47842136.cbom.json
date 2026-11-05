@@ -1,0 +1,166 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d4bbba97-bbe0-474d-b280-e5dc30a905d2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-05T04:16:51.759Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "yuvipanda/jupyterhub-ssh",
+      "version": "a054eda03fcc609b42c304a02b7a22dcf2b6c62b",
+      "bom-ref": "repo:yuvipanda/jupyterhub-ssh@a054eda03fcc609b42c304a02b7a22dcf2b6c62b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/yuvipanda/jupyterhub-ssh"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "3c33bef0-df0a-41ed-aee0-52cf47842136"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "129170"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:finding:helm-chart/jupyterhub-ssh/templates/_helpers.tpl:100:RSA",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "helm-chart/jupyterhub-ssh/templates/_helpers.tpl",
+            "line": 100
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "weakcrypto:evidence",
+          "value": "helm-chart/jupyterhub-ssh/templates/_helpers.tpl:100=a50c6f7607cf106e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Key reference: hostKey",
+      "bom-ref": "pqs:collected:SEC-d1f048a0",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "jupyterhub-sftp/etc/ssh/sshd_config",
+            "line": 5
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "SEC-d1f048a0"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "none"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SSH host key configuration for the jupyterhub-sftp service. The hostKey directive points to /etc/jupyterhub-sftp/config/hostKey which is where the private SSH key is stored for authenticating the server to clients."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "jupyterhub-sftp/etc/ssh/sshd_config:5=e3b0c44298fc1c14"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:finding:helm-chart/jupyterhub-ssh/templates/_helpers.tpl:100:RSA"
+    },
+    {
+      "ref": "pqs:collected:SEC-d1f048a0"
+    }
+  ]
+}
