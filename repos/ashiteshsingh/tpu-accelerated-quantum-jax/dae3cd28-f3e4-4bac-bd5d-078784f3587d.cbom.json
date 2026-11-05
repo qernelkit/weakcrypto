@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:56de5c30-6926-47e1-8273-16a5c374be4b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-05T23:36:35.960Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ashiteshsingh/tpu-accelerated-quantum-jax",
+      "version": "97f99660d48c9cfa85a956e2e675fad1086a948a",
+      "bom-ref": "repo:ashiteshsingh/tpu-accelerated-quantum-jax@97f99660d48c9cfa85a956e2e675fad1086a948a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/AshiteshSingh/Tpu-Accelerated-Quantum-JAX"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "dae3cd28-f3e4-4bac-bd5d-078784f3587d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "65298"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "supremacy_42_tpu.py",
+            "line": 82
+          },
+          {
+            "location": "supremacy_75_tpu.py",
+            "line": 90
+          },
+          {
+            "location": "tpu/tpu_quantum_scale.py",
+            "line": 640
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used for random number generation in quantum circuit simulations across multiple TPU and GPU quantum computing scripts. The code uses jax.random.PRNGKey() for generating random states and parameters for quantum computations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "supremacy_42_tpu.py:82=a9c232b5430a3e13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "supremacy_75_tpu.py:90=a9c232b5430a3e13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tpu/tpu_quantum_scale.py:640=c811aba67f5dbaeb"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
