@@ -1,0 +1,161 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:05aaf11b-ee81-4150-b4f6-ae66da2492d9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-05T07:26:50.944Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "jameslyons/python_cryptanalysis",
+      "version": "81ad09e519777603c1fd276381849d18246382b4",
+      "bom-ref": "repo:jameslyons/python_cryptanalysis@81ad09e519777603c1fd276381849d18246382b4",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/jameslyons/python_cryptanalysis"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "ce95e5e5-4463-4db1-91b8-93c05a7d70df"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "71718"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "break_fracmorse.py",
+            "line": 37
+          },
+          {
+            "location": "break_simplesub.py",
+            "line": 24
+          },
+          {
+            "location": "break_fracmorse.py",
+            "line": 38
+          },
+          {
+            "location": "break_simplesub.py",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security context - this is a weakness because the random module in Python is not suitable for cryptographic purposes and can be easily predicted. The tools are breaking ciphers using simulated annealing with random swaps, but they're using the insecure random module instead of a proper cryptographic RNG."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "break_fracmorse.py:37=dbdac9edb2dd73b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "break_simplesub.py:24=dbdac9edb2dd73b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "break_fracmorse.py:38=2fdd16e3d01ab085"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "break_simplesub.py:25=2fdd16e3d01ab085"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
