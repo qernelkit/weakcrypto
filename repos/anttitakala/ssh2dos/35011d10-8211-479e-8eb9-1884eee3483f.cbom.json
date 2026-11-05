@@ -1,0 +1,825 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:54fcdda7-28e6-4df2-ac8f-822fba360579",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-05T20:48:14.220Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "anttitakala/ssh2dos",
+      "version": "58fac356f5c597af5a2338286392598239f429b2",
+      "bom-ref": "repo:anttitakala/ssh2dos@58fac356f5c597af5a2338286392598239f429b2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/AnttiTakala/SSH2DOS"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "35011d10-8211-479e-8eb9-1884eee3483f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "137229"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "3DES",
+      "bom-ref": "pqs:collected:ALG-2094eefd",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "sshpubk.c",
+            "line": 668
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2094eefd"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Triple DES cipher used for SSH public key encryption/decryption. This is a classical cryptographic weakness and should be upgraded to AES-256-GCM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:668=2d6b70fbd08d6b15"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "auth.c",
+            "line": 86
+          },
+          {
+            "location": "common.c",
+            "line": 126
+          },
+          {
+            "location": "transprt.c",
+            "line": 265
+          },
+          {
+            "location": "auth.c",
+            "line": 88
+          },
+          {
+            "location": "transprt.c",
+            "line": 273
+          },
+          {
+            "location": "transprt.c",
+            "line": 337
+          },
+          {
+            "location": "transprt.c",
+            "line": 681
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic random number generator being used in security-sensitive contexts such as key generation, session management, and packet handling. Should be replaced with a proper cryptographically secure PRNG."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth.c:86=44e0a6d363701a40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "common.c:126=8d92ec91744da944"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:265=ff86fc0e96eea8ed"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "auth.c:88=1d39306459974df9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:273=d14cf7601e253927"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:337=cc22d90a911722be"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:681=a1a6ef2fe239c3c4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DSA",
+      "bom-ref": "pqs:collected:ALG-507434ae",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "sshdss.c",
+            "line": 106
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 304
+          },
+          {
+            "location": "sshdss.c",
+            "line": 150
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 857
+          },
+          {
+            "location": "sshdss.c",
+            "line": 354
+          },
+          {
+            "location": "sshdss.c",
+            "line": 371
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-507434ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "DSA signatures are used in SSH protocol implementation (sshdss.c, sshpubk.c) for digital signatures. This is a quantum-vulnerable algorithm that should be migrated to ML-DSA-65."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshdss.c:106=66979c9f7559517b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:304=e86e90224b8ee4c0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshdss.c:150=33550183d51c46b3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:857=77aff6348eaa7b6d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshdss.c:354=fe29c7125b07c276"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshdss.c:371=3439f18b3709cd05"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "finite-field DH",
+      "bom-ref": "pqs:collected:ALG-10a9ac5c",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "transprt.c",
+            "line": 341
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-10a9ac5c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Finite-field Diffie-Hellman key exchange used in SSH protocol for key negotiation. This is retroactively breakable by quantum computers and should be replaced with post-quantum hybrid cryptography."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:341=e93ce17dd3bc593c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/sshsha.h",
+            "line": 29
+          },
+          {
+            "location": "negotiat.c",
+            "line": 99
+          },
+          {
+            "location": "sshsh256.c",
+            "line": 103
+          },
+          {
+            "location": "transprt.c",
+            "line": 312
+          },
+          {
+            "location": "sshsh256.c",
+            "line": 191
+          },
+          {
+            "location": "transprt.c",
+            "line": 319
+          },
+          {
+            "location": "sshsh256.c",
+            "line": 229
+          },
+          {
+            "location": "sshsh256.c",
+            "line": 235
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used for cryptographic hashing in SSH protocol implementations (sshsh256.c, negotiat.c, transprt.c) for key exchanges and message authentication. While SHA-256 itself is not quantum-vulnerable, it's part of the overall cryptographic posture that needs to be considered."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/sshsha.h:29=b39438085737685d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "negotiat.c:99=ba7b2a3d127aeafc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshsh256.c:103=a6c3b488d05027fb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:312=3cf4b4e6255c1ad7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshsh256.c:191=3cf4b4e6255c1ad7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:319=3cf4b4e6255c1ad7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshsh256.c:229=1803dac58bce6f6f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshsh256.c:235=4919e809c22b1682"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "sshaes.c",
+            "line": 940
+          },
+          {
+            "location": "transprt.c",
+            "line": 343
+          },
+          {
+            "location": "sshaes.c",
+            "line": 945
+          },
+          {
+            "location": "transprt.c",
+            "line": 344
+          },
+          {
+            "location": "transprt.c",
+            "line": 451
+          },
+          {
+            "location": "transprt.c",
+            "line": 453
+          },
+          {
+            "location": "transprt.c",
+            "line": 47
+          },
+          {
+            "location": "transprt.c",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-128 encryption used in SSH protocol for packet encryption. While not quantum-vulnerable, it falls below current security standards (CNSA 2.0 requires AES-256)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshaes.c:940=f4e90e9bd4b268f2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:343=f428cfb16c156674"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshaes.c:945=55fa133ee2747c26"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:344=f428cfb16c156674"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:451=af03811a1059a4e0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:453=d773219c5c6f3fca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:47=b7c76902e3ba6bcc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "transprt.c:49=079ee85e5fdb203f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "sshaes.c",
+            "line": 976
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 28
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 317
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 387
+          },
+          {
+            "location": "sshpubk.c",
+            "line": 544
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 encryption used in SSH protocol for key verification and packet encryption. This is quantum-safe and meets current security standards."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshaes.c:976=2810e13ad07fc63c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:28=74e3290146c1a954"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:317=e14c34bf8e6cd503"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:387=d39468412bee3970"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "sshpubk.c:544=2552a966ce5166db"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-2094eefd"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-507434ae"
+    },
+    {
+      "ref": "pqs:collected:ALG-10a9ac5c"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    }
+  ]
+}
