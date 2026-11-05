@@ -1,0 +1,134 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:806aee6c-6901-41ed-aaf7-df53f5e8c914",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-05T00:25:54.544Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "wrouesnel/dns-over-https-proxy",
+      "version": "a01c2b9ed88a4aaf1ffcc3a23df892ccfc53e1e8",
+      "bom-ref": "repo:wrouesnel/dns-over-https-proxy@a01c2b9ed88a4aaf1ffcc3a23df892ccfc53e1e8",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/wrouesnel/dns-over-https-proxy"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "8e4aa8b7-1574-4636-a59f-2bf21aa870ab"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "60071"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go version unknown)",
+      "bom-ref": "pqs:collected:PROTO-c78dc6f6",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/dns-over-https-proxy/main.go",
+            "line": 237
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-c78dc6f6"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a DNS-over-HTTPS proxy server that acts as a middleman between DNS clients and Google's DNS-over-HTTPS service. It uses http.DefaultClient for HTTPS requests, which means it inherits default TLS configuration that likely includes classical key exchange methods (ECDHE/RSA) vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/dns-over-https-proxy/main.go:237=d276e6d7f021a965"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:PROTO-c78dc6f6"
+    }
+  ]
+}
