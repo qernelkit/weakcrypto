@@ -1,0 +1,329 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9ca6d381-9f71-4cdb-9d22-c89cf14ff51c",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-06T00:06:46.766Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "cornflourblue/dotnet-5-jwt-refresh-tokens-api",
+      "version": "bde03d1a83582c720fbb29ca8530bf06789393ca",
+      "bom-ref": "repo:cornflourblue/dotnet-5-jwt-refresh-tokens-api@bde03d1a83582c720fbb29ca8530bf06789393ca",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/cornflourblue/dotnet-5-jwt-refresh-tokens-api"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "a1ee77b4-7822-4def-acd9-2269299935a8"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "62412"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Authorization/JwtUtils.cs",
+            "line": 47
+          },
+          {
+            "location": "Services/UserService.cs",
+            "line": 124
+          },
+          {
+            "location": "Services/UserService.cs",
+            "line": 152
+          },
+          {
+            "location": "Services/UserService.cs",
+            "line": 64
+          },
+          {
+            "location": "Services/UserService.cs",
+            "line": 97
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses == operator for comparing HMAC values in JwtUtils.cs (line 47) and UserService.cs (lines 64, 97, 124, 152). This is a timing side-channel vulnerability that can be exploited to recover the secret."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Authorization/JwtUtils.cs:47=85bcb60cba8bf8a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Services/UserService.cs:124=849a990e08033010"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Services/UserService.cs:152=2b3594be2bdd4ca1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Services/UserService.cs:64=82160d6f0e3b94e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Services/UserService.cs:97=82160d6f0e3b94e5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "HMAC-SHA-256+",
+      "bom-ref": "pqs:collected:ALG-ce74cadc",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Authorization/JwtUtils.cs",
+            "line": 39
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-ce74cadc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses HMAC-SHA-256 for JWT token signing in JwtUtils.cs (line 39). While SHA-256 is quantum-safe, it's recommended to use SHA-384 or higher for better security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Authorization/JwtUtils.cs:39=559d707838460538"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Authorization/JwtUtils.cs",
+            "line": 80
+          },
+          {
+            "location": "Authorization/JwtUtils.cs",
+            "line": 82
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses RNGCryptoServiceProvider for generating refresh tokens in JwtUtils.cs (lines 80-82). This is appropriate cryptographic randomness for token generation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Authorization/JwtUtils.cs:80=822130418e5fbf4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Authorization/JwtUtils.cs:82=c7c3f400dcadd4ce"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-ce74cadc"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
