@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/qernelkit/weakcrypto/schema/labels.schema.json",
-  "title": "The answer key for one repository at one commit",
-  "description": "benchmark/keys/<owner>/<repo>.json: the benchmark's answer key for a repository at one commit. Every site in it was settled by review.",
+  "title": "A benchmark's answer key",
+  "description": "benchmark/keys/<owner>/<name>.json: an answer key the benchmark scores against. Every site is a file and a line. A key is for a repository on GitHub at one commit, or for a corpus kept in this repository: Cryben (arXiv:2608.04857), whose key is written from its ground truth by benchmark/cryben.ts and whose files are in benchmark/cryben/corpus.",
   "type": "object",
   "required": [
     "schema",
@@ -20,7 +20,33 @@
     },
     "commit": {
       "type": "string",
-      "pattern": "^[0-9a-f]{40}$"
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "The commit of the repository on GitHub the key is for; or, for a corpus kept in this repository, the SHA-1 over its files."
+    },
+    "corpus": {
+      "type": "string",
+      "description": "For a key over a corpus kept in this repository: the folder its files are in."
+    },
+    "source": {
+      "type": "object",
+      "description": "The published benchmark the key comes from.",
+      "required": [
+        "name",
+        "paper",
+        "url"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "paper": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
     },
     "updatedAt": {
       "type": "string",
@@ -55,7 +81,7 @@
           },
           "by": {
             "type": "string",
-            "description": "consensus, review:<github login>, judge:<model>, or check (failed verification)."
+            "description": "Where the verdict comes from: the benchmark's own ground truth (cryben), consensus, review:<github login>, judge:<model>, or check (failed verification)."
           },
           "primitive": {
             "type": [
