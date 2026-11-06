@@ -1,0 +1,445 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:91c70ee2-3c7d-40bc-980a-3ca74447196e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-06T15:56:50.831Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "microsoft/terminal",
+      "version": "188822fa51dba7e11b64801483f4909db5fd020a",
+      "bom-ref": "repo:microsoft/terminal@188822fa51dba7e11b64801483f4909db5fd020a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/microsoft/terminal"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0fbf1b4b-b4ad-45c2-a3f5-49b38dc2ec2f"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "189530"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tools/ConvertTo-PseudoLocalization.ps1",
+            "line": 95
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 used for hashing in tools/ConvertTo-PseudoLocalization.ps1 for generating hash values from keys. This is a non-security cryptographic usage but represents a known weakness."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tools/ConvertTo-PseudoLocalization.ps1:95=737a97f312174bfd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cascadia/TerminalApp/AppLogic.cpp",
+            "line": 261
+          },
+          {
+            "location": "src/cascadia/TerminalApp/TerminalPage.cpp",
+            "line": 5395
+          },
+          {
+            "location": "src/cascadia/TerminalSettingsEditor/SettingsCard.cpp",
+            "line": 221
+          },
+          {
+            "location": "src/terminal/parser/ut_parser/OutputEngineTest.cpp",
+            "line": 441
+          },
+          {
+            "location": "src/winconpty/winconpty.cpp",
+            "line": 136
+          },
+          {
+            "location": "src/terminal/parser/ut_parser/OutputEngineTest.cpp",
+            "line": 442
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparison operations in multiple C++ files (AppLogic.cpp, TerminalPage.cpp, SettingsCard.cpp, OutputEngineTest.cpp, winconpty.cpp) that compare MACs or digests using the == operator instead of constant-time comparison functions. This is a known vulnerability pattern."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cascadia/TerminalApp/AppLogic.cpp:261=8e69edc0551b13a6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cascadia/TerminalApp/TerminalPage.cpp:5395=6f6038cf44070ee9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cascadia/TerminalSettingsEditor/SettingsCard.cpp:221=b55ed034ce427a28"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/terminal/parser/ut_parser/OutputEngineTest.cpp:441=624392e54ff34a33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/winconpty/winconpty.cpp:136=3ea9438277b372cc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/terminal/parser/ut_parser/OutputEngineTest.cpp:442=8ee9c8cb713e3166"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/cascadia/TerminalApp/TerminalPaneContent.cpp",
+            "line": 274
+          },
+          {
+            "location": "src/host/ut_host/UtilsTests.cpp",
+            "line": 56
+          },
+          {
+            "location": "src/host/ut_host/ViewportTests.cpp",
+            "line": 530
+          },
+          {
+            "location": "src/tools/TerminalStress/Program.cs",
+            "line": 11
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness being used in security contexts in multiple C++ files (TerminalPaneContent.cpp, UtilsTests.cpp, ViewportTests.cpp, TerminalStress/Program.cs). This is a known vulnerability where insecure random number generators are used for cryptographic purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/cascadia/TerminalApp/TerminalPaneContent.cpp:274=9cdf4e30dafbc3c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/host/ut_host/UtilsTests.cpp:56=c77f57c028339c22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/host/ut_host/ViewportTests.cpp:530=c77f57c028339c22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/tools/TerminalStress/Program.cs:11=7fb83cf9ab85a8c3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h",
+            "line": 242
+          },
+          {
+            "location": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h",
+            "line": 248
+          },
+          {
+            "location": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h",
+            "line": 254
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness being used appropriately in src/terminal/parser/ft_fuzzer/fuzzing_directed.h for fuzzing purposes. This is legitimate usage of secure random number generation for testing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h:242=b3055eff0a4a77be"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h:248=bd9d0036f846699f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/terminal/parser/ft_fuzzer/fuzzing_directed.h:254=1ff8b35e2ba6f44a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
