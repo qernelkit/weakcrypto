@@ -1,0 +1,161 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9c1e000c-ca95-48e4-ad31-96e2995f5f1e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T02:04:55.088Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ocornut/imgui",
+      "version": "dbb30112c619990c593ab46f1855ac08d8ff1e52",
+      "bom-ref": "repo:ocornut/imgui@dbb30112c619990c593ab46f1855ac08d8ff1e52",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ocornut/imgui"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "94440fc7-0b8e-4c67-b701-41a64f6b652c"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "104338"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "imgui.cpp",
+            "line": 15874
+          },
+          {
+            "location": "misc/fonts/binary_to_compressed_c.cpp",
+            "line": 388
+          },
+          {
+            "location": "imgui.cpp",
+            "line": 15894
+          },
+          {
+            "location": "imgui.cpp",
+            "line": 15904
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a non-constant-time comparison issue found in the Dear ImGui library codebase. The issue occurs in multiple locations where hash values are compared using regular equality operators instead of constant-time comparison functions, which can leak timing information and enable side-channel attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "imgui.cpp:15874=2a65fea42c6d40ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "misc/fonts/binary_to_compressed_c.cpp:388=8d5a42ef4bdc5aa6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "imgui.cpp:15894=8c1b086830b65a2d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "imgui.cpp:15904=8c1b086830b65a2d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
