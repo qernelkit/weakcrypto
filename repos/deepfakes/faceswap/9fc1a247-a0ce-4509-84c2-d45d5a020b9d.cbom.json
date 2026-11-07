@@ -1,0 +1,269 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:da51dc23-c9dd-41d2-baf9-e9b5ef207ee7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T13:47:52.602Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "deepfakes/faceswap",
+      "version": "f530cb7508ae670f6474f8a7d9c4df94705cf96b",
+      "bom-ref": "repo:deepfakes/faceswap@f530cb7508ae670f6474f8a7d9c4df94705cf96b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/deepfakes/faceswap"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "9fc1a247-a0ce-4509-84c2-d45d5a020b9d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "84701"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT verification disabled",
+      "bom-ref": "pqs:collected:ALG-07035178",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/extract.py",
+            "line": 763
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-07035178"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signature verification is disabled during face extraction processing. This appears to be an intentional configuration choice for performance reasons rather than a security vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/extract.py:763=4743bc33e8d4959d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "lib/training/data/augmentation.py",
+            "line": 371
+          },
+          {
+            "location": "lib/training/data/collate.py",
+            "line": 263
+          },
+          {
+            "location": "tests/lib/gui/stats/moving_average_test.py",
+            "line": 72
+          },
+          {
+            "location": "tests/lib/model/layers_test.py",
+            "line": 42
+          },
+          {
+            "location": "tests/lib/model/nn_blocks_test.py",
+            "line": 34
+          },
+          {
+            "location": "tests/lib/training/data_augmentation_test.py",
+            "line": 296
+          },
+          {
+            "location": "tests/utils.py",
+            "line": 19
+          },
+          {
+            "location": "tests/lib/training/data_augmentation_test.py",
+            "line": 299
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in machine learning training data augmentation and testing code. These are not security-sensitive applications but rather standard statistical sampling for ML preprocessing and test validation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/training/data/augmentation.py:371=35db44d80bcf1e03"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/training/data/collate.py:263=92a54c6fc0e5c331"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/lib/gui/stats/moving_average_test.py:72=dd2acfd8154b16d6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/lib/model/layers_test.py:42=275e87a4d3692224"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/lib/model/nn_blocks_test.py:34=275e87a4d3692224"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/lib/training/data_augmentation_test.py:296=4e46a93dd30579ff"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/utils.py:19=468f058e2990cc23"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/lib/training/data_augmentation_test.py:299=1088df852c9e50af"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-07035178"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
