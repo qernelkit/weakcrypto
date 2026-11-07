@@ -1,0 +1,193 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:ea48e9a2-f830-43ce-b74e-26e575b69787",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T02:33:04.853Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "hiyouga/llamafactory",
+      "version": "f6355ab6a426eedb800742ecf61896f7bff95ebb",
+      "bom-ref": "repo:hiyouga/llamafactory@f6355ab6a426eedb800742ecf61896f7bff95ebb",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/hiyouga/LlamaFactory"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "dfaaabf6-e07c-4814-8aa2-37cab34a520e"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "158763"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/llamafactory/data/template.py",
+            "line": 181
+          },
+          {
+            "location": "tests/data/test_mm_plugin.py",
+            "line": 528
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 120
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 121
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 122
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 123
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 124
+          },
+          {
+            "location": "tests/data/test_template.py",
+            "line": 125
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability where string comparisons use == operator which can leak information through timing differences. These are found in token matching operations for LLM processing templates."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/llamafactory/data/template.py:181=101c0f9fb982d7c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_mm_plugin.py:528=c5fb9910d03465f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:120=38e03d9aa0a59140"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:121=979e987ba605973b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:122=7e4cc6fe648cc525"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:123=df1596dcf7a57cb5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:124=a0a8481d33633c9a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/data/test_template.py:125=eb9b0ef84a48710e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
