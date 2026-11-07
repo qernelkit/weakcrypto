@@ -1,0 +1,569 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:7f6db358-bf25-4f7f-943d-c55396c9aac2",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T04:28:38.719Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "fission-ai/openspec",
+      "version": "0fa4a9705c20ef1c571fe3ded74435733e4b73a1",
+      "bom-ref": "repo:fission-ai/openspec@0fa4a9705c20ef1c571fe3ded74435733e4b73a1",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Fission-AI/OpenSpec"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0eb0b9bf-1c39-4a61-826c-939d099855a7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "137716"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/core/file-state.ts",
+            "line": 191
+          },
+          {
+            "location": "src/core/init.ts",
+            "line": 786
+          },
+          {
+            "location": "src/core/file-state.ts",
+            "line": 197
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These comparisons are in file locking operations where tokens are compared for equality. While not directly cryptographic primitives, they represent a security weakness that could be exploited in timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/file-state.ts:191=cd096516d7d792c5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/init.ts:786=9c28a9ce360d30fa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/file-state.ts:197=ac277ee57d47fa28"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/core/file-state.ts",
+            "line": 117
+          },
+          {
+            "location": "src/utils/file-system.ts",
+            "line": 409
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The insecure randomness is used for generating temporary filenames in file system operations. While not directly a cryptographic operation, it's used in a security context where predictability could lead to vulnerabilities."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/file-state.ts:117=1eb2c51fe35fcf4e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/utils/file-system.ts:409=372609e2e192705e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/telemetry/index.ts",
+            "line": 30
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The PostHog API key is used for analytics tracking. While it's a public key that only allows sending events (not reading data), it's still a hardcoded credential that should be managed through configuration rather than being embedded in source code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/telemetry/index.ts:30=e2961a02fd460758"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/binary/install.ps1",
+            "line": 17
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS 1.2 configuration using RSA/ECDHE key exchange which is vulnerable to quantum attacks. This appears in a PowerShell script that configures .NET security protocols for downloading binaries."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/binary/install.ps1:17=559aca97ce8cb403"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "scripts/binary/build.mjs",
+            "line": 79
+          },
+          {
+            "location": "scripts/regen-parity-hashes.mjs",
+            "line": 86
+          },
+          {
+            "location": "src/commands/schema.ts",
+            "line": 349
+          },
+          {
+            "location": "src/core/archive.ts",
+            "line": 400
+          },
+          {
+            "location": "test/binary-installer.test.ts",
+            "line": 48
+          },
+          {
+            "location": "test/core/templates/skill-templates-parity.test.ts",
+            "line": 155
+          },
+          {
+            "location": "src/core/archive.ts",
+            "line": 408
+          },
+          {
+            "location": "src/core/archive.ts",
+            "line": 904
+          },
+          {
+            "location": "src/core/archive.ts",
+            "line": 948
+          },
+          {
+            "location": "src/core/archive.ts",
+            "line": 986
+          },
+          {
+            "location": "src/commands/schema.ts",
+            "line": 365
+          },
+          {
+            "location": "src/commands/schema.ts",
+            "line": 366
+          },
+          {
+            "location": "src/commands/schema.ts",
+            "line": 367
+          },
+          {
+            "location": "src/commands/schema.ts",
+            "line": 377
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used throughout the codebase for generating file hashes, checksums, and validation. While SHA-256 is not quantum-vulnerable, it's a standard cryptographic hash function that's appropriate for its use cases in this application."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "14"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/binary/build.mjs:79=ac09bd3d00da101c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/regen-parity-hashes.mjs:86=b4f68ca54e68022f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/commands/schema.ts:349=ae048b9cd09dc17c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/archive.ts:400=14e880dd6c860569"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/binary-installer.test.ts:48=29e06e4ac4f13572"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/core/templates/skill-templates-parity.test.ts:155=da075455be46416e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/archive.ts:408=ae048b9cd09dc17c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/archive.ts:904=5ff906a059390588"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/archive.ts:948=96cf07605e697f6e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/core/archive.ts:986=96cf07605e697f6e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/commands/schema.ts:365=9e0883dc51644428"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/commands/schema.ts:366=2f506c12d39656b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/commands/schema.ts:367=7d646879300eb011"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/commands/schema.ts:377=63a88472b9e5c0cf"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
