@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9e861715-1772-4f4b-8480-2b6e19865ddf",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-07T14:30:07.728Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "typst/typst",
+      "version": "84cca406aafe7f830ed3f37f1cc6f0c8b6b65a03",
+      "bom-ref": "repo:typst/typst@84cca406aafe7f830ed3f37f1cc6f0c8b6b65a03",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/typst/typst"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "1805f6bd-a2be-4073-bbb3-a1ed82b47684"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "120282"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "crates/typst-layout/src/flow/collect.rs",
+            "line": 704
+          },
+          {
+            "location": "crates/typst-utils/src/hash.rs",
+            "line": 206
+          },
+          {
+            "location": "crates/typst-utils/src/hash.rs",
+            "line": 238
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are actual cryptographic operations in the codebase (hash comparisons) that have a timing side-channel vulnerability. This is a security issue that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crates/typst-layout/src/flow/collect.rs:704=e7f198aa92b0eb6d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crates/typst-utils/src/hash.rs:206=621e15bb4cb2bf1f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "crates/typst-utils/src/hash.rs:238=9a2e114a8ff1039b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
