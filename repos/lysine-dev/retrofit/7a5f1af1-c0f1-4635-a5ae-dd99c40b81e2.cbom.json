@@ -1,0 +1,368 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1160584f-9342-418c-9962-707e5cdf51ed",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-08T06:12:43.402Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lysine-dev/retrofit",
+      "version": "d4fc594fe7a41094a2a60e2cbbcb64216051e28b",
+      "bom-ref": "repo:lysine-dev/retrofit@d4fc594fe7a41094a2a60e2cbbcb64216051e28b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lysine-dev/retrofit"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "7a5f1af1-c0f1-4635-a5ae-dd99c40b81e2"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "4"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "93932"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "retrofit-mock/src/main/java/retrofit2/mock/NetworkBehavior.java",
+            "line": 52
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in retrofit-mock library for network behavior testing, specifically for introducing random delays and variances in mock network responses. This is non-cryptographic randomness used in a test context that could impact security testing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "retrofit-mock/src/main/java/retrofit2/mock/NetworkBehavior.java:52=48a069902baf5652"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (at least JDK 8)",
+      "bom-ref": "pqs:collected:PROTO-7e89cc84",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "retrofit/java-test/src/test/java/retrofit2/RequestFactoryTest.java",
+            "line": 1691
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-7e89cc84"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in retrofit/java-test/src/test/java/retrofit2/RequestFactoryTest.java for HTTPS client configuration. This represents a default Java SSL/TLS context which would use older, quantum-vulnerable cipher suites and key exchange mechanisms."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "retrofit/java-test/src/test/java/retrofit2/RequestFactoryTest.java:1691=135de0e69bf71d2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Azure Key Vault",
+      "bom-ref": "pqs:collected:ALG-184451d2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/package-lock.json",
+            "line": 6722
+          },
+          {
+            "location": "website/package-lock.json",
+            "line": 6751
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-184451d2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "References Azure Key Vault in package-lock.json, indicating the project uses or depends on services that manage RSA-encrypted keys. This means that any encryption using these keys (particularly RSA-OAEP) would be vulnerable to quantum attacks and needs migration to ML-KEM."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/package-lock.json:6722=9067967d9b011c33"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/package-lock.json:6751=74ae8ef207ed6d6b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PKCS#12 pfx (keystore)",
+      "bom-ref": "pqs:collected:STORE-fed78a9a",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "retrofit/android-test/debug.keystore",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "STORE-fed78a9a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "coverage"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "A debug.keystore file in the android-test directory. This is a cryptographic keystore that would contain private keys and certificates used for signing Android applications. These materials are cryptographic assets that could be vulnerable to quantum attacks if they use RSA or ECDSA."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "retrofit/android-test/debug.keystore:1=426c9cb25a4bf7e6"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:PROTO-7e89cc84"
+    },
+    {
+      "ref": "pqs:collected:ALG-184451d2"
+    },
+    {
+      "ref": "pqs:collected:STORE-fed78a9a"
+    }
+  ]
+}
