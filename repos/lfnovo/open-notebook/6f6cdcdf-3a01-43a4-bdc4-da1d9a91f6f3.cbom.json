@@ -1,0 +1,1063 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:eec12ef7-f942-4783-85f9-b20525d44311",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-08T14:50:13.804Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lfnovo/open-notebook",
+      "version": "a6b572eb9849785dfb7c747190a01b0bb99fedf2",
+      "bom-ref": "repo:lfnovo/open-notebook@a6b572eb9849785dfb7c747190a01b0bb99fedf2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lfnovo/open-notebook"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6f6cdcdf-3a01-43a4-bdc4-da1d9a91f6f3"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "8"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "170807"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2 (low iterations)",
+      "bom-ref": "pqs:collected:ALG-a861135a",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/test_encryption.py",
+            "line": 57
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a861135a"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved PBKDF2"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a PBKDF2 implementation used for deriving encryption keys from passphrases in the credentials service, but with insufficient iteration count for security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:57=51a9bca6824c556c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/test_podcast_anthropic_compatible.py",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hardcoded API key in test configuration - this is a security risk even though it's in a test file."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_podcast_anthropic_compatible.py:24=8c2cbdfa20484544"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "PBKDF2",
+      "bom-ref": "pqs:collected:ALG-4de3b020",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "api/credentials_service.py",
+            "line": 1031
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 108
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 104
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 28
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 112
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 106
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 118
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 112
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 134
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 207
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 135
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 216
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 217
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 271
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 226
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 285
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 270
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 38
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 272
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 51
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 57
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 69
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 97
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-4de3b020"
+        },
+        {
+          "name": "pqs:primitive",
+          "value": "kdf"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "PBKDF2 key derivation function used in the credentials service for encrypting/decrypting sensitive data with SHA-256 and 600_000 iterations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "24"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:1031=dffdc79843d26d7b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:108=07ffc2a40e1404cd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:104=36da89b5bdea3fd7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:28=be7e5e3ef571c1c6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:112=84f92dfada6c649b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:106=fe5a67d35076df60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:118=df3d4d1c82525661"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:112=9d59719dc15c7690"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:134=14a8e9ef52381b40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:207=e9d2e88df778e84b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:135=be2cc6829b3852bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:216=9d59719dc15c7690"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:217=dbb3c7e21b1f67d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:271=5bb0d9a518c976bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:226=ca292e26c32fa2c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:285=e9142fac2117ddbf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:270=dbb3c7e21b1f67d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:38=dc3ceaec411f9836"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:272=721426d8232406ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:51=673413a7996aba45"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:57=51a9bca6824c556c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:69=fe5a67d35076df60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:97=4ed5fbe78a75ee1c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:99=7b82a92a9e2c0a89"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 176
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 45
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 192
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 225
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 272
+          },
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 283
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Fernet encryption used for credential management in the application. This is a high-level, quantum-safe symmetric encryption approach using AES-256-GCM internally."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:176=a31a1ec1b3be565b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:45=0e7c798d0d78e9b8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:192=fc9c301537a8f32a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:225=c17042476d956d0c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:272=721426d8232406ab"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:283=ca77a411a3fe6fc9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "open_notebook/utils/encryption.py",
+            "line": 153
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 44
+          },
+          {
+            "location": "tests/test_encryption.py",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 hash function used for legacy key derivation in the encryption utilities to maintain compatibility with pre-PBKDF2 encrypted values."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/encryption.py:153=d318128b764e4368"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:44=d318128b764e4368"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_encryption.py:62=770fa0ad417263fb"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Python ssl sessions on default settings (OpenSSL version unknown)",
+      "bom-ref": "pqs:collected:PROTO-dca6de59",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "api/credentials_service.py",
+            "line": 495
+          },
+          {
+            "location": "open_notebook/ai/connection_tester.py",
+            "line": 120
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 330
+          },
+          {
+            "location": "open_notebook/utils/ssl_config.py",
+            "line": 20
+          },
+          {
+            "location": "open_notebook/utils/version_utils.py",
+            "line": 41
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 529
+          },
+          {
+            "location": "open_notebook/ai/connection_tester.py",
+            "line": 165
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 402
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 561
+          },
+          {
+            "location": "open_notebook/ai/connection_tester.py",
+            "line": 221
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 458
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 586
+          },
+          {
+            "location": "open_notebook/ai/connection_tester.py",
+            "line": 279
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 505
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 616
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 761
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 648
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 828
+          },
+          {
+            "location": "api/credentials_service.py",
+            "line": 718
+          },
+          {
+            "location": "open_notebook/ai/model_discovery.py",
+            "line": 892
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-dca6de59"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Python SSL sessions using default settings through httpx library. These configurations rely on system defaults and do not explicitly configure post-quantum secure cipher suites."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "20"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:495=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/connection_tester.py:120=522a5b10b01076e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:330=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/ssl_config.py:20=f24e3e149dd7ef5a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/utils/version_utils.py:41=1280417dfae3bd30"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:529=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/connection_tester.py:165=522a5b10b01076e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:402=163673345cd1558b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:561=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/connection_tester.py:221=522a5b10b01076e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:458=163673345cd1558b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:586=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/connection_tester.py:279=522a5b10b01076e6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:505=163673345cd1558b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:616=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:761=163673345cd1558b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:648=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:828=163673345cd1558b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "api/credentials_service.py:718=80d4ac338b6c6d99"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "open_notebook/ai/model_discovery.py:892=163673345cd1558b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS",
+      "bom-ref": "pqs:collected:ALG-01b51b8d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pyproject.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-01b51b8d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS configuration referenced through httpx library dependency, with default settings that are not explicitly configured for quantum vulnerabilities."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pyproject.toml:1=9db496674d490e55"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "httpx",
+      "bom-ref": "pqs:collected:LIB-ae665322",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pyproject.toml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ae665322"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "httpx library dependency referenced for HTTP client operations with default SSL handling."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pyproject.toml:1=9db496674d490e55"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a861135a"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:ALG-4de3b020"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:PROTO-dca6de59"
+    },
+    {
+      "ref": "pqs:collected:ALG-01b51b8d"
+    },
+    {
+      "ref": "pqs:collected:LIB-ae665322"
+    }
+  ]
+}
