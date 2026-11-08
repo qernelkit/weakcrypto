@@ -1,0 +1,137 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2c2f16ab-0f9d-4d08-9cca-cedd3156d285",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-08T18:01:18.387Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "naptha/tesseract.js",
+      "version": "a1ca80d9e31c34512d0ded75ff8821ddcf3f2f91",
+      "bom-ref": "repo:naptha/tesseract.js@a1ca80d9e31c34512d0ded75ff8821ddcf3f2f91",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/naptha/tesseract.js"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "2c00210e-dbba-41de-8c6e-d4786869910b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "87655"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/utils/getId.js",
+            "line": 4
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The file src/utils/getId.js uses Math.random() to generate identifiers, which is inappropriate for security contexts as Math.random() is not cryptographically secure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/utils/getId.js:4=dc7470239a889484"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
