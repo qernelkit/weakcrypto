@@ -1,0 +1,594 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:dec64e83-821b-4e36-ae96-70502fcf9939",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-08T07:46:28.708Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "gkd-kit/gkd",
+      "version": "d07357d453cc1125f43b461dd4da3de7f5bf3520",
+      "bom-ref": "repo:gkd-kit/gkd@d07357d453cc1125f43b461dd4da3de7f5bf3520",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/gkd-kit/gkd"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e1358659-24a1-4e73-bc2f-67b1f0d558ea"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "6"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "149193"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "gkd-app/src/commonMain/kotlin/li/gkd/app/matching/MatchCoordinator.kt",
+            "line": 483
+          },
+          {
+            "location": "gkd-app/src/commonMain/kotlin/li/gkd/app/ui/component/GkDialog.kt",
+            "line": 87
+          },
+          {
+            "location": "gkd-selector/src/commonMain/kotlin/li/gkd/selector/property/BuiltinMembers.kt",
+            "line": 314
+          },
+          {
+            "location": "scripts/desktop/lib/device-debug-connection.ts",
+            "line": 44
+          },
+          {
+            "location": "scripts/desktop/lib/device-test-apps.ts",
+            "line": 84
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are timing-related vulnerabilities in Kotlin code where equality checks are used instead of constant-time comparisons for cryptographic values. The code is comparing tokens and generation numbers using regular equality operators, which could allow attackers to infer information through timing differences."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/commonMain/kotlin/li/gkd/app/matching/MatchCoordinator.kt:483=f38a23f012284017"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/commonMain/kotlin/li/gkd/app/ui/component/GkDialog.kt:87=2d5a30212dbf2bad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-selector/src/commonMain/kotlin/li/gkd/selector/property/BuiltinMembers.kt:314=dd74a93824845dce"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/lib/device-debug-connection.ts:44=c67649d0955d3a25"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/lib/device-test-apps.ts:84=a7ccbed22723f5c4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "gkd-app/src/androidMain/kotlin/li/gkd/app/development/AndroidServerDiagnostics.kt",
+            "line": 23
+          },
+          {
+            "location": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/androidMain/kotlin/li/gkd/app/development/AndroidServerDiagnostics.kt:23=78b1bbd5ed1fd7c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt:37=a7270d8a20913086"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt",
+            "line": 26
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt:26=2f44c935d8b67ff4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "buildSrc/src/main/kotlin/li/gkd/gradle/Git.kt",
+            "line": 175
+          },
+          {
+            "location": "buildSrc/src/main/kotlin/li/gkd/gradle/UploadBuildAssetTask.kt",
+            "line": 524
+          },
+          {
+            "location": "scripts/desktop/commands/check-android-query-safety.ts",
+            "line": 36
+          },
+          {
+            "location": "scripts/desktop/lib/device-automation.ts",
+            "line": 95
+          },
+          {
+            "location": "scripts/desktop/lib/device-test-apps.test.ts",
+            "line": 12
+          },
+          {
+            "location": "scripts/desktop/lib/device-test-apps.ts",
+            "line": 10
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is being used in build scripts and desktop automation tools for generating file hashes and validating content. These are legitimate uses of SHA-256 for integrity checking rather than cryptographic key generation or signature verification."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "buildSrc/src/main/kotlin/li/gkd/gradle/Git.kt:175=bdf7389bfeae15d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "buildSrc/src/main/kotlin/li/gkd/gradle/UploadBuildAssetTask.kt:524=bdf7389bfeae15d3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/commands/check-android-query-safety.ts:36=3b6bdd37347c010c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/lib/device-automation.ts:95=a1e4ebe713ec951f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/lib/device-test-apps.test.ts:12=1d37a0b15dd5adb9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/desktop/lib/device-test-apps.ts:10=ed699bafcee74c72"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "gkd-app/src/androidMain/kotlin/li/gkd/app/development/AndroidServerDiagnostics.kt",
+            "line": 23
+          },
+          {
+            "location": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt",
+            "line": 37
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/androidMain/kotlin/li/gkd/app/development/AndroidServerDiagnostics.kt:23=78b1bbd5ed1fd7c1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/commonMain/kotlin/li/gkd/app/external/ExternalCalls.kt:37=a7270d8a20913086"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Java JSSE sessions on default settings (JDK version unknown)",
+      "bom-ref": "pqs:collected:PROTO-62479baa",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "gkd-app/src/jvmTest/kotlin/li/gkd/app/network/inspection/DesktopDebugServiceChecks.kt",
+            "line": 33
+          },
+          {
+            "location": "gkd-app/src/jvmTest/kotlin/li/gkd/app/network/inspection/InspectionServerTest.kt",
+            "line": 166
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-62479baa"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/jvmTest/kotlin/li/gkd/app/network/inspection/DesktopDebugServiceChecks.kt:33=c49e533fc4950a13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "gkd-app/src/jvmTest/kotlin/li/gkd/app/network/inspection/InspectionServerTest.kt:166=c49e533fc4950a13"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:PROTO-62479baa"
+    }
+  ]
+}
