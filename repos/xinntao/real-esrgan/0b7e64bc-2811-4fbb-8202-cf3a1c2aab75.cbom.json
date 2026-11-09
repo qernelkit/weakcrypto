@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5456fd4e-e529-4269-abe6-c34d3ff54818",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-09T00:31:12.033Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "xinntao/real-esrgan",
+      "version": "a4abfb2979a7bbff3f69f58f58ae324608821e27",
+      "bom-ref": "repo:xinntao/real-esrgan@a4abfb2979a7bbff3f69f58f58ae324608821e27",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/xinntao/Real-ESRGAN"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0b7e64bc-2811-4fbb-8202-cf3a1c2aab75"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "37112"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "realesrgan/data/realesrgan_dataset.py",
+            "line": 124
+          },
+          {
+            "location": "realesrgan/data/realesrgan_dataset.py",
+            "line": 125
+          },
+          {
+            "location": "realesrgan/data/realesrgan_dataset.py",
+            "line": 99
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in image dataset processing for Real-ESRGAN model. The random module is imported and used for augmentations and coordinate selection in image processing, but this is not cryptographic usage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "realesrgan/data/realesrgan_dataset.py:124=1ebefbefe38e5254"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "realesrgan/data/realesrgan_dataset.py:125=c7a3b49b0803143a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "realesrgan/data/realesrgan_dataset.py:99=266d4cf03bb6bc12"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
