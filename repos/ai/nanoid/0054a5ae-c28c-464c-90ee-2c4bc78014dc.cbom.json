@@ -1,0 +1,253 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:24927843-af0a-49c6-8378-2ed9b823e016",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-10T15:57:33.856Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "ai/nanoid",
+      "version": "055d1700cc67ac843e3efb5235d806b419ec7b2b",
+      "bom-ref": "repo:ai/nanoid@055d1700cc67ac843e3efb5235d806b419ec7b2b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/ai/nanoid"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "0054a5ae-c28c-464c-90ee-2c4bc78014dc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "75965"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "non-secure/index.js",
+            "line": 13
+          },
+          {
+            "location": "test/index.test.js",
+            "line": 19
+          },
+          {
+            "location": "non-secure/index.js",
+            "line": 26
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness (Math.random()) used in ID generation functions in non-secure/index.js, which is problematic for security purposes as it's not suitable for cryptographic applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "non-secure/index.js:13=50585d549d39df44"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/index.test.js:19=7f617bd8231e2441"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "non-secure/index.js:26=f351752a7449b623"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "index.browser.js",
+            "line": 33
+          },
+          {
+            "location": "index.js",
+            "line": 47
+          },
+          {
+            "location": "index.browser.js",
+            "line": 57
+          },
+          {
+            "location": "index.js",
+            "line": 71
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Cryptographically secure randomness using crypto.getRandomValues() in both index.js and index.browser.js, which is appropriate for security-sensitive applications."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "index.browser.js:33=b73b2ec72966e40c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "index.js:47=b73b2ec72966e40c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "index.browser.js:57=c4f5dfa8f917632a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "index.js:71=c4f5dfa8f917632a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    }
+  ]
+}
