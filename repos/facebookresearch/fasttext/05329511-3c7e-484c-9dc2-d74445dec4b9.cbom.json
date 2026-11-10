@@ -1,0 +1,261 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:1a967808-aee0-4752-937d-e5dc1841bca7",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-10T19:04:28.049Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "facebookresearch/fasttext",
+      "version": "1142dc4c4ecbc19cc16eee5cdd28472e689267e6",
+      "bom-ref": "repo:facebookresearch/fasttext@1142dc4c4ecbc19cc16eee5cdd28472e689267e6",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/facebookresearch/fastText"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "05329511-3c7e-484c-9dc2-d74445dec4b9"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "122483"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "python/fasttext_module/fasttext/pybind/fasttext_pybind.cc",
+            "line": 81
+          },
+          {
+            "location": "src/dictionary.cc",
+            "line": 330
+          },
+          {
+            "location": "webassembly/fasttext_wasm.cc",
+            "line": 161
+          },
+          {
+            "location": "src/dictionary.cc",
+            "line": 376
+          },
+          {
+            "location": "src/dictionary.cc",
+            "line": 406
+          },
+          {
+            "location": "src/dictionary.cc",
+            "line": 451
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/fasttext_module/fasttext/pybind/fasttext_pybind.cc:81=50f3c0bbfe02a132"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/dictionary.cc:330=c5be498d2f718a38"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "webassembly/fasttext_wasm.cc:161=db828d7afdb4c297"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/dictionary.cc:376=3a844a396f1f639f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/dictionary.cc:406=b407834948e6c7b2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/dictionary.cc:451=b407834948e6c7b2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "python/fasttext_module/fasttext/tests/test_script.py",
+            "line": 71
+          },
+          {
+            "location": "python/fasttext_module/fasttext/tests/test_script.py",
+            "line": 95
+          },
+          {
+            "location": "python/fasttext_module/fasttext/tests/test_script.py",
+            "line": 97
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/fasttext_module/fasttext/tests/test_script.py:71=21d9804b4a4c25a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/fasttext_module/fasttext/tests/test_script.py:95=7b62284b56744f11"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/fasttext_module/fasttext/tests/test_script.py:97=7ea782bfb58d1a70"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
