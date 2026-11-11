@@ -1,0 +1,161 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:15c51d92-03ef-4b24-ae46-3dc56c5bcff0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-11T06:44:25.156Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lucidrains/vit-pytorch",
+      "version": "42298e16ad7915ea6f531049e7909e7ee07bc5fe",
+      "bom-ref": "repo:lucidrains/vit-pytorch@42298e16ad7915ea6f531049e7909e7ee07bc5fe",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/lucidrains/vit-pytorch"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "81575f73-4a29-4feb-ba30-09c758d096fa"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "79758"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "vit_pytorch/dino.py",
+            "line": 64
+          },
+          {
+            "location": "vit_pytorch/es_vit.py",
+            "line": 91
+          },
+          {
+            "location": "vit_pytorch/lejepa.py",
+            "line": 110
+          },
+          {
+            "location": "vit_pytorch/levjepa.py",
+            "line": 87
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic PRNG used in security-sensitive vision transformer code. These are not actual cryptographic assets but represent poor security practices in a security-sensitive application context."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vit_pytorch/dino.py:64=87a1f7486e4e00bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vit_pytorch/es_vit.py:91=87a1f7486e4e00bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vit_pytorch/lejepa.py:110=87a1f7486e4e00bf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vit_pytorch/levjepa.py:87=87a1f7486e4e00bf"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
