@@ -69,6 +69,8 @@ jobs:
           for f in $(grep '/repo\.json$' changed.txt); do
             url=$(jq -r .url "$f")
             git ls-remote --exit-code "$url" HEAD > /dev/null || { echo "::error file=$f::$url is not a public repository"; exit 1; }
-            size=$(curl -fsS -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" "https://api.github.com/repos/$(jq -r .repo "$f")" | jq .size)
+            # Follow the API's redirect for a repository that has moved (google/tink is tink-crypto/tink now):
+            # without -L the body is the redirect notice, `.size` is null, and the comparison fails as "over 2 GB".
+            size=$(curl -fsSL -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" "https://api.github.com/repos/$(jq -r .repo "$f")" | jq '.size // 0')
             [ "${size:-0}" -le 2000000 ] || { echo "::error file=$f::over 2 GB: too big to scan"; exit 1; }
           done
