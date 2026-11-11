@@ -1,0 +1,533 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:2acfdea7-8e56-4e2b-b1de-d232e6050e5c",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-11T02:51:59.074Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "dao-ailab/flash-attention",
+      "version": "69384e9c2edf0f7f77aba513b05a5368e0170641",
+      "bom-ref": "repo:dao-ailab/flash-attention@69384e9c2edf0f7f77aba513b05a5368e0170641",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Dao-AILab/flash-attention"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "92a0b67a-911e-42ec-a34a-d73fb68b4d5a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "3"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "156888"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "flash_attn/cute/pipeline.py",
+            "line": 329
+          },
+          {
+            "location": "flash_attn/cute/seqlen_info.py",
+            "line": 79
+          },
+          {
+            "location": "flash_attn/utils/generation.py",
+            "line": 181
+          },
+          {
+            "location": "hopper/mainloop_bwd_sm90_tma_gmma_ws.hpp",
+            "line": 823
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 187
+          },
+          {
+            "location": "flash_attn/cute/pipeline.py",
+            "line": 365
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 188
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/pipeline.py:329=3edaf02978edf281"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/seqlen_info.py:79=e5615a611f025bc7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/utils/generation.py:181=ce8a5cd31c8d4c6c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "hopper/mainloop_bwd_sm90_tma_gmma_ws.hpp:823=c4ee13d9a95a46d2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:187=4eef9948abd10c2a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/pipeline.py:365=3edaf02978edf281"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:188=2e13dc1c39813573"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tests/cute/mask_mod_definitions.py",
+            "line": 401
+          },
+          {
+            "location": "tests/cute/test_flash_attn_combine.py",
+            "line": 212
+          },
+          {
+            "location": "tests/cute/mask_mod_definitions.py",
+            "line": 471
+          },
+          {
+            "location": "tests/cute/test_flash_attn_combine.py",
+            "line": 348
+          },
+          {
+            "location": "tests/cute/mask_mod_definitions.py",
+            "line": 487
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/mask_mod_definitions.py:401=3cc2279abcdff35a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_flash_attn_combine.py:212=e035f90a905ee1d9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/mask_mod_definitions.py:471=89b41f862e5a8039"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_flash_attn_combine.py:348=7d7b935501615bf8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/mask_mod_definitions.py:487=a4ddafd72a12a467"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 288
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 164
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 120
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 64
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 212
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 127
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 132
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 159
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 166
+          },
+          {
+            "location": "tests/cute/test_utils.py",
+            "line": 171
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 66
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 67
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 68
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 73
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 75
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 76
+          },
+          {
+            "location": "flash_attn/cute/cache_utils.py",
+            "line": 78
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 168
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 176
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 177
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 179
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 215
+          },
+          {
+            "location": "flash_attn/cute/utils.py",
+            "line": 217
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "23"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:288=60d344e1b6c06111"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:164=2cfbaf2fba01b97f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:120=9380961525f23363"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:64=6f9ed7e56be18e55"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:212=0ce3a1c3d6e8e735"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:127=765eafd57053ad0b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:132=0fa2da75c3f5f85f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:159=9380961525f23363"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:166=765eafd57053ad0b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/cute/test_utils.py:171=0fa2da75c3f5f85f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:66=0cfe2af87b1a4121"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:67=fd021727f70cb999"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:68=53059ef469af8e40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:73=9085d31dc6e0c147"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:75=44a91051b0608e22"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:76=418a0c48956cc77d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/cache_utils.py:78=2e1a8c5694a49ead"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:168=90856122f68704b7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:176=90fa0c1988687ff5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:177=a1351c556cdac72d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:179=7d5f85e7ce21a05f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:215=4a9efdbae2cb5f83"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "flash_attn/cute/utils.py:217=7d5f85e7ce21a05f"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
