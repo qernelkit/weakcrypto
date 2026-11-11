@@ -1,0 +1,169 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:5febce42-8a88-48c9-9518-2101dde924cc",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-11T09:33:07.477Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "urfave/cli",
+      "version": "d5c06cb04479eeacbbb9378ea26261b6be516320",
+      "bom-ref": "repo:urfave/cli@d5c06cb04479eeacbbb9378ea26261b6be516320",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/urfave/cli"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "dab644c3-0051-4f42-a37a-02f4b3e9388a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "95961"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "command_run.go",
+            "line": 39
+          },
+          {
+            "location": "scripts/build.go",
+            "line": 604
+          },
+          {
+            "location": "command_run.go",
+            "line": 59
+          },
+          {
+            "location": "command_run.go",
+            "line": 61
+          },
+          {
+            "location": "command_run.go",
+            "line": 77
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in command argument parsing. The project appears to be a CLI tool that parses command-line arguments, and these comparisons are used to identify special tokens like \"--\" for ending processing."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "command_run.go:39=e3154228c9940c4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "scripts/build.go:604=c301c06569093127"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "command_run.go:59=0c438b65c5663392"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "command_run.go:61=4efb974a87d0ef38"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "command_run.go:77=0c438b65c5663392"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
