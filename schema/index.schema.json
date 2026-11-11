@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/qernelkit/weakcrypto/schema/index.schema.json",
+  "title": "A published session: index/<id>.json in the weakcrypto bucket",
+  "description": "What weakcrypto.com reads for every session card. The site serves `session` verbatim and does arithmetic on it, and its hotmap indexes a fixed table by `hotspots.blocks[].worst`, so these fields are strict. Everything else may carry more than is listed here.",
+  "type": "object",
+  "required": ["v", "id", "publishedAt", "session", "hunt", "manifest", "metrics", "hotspots", "figures", "goals"],
+  "properties": {
+    "v": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "publishedAt": { "type": "string", "format": "date-time" },
+    "stars": { "type": ["integer", "null"] },
+    "session": {
+      "type": "object",
+      "required": ["id", "spec", "state", "startedAt", "endedAt", "costUsd", "priced", "durationMs"],
+      "properties": {
+        "id": { "type": "string" },
+        "spec": {
+          "type": "object",
+          "required": ["repo", "task", "mode", "scouts", "model"],
+          "properties": {
+            "repo": { "type": "string" },
+            "task": { "type": "string" },
+            "mode": { "type": "string", "enum": ["headless", "scout", "computer"] },
+            "scouts": { "type": "integer", "minimum": 1 },
+            "model": { "type": "string", "minLength": 1 }
+          }
+        },
+        "state": { "type": "string", "enum": ["queued", "starting", "working", "done", "failed", "stopped"] },
+        "lab": { "type": "object", "description": "An object or absent. Never null: the site does not list a session whose lab is null." },
+        "startedAt": { "type": "integer", "minimum": 1600000000000, "description": "Epoch milliseconds. The site subtracts these; a string renders as NaN." },
+        "endedAt": { "type": ["integer", "null"], "minimum": 1600000000000 },
+        "steps": { "type": "integer", "minimum": 0 },
+        "lastNote": { "type": ["string", "null"] },
+        "result": { "type": ["object", "null"], "properties": { "passed": { "type": "boolean" }, "text": { "type": "string" } } },
+        "hunt": { "type": ["string", "null"] },
+        "costUsd": { "type": "number", "minimum": 0, "description": "Required even when unpriced: the card calls .toFixed on it." },
+        "screen": { "type": ["string", "null"] },
+        "durationMs": { "type": "integer", "minimum": 0 },
+        "error": { "type": ["string", "null"] },
+        "infra": { "type": "boolean" },
+        "priced": { "type": "boolean" }
+      }
+    },
+    "hunt": {
+      "type": "object",
+      "required": ["id", "repo", "commit", "label"],
+      "properties": {
+        "id": { "type": "string" },
+        "repo": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^([0-9a-f]{40})?$" },
+        "label": { "type": "string" }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["id", "kind", "status", "summary"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["code", "network"] },
+        "status": { "type": "string" },
+        "summary": { "type": "object", "required": ["assets"], "properties": { "assets": { "type": "integer", "minimum": 0 } } }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["id", "status", "assets"],
+      "properties": {
+        "assets": { "type": "integer", "minimum": 0 },
+        "critical": { "type": "integer", "minimum": 0 },
+        "high": { "type": "integer", "minimum": 0 },
+        "advisory": { "type": "integer", "minimum": 0 },
+        "coveragePct": { "type": ["number", "null"] },
+        "durationMs": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "hotspots": {
+      "type": "object",
+      "required": ["sightings", "blocks"],
+      "properties": {
+        "sightings": { "type": "integer", "minimum": 0 },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "sightings", "worst", "vulnerable"],
+            "properties": {
+              "path": { "type": "string" },
+              "sightings": { "type": "integer", "minimum": 0 },
+              "worst": { "type": "string", "enum": ["F", "E", "D", "C", "B", "A", "?"], "description": "The hotmap's table has exactly these rows. An A+ took the site down on 2026-10-12." },
+              "vulnerable": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "figures": {
+      "type": "object",
+      "required": ["assets"],
+      "properties": {
+        "lines": { "type": "integer", "minimum": 0 },
+        "files": { "type": "integer", "minimum": 0 },
+        "assets": { "type": "integer", "minimum": 0 },
+        "safe": { "type": "integer", "minimum": 0 },
+        "unsafe": { "type": "integer", "minimum": 0 },
+        "other": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "goals": {
+      "type": "array",
+      "items": { "type": "object", "required": ["id", "label", "done"], "properties": { "id": { "type": "string" }, "label": { "type": "string" }, "done": { "type": "boolean" }, "detail": { "type": ["string", "null"] } } }
+    }
+  }
+}
