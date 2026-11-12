@@ -1,0 +1,293 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:50c5f514-d7b9-4585-ae2c-51069f64240e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-12T10:08:35.783Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "huggingface/candle",
+      "version": "cfcbd7186d13271843ce7eb41d25659bd0835850",
+      "bom-ref": "repo:huggingface/candle@cfcbd7186d13271843ce7eb41d25659bd0835850",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/huggingface/candle"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "44f67d75-9f9a-4bcb-af30-ab148a6e5c52"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "114953"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "candle-examples/examples/gemma/main.rs",
+            "line": 160
+          },
+          {
+            "location": "candle-examples/examples/gemma4/main.rs",
+            "line": 123
+          },
+          {
+            "location": "candle-examples/examples/granite/main.rs",
+            "line": 223
+          },
+          {
+            "location": "candle-examples/examples/granitemoehybrid/main.rs",
+            "line": 233
+          },
+          {
+            "location": "candle-examples/examples/lfm2/main.rs",
+            "line": 135
+          },
+          {
+            "location": "candle-examples/examples/llama/main.rs",
+            "line": 274
+          },
+          {
+            "location": "candle-examples/examples/llama_multiprocess/main.rs",
+            "line": 224
+          },
+          {
+            "location": "candle-examples/examples/llava/main.rs",
+            "line": 302
+          },
+          {
+            "location": "candle-examples/examples/mamba-minimal/main.rs",
+            "line": 93
+          },
+          {
+            "location": "candle-examples/examples/mamba/main.rs",
+            "line": 102
+          },
+          {
+            "location": "candle-examples/examples/mamba2/main.rs",
+            "line": 131
+          },
+          {
+            "location": "candle-examples/examples/marian-mt/main.rs",
+            "line": 165
+          },
+          {
+            "location": "candle-examples/examples/metavoice/main.rs",
+            "line": 218
+          },
+          {
+            "location": "candle-examples/examples/mistral/main.rs",
+            "line": 119
+          },
+          {
+            "location": "candle-examples/examples/mixtral/main.rs",
+            "line": 95
+          },
+          {
+            "location": "candle-examples/examples/moondream/main.rs",
+            "line": 126
+          },
+          {
+            "location": "candle-examples/examples/olmo/main.rs",
+            "line": 104
+          },
+          {
+            "location": "candle-examples/examples/orpheus/main.rs",
+            "line": 296
+          },
+          {
+            "location": "candle-examples/examples/paligemma/main.rs",
+            "line": 102
+          },
+          {
+            "location": "candle-examples/examples/phi/main.rs",
+            "line": 116
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:sites_rejected",
+          "value": "5"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing-side-channel vulnerability in cryptographic operations. The code uses '==' comparison instead of constant-time comparison functions, which can leak information about the values being compared through timing differences. This affects 65 locations across multiple example files in the candle-examples directory."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "60"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/gemma/main.rs:160=f7212bde393e07f4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/gemma4/main.rs:123=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/granite/main.rs:223=0e255e626e7e25db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/granitemoehybrid/main.rs:233=e870866dec639eb0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/lfm2/main.rs:135=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/llama/main.rs:274=966c8990075cdc63"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/llama_multiprocess/main.rs:224=f7a3e2070c68f4a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/llava/main.rs:302=7fa1abfaf5704f0e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/mamba-minimal/main.rs:93=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/mamba/main.rs:102=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/mamba2/main.rs:131=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/marian-mt/main.rs:165=f82c69f4f1770e59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/metavoice/main.rs:218=328e74256ef9fd7b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/mistral/main.rs:119=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/mixtral/main.rs:95=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/moondream/main.rs:126=7677af8469ad54f0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/olmo/main.rs:104=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/orpheus/main.rs:296=9339bd7db20904e2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/paligemma/main.rs:102=98886ce525ea7454"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "candle-examples/examples/phi/main.rs:116=98886ce525ea7454"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
