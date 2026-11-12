@@ -1,0 +1,659 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:c02a21fb-225c-43e5-91b4-88eb2d4604b3",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-12T06:54:59.392Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "caldis/mos",
+      "version": "8a2fd112e2af444c37ca5f65f42e9bd19c08a5c2",
+      "bom-ref": "repo:caldis/mos@8a2fd112e2af444c37ca5f65f42e9bd19c08a5c2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Caldis/Mos"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "7fe0285f-fab7-45c9-906b-da563d8217c3"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "146513"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/app/services/wall.ts",
+            "line": 214
+          },
+          {
+            "location": "website/app/wall/wall-client.tsx",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/app/services/wall.ts:214=b0aca4a2019711ac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/app/wall/wall-client.tsx:62=607dfe34b5b6146f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/server/src/features/wall.ts",
+            "line": 119
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In website/server/src/features/wall.ts line 60, the code does row.owner === owner which is a non-constant time comparison. This could potentially leak information about the owner value through timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/features/wall.ts:119=63b19eaeded69335"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Node.js tls sessions on default settings (at least Node.js 20)",
+      "bom-ref": "pqs:collected:PROTO-24b4ce73",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/server/src/lib/turnstile.ts",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-24b4ce73"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In website/server/src/lib/turnstile.ts line 9, the code makes an HTTPS fetch request to Cloudflare's Turnstile service. This uses default TLS settings which are vulnerable to quantum attacks as they use classical key exchange (likely ECDHE)."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/turnstile.ts:9=140fc509700f8481"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Node.js tls sessions on default settings (Node.js 22)",
+      "bom-ref": "pqs:collected:PROTO-35b7c1cc",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/app/page.tsx",
+            "line": 150
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-35b7c1cc"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/app/page.tsx:150=cf36a3ef08367aab"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-36a15216",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 13
+          },
+          {
+            "location": "website/server/src/lib/admin.ts",
+            "line": 25
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 14
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 18
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 19
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 23
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 24
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 28
+          },
+          {
+            "location": "website/server/src/lib/admin.test.ts",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-36a15216"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In website/server/src/lib/admin.ts and website/server/src/lib/admin.test.ts, the code properly implements timingSafeEqual function to prevent timing attacks. This is good cryptographic practice and not a vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:13=cb506057c17c00b8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.ts:25=7a71cb2aad3c1ab3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:14=731a260e5d5e297b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:18=540d2642174fb9a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:19=62a1d66b71ac7e89"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:23=8e2ad07ba5eef461"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:24=09570cd4d48c61a6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:28=821d642684981d42"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/admin.test.ts:29=0408680b6abadd66"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2/BLAKE3",
+      "bom-ref": "pqs:collected:ALG-84de5a3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/server/package-lock.json",
+            "line": 1172
+          },
+          {
+            "location": "website/server/package-lock.json",
+            "line": 1458
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84de5a3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In website/server/package-lock.json lines 1172 and 1458, the code references blake3-wasm dependency. BLAKE2/BLAKE3 are quantum-safe hash functions, so this is not a vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/package-lock.json:1172=850bddb8f80ae036"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/package-lock.json:1458=205680843ce2c024"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "website/server/src/lib/hash.ts",
+            "line": 3
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In website/server/src/lib/hash.ts line 3, the code uses SHA-256 for hashing via Web Crypto API. While SHA-256 is quantum-safe, it's not post-quantum and could be vulnerable to quantum attacks in the future. However, this is a standard usage and not a direct vulnerability."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "website/server/src/lib/hash.ts:3=b5ec949e57407658"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:PROTO-24b4ce73"
+    },
+    {
+      "ref": "pqs:collected:PROTO-35b7c1cc"
+    },
+    {
+      "ref": "pqs:collected:ALG-36a15216"
+    },
+    {
+      "ref": "pqs:collected:ALG-84de5a3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
