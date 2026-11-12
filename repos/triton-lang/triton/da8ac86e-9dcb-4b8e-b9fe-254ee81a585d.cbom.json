@@ -1,0 +1,573 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:b6689680-79b8-4da9-9be3-101dd95362c9",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-12T17:47:15.195Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "triton-lang/triton",
+      "version": "87f2c453dd88f5108140d7567e405f4be981e0a5",
+      "bom-ref": "repo:triton-lang/triton@87f2c453dd88f5108140d7567e405f4be981e0a5",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/triton-lang/triton"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "da8ac86e-9dcb-4b8e-b9fe-254ee81a585d"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "107583"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "include/triton/Analysis/BufferRegion.h",
+            "line": 166
+          },
+          {
+            "location": "lib/Dialect/TritonGPU/Transforms/HoistTMEMAlloc.cpp",
+            "line": 166
+          },
+          {
+            "location": "lib/Dialect/TritonGPU/Transforms/OptimizeAccumulatorInit.cpp",
+            "line": 84
+          },
+          {
+            "location": "python/src/specialize.cc",
+            "line": 201
+          },
+          {
+            "location": "python/test/gsan/test_gsan.py",
+            "line": 87
+          },
+          {
+            "location": "python/test/unit/language/test_tuple.py",
+            "line": 310
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 1008
+          },
+          {
+            "location": "python/test/unit/runtime/test_launch.py",
+            "line": 202
+          },
+          {
+            "location": "python/test/unit/runtime/test_specialize.py",
+            "line": 241
+          },
+          {
+            "location": "python/test/unit/test_knobs.py",
+            "line": 323
+          },
+          {
+            "location": "python/test/unit/tools/test_irsource.py",
+            "line": 52
+          },
+          {
+            "location": "python/triton_kernels/tests/test_specialize.py",
+            "line": 145
+          },
+          {
+            "location": "lib/Dialect/TritonGPU/Transforms/OptimizeAccumulatorInit.cpp",
+            "line": 87
+          },
+          {
+            "location": "python/src/specialize.cc",
+            "line": 351
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 1055
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 1068
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 1392
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 1406
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 400
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 924
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 953
+          },
+          {
+            "location": "python/test/unit/runtime/test_cache.py",
+            "line": 994
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability where cryptographic comparisons are done with == instead of constant-time methods, potentially leaking information about secret values through timing differences."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "22"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "include/triton/Analysis/BufferRegion.h:166=de02d18045918bc7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/Dialect/TritonGPU/Transforms/HoistTMEMAlloc.cpp:166=7cd61c264dd021c8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/Dialect/TritonGPU/Transforms/OptimizeAccumulatorInit.cpp:84=7f02cf63a028873a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/src/specialize.cc:201=dc2e85bc057f789b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/gsan/test_gsan.py:87=9c9e688fad14766b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/language/test_tuple.py:310=5859db79b945bea2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:1008=4b7c17cf2ced9472"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_launch.py:202=deb1341669dfa4ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_specialize.py:241=4f8643022d62adc4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/test_knobs.py:323=bdc55922dd333e4a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/tools/test_irsource.py:52=59676956fdbb012e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton_kernels/tests/test_specialize.py:145=2f728bc343cf0650"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "lib/Dialect/TritonGPU/Transforms/OptimizeAccumulatorInit.cpp:87=773ee5191bb04c88"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/src/specialize.cc:351=dc2e85bc057f789b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:1055=7642ff6e4be4dc48"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:1068=4b7c17cf2ced9472"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:1392=7642ff6e4be4dc48"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:1406=4b7c17cf2ced9472"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:400=5e377948048dd10a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:924=2fb9de2e03bd991e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:953=2fb9de2e03bd991e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_cache.py:994=7642ff6e4be4dc48"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "python/build_helpers.py",
+            "line": 275
+          },
+          {
+            "location": "python/test/unit/plugins/custom_stages.py",
+            "line": 17
+          },
+          {
+            "location": "python/test/unit/runtime/test_build.py",
+            "line": 132
+          },
+          {
+            "location": "python/test/unit/test_stages_inspection.py",
+            "line": 52
+          },
+          {
+            "location": "python/triton/_compile_warmup_pool.py",
+            "line": 400
+          },
+          {
+            "location": "python/triton/compiler/compiler.py",
+            "line": 115
+          },
+          {
+            "location": "python/triton/experimental/gsan/_allocator_common.py",
+            "line": 23
+          },
+          {
+            "location": "python/triton/runtime/autotuner.py",
+            "line": 210
+          },
+          {
+            "location": "python/triton/runtime/build.py",
+            "line": 118
+          },
+          {
+            "location": "python/triton/runtime/cache.py",
+            "line": 281
+          },
+          {
+            "location": "python/triton/runtime/jit.py",
+            "line": 55
+          },
+          {
+            "location": "python/triton/tools/compile.py",
+            "line": 98
+          },
+          {
+            "location": "python/build_helpers.py",
+            "line": 595
+          },
+          {
+            "location": "python/triton/compiler/compiler.py",
+            "line": 250
+          },
+          {
+            "location": "python/triton/runtime/cache.py",
+            "line": 292
+          },
+          {
+            "location": "python/triton/runtime/jit.py",
+            "line": 555
+          },
+          {
+            "location": "python/triton/compiler/compiler.py",
+            "line": 76
+          },
+          {
+            "location": "python/triton/runtime/cache.py",
+            "line": 301
+          },
+          {
+            "location": "python/triton/runtime/cache.py",
+            "line": 304
+          },
+          {
+            "location": "python/triton/runtime/cache.py",
+            "line": 317
+          },
+          {
+            "location": "python/build_helpers.py",
+            "line": 278
+          },
+          {
+            "location": "python/build_helpers.py",
+            "line": 279
+          },
+          {
+            "location": "python/triton/experimental/gsan/_allocator_common.py",
+            "line": 25
+          },
+          {
+            "location": "python/triton/experimental/gsan/_allocator_common.py",
+            "line": 26
+          },
+          {
+            "location": "python/triton/experimental/gsan/_allocator_common.py",
+            "line": 32
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used for hashing operations in various parts of the codebase including build helpers, test files, and compiler components. This is a standard cryptographic primitive but not quantum-safe."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "43"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/build_helpers.py:275=8b81a9a066d2c45a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/plugins/custom_stages.py:17=c94d16b1da645d3f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/runtime/test_build.py:132=ada685a1647a4764"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/test/unit/test_stages_inspection.py:52=c94d16b1da645d3f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/_compile_warmup_pool.py:400=55637aa3fa159137"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/compiler/compiler.py:115=45a817827546512e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/experimental/gsan/_allocator_common.py:23=8b81a9a066d2c45a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/autotuner.py:210=f7ff801c89ef7eb3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/build.py:118=8b81a9a066d2c45a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/cache.py:281=7866efe884b2933e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/jit.py:55=69f3029413e96af0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/tools/compile.py:98=a1df0d68bc2329a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/build_helpers.py:595=021308a309a23e9d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/compiler/compiler.py:250=0e16397c28a6aee7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/cache.py:292=b7d82390dc2aaa76"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/jit.py:555=8089de7d0b9a5a5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/compiler/compiler.py:76=48ef6ad6ea1be033"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/cache.py:301=b7d82390dc2aaa76"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/cache.py:304=ffd22ff16972bad8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/runtime/cache.py:317=b7d82390dc2aaa76"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/build_helpers.py:278=32fff7c23e00c851"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/build_helpers.py:279=0ae852579dc5efba"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/experimental/gsan/_allocator_common.py:25=632c205d6b9ba8ec"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/experimental/gsan/_allocator_common.py:26=cb11e4941fe797c4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "python/triton/experimental/gsan/_allocator_common.py:32=390a22181d75e9c1"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
