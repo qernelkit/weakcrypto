@@ -1,0 +1,841 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:16d28015-abe2-4aff-a1ed-e74a2fb71f3d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-12T03:22:07.210Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "quantconnect/lean",
+      "version": "655ac6d475ad8539ff54583a26327e63b59c5703",
+      "bom-ref": "repo:quantconnect/lean@655ac6d475ad8539ff54583a26327e63b59c5703",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/QuantConnect/Lean"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5d690624-e18c-4d01-aa7d-ac004db69b1b"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "7"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "239757"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:collected:ALG-70109388",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Common/Extensions.cs",
+            "line": 1109
+          },
+          {
+            "location": "Common/Extensions.cs",
+            "line": 2429
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-70109388"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "MD5 is used for hashing data in the application's crypto operations. Both instances are in Common/Extensions.cs file."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Extensions.cs:1109=ef935f01870dc9c3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Extensions.cs:2429=bb8c71645090fdf6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.0/1.1 pinned",
+      "bom-ref": "pqs:collected:ALG-34ca11ec",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Engine/DataFeeds/LiveOptionChainProvider.cs",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-34ca11ec"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application explicitly sets the SecurityProtocol to include TLS 1.1 and TLS 1.2, but this is still vulnerable because it allows older protocols that don't provide forward secrecy."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Engine/DataFeeds/LiveOptionChainProvider.cs:62=0eb786eb1192a290"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Algorithm.CSharp/StressSymbolsAlgorithm.cs",
+            "line": 82
+          },
+          {
+            "location": "Algorithm.CSharp/UpdateOrderLiveTestAlgorithm.cs",
+            "line": 32
+          },
+          {
+            "location": "Engine/DataFeeds/Queues/FakeDataQueue.cs",
+            "line": 37
+          },
+          {
+            "location": "Tests/Common/Data/PeriodCountConsolidatorTests.cs",
+            "line": 137
+          },
+          {
+            "location": "Tests/Common/Statistics/TrackingErrorTests.cs",
+            "line": 113
+          },
+          {
+            "location": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs",
+            "line": 42
+          },
+          {
+            "location": "Tests/Engine/DataCacheProviders/ZipDataCacheProviderTests.cs",
+            "line": 31
+          },
+          {
+            "location": "Tests/Indicators/AccelerationBandsTests.cs",
+            "line": 68
+          },
+          {
+            "location": "Tests/Indicators/AlphaIndicatorTests.cs",
+            "line": 112
+          },
+          {
+            "location": "Tests/Indicators/CommonIndicatorTests.cs",
+            "line": 237
+          },
+          {
+            "location": "Tests/Indicators/LeastSquaresMovingAverageWithReferenceTests.cs",
+            "line": 96
+          },
+          {
+            "location": "Tests/Python/PythonPackagesTests.cs",
+            "line": 1127
+          },
+          {
+            "location": "Tests/ToolBox/RandomDataGenerator/DividendSplitMapGeneratorTests.cs",
+            "line": 50
+          },
+          {
+            "location": "Tests/ToolBox/RandomDataGenerator/RandomDataGeneratorTests.cs",
+            "line": 110
+          },
+          {
+            "location": "ToolBox/RandomDataGenerator/RandomDataGenerator.cs",
+            "line": 57
+          },
+          {
+            "location": "ToolBox/RandomDataGenerator/RandomValueGenerator.cs",
+            "line": 36
+          },
+          {
+            "location": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs",
+            "line": 65
+          },
+          {
+            "location": "Tests/Python/PythonPackagesTests.cs",
+            "line": 1679
+          },
+          {
+            "location": "Tests/ToolBox/RandomDataGenerator/DividendSplitMapGeneratorTests.cs",
+            "line": 68
+          },
+          {
+            "location": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs",
+            "line": 75
+          },
+          {
+            "location": "Tests/Python/PythonPackagesTests.cs",
+            "line": 1777
+          },
+          {
+            "location": "Tests/Python/PythonPackagesTests.cs",
+            "line": 395
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic PRNG is used throughout the codebase including in algorithm implementations and tests. All instances are in files related to algorithm testing and data generation where cryptographic security is required."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "22"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Algorithm.CSharp/StressSymbolsAlgorithm.cs:82=b2ebecd28dba12db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Algorithm.CSharp/UpdateOrderLiveTestAlgorithm.cs:32=9138553b9c88a206"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Engine/DataFeeds/Queues/FakeDataQueue.cs:37=b2ebecd28dba12db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Common/Data/PeriodCountConsolidatorTests.cs:137=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Common/Statistics/TrackingErrorTests.cs:113=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs:42=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Engine/DataCacheProviders/ZipDataCacheProviderTests.cs:31=b2ebecd28dba12db"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Indicators/AccelerationBandsTests.cs:68=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Indicators/AlphaIndicatorTests.cs:112=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Indicators/CommonIndicatorTests.cs:237=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Indicators/LeastSquaresMovingAverageWithReferenceTests.cs:96=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Python/PythonPackagesTests.cs:1127=c8d9a1d489713a11"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/ToolBox/RandomDataGenerator/DividendSplitMapGeneratorTests.cs:50=f8eea9849d3e9e8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/ToolBox/RandomDataGenerator/RandomDataGeneratorTests.cs:110=fca74b65ccf1e9ce"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ToolBox/RandomDataGenerator/RandomDataGenerator.cs:57=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "ToolBox/RandomDataGenerator/RandomValueGenerator.cs:36=fc66506c90fa184d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs:65=e434e828eb6931cf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Python/PythonPackagesTests.cs:1679=0bad08923d9df70d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/ToolBox/RandomDataGenerator/DividendSplitMapGeneratorTests.cs:68=f8eea9849d3e9e8f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Engine/DataCacheProviders/DiskDataCacheProviderTests.cs:75=e8aed7f913636afa"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Python/PythonPackagesTests.cs:1777=19d6180ec2f6b663"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Tests/Python/PythonPackagesTests.cs:395=053f83c3b38fbaa9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Brokerages/WebSocketClientWrapper.cs",
+            "line": 238
+          },
+          {
+            "location": "Common/Extensions.cs",
+            "line": 613
+          },
+          {
+            "location": "Common/Optimizer/Objectives/Constraint.cs",
+            "line": 69
+          },
+          {
+            "location": "Common/Optimizer/Objectives/Target.cs",
+            "line": 80
+          },
+          {
+            "location": "Common/Orders/OrderJsonConverter.cs",
+            "line": 399
+          },
+          {
+            "location": "Configuration/Config.cs",
+            "line": 147
+          },
+          {
+            "location": "Common/Orders/OrderJsonConverter.cs",
+            "line": 406
+          },
+          {
+            "location": "Configuration/Config.cs",
+            "line": 236
+          },
+          {
+            "location": "Common/Orders/OrderJsonConverter.cs",
+            "line": 420
+          },
+          {
+            "location": "Common/Orders/OrderJsonConverter.cs",
+            "line": 463
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-constant-time comparisons are used throughout the codebase for checking tokens and null values, which could lead to timing attacks. These occur in various security-related components including WebSocket clients, order converters, and configuration handling."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "10"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Brokerages/WebSocketClientWrapper.cs:238=c05f19f3639e37b2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Extensions.cs:613=55e5753c4f7b3eb0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Optimizer/Objectives/Constraint.cs:69=85bcb60cba8bf8a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Optimizer/Objectives/Target.cs:80=85bcb60cba8bf8a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Orders/OrderJsonConverter.cs:399=4915ba5767336f74"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Configuration/Config.cs:147=85bcb60cba8bf8a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Orders/OrderJsonConverter.cs:406=992eeb2a2a108a65"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Configuration/Config.cs:236=85bcb60cba8bf8a1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Orders/OrderJsonConverter.cs:420=0a66558cc7718e80"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Orders/OrderJsonConverter.cs:463=24f506c4211b0753"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Engine/DataFeeds/LiveOptionChainProvider.cs",
+            "line": 62
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The application uses TLS 1.2 for secure communications but this protocol does not provide post-quantum security and would be vulnerable to quantum computers with Shor's algorithm."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Engine/DataFeeds/LiveOptionChainProvider.cs:62=0eb786eb1192a290"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-3",
+      "bom-ref": "pqs:collected:ALG-052c24b2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Common/Algorithm/Framework/Portfolio/SignalExports/VBaseSignalExport.cs",
+            "line": 96
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-052c24b2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-3 (Keccak) is used in VBaseSignalExport.cs for hashing collection names. This is a quantum-safe hash function that provides good security properties."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Algorithm/Framework/Portfolio/SignalExports/VBaseSignalExport.cs:96=bdb9a023d96af57c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "Common/Extensions.cs",
+            "line": 1125
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used in Common/Extensions.cs for hashing data. This is a well-established and secure hash function suitable for general cryptographic purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "Common/Extensions.cs:1125=358b873a8740912a"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-70109388"
+    },
+    {
+      "ref": "pqs:collected:ALG-34ca11ec"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-052c24b2"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    }
+  ]
+}
