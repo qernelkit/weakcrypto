@@ -1,0 +1,177 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:9f04dc3b-419f-43b5-8ca2-24586e645000",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-13T20:57:01.535Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "gfx-rs/wgpu",
+      "version": "4696814d430eb05b7ff5606b54c05cb2d6e57e05",
+      "bom-ref": "repo:gfx-rs/wgpu@4696814d430eb05b7ff5606b54c05cb2d6e57e05",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/gfx-rs/wgpu"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d5692ff3-d26b-4798-ab92-8a5460a80727"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "136020"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "naga/src/front/wgsl/parse/mod.rs",
+            "line": 1362
+          },
+          {
+            "location": "wgpu-hal/src/dx12/command.rs",
+            "line": 1325
+          },
+          {
+            "location": "wgpu-hal/src/dx12/command.rs",
+            "line": 1353
+          },
+          {
+            "location": "wgpu-hal/src/dx12/command.rs",
+            "line": 1374
+          },
+          {
+            "location": "wgpu-hal/src/dx12/command.rs",
+            "line": 1407
+          },
+          {
+            "location": "wgpu-hal/src/dx12/command.rs",
+            "line": 1729
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are in the graphics rendering pipeline where signature comparisons occur, potentially leaking information about the data being compared through timing variations."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "naga/src/front/wgsl/parse/mod.rs:1362=0828d19f8749062f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wgpu-hal/src/dx12/command.rs:1325=cf4302952cc0583d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wgpu-hal/src/dx12/command.rs:1353=cf4302952cc0583d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wgpu-hal/src/dx12/command.rs:1374=cf4302952cc0583d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wgpu-hal/src/dx12/command.rs:1407=7e2e42f93973403f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "wgpu-hal/src/dx12/command.rs:1729=7e2e42f93973403f"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
