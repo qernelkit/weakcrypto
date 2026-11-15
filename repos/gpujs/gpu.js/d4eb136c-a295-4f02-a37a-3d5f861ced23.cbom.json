@@ -1,0 +1,501 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:272174fb-e9ec-4bf8-8263-c9c74fdcf32f",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-15T05:53:26.749Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "gpujs/gpu.js",
+      "version": "290711d0f8ff1af95b291489898f73a5c1b85a7a",
+      "bom-ref": "repo:gpujs/gpu.js@290711d0f8ff1af95b291489898f73a5c1b85a7a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/gpujs/gpu.js"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "d4eb136c-a295-4f02-a37a-3d5f861ced23"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "143835"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/gpu-browser-core.js",
+            "line": 13411
+          },
+          {
+            "location": "dist/gpu-browser.js",
+            "line": 11474
+          },
+          {
+            "location": "src/backend/web-assembly/kernel.js",
+            "line": 823
+          },
+          {
+            "location": "src/backend/web-assembly/pipeline-executor.js",
+            "line": 585
+          },
+          {
+            "location": "src/backend/web-gl/function-node.js",
+            "line": 2131
+          },
+          {
+            "location": "src/backend/web-gpu/kernel.js",
+            "line": 845
+          },
+          {
+            "location": "src/plugins/math-random-triangle-noise.js",
+            "line": 31
+          },
+          {
+            "location": "src/plugins/math-random-uniformly-distributed.js",
+            "line": 23
+          },
+          {
+            "location": "test/benchmark.js",
+            "line": 17
+          },
+          {
+            "location": "test/features/async-mode.js",
+            "line": 330
+          },
+          {
+            "location": "test/features/demo.js",
+            "line": 14
+          },
+          {
+            "location": "test/features/math-object.js",
+            "line": 216
+          },
+          {
+            "location": "test/features/pipeline/fused-webgpu.js",
+            "line": 252
+          },
+          {
+            "location": "test/features/pipeline/threaded-webasm.js",
+            "line": 317
+          },
+          {
+            "location": "test/features/pipeline/trace-rules.js",
+            "line": 78
+          },
+          {
+            "location": "test/features/random-seed.js",
+            "line": 8
+          },
+          {
+            "location": "test/features/type-management.js",
+            "line": 566
+          },
+          {
+            "location": "test/features/webasm/random.js",
+            "line": 16
+          },
+          {
+            "location": "test/features/webasm/simd-and-threads.js",
+            "line": 141
+          },
+          {
+            "location": "test/features/webgpu/random.js",
+            "line": 30
+          },
+          {
+            "location": "test/internal/backend/web-gl/function-node/firstAvailableTypeFromAst.js",
+            "line": 244
+          },
+          {
+            "location": "test/internal/backend/web-gl/function-node/getVariableSignature.js",
+            "line": 115
+          },
+          {
+            "location": "test/internal/math.random.js",
+            "line": 28
+          },
+          {
+            "location": "test/internal/matrix-multiply-precision.js",
+            "line": 29
+          },
+          {
+            "location": "test/internal/wgsl-codegen.js",
+            "line": 167
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used for seed generation in security-sensitive parts of the GPU browser core library. This is a vulnerability because the use of Math.random() instead of a proper CSPRNG makes cryptographic operations vulnerable to prediction attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "71"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser-core.js:13411=889200d1e0531312"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser.js:11474=3bc4972c7ca6d37c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/kernel.js:823=4e54478e7a6f5c35"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/pipeline-executor.js:585=b3fcb299c1fcbb12"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-gl/function-node.js:2131=5054e1cd83fe4440"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-gpu/kernel.js:845=4e54478e7a6f5c35"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/plugins/math-random-triangle-noise.js:31=9533a9ea4ce7eddc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/plugins/math-random-uniformly-distributed.js:23=d2180f41c5932ecf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/benchmark.js:17=79de49aff06b08e8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/async-mode.js:330=06b2047e5a606bb5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/demo.js:14=cda819fdb9e5d84a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/math-object.js:216=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/pipeline/fused-webgpu.js:252=fa70cb80f2c0ed8c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/pipeline/threaded-webasm.js:317=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/pipeline/trace-rules.js:78=80e999f8da134d2f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/random-seed.js:8=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/type-management.js:566=5adc5ab3f7429e5f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/webasm/random.js:16=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/webasm/simd-and-threads.js:141=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/features/webgpu/random.js:30=60815534f44d3b06"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/internal/backend/web-gl/function-node/firstAvailableTypeFromAst.js:244=1575cfb489ecc70d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/internal/backend/web-gl/function-node/getVariableSignature.js:115=69d5bbefea01dc86"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/internal/math.random.js:28=f87944a60f1bdf28"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/internal/matrix-multiply-precision.js:29=beb7df3742e0a6ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/internal/wgsl-codegen.js:167=c86b08e14b225ce4"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "dist/gpu-browser-core.js",
+            "line": 15876
+          },
+          {
+            "location": "dist/gpu-browser.js",
+            "line": 20073
+          },
+          {
+            "location": "src/backend/function-node.js",
+            "line": 634
+          },
+          {
+            "location": "src/backend/web-assembly/function-node.js",
+            "line": 1847
+          },
+          {
+            "location": "src/backend/web-assembly/kernel.js",
+            "line": 781
+          },
+          {
+            "location": "dist/gpu-browser-core.js",
+            "line": 17995
+          },
+          {
+            "location": "dist/gpu-browser.js",
+            "line": 22192
+          },
+          {
+            "location": "src/backend/web-assembly/function-node.js",
+            "line": 4195
+          },
+          {
+            "location": "dist/gpu-browser-core.js",
+            "line": 18098
+          },
+          {
+            "location": "dist/gpu-browser.js",
+            "line": 22295
+          },
+          {
+            "location": "src/backend/web-assembly/function-node.js",
+            "line": 4320
+          },
+          {
+            "location": "dist/gpu-browser-core.js",
+            "line": 18949
+          },
+          {
+            "location": "dist/gpu-browser.js",
+            "line": 23146
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Direct equality comparison (===) used for MAC/digest verification in security-sensitive parts of the GPU browser core library. This is a vulnerability because it leaks timing information that can be exploited in side-channel attacks to recover secret values."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "13"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser-core.js:15876=0f72e47e4d176d4b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser.js:20073=0f72e47e4d176d4b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/function-node.js:634=ffb3edd819a817fe"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/function-node.js:1847=7dcd426d0dc7e39b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/kernel.js:781=51dc02b76aab6f3d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser-core.js:17995=0f72e47e4d176d4b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser.js:22192=0f72e47e4d176d4b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/function-node.js:4195=7dcd426d0dc7e39b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser-core.js:18098=fb3536386ac58740"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser.js:22295=fb3536386ac58740"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/backend/web-assembly/function-node.js:4320=874ddd0f2dc0ff65"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser-core.js:18949=51dc02b76aab6f3d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "dist/gpu-browser.js:23146=51dc02b76aab6f3d"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
