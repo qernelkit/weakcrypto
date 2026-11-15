@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:23e7cb91-594e-451e-a728-b681662510bf",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-15T01:38:21.125Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "quickwit-oss/tantivy",
+      "version": "2ad36b4fd0c00ded047b12295423250d8d4d713b",
+      "bom-ref": "repo:quickwit-oss/tantivy@2ad36b4fd0c00ded047b12295423250d8d4d713b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/quickwit-oss/tantivy"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "c55f0b3c-c16d-46c7-a668-73ba7211d765"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "180174"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/aggregation/value_source/jitexpr_value_source/dynamic_term_dictionary.rs",
+            "line": 98
+          },
+          {
+            "location": "stacker/src/shared_arena_hashmap.rs",
+            "line": 277
+          },
+          {
+            "location": "stacker/src/shared_arena_hashmap.rs",
+            "line": 336
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are legitimate crypto usage patterns in the codebase where hash/digest values are being compared with == operator which is not constant-time and can be vulnerable to timing attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/aggregation/value_source/jitexpr_value_source/dynamic_term_dictionary.rs:98=044859752d685d0a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stacker/src/shared_arena_hashmap.rs:277=657e6e501326fb9f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "stacker/src/shared_arena_hashmap.rs:336=a8222cf4a613695c"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
