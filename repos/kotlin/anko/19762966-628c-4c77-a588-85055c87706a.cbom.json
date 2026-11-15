@@ -1,0 +1,145 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:75fdf2b1-a6a1-4bc1-8a0e-c09c62ca36b0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-15T08:02:35.298Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "kotlin/anko",
+      "version": "37893764c0f20208c842a466f0fd0159c1e247e2",
+      "bom-ref": "repo:kotlin/anko@37893764c0f20208c842a466f0fd0159c1e247e2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Kotlin/anko"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "19762966-628c-4c77-a588-85055c87706a"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "81918"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "anko/library/generator/src/org/jetbrains/android/anko/utils/ClassInfo.kt",
+            "line": 44
+          },
+          {
+            "location": "anko/library/generator/src/org/jetbrains/android/anko/utils/MethodInfo.kt",
+            "line": 41
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing vulnerability in the anko library where comparisons are done with == instead of constant-time methods. This could lead to timing attacks but doesn't involve quantum-vulnerable cryptographic algorithms."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "anko/library/generator/src/org/jetbrains/android/anko/utils/ClassInfo.kt:44=08ccf1bf257a35b8"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "anko/library/generator/src/org/jetbrains/android/anko/utils/MethodInfo.kt:41=83237617bd4c6e52"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
