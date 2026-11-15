@@ -1,0 +1,153 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:be8874cc-9230-499a-9ca3-aa576827e44b",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-15T04:55:14.578Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "perfare/assetstudio",
+      "version": "d158e864b556b5970709c2a52e47944d53aa98a2",
+      "bom-ref": "repo:perfare/assetstudio@d158e864b556b5970709c2a52e47944d53aa98a2",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Perfare/AssetStudio"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5fdd8cc3-8954-40d9-aba4-d5b04b737635"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "119459"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "AssetStudio/7zip/Common/CRC.cs",
+            "line": 52
+          },
+          {
+            "location": "AssetStudio/BundleFile.cs",
+            "line": 159
+          },
+          {
+            "location": "AssetStudio/BundleFile.cs",
+            "line": 224
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The project is a Unity asset extraction tool. This is a security flaw where digest comparisons are done with regular equality instead of constant-time comparison, which can lead to timing attacks. This is in two different files of the same project."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "AssetStudio/7zip/Common/CRC.cs:52=6da74f7137449026"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "AssetStudio/BundleFile.cs:159=f58674cf619dcaca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "AssetStudio/BundleFile.cs:224=bbcf995ef30a7bb7"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
