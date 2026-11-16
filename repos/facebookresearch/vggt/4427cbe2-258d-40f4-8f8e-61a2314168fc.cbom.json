@@ -1,0 +1,185 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:68f188fa-a599-488e-8d92-aeb6dcbc0826",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-16T20:42:01.879Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "facebookresearch/vggt",
+      "version": "a288dd0f14786c93483e45524328726ab7b1b4ce",
+      "bom-ref": "repo:facebookresearch/vggt@a288dd0f14786c93483e45524328726ab7b1b4ce",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/facebookresearch/vggt"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "4427cbe2-258d-40f4-8f8e-61a2314168fc"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "116818"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "training/data/composed_dataset.py",
+            "line": 125
+          },
+          {
+            "location": "training/data/datasets/co3d.py",
+            "line": 184
+          },
+          {
+            "location": "training/data/datasets/vkitti.py",
+            "line": 111
+          },
+          {
+            "location": "training/data/dynamic_dataloader.py",
+            "line": 120
+          },
+          {
+            "location": "vggt/dependency/distortion.py",
+            "line": 163
+          },
+          {
+            "location": "training/data/composed_dataset.py",
+            "line": 237
+          },
+          {
+            "location": "vggt/dependency/distortion.py",
+            "line": 164
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in machine learning training data processing. These are not cryptographic assets but represent a potential issue with reproducibility and training stability in ML contexts."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "training/data/composed_dataset.py:125=31dde2a732a47bf1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "training/data/datasets/co3d.py:184=4074cefe072ccc64"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "training/data/datasets/vkitti.py:111=4074cefe072ccc64"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "training/data/dynamic_dataloader.py:120=46b59df7d14d39ad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vggt/dependency/distortion.py:163=934142738c4fcf7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "training/data/composed_dataset.py:237=a54f8672b3134ab9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "vggt/dependency/distortion.py:164=ce945300d2951aec"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
