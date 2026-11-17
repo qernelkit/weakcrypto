@@ -1,0 +1,213 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:024211de-bb72-47b1-839b-d91a6ca19f4d",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T14:46:18.401Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "nexe/nexe",
+      "version": "6220bf052223d5347ae656f0f680f33303b6a874",
+      "bom-ref": "repo:nexe/nexe@6220bf052223d5347ae656f0f680f33303b6a874",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/nexe/nexe"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "805e0a3e-8c8a-4346-983e-34df6d5c51af"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "81700"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "src/options.ts",
+            "line": 264
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS certificate verification is disabled in the download options for HTTPS requests, which allows for man-in-the-middle attacks. The code sets `options.downloadOptions.rejectUnauthorized = process.env.NODE_TLS_REJECT_UNAUTHORIZED ? false : true` where if NODE_TLS_REJECT_UNAUTHORIZED is set to a truthy value, it explicitly disables certificate verification."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/options.ts:264=8b2e81599577b0d6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "tasks/docker.ts",
+            "line": 50
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness is used for generating random filenames when uploading docker build logs. This is inappropriate for security-sensitive contexts where unpredictable values are needed to prevent attacks like filename collision or information leakage."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tasks/docker.ts:50=6d0aaebe668a7b95"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
