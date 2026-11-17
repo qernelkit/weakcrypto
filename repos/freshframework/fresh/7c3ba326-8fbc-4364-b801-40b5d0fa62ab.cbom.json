@@ -1,0 +1,498 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:62e15308-ebd7-474c-831f-a82e3c9118ea",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T09:58:43.195Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "freshframework/fresh",
+      "version": "86d6cdeb331a719cf8b1c85bf5e43c8ffa889b3b",
+      "bom-ref": "repo:freshframework/fresh@86d6cdeb331a719cf8b1c85bf5e43c8ffa889b3b",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/freshframework/fresh"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "7c3ba326-8fbc-4364-b801-40b5d0fa62ab"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "131235"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-1",
+      "bom-ref": "pqs:collected:ALG-725ecd3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "www/utils/ga4.ts",
+            "line": 377
+          },
+          {
+            "location": "www/utils/ga4.ts",
+            "line": 379
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-725ecd3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-1 is used for hashing in the ga4.ts utility for generating message digests. This is a cryptographic weakness as SHA-1 is collision-broken and should not be used for security purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "www/utils/ga4.ts:377=911e6f192f3f716f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "www/utils/ga4.ts:379=e25edefacb4fa460"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/fresh/src/fs_routes_test.tsx",
+            "line": 1334
+          },
+          {
+            "location": "packages/fresh/src/fs_routes_test.tsx",
+            "line": 1374
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Math.random() is used in test files for sorting routes randomly. While this is not production code, it's still using a non-cryptographic random number generator in a context that could be security-sensitive, and should be replaced with a proper cryptographic random generator."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/src/fs_routes_test.tsx:1334=908faaf88419460a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/src/fs_routes_test.tsx:1374=908faaf88419460a"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/fresh/tests/partials_test.tsx",
+            "line": 2225
+          },
+          {
+            "location": "packages/fresh/tests/partials_test.tsx",
+            "line": 2258
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The location.hash === \"#foo\" comparison in test files could be a timing side-channel vulnerability, though it's in a test context. The pattern indicates potential non-constant-time comparison that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/tests/partials_test.tsx:2225=5e864d1f6721d718"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/tests/partials_test.tsx:2258=5e864d1f6721d718"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hardcoded secret",
+      "bom-ref": "pqs:collected:ALG-e6e5d4da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "www/islands/SearchButton.tsx",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-e6e5d4da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "A hardcoded API key is found in the SearchButton.tsx file. This is a security vulnerability as it's exposed in the source code and can be easily discovered by anyone with access to the repository."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "www/islands/SearchButton.tsx:25=ceb8a813b405c06f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Node.js tls sessions on default settings (Node.js version unknown)",
+      "bom-ref": "pqs:collected:PROTO-369810c0",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "packages/fresh/src/handlers.ts",
+            "line": 167
+          },
+          {
+            "location": "packages/init/src/init.ts",
+            "line": 391
+          },
+          {
+            "location": "tools/release.ts",
+            "line": 108
+          },
+          {
+            "location": "packages/fresh/src/handlers.ts",
+            "line": 184
+          },
+          {
+            "location": "packages/init/src/init.ts",
+            "line": 803
+          },
+          {
+            "location": "packages/fresh/src/handlers.ts",
+            "line": 186
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-369810c0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "pending"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/src/handlers.ts:167=7429253dff0269bb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/init/src/init.ts:391=6dc67a2447ac1c2c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tools/release.ts:108=4d16a1a9839b34f7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/src/handlers.ts:184=adf013a7e9ce04a2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/init/src/init.ts:803=9b89d60de0ca84e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "packages/fresh/src/handlers.ts:186=8dce303a2e5b60a8"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-725ecd3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-e6e5d4da"
+    },
+    {
+      "ref": "pqs:collected:PROTO-369810c0"
+    }
+  ]
+}
