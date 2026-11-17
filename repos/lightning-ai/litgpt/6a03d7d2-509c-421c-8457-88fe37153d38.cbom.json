@@ -1,0 +1,269 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:d43c87a1-c296-4660-abfb-7408b095f92e",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T11:46:44.540Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "lightning-ai/litgpt",
+      "version": "5341568a65e918a85cb284fac038de2157eebf3f",
+      "bom-ref": "repo:lightning-ai/litgpt@5341568a65e918a85cb284fac038de2157eebf3f",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/Lightning-AI/litgpt"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "6a03d7d2-509c-421c-8457-88fe37153d38"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "2"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "125639"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "litgpt/generate/base.py",
+            "line": 202
+          },
+          {
+            "location": "litgpt/tokenizer.py",
+            "line": 155
+          },
+          {
+            "location": "tests/test_tokenizer.py",
+            "line": 161
+          },
+          {
+            "location": "litgpt/generate/base.py",
+            "line": 323
+          },
+          {
+            "location": "tests/test_tokenizer.py",
+            "line": 162
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a cryptographic vulnerability related to timing attacks. The project contains code that performs comparisons in a way that could be vulnerable to timing attacks, where an attacker might infer information based on the time taken to perform comparisons."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "litgpt/generate/base.py:202=5cf83d4e5e0957bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "litgpt/tokenizer.py:155=e0883210b8b6ea4a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_tokenizer.py:161=f43bfba4e40ec902"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "litgpt/generate/base.py:323=a7d7af130dbafc66"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_tokenizer.py:162=c87a918435d45f79"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "litgpt/utils.py",
+            "line": 878
+          },
+          {
+            "location": "tests/test_utils.py",
+            "line": 828
+          },
+          {
+            "location": "litgpt/utils.py",
+            "line": 881
+          },
+          {
+            "location": "tests/test_utils.py",
+            "line": 834
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a cryptographic vulnerability related to using insecure random number generators. The project uses Python's standard 'random' module which is not cryptographically secure, in contexts where cryptographically secure randomness is required for security purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "4"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "litgpt/utils.py:878=0d5a3288ebce737a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_utils.py:828=87b09bd991fdb965"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "litgpt/utils.py:881=f1b076a929addac0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "tests/test_utils.py:834=87b09bd991fdb965"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    }
+  ]
+}
