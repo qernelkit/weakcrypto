@@ -69,6 +69,11 @@ jobs:
           for f in $(grep '/repo\.json$' changed.txt); do
             url=$(jq -r .url "$f")
             git ls-remote --exit-code "$url" HEAD > /dev/null || { echo "::error file=$f::$url is not a public repository"; exit 1; }
-            size=$(curl -fsS -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" "https://api.github.com/repos/$(jq -r .repo "$f")" | jq .size)
-            [ "${size:-0}" -le 2000000 ] || { echo "::error file=$f::over 2 GB: too big to scan"; exit 1; }
+            # The size limit keeps what cannot be scanned out of the queue. A repository that arrives with its
+            # CBOM has been scanned already, so the limit has nothing left to say about it.
+            if grep -q "^$(dirname "$f")/.*\.cbom\.json$" changed.txt; then continue; fi
+            # -L: a repository that was renamed or moved answers with a redirect to where it is now.
+            size=$(curl -fsSL -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ github.token }}" "https://api.github.com/repos/$(jq -r .repo "$f")" | jq -r '.size // empty')
+            [ -n "$size" ] || { echo "::error file=$f::GitHub did not give a size for $(jq -r .repo "$f")"; exit 1; }
+            [ "$size" -le 2000000 ] || { echo "::error file=$f::over 2 GB: too big to scan"; exit 1; }
           done
