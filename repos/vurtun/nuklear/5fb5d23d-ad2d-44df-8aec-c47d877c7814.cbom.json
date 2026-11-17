@@ -1,0 +1,193 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:42ff3eca-85ce-40cc-9463-7cf15fd18ad0",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T06:04:42.946Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "vurtun/nuklear",
+      "version": "6b9f937475db9280d966f44f469bc80191b5092a",
+      "bom-ref": "repo:vurtun/nuklear@6b9f937475db9280d966f44f469bc80191b5092a",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/vurtun/nuklear"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "5fb5d23d-ad2d-44df-8aec-c47d877c7814"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "1"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "98593"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "example/stb_image.h",
+            "line": 5935
+          },
+          {
+            "location": "nuklear.h",
+            "line": 23422
+          },
+          {
+            "location": "src/nuklear_edit.c",
+            "line": 701
+          },
+          {
+            "location": "src/nuklear_property.c",
+            "line": 358
+          },
+          {
+            "location": "example/stb_image.h",
+            "line": 6042
+          },
+          {
+            "location": "nuklear.h",
+            "line": 23487
+          },
+          {
+            "location": "src/nuklear_edit.c",
+            "line": 766
+          },
+          {
+            "location": "nuklear.h",
+            "line": 23886
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "This is a timing side-channel vulnerability in the nuklear GUI library where hash/digest comparisons use regular equality operators instead of constant-time comparison functions, potentially leaking information via timing attacks. However, this doesn't represent cryptographic algorithm usage that would be classified as a crypto asset."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "8"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/stb_image.h:5935=7067ab0f05f9dc49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "nuklear.h:23422=6211aa9fe1151585"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/nuklear_edit.c:701=6211aa9fe1151585"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/nuklear_property.c:358=c142000235502a7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "example/stb_image.h:6042=7067ab0f05f9dc49"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "nuklear.h:23487=6211aa9fe1151585"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "src/nuklear_edit.c:766=6211aa9fe1151585"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "nuklear.h:23886=c142000235502a7e"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    }
+  ]
+}
