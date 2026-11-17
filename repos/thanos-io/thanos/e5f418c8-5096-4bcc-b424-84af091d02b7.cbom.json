@@ -1,0 +1,4927 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:bdedc0bb-5887-47ee-9309-f311dd95a801",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T01:36:13.964Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "thanos-io/thanos",
+      "version": "df1f3f3d5e72769dc639cb6006a7972b168672ce",
+      "bom-ref": "repo:thanos-io/thanos@df1f3f3d5e72769dc639cb6006a7972b168672ce",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/thanos-io/thanos"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "e5f418c8-5096-4bcc-b424-84af091d02b7"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "49"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "321947"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA <2048",
+      "bom-ref": "pqs:collected:ALG-6ecb17f9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 317
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 321
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-6ecb17f9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Test files (tls_test.go) generate 1024-bit RSA keys which are vulnerable to Shor's algorithm and should be replaced with at least 2048-bit keys or better with post-quantum algorithms."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:317=4815f2b4f49bae73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:321=600c1645ee6c74ed"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS verification disabled",
+      "bom-ref": "pqs:collected:ALG-a5f0697a",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 258
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 177
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a5f0697a"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In pkg/clientconfig/http_test.go and pkg/tls/options.go, InsecureSkipVerify is set to true, disabling certificate validation and making the system vulnerable to MITM attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:258=b78020ce5bfacdcb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:177=a734071d9b0334a0"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "MD5",
+      "bom-ref": "pqs:collected:ALG-70109388",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 566
+          },
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 572
+          },
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 567
+          },
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 569
+          },
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 570
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-70109388"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Used in pkg/receive/hashring.go for generating random number seeds in a non-security context. This is a weak hash algorithm that is collision vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "5"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:566=ff14b73090b25fd7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:572=e9f566a7d7171399"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:567=b331f7449f2e7513"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:569=0e78215460dfb0e5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:570=fca8dbcac4c92e52"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/thanos/rule.go",
+            "line": 12
+          },
+          {
+            "location": "internal/cortex/chunk/cache/cache_test.go",
+            "line": 9
+          },
+          {
+            "location": "internal/cortex/querier/queryrange/marshaling_test.go",
+            "line": 10
+          },
+          {
+            "location": "internal/cortex/querier/series/series_set_test.go",
+            "line": 7
+          },
+          {
+            "location": "internal/cortex/util/time.go",
+            "line": 8
+          },
+          {
+            "location": "pkg/api/query/v1_test.go",
+            "line": 25
+          },
+          {
+            "location": "pkg/block/fetcher_test.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/block/index.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/block/indexheader/header_test.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/compact/compact_test.go",
+            "line": 12
+          },
+          {
+            "location": "pkg/compact/downsample/downsample.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/dedup/iter_test.go",
+            "line": 10
+          },
+          {
+            "location": "pkg/logging/options.go",
+            "line": 9
+          },
+          {
+            "location": "pkg/query/query_bench_test.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/receive/expandedpostingscache/cache_test.go",
+            "line": 12
+          },
+          {
+            "location": "pkg/receive/handler.go",
+            "line": 14
+          },
+          {
+            "location": "pkg/receive/hashring.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/receive/multitsdb.go",
+            "line": 9
+          },
+          {
+            "location": "pkg/replicate/replicator.go",
+            "line": 8
+          },
+          {
+            "location": "pkg/replicate/scheme_test.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/rules/queryable.go",
+            "line": 8
+          },
+          {
+            "location": "pkg/server/http/middleware/request_id.go",
+            "line": 8
+          },
+          {
+            "location": "pkg/shipper/shipper_e2e_test.go",
+            "line": 11
+          },
+          {
+            "location": "pkg/shipper/shipper_test.go",
+            "line": 9
+          },
+          {
+            "location": "pkg/store/bucket_test.go",
+            "line": 13
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "math/rand is used in 34 different locations across various test and utility files. These are not cryptographic uses but represent poor security practices in a security-sensitive codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "34"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/rule.go:12=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/cortex/chunk/cache/cache_test.go:9=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/cortex/querier/queryrange/marshaling_test.go:10=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/cortex/querier/series/series_set_test.go:7=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/cortex/util/time.go:8=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/api/query/v1_test.go:25=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/fetcher_test.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/index.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/indexheader/header_test.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/compact/compact_test.go:12=16cc1e9b49ab250d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/compact/downsample/downsample.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/dedup/iter_test.go:10=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/logging/options.go:9=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/query/query_bench_test.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/expandedpostingscache/cache_test.go:12=16cc1e9b49ab250d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/handler.go:14=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/hashring.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/multitsdb.go:9=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/replicate/replicator.go:8=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/replicate/scheme_test.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/rules/queryable.go:8=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/server/http/middleware/request_id.go:8=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/shipper/shipper_e2e_test.go:11=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/shipper/shipper_test.go:9=6015cc9b848e6a73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/bucket_test.go:13=6015cc9b848e6a73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "non-constant-time comparison",
+      "bom-ref": "pqs:collected:ALG-99c6681d",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/block/block.go",
+            "line": 63
+          },
+          {
+            "location": "pkg/block/block_test.go",
+            "line": 470
+          },
+          {
+            "location": "pkg/clientconfig/http.go",
+            "line": 269
+          },
+          {
+            "location": "pkg/receive/config.go",
+            "line": 343
+          },
+          {
+            "location": "pkg/store/proxy_merge.go",
+            "line": 157
+          },
+          {
+            "location": "pkg/store/storepb/custom.go",
+            "line": 523
+          },
+          {
+            "location": "pkg/store/storepb/types.pb.go",
+            "line": 394
+          },
+          {
+            "location": "pkg/clientconfig/http.go",
+            "line": 282
+          },
+          {
+            "location": "pkg/store/storepb/types.pb.go",
+            "line": 673
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-99c6681d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "These are timing vulnerabilities in the codebase that can leak information through timing differences. They are actual cryptographic operations that should be addressed."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/block.go:63=60effe3481153b78"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/block_test.go:470=026ce90c56d32401"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http.go:269=b7a8c2a5d024e17a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/config.go:343=98af4ef16df1de40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/proxy_merge.go:157=9a2e114a8ff1039b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/storepb/custom.go:523=4d5beb0690053b53"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/storepb/types.pb.go:394=c7fafb01eee7976f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http.go:282=0aa3f3194987a4c9"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/storepb/types.pb.go:673=c7fafb01eee7976f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:ALG-589856a1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 149
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 170
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 305
+          },
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 174
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 317
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 310
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 321
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 193
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-589856a1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved RSA-ENC-1024"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,dep_scan,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "RSA keys of 2048 bits are generated in test and configuration files, which is acceptable for classical security but still vulnerable to quantum attacks. This is a hybrid approach that needs migration planning."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:149=cea7059a2d7c5347"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:170=84643d77d54e01c2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:305=d039e4a1453e6ba7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:174=cea7059a2d7c5347"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:317=4815f2b4f49bae73"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:310=cea7059a2d7c5347"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:321=600c1645ee6c74ed"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:193=10ff0400b43265f5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "self-signed certificate",
+      "bom-ref": "pqs:collected:ALG-a6cca713",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 67
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 329
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a6cca713"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Self-signed certificates are being generated programmatically for testing purposes. While this is used in tests, it represents a real cryptographic configuration that lacks proper trust infrastructure."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:67=cc02cd4d165b3b7c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:329=42e4f4cdbd3b9a86"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DSA",
+      "bom-ref": "pqs:collected:ALG-507434ae",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-507434ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved ECDSA-P256"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA signatures using P-256 curve are being used in tests. While this is for testing purposes, it represents actual cryptographic usage that is quantum-vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:49=3ec1abc6ac9f4098"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:KEY-796dc2ae",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/testdata/self-signed-client.key",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "KEY-796dc2ae"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/testdata/self-signed-client.key:1=3021d90eb9437b2d"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Go crypto/tls sessions on default settings (Go 1.26.10)",
+      "bom-ref": "pqs:collected:PROTO-06d2a98d",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/remote_write_sender_test.go",
+            "line": 143
+          },
+          {
+            "location": "internal/cortex/chunk/cache/redis_client.go",
+            "line": 68
+          },
+          {
+            "location": "pkg/api/api_test.go",
+            "line": 162
+          },
+          {
+            "location": "pkg/clientconfig/http.go",
+            "line": 306
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 278
+          },
+          {
+            "location": "pkg/exthttp/tlsconfig.go",
+            "line": 29
+          },
+          {
+            "location": "pkg/prober/http_test.go",
+            "line": 131
+          },
+          {
+            "location": "pkg/receive/handler.go",
+            "line": 504
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 167
+          },
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 84
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 126
+          },
+          {
+            "location": "test/e2e/info_api_test.go",
+            "line": 106
+          },
+          {
+            "location": "test/e2e/query_test.go",
+            "line": 178
+          },
+          {
+            "location": "test/e2e/rule_test.go",
+            "line": 207
+          },
+          {
+            "location": "test/e2e/tools_bucket_web_test.go",
+            "line": 234
+          },
+          {
+            "location": "test/e2e/tracing_test.go",
+            "line": 90
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 286
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 47
+          },
+          {
+            "location": "test/e2e/query_test.go",
+            "line": 276
+          },
+          {
+            "location": "test/e2e/rule_test.go",
+            "line": 229
+          },
+          {
+            "location": "test/e2e/rule_test.go",
+            "line": 275
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-06d2a98d"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Multiple locations use default Go TLS configurations without explicit post-quantum considerations. These default settings use classical key exchange mechanisms (ECDHE) that will be vulnerable to quantum computers."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "21"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/remote_write_sender_test.go:143=94478bb46352afcf"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "internal/cortex/chunk/cache/redis_client.go:68=7ec41fed66c10770"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/api/api_test.go:162=562eba498b364285"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http.go:306=2c064cdd5538e09d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:278=f34078db95af89ce"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/exthttp/tlsconfig.go:29=a7c34677d74a9978"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/prober/http_test.go:131=0990860978a8f29e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/handler.go:504=bef631364f43708d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:167=8f974e78f2c8c2e7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:84=edfce26596dd7055"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:126=544dac23ea7b8966"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/info_api_test.go:106=05649867b3f4e3af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/query_test.go:178=5bb75691560608c7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/rule_test.go:207=05649867b3f4e3af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tools_bucket_web_test.go:234=c1cc52d2d24fbd28"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tracing_test.go:90=562eba498b364285"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:286=7b59a29279e9dbc3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:47=8f974e78f2c8c2e7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/query_test.go:276=05649867b3f4e3af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/rule_test.go:229=05649867b3f4e3af"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/rule_test.go:275=05649867b3f4e3af"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-1138d04b",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/thanos/config.go",
+            "line": 65
+          },
+          {
+            "location": "cmd/thanos/receive.go",
+            "line": 997
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 283
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 107
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 224
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 284
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 108
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 112
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 113
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 117
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 118
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 139
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1138d04b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X25519 curve is being explicitly configured for TLS key exchange in multiple places. This represents actual cryptographic usage that is quantum-vulnerable and should be migrated to hybrid groups."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "12"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/config.go:65=ecbf44062f5e8969"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/receive.go:997=badcafc68d374cac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:283=b012e6fa2c665ad1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:107=cb5a4fddb401bf08"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:224=ebbcc37c9ce467a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:284=a808f14d3d4e0a36"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:108=20e5bd6b6848d97c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:112=3700866227369a59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:113=31e713d5385f6f3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:117=4b1dfece01d71184"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:118=65be9e39573d604c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:139=fc9ce75aa50d57c3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "TLS 1.2",
+      "bom-ref": "pqs:collected:ALG-a825c207",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tls/options.go",
+            "line": 311
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 184
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 145
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 146
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 167
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 168
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a825c207"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "TLS 1.2 is used as the minimum version in various TLS configurations, which means classical ECDHE/DHE key exchanges are used that will be vulnerable once quantum computers become capable of breaking them."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "6"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:311=26aef7a4b192251e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:184=3c12b6279f4a8cad"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:145=92c4bf5707ed6e6f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:146=d42b08aca3562ed3"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:167=92c4bf5707ed6e6f"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:168=d42b08aca3562ed3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDH",
+      "bom-ref": "pqs:collected:ALG-c9ffc8a8",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 121
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 147
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 169
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-c9ffc8a8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDH key agreement using ECDHE cipher suites in test configurations. These are classical algorithms that will be vulnerable to quantum attacks and need migration to post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:121=5a45cf70d031f6bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:147=5ddb07a38226bf4e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:169=8795b4286a19da28"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ECDSA",
+      "bom-ref": "pqs:collected:ALG-710f61f0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 49
+          },
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 8
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-710f61f0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ECDSA signatures using P-256 curve are being used in tests, representing actual cryptographic usage that is quantum-vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:49=3ec1abc6ac9f4098"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:8=6344890ebcdc4402"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-256",
+      "bom-ref": "pqs:collected:ALG-92e838c9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tls/options.go",
+            "line": 285
+          },
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-92e838c9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "P-256 curve is being used in TLS configuration for hybrid groups, representing actual cryptographic usage that is quantum-vulnerable and needs migration to post-quantum alternatives."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:285=bd680037bb16ecc2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:49=3ec1abc6ac9f4098"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "mutual TLS",
+      "bom-ref": "pqs:collected:ALG-3473fe18",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 288
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-3473fe18"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Client certificate authentication is configured in pkg/clientconfig/http_test.go with RequireAndVerifyClientCert. While this enhances security, it still relies on classical PKI mechanisms that are vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:288=a1a9c754e819e7d3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-546729b8",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/testdata/tls-ca-chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-546729b8"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/testdata/tls-ca-chain.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-965c0b11",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/testdata/tls-ca-chain.pem",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-965c0b11"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/testdata/tls-ca-chain.pem:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "RSA",
+      "bom-ref": "pqs:collected:CERT-a363897b",
+      "cryptoProperties": {
+        "assetType": "certificate"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/testdata/self-signed-client.crt",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "CERT-a363897b"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "binary_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "not_required"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "content"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/testdata/self-signed-client.crt:1=ddddb6cbd348658f"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "go-tls groups: secp256r1",
+      "bom-ref": "pqs:collected:PROTO-80ac7e1f",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 266
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-80ac7e1f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In test/e2e/tls_test.go, the TLS configuration explicitly sets secp256r1 as the curve for key exchange. This is a classical EC curve that will be vulnerable to quantum attacks and should be migrated to hybrid post-quantum curves."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:266=7b71bd0501bb0656"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "P-384/P-521",
+      "bom-ref": "pqs:collected:ALG-b46aaaf7",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/thanos/config.go",
+            "line": 65
+          },
+          {
+            "location": "cmd/thanos/receive.go",
+            "line": 997
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 281
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 112
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 224
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 282
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 113
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 247
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 286
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 117
+          },
+          {
+            "location": "pkg/tls/options_test.go",
+            "line": 118
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-b46aaaf7"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "NIST P-384 and P-521 curves are being configured for TLS key exchange, representing actual cryptographic usage that is quantum-vulnerable and should be migrated to hybrid groups."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "11"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/config.go:65=ecbf44062f5e8969"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/receive.go:997=badcafc68d374cac"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:281=1205e4a81173cb50"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:112=3700866227369a59"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:224=ebbcc37c9ce467a4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:282=917899ea6753edca"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:113=31e713d5385f6f3e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:247=e9587446ccaaa519"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:286=16751ad10e509d7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:117=4b1dfece01d71184"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options_test.go:118=65be9e39573d604c"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "go-tls groups: secp521r1",
+      "bom-ref": "pqs:collected:PROTO-14536b7f",
+      "cryptoProperties": {
+        "assetType": "protocol"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 247
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "PROTO-14536b7f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "In test/e2e/tls_test.go, the TLS configuration explicitly sets secp521r1 as the curve for key exchange. This is a classical EC curve that will be vulnerable to quantum attacks and should be migrated to hybrid post-quantum curves."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:247=e9587446ccaaa519"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2/BLAKE3",
+      "bom-ref": "pqs:collected:ALG-84de5a3e",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/store/cache/cache.go",
+            "line": 141
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 16
+          },
+          {
+            "location": "pkg/store/cache/cache.go",
+            "line": 151
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 41
+          },
+          {
+            "location": "pkg/store/cache/cache.go",
+            "line": 18
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 50
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 63
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 72
+          },
+          {
+            "location": "pkg/store/cache/cache_test.go",
+            "line": 81
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84de5a3e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "BLAKE2b hashes are being used for caching purposes in the codebase. While not quantum-vulnerable in itself, these represent actual cryptographic usage that should be tracked."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "9"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache.go:141=0f78a67e4a4fd789"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:16=2aa5b4ace9b1f673"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache.go:151=ffc4ebeddb311538"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:41=079ecfd4fba68ee6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache.go:18=2aa5b4ace9b1f673"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:50=079ecfd4fba68ee6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:63=3ac40f04f01e8f14"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:72=7556b2a9367a1f3c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/cache/cache_test.go:81=3ac40f04f01e8f14"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "SHA-256",
+      "bom-ref": "pqs:collected:ALG-695a1eb5",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/block/metadata/hash.go",
+            "line": 51
+          },
+          {
+            "location": "pkg/extkingpin/path_content_reloader.go",
+            "line": 80
+          },
+          {
+            "location": "pkg/receive/config.go",
+            "line": 430
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 428
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 443
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 502
+          },
+          {
+            "location": "pkg/block/metadata/hash.go",
+            "line": 59
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 432
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 495
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 536
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 597
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 600
+          },
+          {
+            "location": "pkg/reloader/reloader.go",
+            "line": 603
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-695a1eb5"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "SHA-256 is used for hashing in various parts of the codebase including metadata and configuration files. While this is quantum-safe, it should be upgraded to SHA-384 or SHA3-384 for better security posture under CNSA 2.0 requirements."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "13"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/metadata/hash.go:51=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/extkingpin/path_content_reloader.go:80=7d5018bf6be8ea5c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/receive/config.go:430=b892c629244afd4d"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:428=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:443=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:502=b0908cd28ef98100"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/metadata/hash.go:59=ccf46ddf51fa5b40"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:432=f2e8ae8f79b770eb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:495=5bc80979bcf0181e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:536=3e2e9d6797e82fe6"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:597=74f624debc8a4f21"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:600=19458245610cc2e4"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/reloader/reloader.go:603=74f624debc8a4f21"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ML-KEM",
+      "bom-ref": "pqs:collected:ALG-990f5513",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kem"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tls/options.go",
+            "line": 284
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 285
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 286
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-990f5513"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ML-KEM post-quantum KEM algorithms are being used in TLS configuration, representing actual post-quantum cryptographic usage that is already properly implemented."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:284=a808f14d3d4e0a36"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:285=bd680037bb16ecc2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:286=16751ad10e509d7e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-GCM",
+      "bom-ref": "pqs:collected:ALG-f61ec50f",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 121
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 147
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f61ec50f"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-GCM cipher suites (TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 and TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) are used in test configurations. While the encryption is strong, the key exchange uses classical ECDHE that is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:121=5a45cf70d031f6bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:147=5ddb07a38226bf4e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES",
+      "bom-ref": "pqs:collected:ALG-0eb2c0da",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0eb2c0da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES appears in pkg/ui/react-app/pnpm-lock.yaml which is a dependency lock file. This shows AES as a transitive dependency but is not actively used in the application code."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-128",
+      "bom-ref": "pqs:collected:ALG-8ac47597",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 121
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-8ac47597"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-128 is referenced in test configuration files but the actual usage pattern shows it's part of ECDHE cipher suites where the vulnerability lies in the key exchange, not encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:121=5a45cf70d031f6bc"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "hybrid PQ key exchange",
+      "bom-ref": "pqs:collected:ALG-84b0b2f9",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kem"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/tls/options.go",
+            "line": 284
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 285
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 286
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-84b0b2f9"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Hybrid post-quantum TLS groups (X25519MLKEM768, SecP256r1MLKEM768, SecP384r1MLKEM1024) are being used in TLS configuration, representing proper quantum-safe cryptographic implementation."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "3"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:284=a808f14d3d4e0a36"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:285=bd680037bb16ecc2"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:286=16751ad10e509d7e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "AES-256",
+      "bom-ref": "pqs:collected:ALG-12f61078",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "block-cipher"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 121
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 147
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-12f61078"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "AES-256 is referenced in test configuration files as part of ECDHE cipher suites where the vulnerability lies in the key exchange (ECDHE) rather than encryption itself."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:121=5a45cf70d031f6bc"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:147=5ddb07a38226bf4e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "BLAKE2b",
+      "bom-ref": "pqs:collected:ALG-0a0ee479",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "512"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0a0ee479"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "BLAKE2b is referenced as a dependency via golang.org/x/crypto package. This represents a cryptographic dependency that should be tracked."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "ChaCha20-Poly1305",
+      "bom-ref": "pqs:collected:ALG-3d4cff53",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 169
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-3d4cff53"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "ChaCha20-Poly1305 cipher suite (TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256) is used in test configurations. The encryption is strong but the key exchange uses ECDHE which is vulnerable to quantum attacks."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:169=8795b4286a19da28"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 handling",
+      "bom-ref": "pqs:collected:ALG-a8435ea2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 164
+          },
+          {
+            "location": "pkg/exthttp/tlsconfig.go",
+            "line": 73
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 120
+          },
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 52
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 123
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 314
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 189
+          },
+          {
+            "location": "pkg/exthttp/tlsconfig.go",
+            "line": 82
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 142
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 203
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 336
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 233
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 220
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 352
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 312
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 64
+          },
+          {
+            "location": "pkg/tls/options.go",
+            "line": 84
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 193
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-a8435ea2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "D"
+        },
+        {
+          "name": "pqs:rating_refined_basis",
+          "value": "AST-resolved RSA-ENC-1024"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex,ast"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X.509 certificate operations are actively used throughout the codebase for TLS configuration and certificate handling, representing actual cryptographic usage that should be tracked."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "18"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:164=fe49e80459013fae"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/exthttp/tlsconfig.go:73=61c8b5178471794c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:120=3f1155e3fd3994cb"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:52=fef3f00efdc4fa60"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:123=58d1976f81221ee1"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:314=8afc559d87e1e37b"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:189=b5dfa657e7ede7ef"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/exthttp/tlsconfig.go:82=ef6a3380b9e30687"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:142=76dcadd543e61345"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:203=2df54484d2894223"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:336=d8d319349ce1df7e"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:233=7f953f93d00cdac0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:220=41ab77ea3d9fe6f0"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:352=63b6ddd202aa7fe7"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:312=b6ea29cfc79eb20a"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:64=6093ee52326802b5"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tls/options.go:84=76dcadd543e61345"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:193=10ff0400b43265f5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "CSPRNG",
+      "bom-ref": "pqs:collected:ALG-80605930",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "cmd/thanos/tools_bucket.go",
+            "line": 8
+          },
+          {
+            "location": "pkg/block/indexheader/parallel_bucket_test.go",
+            "line": 9
+          },
+          {
+            "location": "pkg/clientconfig/http_test.go",
+            "line": 7
+          },
+          {
+            "location": "pkg/store/postings_codec_test.go",
+            "line": 9
+          },
+          {
+            "location": "pkg/tracing/otlp/otlp_test.go",
+            "line": 10
+          },
+          {
+            "location": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go",
+            "line": 13
+          },
+          {
+            "location": "test/e2e/tls_test.go",
+            "line": 9
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-80605930"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "crypto/rand is used in 7 locations across different files. These are correct uses of cryptographic randomness and are not vulnerable."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "7"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "cmd/thanos/tools_bucket.go:8=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/block/indexheader/parallel_bucket_test.go:9=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/clientconfig/http_test.go:7=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/store/postings_codec_test.go:9=48c555802afba66c"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/otlp/otlp_test.go:10=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/tracing/tracing_middleware/grpctesting/interceptor_suite.go:13=a3859508fc6d98bd"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "test/e2e/tls_test.go:9=a3859508fc6d98bd"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto",
+      "bom-ref": "pqs:collected:LIB-a2c61150",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a2c61150"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "code_scan,dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "The golang.org/x/crypto library is referenced in the codebase, representing an actual cryptographic dependency that should be tracked."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509 self-signed",
+      "bom-ref": "pqs:collected:ALG-0e533e47",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-0e533e47"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Appears in pkg/ui/react-app/pnpm-lock.yaml as a transitive dependency. This is not actively used in the application code but represents a potential reference to X.509 certificates."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X.509",
+      "bom-ref": "pqs:collected:ALG-1847d707",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-1847d707"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Appears in pkg/ui/react-app/pnpm-lock.yaml as a transitive dependency. This is not actively used in the application code but represents a potential reference to X.509 certificates."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JWT signing",
+      "bom-ref": "pqs:collected:ALG-240215d0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-240215d0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JWT signing via github.com/golang-jwt/jwt/v5 is declared as a dependency but may be used for authentication and authorization purposes."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "extended Go cryptography",
+      "bom-ref": "pqs:collected:ALG-2bf2e623",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-2bf2e623"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Extended Go cryptography via golang.org/x/crypto@v0.53.0 is declared as a dependency, representing additional cryptographic capabilities available in the codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "JOSE (JWS/JWE/JWK)",
+      "bom-ref": "pqs:collected:ALG-386b2ee4",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-386b2ee4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "JOSE (JWS/JWE/JWK) via github.com/go-jose/go-jose/v4@v4.1.4 is declared as a dependency, representing cryptographic libraries for web-based signing and encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dfc896574420f5e3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Google Cloud KMS keys",
+      "bom-ref": "pqs:collected:ALG-de73edca",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "pke"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-de73edca"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Google Cloud KMS keys via cloud.google.com/go/kms@v1.4.0 are declared as a dependency, representing a cryptographic key management service."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=c92df36d5d22e8d6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "DNSSEC",
+      "bom-ref": "pqs:collected:ALG-f65301b0",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f65301b0"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "DNSSEC via github.com/miekg/dns@v1.1.69 is declared as a dependency, representing cryptographic infrastructure for DNS security."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.sum:1=fae04635eeb2f35e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "golang.org/x/crypto/blake2b",
+      "bom-ref": "pqs:collected:LIB-5a50958c",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-5a50958c"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "golang.org/x/crypto/blake2b@v0.53.0 is declared as a dependency, representing a specific cryptographic hash function used in the codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/go-jose/go-jose/v4",
+      "bom-ref": "pqs:collected:LIB-a9eeef71",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-a9eeef71"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "github.com/go-jose/go-jose/v4@v4.1.4 is declared as a dependency, representing cryptographic libraries for web-based signing and encryption."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.mod:1=dfc896574420f5e3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "selfsigned",
+      "bom-ref": "pqs:collected:LIB-b4358cea",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-b4358cea"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Appears in pkg/ui/react-app/pnpm-lock.yaml as a transitive dependency. This is not actively used in the application code but represents a potential reference to self-signed certificate handling libraries."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/miekg/dns",
+      "bom-ref": "pqs:collected:LIB-d92378da",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-d92378da"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "github.com/miekg/dns@v1.1.69 is declared as a dependency, representing DNS infrastructure with cryptographic capabilities."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.sum:1=fae04635eeb2f35e"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "cloud.google.com/go/kms",
+      "bom-ref": "pqs:collected:LIB-e4c41917",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "go.sum",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-e4c41917"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "cloud.google.com/go/kms@v1.4.0 is declared as a dependency, representing Google Cloud Key Management Service."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "go.sum:1=c92df36d5d22e8d6"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "github.com/golang-jwt/jwt/v5",
+      "bom-ref": "pqs:collected:LIB-ee297500",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "compliance/go.mod",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-ee297500"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "github.com/golang-jwt/jwt/v5@v5.3.0 is declared as a dependency, representing JWT handling capabilities in the codebase."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "compliance/go.mod:1=e5d5f3bb4c41e9d2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "node-forge",
+      "bom-ref": "pqs:collected:LIB-fe0eb9a4",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "pkg/ui/react-app/pnpm-lock.yaml",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-fe0eb9a4"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Appears in pkg/ui/react-app/pnpm-lock.yaml as a transitive dependency. This is not actively used in the application code but represents a potential reference to a JavaScript crypto library."
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "pkg/ui/react-app/pnpm-lock.yaml:1=304a503fb3f14756"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-6ecb17f9"
+    },
+    {
+      "ref": "pqs:collected:ALG-a5f0697a"
+    },
+    {
+      "ref": "pqs:collected:ALG-70109388"
+    },
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-99c6681d"
+    },
+    {
+      "ref": "pqs:collected:ALG-589856a1"
+    },
+    {
+      "ref": "pqs:collected:ALG-a6cca713"
+    },
+    {
+      "ref": "pqs:collected:ALG-507434ae"
+    },
+    {
+      "ref": "pqs:collected:KEY-796dc2ae"
+    },
+    {
+      "ref": "pqs:collected:PROTO-06d2a98d"
+    },
+    {
+      "ref": "pqs:collected:ALG-1138d04b"
+    },
+    {
+      "ref": "pqs:collected:ALG-a825c207"
+    },
+    {
+      "ref": "pqs:collected:ALG-c9ffc8a8"
+    },
+    {
+      "ref": "pqs:collected:ALG-710f61f0"
+    },
+    {
+      "ref": "pqs:collected:ALG-92e838c9"
+    },
+    {
+      "ref": "pqs:collected:ALG-3473fe18"
+    },
+    {
+      "ref": "pqs:collected:CERT-546729b8"
+    },
+    {
+      "ref": "pqs:collected:CERT-965c0b11"
+    },
+    {
+      "ref": "pqs:collected:CERT-a363897b"
+    },
+    {
+      "ref": "pqs:collected:PROTO-80ac7e1f"
+    },
+    {
+      "ref": "pqs:collected:ALG-b46aaaf7"
+    },
+    {
+      "ref": "pqs:collected:PROTO-14536b7f"
+    },
+    {
+      "ref": "pqs:collected:ALG-84de5a3e"
+    },
+    {
+      "ref": "pqs:collected:ALG-695a1eb5"
+    },
+    {
+      "ref": "pqs:collected:ALG-990f5513"
+    },
+    {
+      "ref": "pqs:collected:ALG-f61ec50f"
+    },
+    {
+      "ref": "pqs:collected:ALG-0eb2c0da"
+    },
+    {
+      "ref": "pqs:collected:ALG-8ac47597"
+    },
+    {
+      "ref": "pqs:collected:ALG-84b0b2f9"
+    },
+    {
+      "ref": "pqs:collected:ALG-12f61078"
+    },
+    {
+      "ref": "pqs:collected:ALG-0a0ee479"
+    },
+    {
+      "ref": "pqs:collected:ALG-3d4cff53"
+    },
+    {
+      "ref": "pqs:collected:ALG-a8435ea2"
+    },
+    {
+      "ref": "pqs:collected:ALG-80605930"
+    },
+    {
+      "ref": "pqs:collected:LIB-a2c61150"
+    },
+    {
+      "ref": "pqs:collected:ALG-0e533e47"
+    },
+    {
+      "ref": "pqs:collected:ALG-1847d707"
+    },
+    {
+      "ref": "pqs:collected:ALG-240215d0"
+    },
+    {
+      "ref": "pqs:collected:ALG-2bf2e623"
+    },
+    {
+      "ref": "pqs:collected:ALG-386b2ee4"
+    },
+    {
+      "ref": "pqs:collected:ALG-de73edca"
+    },
+    {
+      "ref": "pqs:collected:ALG-f65301b0"
+    },
+    {
+      "ref": "pqs:collected:LIB-5a50958c"
+    },
+    {
+      "ref": "pqs:collected:LIB-a9eeef71"
+    },
+    {
+      "ref": "pqs:collected:LIB-b4358cea"
+    },
+    {
+      "ref": "pqs:collected:LIB-d92378da"
+    },
+    {
+      "ref": "pqs:collected:LIB-e4c41917"
+    },
+    {
+      "ref": "pqs:collected:LIB-ee297500"
+    },
+    {
+      "ref": "pqs:collected:LIB-fe0eb9a4"
+    }
+  ]
+}
