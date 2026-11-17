@@ -46,6 +46,11 @@ export interface LabelledSite {
 }
 export interface Labels {
   schema: "weakcrypto.labels/v1"; repo: string; commit: string; updatedAt?: string;
+  /** A key over a corpus kept in this repository rather than a repository on GitHub: the folder its files are in.
+   *  commit is then a SHA-1 over those files, so the key names one exact corpus. */
+  corpus?: string;
+  /** Where a published benchmark's key comes from. */
+  source?: { name: string; paper: string; url: string };
   sites: LabelledSite[];
 }
 
