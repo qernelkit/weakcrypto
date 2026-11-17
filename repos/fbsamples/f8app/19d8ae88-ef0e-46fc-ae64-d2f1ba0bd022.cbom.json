@@ -1,0 +1,453 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:cb0c91b7-27ff-4b48-b85d-2de980c97772",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-11-17T07:42:18.067Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "weakcrypto-scanner",
+          "version": "42f2b04a3e42"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "fbsamples/f8app",
+      "version": "119f062943c9d7dfa2892a178199435d6854a06f",
+      "bom-ref": "repo:fbsamples/f8app@119f062943c9d7dfa2892a178199435d6854a06f",
+      "externalReferences": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/fbsamples/f8app"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "weakcrypto:id",
+        "value": "19d8ae88-ef0e-46fc-ae64-d2f1ba0bd022"
+      },
+      {
+        "name": "weakcrypto:submitter",
+        "value": "weakcrypto-scanner[bot]"
+      },
+      {
+        "name": "weakcrypto:model",
+        "value": "ollama/qwen3-coder-64k"
+      },
+      {
+        "name": "weakcrypto:config",
+        "value": "skill pq-crypto, 2 scouts, max iterations 400, build 42f2b04a3e42"
+      },
+      {
+        "name": "weakcrypto:asset-count",
+        "value": "5"
+      },
+      {
+        "name": "weakcrypto:runtime-ms",
+        "value": "99155"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "name": "non-cryptographic PRNG",
+      "bom-ref": "pqs:collected:ALG-7d1fdc12",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "drbg"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "js/reducers/__mocks__/parse.js",
+            "line": 34
+          },
+          {
+            "location": "server/parse-server/cloud/functions/tests.js",
+            "line": 121
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-7d1fdc12"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "C"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "C"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "regex"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Non-cryptographic randomness used in security-sensitive contexts - this is a test file using Math.random() instead of a proper crypto random generator"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "2"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "js/reducers/__mocks__/parse.js:34=f65b44ce9bd50f13"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/parse-server/cloud/functions/tests.js:121=fa9b89bf69125943"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "Ed25519",
+      "bom-ref": "pqs:collected:ALG-683d5cd2",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "signature",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/graphql/yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-683d5cd2"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "deadline"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "Ed25519 algorithm via tweetnacl dependency - this is a quantum-vulnerable signature algorithm that should be tracked for migration planning"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/graphql/yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "X25519",
+      "bom-ref": "pqs:collected:ALG-defedad1",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key-agree",
+          "curve": "Curve25519"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/graphql/yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-defedad1"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "B-"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "no"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "retroactive"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "X25519 algorithm via tweetnacl dependency - this is a quantum-vulnerable key agreement algorithm that needs to be tracked for migration"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/graphql/yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "XSalsa20-Poly1305",
+      "bom-ref": "pqs:collected:ALG-f58a8f00",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "ae",
+          "parameterSetIdentifier": "256"
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/graphql/yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "ALG-f58a8f00"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "A+"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "reference"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "yes"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "none"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "XSalsa20-Poly1305 algorithm via tweetnacl dependency - this is a quantum-safe authenticated encryption algorithm that should be tracked"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/graphql/yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "name": "tweetnacl",
+      "bom-ref": "pqs:collected:LIB-0469707e",
+      "cryptoProperties": {
+        "assetType": "algorithm"
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "server/graphql/yarn.lock",
+            "line": 1,
+            "additionalContext": "whole file"
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "pqs:occurrence_kind",
+          "value": "collected"
+        },
+        {
+          "name": "pqs:ref",
+          "value": "LIB-0469707e"
+        },
+        {
+          "name": "pqs:rating",
+          "value": "?"
+        },
+        {
+          "name": "pqs:rating_display",
+          "value": "?"
+        },
+        {
+          "name": "pqs:basis_source",
+          "value": "practice"
+        },
+        {
+          "name": "pqs:quantum_safe",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:risk_type",
+          "value": "unknown"
+        },
+        {
+          "name": "pqs:detected_by",
+          "value": "dep_scan"
+        },
+        {
+          "name": "pqs:adjudication",
+          "value": "confirmed"
+        },
+        {
+          "name": "pqs:context",
+          "value": "tweetnacl crypto library - this is a dependency containing quantum-vulnerable algorithms that needs to be tracked for migration planning"
+        },
+        {
+          "name": "pqs:occurrences",
+          "value": "1"
+        },
+        {
+          "name": "pqs:identity_basis",
+          "value": "declared"
+        },
+        {
+          "name": "weakcrypto:evidence",
+          "value": "server/graphql/yarn.lock:1=f5915d5dc2f3353b"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pqs:collected:ALG-7d1fdc12"
+    },
+    {
+      "ref": "pqs:collected:ALG-683d5cd2"
+    },
+    {
+      "ref": "pqs:collected:ALG-defedad1"
+    },
+    {
+      "ref": "pqs:collected:ALG-f58a8f00"
+    },
+    {
+      "ref": "pqs:collected:LIB-0469707e"
+    }
+  ]
+}
